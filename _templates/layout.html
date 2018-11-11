@@ -1,0 +1,19 @@
+{% extends "!layout.html" %}
+  {% block footer %} {{ super() }}
+
+  <style>
+    /* Sidebar */
+    .wy-nav-side {
+      /*width:0px;*/
+    }
+    .wy-side-scroll {
+      width:0px;
+    }
+    [role=navigation] {
+    visibility: hidden;
+    }
+    h1 {
+    font-size:400%;
+    }
+  </style>
+{% endblock %}
