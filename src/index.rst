@@ -10,7 +10,14 @@ Code Craftsmen
    :maxdepth: 2
    :caption: Contents:
 
-This is the home page for the Code Craftsmen project.  Some of our
-`Code Crafting Tools`_ are available on Github.
+This is the home page for the Code Craftsmen project.  Our `Code
+Crafting Tools`_ are available on GitHub.
 
+Software Documentation
+----------------------
+
+- chierps: Component-based hierarchic programming system
+- `wumps`_: Widely useful macro programming syntax
+  
 .. _Code Crafting Tools: https://github.com/codecraftingtools
+.. _wumps: https://wumps.readthedocs.io
