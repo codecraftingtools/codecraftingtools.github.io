@@ -20,4 +20,4 @@ Software Documentation
 - `wumps`_: Widely useful macro programming syntax
   
 .. _Code Crafting Tools: https://github.com/codecraftingtools
-.. _wumps: https://wumps.codecraftsmen.org
+.. _wumps: http://wumps.codecraftsmen.org
