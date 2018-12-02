@@ -6,10 +6,10 @@ Tools
 
 The following code crafting tools are available on `GitHub`_:
 
-chierps
+Chierps
   Component-based hierarchic programming system
 
-`wumps`_
+`Wumps`_
   Widely useful macro programming syntax
 
 .. _GitHub: https://github.com/codecraftingtools
