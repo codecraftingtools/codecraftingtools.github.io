@@ -5,7 +5,7 @@ Philosophy
 Code craftsmen believe that great software is not merely the result of
 sound computing theory, good engineering practices, and technical
 knowledge.  The creation of truly great software also requires an
-overarching vision and sense of aesthetics, a little ingenuity and
+overarching vision and sense of aesthetics, some ingenuity and
 intuition, and a good measure of experience, skill, and patience.  In
 this regard, writing code is really more of a craft than an art or a
 science.  The result of this craft should be something that is both
