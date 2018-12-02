@@ -7,8 +7,8 @@
 Code Craftsmen
 ==============
 
-Beautiful tools for crafting quality software
-=============================================
+Tools for crafting quality software
+===================================
 
 .. toctree::
    :maxdepth: 2

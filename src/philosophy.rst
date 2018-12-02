@@ -4,18 +4,21 @@ Philosophy
 
 Code craftsmen believe that great software is not merely the result of
 sound computing theory, good engineering practices, and technical
-knowledge.  The creation of truly great software also requires
-ingenuity, a sense of aesthetics, intuition, experience, skill, and
-patience.  In this regard, writing code is more of a craft than an art
-or a science.  The result of this craft should be something that is
-both useful and beautiful in its design, like a piece of fine
-handcrafted furniture or a well-balanced sword.
+knowledge.  The creation of truly great software also requires an
+overarching vision and sense of aesthetics, a little ingenuity and
+intuition, and a good measure of experience, skill, and patience.  In
+this regard, writing code is really more of a craft than an art or a
+science.  The result of this craft should be something that is both
+useful and beautiful in its design, like a piece of fine furniture, a
+well-balanced knife, or a handcrafted guitar.
 
 ..
   The code craftsman also realizes that, unlike a piece of furniture,
   most software is never really finished.  Much like a living entity (or
   a
-   
+
+  takes on a life of its own, growing...
+  
   The craftsman also realizes that, with very few exceptions, a computer
   program is never really finished.  Much like a living entity (or a
   home), a program often evolves to meet new requirements, overcome
