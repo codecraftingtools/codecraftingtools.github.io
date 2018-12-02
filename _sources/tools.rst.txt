@@ -1,10 +1,10 @@
-.. _code-crafting-tools-section:
+.. _tools:
 
-===================	     
-Code Crafting Tools
-===================
+=====	     
+Tools
+=====
 
-The following code crafting tools are available on `our GitHub site`_:
+The following code crafting tools are available on `GitHub`_:
 
 chierps
   Component-based hierarchic programming system
@@ -12,5 +12,5 @@ chierps
 `wumps`_
   Widely useful macro programming syntax
 
-.. _our GitHub site: https://github.com/codecraftingtools
+.. _GitHub: https://github.com/codecraftingtools
 .. _wumps: http://wumps.codecraftsmen.org
