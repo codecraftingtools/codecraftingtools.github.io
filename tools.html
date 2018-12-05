@@ -148,12 +148,35 @@
             
   <div class="section" id="tools">
 <span id="id1"></span><h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
-<p>The following code crafting tools are available on <a class="reference external" href="https://github.com/codecraftingtools">GitHub</a>:</p>
-<dl class="docutils">
+<p>The following code crafting tools are (or will be) available on
+<a class="reference external" href="https://github.com/codecraftingtools">GitHub</a>:</p>
+<dl class="docutils" id="chierps">
 <dt>Chierps</dt>
-<dd>Component-based hierarchic programming system</dd>
+<dd>Component-based hierarchic programming system.  This is a framework
+for building software by implementing and connecting message-passing
+components.  The interfaces and hierarchic descriptions for
+components are defined using <a class="reference internal" href="#pidgen">Pidgen</a>.  The Chierps framework
+provides a messaging system implementation and tools to generate
+interface code from the component descriptions.</dd>
+</dl>
+<dl class="docutils" id="pidgen">
+<dt>Pidgen</dt>
+<dd>Language for defining software component messaging interfaces and
+hierarchic component implementations.  The message content is
+defined using <a class="reference internal" href="#tydl">Tydl</a>.</dd>
+</dl>
+<dl class="docutils" id="tydl">
+<dt>Tydl</dt>
+<dd>Type definition language.  This language is used to define the
+content of messages sent between software or hardware components.
+Type definitions can be used to generate documentation or high-level
+code for manipulating messages in various programming languages.</dd>
+</dl>
+<dl class="docutils" id="wumps">
 <dt><a class="reference external" href="http://wumps.codecraftsmen.org">Wumps</a></dt>
-<dd>Widely useful macro programming syntax</dd>
+<dd>Widely useful macro programming syntax.  This general-purpose syntax
+is a foundation for building domain-specific languages such as
+<a class="reference internal" href="#tydl">Tydl</a> and <a class="reference internal" href="#pidgen">Pidgen</a>.</dd>
 </dl>
 </div>
 
