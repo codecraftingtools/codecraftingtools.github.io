@@ -11,8 +11,9 @@ Tools for crafting quality software
 ===================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    philosophy
+   design
    tools
    foundation
