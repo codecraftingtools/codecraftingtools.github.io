@@ -20,9 +20,10 @@ Chierps
 .. _Pidgen:
 
 Pidgen
-  Language for defining software component messaging interfaces and
-  hierarchic component implementations.  The message content is
-  defined using `Tydl`_.
+  Programming interface definition and generation toolset.  This is a
+  language for defining software component messaging interfaces and
+  hierarchic component implementations.  It is a superset of `Tydl`_,
+  which is used to define message content.
 
 .. _Tydl:
 

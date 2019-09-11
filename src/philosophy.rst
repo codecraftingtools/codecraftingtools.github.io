@@ -1,18 +1,23 @@
+.. _philosopy:
+
 ==========
 Philosophy
 ==========
 
-Code craftsmen believe that great software is not merely the result of
-sound computing theory, good engineering practices, and technical
-knowledge.  The creation of truly great software also requires an
-overarching vision and sense of aesthetics, some ingenuity and
-intuition, and a good measure of experience, skill, and patience.  In
-this regard, writing code is really more of a craft than an art or a
-science.  The result of this craft should be something that is both
-useful and beautiful in its design, like a piece of fine furniture, a
-well-balanced knife, or a handcrafted guitar.
+The Code Craftsmen believe that great software is not merely the
+result of well-defined software requirements, sound computing theory,
+and good engineering practice.  The creation of truly great software
+also requires a clear overarching vision, a sense of aesthetics, a bit
+of ingenuity and intuition, and a good measure of experience, skill,
+and patience.  In this regard, writing code is really more of a craft
+than an art, a science, or an engineering discipline.  The result of
+this craft should be something that is both useful and beautiful in
+its design, like a piece of fine furniture, a quality hand tool, or a
+handcrafted guitar.
 
 ..
+  Comment section for ideas
+  
   The code craftsman also realizes that, unlike a piece of furniture,
   most software is never really finished.  Much like a living entity (or
   a
@@ -33,28 +38,28 @@ well-balanced knife, or a handcrafted guitar.
   discovered ailments.  software devecomputer software is caretaker.
   living entity
    
-   
   All too often, the source code of a program is regarded as simply a
-  means to an end.  While this may be true to a degree, a code craftsman
-  knows that in practice, the design, structure, and beauty of source
-  code have a great effect on the end product.  A well-crafted product
-  is a joy to use.
+  means to an end.  While this may be true to a degree, a code
+  craftsman observes that in practice, the design, structure, and
+  readability (beauty?) of source code have a positive (great?) effect
+  on the end product.  A well-crafted product is a joy to use.
 
+  many a code craftsmen has experienced
 
+  technical knowledge
+  
+  - Source code matters
 
-..
+    The code craftsmen are dedicated to building quality tools
+
+  - Coding is a craft
+  - Tools are important
+    craftsman is only as good as his tools? (made better by his tools?)
+    poor craftsman blames his tools?
+    the importance of tools
+  
   Aside from any arguments, the code craftsman desires to write
   beautiful code for beauty's sake, if nothing else.
   https://texfaq.org/FAQ-TeXfuture
 
-..
-  Principles
-  ==========
-   
-  Don't Repeat Yourself
-  ---------------------
-   
-  Corollaries
-   
-  - Break software into reusable components
-
+  But, of course, beauty is in the mind of the coder...

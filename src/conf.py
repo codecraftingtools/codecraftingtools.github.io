@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'Code Craftsmen'
-copyright = u'2018, Jeff Webb'
+copyright = u'2018, 2019 Jeff Webb'
 author = u'Jeff Webb'
 
 # The short X.Y version
