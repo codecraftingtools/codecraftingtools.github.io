@@ -30,9 +30,9 @@ Tools for crafting quality software
    :maxdepth: 1
 
    overview
+   status
    philosophy
    design
    workflow
-   foundation
    tools
-   status
+   foundation
