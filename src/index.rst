@@ -29,10 +29,11 @@ Tools for crafting quality software
    :hidden:
    :maxdepth: 1
 
-   overview
+   vision
    status
    philosophy
    design
-   workflow
+   overview
    tools
+   workflow
    foundation

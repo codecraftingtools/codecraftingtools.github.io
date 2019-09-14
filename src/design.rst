@@ -10,7 +10,7 @@ Goals
 The Code Craftsmen feel that in many cases, writing software has
 become much more difficult than it needs to be.  At this point, our
 primary goal is to restore the joy in programming by making software
-more beautiful and easier to write, maintain, and reuse.
+easier to read, write, maintain, and reuse.
 
 Principles
 ==========

@@ -88,6 +88,7 @@ html_theme_options = {
 #    'nosidebar': True,
 #    'collapse_navigation': True,
 #    'navigation_depth': -1,
+#    'prev_next_buttons_location': 'both',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
