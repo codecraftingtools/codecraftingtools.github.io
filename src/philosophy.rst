@@ -23,10 +23,10 @@ Tools are Important
 
 If coding is a craft, then programmers must be craftsmen.  Although
 the old saying "it's a poor craftsman that blames his tools" rings
-true, others argue that "a workman is only as good as his tools".
-Although the latter statement may be flawed, there is certainly some
-truth in it.  One does not have to look very hard to notice the value
-a professional craftsman places on his tools, and how those tools
+true, others argue that "a workman is only as good as his tools".  The
+latter statement may be flawed, but there is certainly some truth in
+it.  One does not have to look very hard to notice the value a
+professional craftsman places on his tools, and how those tools
 increase his effectiveness.  The Code Craftsmen believe that quality
 software development tools are important, and we are dedicated to
 building those tools and getting them into the hands of developers.
@@ -57,12 +57,13 @@ Craftsmen observe that in practice, the design, structure, and
 readability of source code can have a significant effect on the
 functionality, reliability, and maintainability of the end product.
 The source code is like the foundation of a house -- the foundation
-may not be seen, but the house cannot stand without it.  At the very
-least, the quality of the source code affects the mindset of the
-programmer.  A happy programmer who can easily understand and modify
-the program with powerful tools is an effective one.  Even aside from
-these arguments, the Code Craftsmen desire to write beautiful code for
-beauty's sake, if nothing else.  But, of course, beauty is in the mind
-of the coder...
+may not be visible to the occupant, but the house cannot stand without
+it.  At the very least, the quality of the source code affects the
+mindset of the programmer, and a happy programmer who can easily
+understand and modify a program with powerful tools is an effective
+one.  However, even aside from these practical considerations, the
+Code Craftsmen would strive to write beautiful code for beauty's sake,
+if nothing else.  But, of course, beauty is in the mind of the
+coder...
 
 .. _exceptions: https://texfaq.org/FAQ-TeXfuture

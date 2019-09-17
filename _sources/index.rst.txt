@@ -20,8 +20,8 @@ Tools for crafting quality software
   components or write a customized main program
 - Develop multi-threaded real-time systems, simulations, or desktop
   applications
-- Utilize the same components in any of the supported run-time
-  environments or in an object-oriented manner
+- Utilize the same components in any supported run-time environment,
+  or in an object-oriented manner
 - Generate developer and user documentation directly from component
   interface definitions
 
@@ -35,5 +35,4 @@ Tools for crafting quality software
    design
    overview
    tools
-   workflow
    foundation

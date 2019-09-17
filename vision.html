@@ -85,7 +85,6 @@
 <li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="foundation.html">Foundation</a></li>
 </ul>
 
@@ -157,17 +156,18 @@
 software developers to design reusable software components that can be
 combined in a hierarchic fashion to form complex applications with
 minimal effort.</p>
-<p>In order to achieve this goal, our software components interact with
-their run-time environment using a standardized, non-blocking,
-event-driven interface and communicate with one another by sending and
-receiving messages through this interface.  This approach allows the
-same components to be used in a wide variety of contexts, from
-multi-threaded real-time environments to single-threaded desktop
-applications.  Common operations, such as component configuration,
-initialization, and termination are also standardized as much as
-possible to facilitate the development of generalized application
-executives that can automatically handle these functions.</p>
-<p>The component interfaces, message content, and hierarchic application
+<p>In order to achieve this goal, we require software components to
+interact with their run-time environment using a standardized,
+non-blocking, event-driven interface and communicate with one another
+by sending and receiving messages through this interface.  This
+approach allows the same components to be used in a wide variety of
+contexts, from multi-threaded real-time environments to
+single-threaded desktop applications.  Common operations, such as
+component configuration, initialization, and termination are also
+standardized as much as possible to facilitate the development of
+generalized application executives that can automatically handle these
+functions.</p>
+<p>Component interfaces, message content, and hierarchic application
 structure are defined in a rich, extensible format that consolidates
 all of the relevant metadata in one location.  This metadata can then
 be leveraged by any number of tools to generate code and
@@ -194,7 +194,7 @@ documentation.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, 2019 Jeff Webb
+        &copy; Copyright 2018, 2019 Jeffrey A. Webb
 
     </p>
   </div>

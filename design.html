@@ -85,12 +85,23 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Design</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#goals">Goals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#principles">Principles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#considerations">Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#considerations">Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#application-domains">Application Domains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#application-structure">Application Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-architectures">Hardware Architectures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operating-systems">Operating Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#programming-language-support">Programming Language Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inter-component-communication-methodology">Inter-Component Communication Methodology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-time-environments">Run-time Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component-environment-interface">Component Environment Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standardized-component-interfaces">Standardized Component Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-formats">File Formats</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="foundation.html">Foundation</a></li>
 </ul>
 
@@ -160,24 +171,133 @@
 <span id="id1"></span><h1>Design<a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
-<p>The Code Craftsmen feel that in many cases, writing software has
-become much more difficult than it needs to be.  At this point, our
-primary goal is to restore the joy in programming by making software
-more beautiful and easier to write, maintain, and reuse.</p>
+<p>In the Code Craftsmen’s view, writing software is currently much more
+difficult than it needs to be.  Our hope, and our primary goal, is to
+<strong>restore the joy in programming</strong> by developing code crafting tools
+that make software:</p>
+<ul class="simple">
+<li>Easier to read</li>
+<li>Easier to write</li>
+<li>Easier to maintain</li>
+<li>Easier to reuse</li>
+</ul>
 </div>
 <div class="section" id="principles">
 <h2>Principles<a class="headerlink" href="#principles" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">Don’t Repeat Yourself</a></li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">Don’t Repeat Yourself</a></li>
-</ol>
+<p>There are a few key principles that support these goals and drive our
+design strategy, such as:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">Don’t repeat yourself</a></li>
+<li>Design for testability</li>
+<li>Documentation is important</li>
+<li>Don’t repeat yourself (unless it’s worth saying twice)</li>
+</ul>
+<p>Although there are surely some other principles worth adding to this
+list, the ones listed here play a major role in many of our design
+decisions.</p>
 </div>
 <div class="section" id="considerations">
 <h2>Considerations<a class="headerlink" href="#considerations" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we will briefly walk through a number of design
+considerations that have influenced the development of our code
+crafting tools.</p>
+<div class="section" id="application-domains">
+<h3>Application Domains<a class="headerlink" href="#application-domains" title="Permalink to this headline">¶</a></h3>
+<p>Our tools should support the development of software applications in a
+wide variety of domains, including, but not limited to:</p>
 <ul class="simple">
-<li>How to pass data between software components</li>
-<li>File formats, metadata, and code generation</li>
+<li>Embedded systems</li>
+<li>Hard and soft real-time systems</li>
+<li>Open and closed-loop control systems</li>
+<li>Hardware testing</li>
+<li>Data acquisition</li>
+<li>Simulation</li>
+<li>Data processing</li>
+<li>Data display</li>
+<li>Desktop applications</li>
 </ul>
+</div>
+<div class="section" id="application-structure">
+<h3>Application Structure<a class="headerlink" href="#application-structure" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Reusable software components</li>
+<li>Hierarchic component design</li>
+<li>Abstracted run-time environment</li>
+<li>Abstracted application executive</li>
+<li>Scripting interface</li>
+</ul>
+</div>
+<div class="section" id="hardware-architectures">
+<h3>Hardware Architectures<a class="headerlink" href="#hardware-architectures" title="Permalink to this headline">¶</a></h3>
+<p>Wherever possible, our tools should allow software components to be
+compiled for any supported hardware architecture with minimal (ideally
+zero) code changes.  Currently, the priority is support for 64-bit x86
+and 32-bit ARM systems.</p>
+</div>
+<div class="section" id="operating-systems">
+<h3>Operating Systems<a class="headerlink" href="#operating-systems" title="Permalink to this headline">¶</a></h3>
+<p>Similarly, software components should be able to be used on any
+supported operating system without modifications to the source code.
+Hopefully, the operating system choices will expand in the future, but
+our initial focus will be:</p>
+<ul class="simple">
+<li>Standard GNU/Linux</li>
+<li>Real-time GNU/Linux (PREEMPT_RT)</li>
+<li>Real-time GNU/Linux (Xenomai/cobalt)</li>
+<li>RTEMS</li>
+</ul>
+</div>
+<div class="section" id="programming-language-support">
+<h3>Programming Language Support<a class="headerlink" href="#programming-language-support" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Inter-language operation</li>
+<li>Component implementations<ul>
+<li>C++</li>
+<li>Python</li>
+</ul>
+</li>
+<li>Python scripting</li>
+</ul>
+</div>
+<div class="section" id="inter-component-communication-methodology">
+<h3>Inter-Component Communication Methodology<a class="headerlink" href="#inter-component-communication-methodology" title="Permalink to this headline">¶</a></h3>
+<p>Trade-offs of how to pass data between software components.</p>
+<ul class="simple">
+<li>Method calls</li>
+<li>Shared memory</li>
+<li>Message passing</li>
+</ul>
+<p>Primary focus is on message passing, with some limited support for
+object-oriented componet operation.</p>
+</div>
+<div class="section" id="run-time-environments">
+<h3>Run-time Environments<a class="headerlink" href="#run-time-environments" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Messaging framework / run-time environment</li>
+<li>Object oriented API</li>
+<li>Single/multi-threaded</li>
+</ul>
+</div>
+<div class="section" id="component-environment-interface">
+<h3>Component Environment Interface<a class="headerlink" href="#component-environment-interface" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Abstract interface to main application and messaging framework</li>
+<li>Properties</li>
+</ul>
+</div>
+<div class="section" id="standardized-component-interfaces">
+<h3>Standardized Component Interfaces<a class="headerlink" href="#standardized-component-interfaces" title="Permalink to this headline">¶</a></h3>
+<p>Allows for interchanging of components with similar interfaces at
+instantiation or compile-time.</p>
+</div>
+<div class="section" id="file-formats">
+<h3>File Formats<a class="headerlink" href="#file-formats" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Support for arbitrary metadata embedding</li>
+<li>Code generation</li>
+<li>Parameterization</li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -201,7 +321,7 @@ more beautiful and easier to write, maintain, and reuse.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, 2019 Jeff Webb
+        &copy; Copyright 2018, 2019 Jeffrey A. Webb
 
     </p>
   </div>

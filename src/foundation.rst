@@ -11,7 +11,7 @@ the code and ideas that have come before it.  The following external
 software projects serve as a foundation for our :ref:`code crafting
 tools<tools>`.  Although this list is by no means exhaustive, it
 serves as an overview of the software dependencies and provides links
-to relevant documentation.
+to relevant local and upstream documentation.
 
 ..
   If a Code Craftsman desires to produce anything useful, he or she
