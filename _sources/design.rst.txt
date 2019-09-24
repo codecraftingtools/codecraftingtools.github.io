@@ -36,14 +36,14 @@ Considerations
 ==============
 
 In this section, we will briefly walk through a number of design
-considerations that have influenced the development of our code
-crafting tools.
+considerations that influence the development of our code crafting
+tools.
 
 Application Domains
---------------------
+-------------------
 
-Our tools should support the development of software applications in a
-wide variety of domains, including, but not limited to:
+Our tools support the development of software for a wide variety of
+application domains, including, but not limited to:
 
 - Embedded systems
 - Hard and soft real-time systems
@@ -55,34 +55,83 @@ wide variety of domains, including, but not limited to:
 - Data display
 - Desktop applications
 
+Obviously, the code development cycle for some of these domains
+(e.g. embedded, real-time, and closed-loop systems) is much more
+cumbersome than for others (e.g. non-real-time simulation).  Because
+of this, it would be advantageous to develop and test as much code as
+possible in the simplified domains before moving into the more complex
+ones.
+
 Application Structure
 ---------------------
 
-- Reusable software components
-- Hierarchic component design
-- Abstracted run-time environment
-- Abstracted application executive
-- Scripting interface
+In order to maximize both our productivity and the quality of our
+software, our tools facilitate the development of code that can be
+used (and reused) in a wide variety of application domains without
+alteration.  The following application structure helps us achieve this
+goal by separating the domain-independent code from the
+domain-specific code:
+
+Components
+  Well-defined software blocks which can, ideally, be used in a
+  variety of application domains without alteration.  Components
+  communicate with other components and interact with their
+  environment through a standardized, domain-independent interface.
+  It is important to note that when the Code Craftsmen use the term
+  *component*, it is rarely in the general sense, but almost always
+  refers a software block that conforms to a very specific interface.
   
+Run-Time Environment
+  Provides components with a standardized interface to run-time
+  functionality, such as inter-component communication, scheduling,
+  timing, and logging.  The underlying implementation may tailored to
+  a specific application domain or operating system.
+  
+Hierarchic Design
+  Multiple components can be instantiated and connected together in
+  the context of a specific run-time environment to construct
+  higher-level components and applications.
+
+Application Executive
+  Common application-level functionality, such as command-line option
+  and input-file processing, component configuration and
+  initialization, and application termination may be handled by a
+  generalized or domain-specific application executive.
+  
+Utility Libraries
+  Traditional procedural routines or object-oriented class libraries
+  may be used within the implementation of a particular component,
+  run-time environment, or application executive, but do not factor
+  into the interface between these code segments.
+
 Hardware Architectures
 ----------------------
 
-Wherever possible, our tools should allow software components to be
-compiled for any supported hardware architecture with minimal (ideally
-zero) code changes.  Currently, the priority is support for 64-bit x86
-and 32-bit ARM systems.
+Although there are significant differences between some of the
+relevant hardware platfoms, our tools enable developers to design
+software components that can be deployed on any supported hardware
+architecture without source code changes, regardless of the target
+instruction set, byte order, or bit width.  This means that any
+platform-specific code is either pushed down into the run-time
+environment, handled by lower-level hardware abstraction layers, or
+strategically isolated in a few components with abstracted interfaces.
+Although we desire to support a broad range of hardware architectures,
+the current priority is support for 64-bit x86 and 32-bit ARM systems.
+
 
 Operating Systems
 -----------------
 
-Similarly, software components should be able to be used on any
-supported operating system without modifications to the source code.
-Hopefully, the operating system choices will expand in the future, but
-our initial focus will be:
+The write-once, run-everywhere philosophy of our tool set also extends
+to operating systems, providing a way to develop software components
+that are not tied to a particular host OS, but are instead portable to
+any supported real-time or non-real-time operating environment without
+modification.  Although future possibilities are endless, the current
+focus is on providing support for:
 
-- Standard GNU/Linux
-- Real-time GNU/Linux (PREEMPT_RT)
-- Real-time GNU/Linux (Xenomai/cobalt)
+- Standard desktop and embedded Linux
+- Real-time Linux (PREEMPT_RT)
+- Real-time Linux (Xenomai/cobalt)
 - RTEMS
 
 Programming Language Support
@@ -157,3 +206,10 @@ File Formats
    Some domains of interest are: of We desire
   our tools and our so Laboratory and prototyping -- reconfigurability.
 
+  Source vs binary compatibility
+  
+  Threading / concurrent / parallel execution
+  
+  Our tools are designed/support/be applicable/enable/deliver/transition
+  
+  Input/Output, logging, timing/scheduling
