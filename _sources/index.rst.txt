@@ -33,6 +33,6 @@ Tools for crafting quality software
    status
    philosophy
    design
-   overview
    tools
+   workflow
    foundation

@@ -116,8 +116,8 @@ platform-specific code is either pushed down into the run-time
 environment, handled by lower-level hardware abstraction layers, or
 strategically isolated in a few components with abstracted interfaces.
 Although we desire to support a broad range of hardware architectures,
-the current priority is support for 64-bit x86 and 32-bit ARM systems.
-
+the current priority is support for **64-bit x86** and **32-bit ARM**
+systems.
 
 Operating Systems
 -----------------
@@ -137,54 +137,73 @@ focus is on providing support for:
 Programming Language Support
 ----------------------------
 
-- Inter-language operation
-- Component implementations
-  
-  - C++
-  - Python
-    
-- Python scripting
+At a fundamental level, we require all software components to interact
+with their run-time environment via a standardized programming
+interface based on C function calls.  Our tools provide a set of
+higher-level language-specific bindings, built on top of this C API,
+that allow components to be implemented in a way that conforms to the
+conventions of each programming language.  This approach allows
+software components written in various programming languages to
+interoperate with one another in the same run-time environment.  Our
+current priority is the development of bindings for **C++** and
+**Python**, but we hope to eventually support a host of other
+programming languages.
 
 Inter-Component Communication Methodology
 -----------------------------------------
 
-Trade-offs of how to pass data between software components.
+..
+  The primary function of a software component is to receive data from
+  other components, perform some operations in reponse to that data, and
+  then send data to other components.
+
+For the many reasons described elsewhere in this documentation, our
+design approach requires components to communicate with one another in
+a standardized way.  There are many mechanisms that could be used to
+transfer data between components, each with their own advantages and
+disadvantages:
 
 - Method calls
 - Shared memory
 - Message passing
 
-Primary focus is on message passing, with some limited support for
-object-oriented componet operation.
+In light of our goals and application domains, the versatility of the
+message-passing approach has proven to be a good choice for
+standardization.
 
-Run-time Environments
----------------------
+..
+  Primary focus is on message passing, with some limited support for
+  object-oriented component operation.
 
-- Messaging framework / run-time environment
-- Object oriented API
-- Single/multi-threaded
+..
+  Run-time Environments
+  ---------------------
 
-Component Environment Interface
--------------------------------
+  - Messaging framework / run-time environment
+  - Object oriented API
+  - Single/multi-threaded
 
-- Abstract interface to main application and messaging framework
-- Properties
+..
+  Component Environment Interface
+  -------------------------------
 
-Standardized Component Interfaces
----------------------------------
+  - Abstract interface to main application and messaging framework
+  - Properties
 
-Allows for interchanging of components with similar interfaces at
-instantiation or compile-time.
+..
+  Standardized Component Interfaces
+  ---------------------------------
 
-File Formats
-------------
+  Allows for interchanging of components with similar interfaces at
+  instantiation or compile-time.
 
-- Support for arbitrary metadata embedding
-- Code generation
-- Parameterization
+..
+  File Formats
+  ------------
 
-.. _Don't repeat yourself:
-   https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
+  - Support for arbitrary metadata embedding
+  - Code generation
+  - Parameterization
 
 ..
   Comment section for ideas
@@ -212,4 +231,11 @@ File Formats
   
   Our tools are designed/support/be applicable/enable/deliver/transition
   
-  Input/Output, logging, timing/scheduling
+  real-time concerns Input/Output, logging, timing/scheduling
+
+  app executive / embedding in other applications / python scripting / OO API
+  
+  blocking/non-blocking components
+  
+.. _Don't repeat yourself:
+   https://en.wikipedia.org/wiki/Don%27t_repeat_yourself

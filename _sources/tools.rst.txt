@@ -4,6 +4,13 @@
 Tools
 =====
 
+..
+  Software Stack
+  ==============
+
+Overview
+========
+
 The following code crafting tools are (or will be) available on
 `GitHub`_:
 

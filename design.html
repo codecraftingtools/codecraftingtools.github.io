@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Overview" href="overview.html" />
+    <link rel="next" title="Tools" href="tools.html" />
     <link rel="prev" title="Philosophy" href="philosophy.html" /> 
 
   
@@ -92,16 +92,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#operating-systems">Operating Systems</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#programming-language-support">Programming Language Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#inter-component-communication-methodology">Inter-Component Communication Methodology</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#run-time-environments">Run-time Environments</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#component-environment-interface">Component Environment Interface</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#standardized-component-interfaces">Standardized Component Interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#file-formats">File Formats</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="foundation.html">Foundation</a></li>
 </ul>
 
@@ -272,7 +268,8 @@ platform-specific code is either pushed down into the run-time
 environment, handled by lower-level hardware abstraction layers, or
 strategically isolated in a few components with abstracted interfaces.
 Although we desire to support a broad range of hardware architectures,
-the current priority is support for 64-bit x86 and 32-bit ARM systems.</p>
+the current priority is support for <strong>64-bit x86</strong> and <strong>32-bit ARM</strong>
+systems.</p>
 </div>
 <div class="section" id="operating-systems">
 <h3>Operating Systems<a class="headerlink" href="#operating-systems" title="Permalink to this headline">¶</a></h3>
@@ -291,54 +288,33 @@ focus is on providing support for:</p>
 </div>
 <div class="section" id="programming-language-support">
 <h3>Programming Language Support<a class="headerlink" href="#programming-language-support" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Inter-language operation</li>
-<li>Component implementations<ul>
-<li>C++</li>
-<li>Python</li>
-</ul>
-</li>
-<li>Python scripting</li>
-</ul>
+<p>At a fundamental level, we require all software components to interact
+with their run-time environment via a standardized programming
+interface based on C function calls.  Our tools provide a set of
+higher-level language-specific bindings, built on top of this C API,
+that allow components to be implemented in a way that conforms to the
+conventions of each programming language.  This approach allows
+software components written in various programming languages to
+interoperate with one another in the same run-time environment.  Our
+current priority is the development of bindings for <strong>C++</strong> and
+<strong>Python</strong>, but we hope to eventually support a host of other
+programming languages.</p>
 </div>
 <div class="section" id="inter-component-communication-methodology">
 <h3>Inter-Component Communication Methodology<a class="headerlink" href="#inter-component-communication-methodology" title="Permalink to this headline">¶</a></h3>
-<p>Trade-offs of how to pass data between software components.</p>
+<p>For the many reasons described elsewhere in this documentation, our
+design approach requires components to communicate with one another in
+a standardized way.  There are many mechanisms that could be used to
+transfer data between components, each with their own advantages and
+disadvantages:</p>
 <ul class="simple">
 <li>Method calls</li>
 <li>Shared memory</li>
 <li>Message passing</li>
 </ul>
-<p>Primary focus is on message passing, with some limited support for
-object-oriented componet operation.</p>
-</div>
-<div class="section" id="run-time-environments">
-<h3>Run-time Environments<a class="headerlink" href="#run-time-environments" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Messaging framework / run-time environment</li>
-<li>Object oriented API</li>
-<li>Single/multi-threaded</li>
-</ul>
-</div>
-<div class="section" id="component-environment-interface">
-<h3>Component Environment Interface<a class="headerlink" href="#component-environment-interface" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Abstract interface to main application and messaging framework</li>
-<li>Properties</li>
-</ul>
-</div>
-<div class="section" id="standardized-component-interfaces">
-<h3>Standardized Component Interfaces<a class="headerlink" href="#standardized-component-interfaces" title="Permalink to this headline">¶</a></h3>
-<p>Allows for interchanging of components with similar interfaces at
-instantiation or compile-time.</p>
-</div>
-<div class="section" id="file-formats">
-<h3>File Formats<a class="headerlink" href="#file-formats" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Support for arbitrary metadata embedding</li>
-<li>Code generation</li>
-<li>Parameterization</li>
-</ul>
+<p>In light of our goals and application domains, the versatility of the
+message-passing approach has proven to be a good choice for
+standardization.</p>
 </div>
 </div>
 </div>
@@ -351,7 +327,7 @@ instantiation or compile-time.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="overview.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tools.html" class="btn btn-neutral float-right" title="Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="philosophy.html" class="btn btn-neutral" title="Philosophy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
