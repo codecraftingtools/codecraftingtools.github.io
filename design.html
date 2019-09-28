@@ -264,8 +264,8 @@ relevant hardware platfoms, our tools enable developers to design
 software components that can be deployed on any supported hardware
 architecture without source code changes, regardless of the target
 instruction set, byte order, or bit width.  This means that any
-platform-specific code is either pushed down into the run-time
-environment, handled by lower-level hardware abstraction layers, or
+platform-specific code must be incorporated into a lower-level
+abstraction layer, handled by the run-time environment, or
 strategically isolated in a few components with abstracted interfaces.
 Although we desire to support a broad range of hardware architectures,
 the current priority is support for <strong>64-bit x86</strong> and <strong>32-bit ARM</strong>
@@ -277,8 +277,10 @@ systems.</p>
 to operating systems, providing a way to develop software components
 that are not tied to a particular host OS, but are instead portable to
 any supported real-time or non-real-time operating environment without
-modification.  Although future possibilities are endless, the current
-focus is on providing support for:</p>
+modification.  In order to achieve this, any OS-specific code must be
+incorporated into a lower-level abstraction layer or handled by the
+run-time environment.  Although future possibilities are endless, the
+current focus is on providing support for:</p>
 <ul class="simple">
 <li>Standard desktop and embedded Linux</li>
 <li>Real-time Linux (PREEMPT_RT)</li>
@@ -307,11 +309,73 @@ design approach requires components to communicate with one another in
 a standardized way.  There are many mechanisms that could be used to
 transfer data between components, each with their own advantages and
 disadvantages:</p>
-<ul class="simple">
-<li>Method calls</li>
-<li>Shared memory</li>
-<li>Message passing</li>
+<dl class="docutils">
+<dt>Method Calls</dt>
+<dd><p class="first">In object-oriented programming languages, data is typically
+transferred between objects by having one object pass data to (or
+receive data from) another object using method calls (member
+functions).  This approach is simple and well understood, but has
+many drawbacks:</p>
+<ul class="last simple">
+<li>Passing data between objects using method calls is not
+thread-safe, so data transfer between objects in different threads
+typically requires manual, error-prone synchronization.</li>
+<li>Objects typically have no way to “send out” information.
+Typically, the outputs of an object must be retrieved by a
+higher-level object.</li>
+<li>Custom top-level glue code must often be written to extract data from
+one component and pass it into another.</li>
+<li>In languages with strict typing, it is difficult to “connect” objects
+that were not designed specifically to work together.</li>
+<li>Inter-language operation is usually possible, but tedious to
+implement.</li>
 </ul>
+</dd>
+<dt>Callback Functions</dt>
+<dd><p class="first">In some object-oriented architectures, objects do attempt to “send
+out” data by storing a pointer to an output object and calling a
+member-function of that object to send data to that object.  This
+approach still has many issues:</p>
+<ul class="last simple">
+<li>Manual checks may have to be performed to see if a destination
+object has been “connected”.</li>
+<li>Multiple destination objects are usually not a possibility.</li>
+<li>Callback loops can cause issues with non-reentrant code.</li>
+</ul>
+</dd>
+<dt>Shared Memory</dt>
+<dd><p class="first">The use of shared memory is a simple, commonly-used, and very
+efficient, method of passing data between software components.  In
+this scheme, components read input data from and write data to
+predetermined shared memory locations.  There are, however, several
+major drawbacks to this approach:</p>
+<ul class="last simple">
+<li>Passing data between components using shared memory is not
+thread-safe, so data transfer between components in different
+threads typically requires manual, error-prone synchronization.</li>
+<li>Memory usage may be high.</li>
+<li>If pointers are used to specify the location of input or output
+variables, manual checks may be required to make sure these
+pointers have been initialized.</li>
+<li>Some shared memory communication schemes use global variable
+locations, which introduces a host of well-known issues.</li>
+</ul>
+</dd>
+<dt>Message Passing</dt>
+<dd><p class="first">In message-passing systems, information is transmitted by passing
+data structures from one software component to another through some
+sort of message delivery framework.  The messaging framework
+typically employs some form of message queues to synchronize the
+data transmission.  Depending on the design of the system, data may
+be passed by reference or by value. Message-passing systems have a
+number of benefits:</p>
+<ul class="last simple">
+<li>Many messaging systems support the transmission of messages
+between threads, or even processes, without any manual
+synchronization.</li>
+</ul>
+</dd>
+</dl>
 <p>In light of our goals and application domains, the versatility of the
 message-passing approach has proven to be a good choice for
 standardization.</p>

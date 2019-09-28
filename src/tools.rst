@@ -24,6 +24,9 @@ Chierps
   provides a messaging system implementation and tools to generate
   interface code from the component descriptions.
 
+..
+  Scdl: Structural component description language
+  
 .. _Pidgen:
 
 Pidgen

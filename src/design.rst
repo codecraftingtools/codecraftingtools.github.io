@@ -112,8 +112,8 @@ relevant hardware platfoms, our tools enable developers to design
 software components that can be deployed on any supported hardware
 architecture without source code changes, regardless of the target
 instruction set, byte order, or bit width.  This means that any
-platform-specific code is either pushed down into the run-time
-environment, handled by lower-level hardware abstraction layers, or
+platform-specific code must be incorporated into a lower-level
+abstraction layer, handled by the run-time environment, or
 strategically isolated in a few components with abstracted interfaces.
 Although we desire to support a broad range of hardware architectures,
 the current priority is support for **64-bit x86** and **32-bit ARM**
@@ -126,8 +126,10 @@ The write-once, run-everywhere philosophy of our tool set also extends
 to operating systems, providing a way to develop software components
 that are not tied to a particular host OS, but are instead portable to
 any supported real-time or non-real-time operating environment without
-modification.  Although future possibilities are endless, the current
-focus is on providing support for:
+modification.  In order to achieve this, any OS-specific code must be
+incorporated into a lower-level abstraction layer or handled by the
+run-time environment.  Although future possibilities are endless, the
+current focus is on providing support for:
 
 - Standard desktop and embedded Linux
 - Real-time Linux (PREEMPT_RT)
@@ -152,29 +154,101 @@ programming languages.
 Inter-Component Communication Methodology
 -----------------------------------------
 
-..
-  The primary function of a software component is to receive data from
-  other components, perform some operations in reponse to that data, and
-  then send data to other components.
-
 For the many reasons described elsewhere in this documentation, our
 design approach requires components to communicate with one another in
 a standardized way.  There are many mechanisms that could be used to
 transfer data between components, each with their own advantages and
 disadvantages:
 
-- Method calls
-- Shared memory
-- Message passing
+Method Calls
+  In object-oriented programming languages, data is typically
+  transferred between objects by having one object pass data to (or
+  receive data from) another object using method calls (member
+  functions).  This approach is simple and well understood, but has
+  many drawbacks:
 
+  - Passing data between objects using method calls is not
+    thread-safe, so data transfer between objects in different threads
+    typically requires manual, error-prone synchronization.
+    
+  - Objects typically have no way to "send out" information.
+    Typically, the outputs of an object must be retrieved by a
+    higher-level object.
+
+  - Custom top-level glue code must often be written to extract data from
+    one component and pass it into another.
+    
+  - In languages with strict typing, it is difficult to "connect" objects
+    that were not designed specifically to work together.
+    
+  - Inter-language operation is usually possible, but tedious to
+    implement.
+
+Callback Functions
+  In some object-oriented architectures, objects do attempt to "send
+  out" data by storing a pointer to an output object and calling a
+  member-function of that object to send data to that object.  This
+  approach still has many issues:
+
+  - Manual checks may have to be performed to see if a destination
+    object has been "connected".
+
+  - Multiple destination objects are usually not a possibility.
+
+  - Callback loops can cause issues with non-reentrant code.
+
+Shared Memory
+  The use of shared memory is a simple, commonly-used, and very
+  efficient, method of passing data between software components.  In
+  this scheme, components read input data from and write data to
+  predetermined shared memory locations.  There are, however, several
+  major drawbacks to this approach:
+  
+  - Passing data between components using shared memory is not
+    thread-safe, so data transfer between components in different
+    threads typically requires manual, error-prone synchronization.
+    
+  - Memory usage may be high.
+    
+  - If pointers are used to specify the location of input or output
+    variables, manual checks may be required to make sure these
+    pointers have been initialized.
+    
+  - Some shared memory communication schemes use global variable
+    locations, which introduces a host of well-known issues.
+  
+Message Passing
+  In message-passing systems, information is transmitted by passing
+  data structures from one software component to another through some
+  sort of message delivery framework.  The messaging framework
+  typically employs some form of message queues to synchronize the
+  data transmission.  Depending on the design of the system, data may
+  be passed by reference or by value. Message-passing systems have a
+  number of benefits:
+
+  - Many messaging systems support the transmission of messages
+    between threads, or even processes, without any manual
+    synchronization.
+ 
 In light of our goals and application domains, the versatility of the
 message-passing approach has proven to be a good choice for
 standardization.
 
 ..
+  The primary function of a software component is to receive data from
+  other components, perform some operations in reponse to that data, and
+  then send data to other components.
+
+..
   Primary focus is on message passing, with some limited support for
   object-oriented component operation.
 
+..
+  Configuration
+  -------------
+
+  Properties
+  
 ..
   Run-time Environments
   ---------------------
