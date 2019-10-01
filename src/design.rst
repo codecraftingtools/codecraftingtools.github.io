@@ -136,6 +136,46 @@ current focus is on providing support for:
 - Real-time Linux (Xenomai/cobalt)
 - RTEMS
 
+Concurrent and Parallel Processing
+----------------------------------
+
+Many of our application domains require support for independent
+software components executing concurrently, or even simultaneously (in
+parallel).  There are several categories of concurrency that we must
+consider:
+
+Preemptive Multitasking
+  Systems where the execution of a task may be forcibly suspended by
+  the operating system in order to give another task a turn.  Many
+  real-time systems, for example, have long-running lower-priority
+  tasks that must be preempted by high-priority short-duration tasks
+  in order to meet real-time deadlines.  This is typically achieved by
+  creating a separate operating-system thread or process for each
+  task.
+
+Cooperative Multitasking
+  Systems where tasks may voluntarily yield execution to other tasks
+  at specific points in time.  One example of this type of concurrency
+  is a physics simulation involving several models, where each of
+  these models must be updated at each time step.
+
+Parallel Processing System
+  System where tasks execute simultaneously on different processors.
+  These systems are often used to speed up program execution or
+  perform several unrelated tasks at once.  In many general-purpose
+  parallel-processing systems, several operating-system threads or
+  processes can be executed in parallel.
+
+Our code crafting tools are designed to allow software components to
+execute concurrently in all of these environments with minimal effort.
+This is critical for real-time applications, but is also useful for
+speeding up non-real-time applications by breaking up software into
+independent pieces that can run in parallel on separate processors.
+Most software components should not need to know anything about
+threads, processes, or priorities.  Our tools allow these details to
+be easily specified when low-level components are instantiated and
+combined together into a higher-level component or application.
+
 Programming Language Support
 ----------------------------
 
@@ -226,28 +266,63 @@ Message Passing
   be passed by reference or by value. Message-passing systems have a
   number of benefits:
 
-  - Many messaging systems support the transmission of messages
-    between threads, or even processes, without any manual
-    synchronization.
- 
-In light of our goals and application domains, the versatility of the
-message-passing approach has proven to be a good choice for
-standardization.
+  - Many implementations support the transmission of messages between
+    threads, or even processes, without any manual synchronization.
 
-..
-  The primary function of a software component is to receive data from
-  other components, perform some operations in reponse to that data, and
-  then send data to other components.
+  - Multiple messaging system implementations can be supported with no
+    changes to the software components.  The messaging system
+    implementation can be chosen at compile, link or run time.
+    
+  - The message sender does not need to know anything about the
+    receiver.  Zero, one, or more message receivers can be connected
+    to a single sender.
 
-..
-  Primary focus is on message passing, with some limited support for
-  object-oriented component operation.
+  - The message sender and receiver only need to agree on the format
+    of the data structure being passed, not the class hierarchy.
+
+  - The amount of custom top-level glue code required to transfer data
+    between components is minimal.
+    
+  - The message-passing concept maps naturally to many communication
+    channels, such as network sockets, file I/O, serial and block
+    device I/O, UNIX pipes, Qt signals and slots, event-driven
+    systems, function calls, and message queues.
+    
+  - Many real-time operating systems offer native support for message
+    queues.
+
+  - Inter-language operation is straightforward to implement.
+
+Although message-passing systems can be more complex and slower than
+some of the alternatives, the versatility offered by this approach
+makes it a great choice, given our design goals and application
+domains.  For this reason, we haven chosen to use message-passing as
+the standard means of inter-component communication in our software.
 
 ..
   Configuration
   -------------
 
   Properties
+
+  System Timing / Time / Real-time considerations
+  ----
+
+  real-time
+
+  Scheduling
+  ----------
+  
+  File Input/Output
+  -----------------
+
+  Real-time, logging
+
+  Logging / Screen Output
+  -----------------------
+
+  Data Logging
+  ------------
   
 ..
   Run-time Environments
@@ -309,6 +384,9 @@ standardization.
 
   app executive / embedding in other applications / python scripting / OO API
   
+  Primary focus is on message passing, with some limited support for
+  object-oriented component operation.
+
   blocking/non-blocking components
   
 .. _Don't repeat yourself:

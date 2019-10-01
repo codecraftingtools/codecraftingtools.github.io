@@ -90,6 +90,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#application-structure">Application Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#hardware-architectures">Hardware Architectures</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#operating-systems">Operating Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#concurrent-and-parallel-processing">Concurrent and Parallel Processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#programming-language-support">Programming Language Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#inter-component-communication-methodology">Inter-Component Communication Methodology</a></li>
 </ul>
@@ -288,6 +289,43 @@ current focus is on providing support for:</p>
 <li>RTEMS</li>
 </ul>
 </div>
+<div class="section" id="concurrent-and-parallel-processing">
+<h3>Concurrent and Parallel Processing<a class="headerlink" href="#concurrent-and-parallel-processing" title="Permalink to this headline">¶</a></h3>
+<p>Many of our application domains require support for independent
+software components executing concurrently, or even simultaneously (in
+parallel).  There are several categories of concurrency that we must
+consider:</p>
+<dl class="docutils">
+<dt>Preemptive Multitasking</dt>
+<dd>Systems where the execution of a task may be forcibly suspended by
+the operating system in order to give another task a turn.  Many
+real-time systems, for example, have long-running lower-priority
+tasks that must be preempted by high-priority short-duration tasks
+in order to meet real-time deadlines.  This is typically achieved by
+creating a separate operating-system thread or process for each
+task.</dd>
+<dt>Cooperative Multitasking</dt>
+<dd>Systems where tasks may voluntarily yield execution to other tasks
+at specific points in time.  One example of this type of concurrency
+is a physics simulation involving several models, where each of
+these models must be updated at each time step.</dd>
+<dt>Parallel Processing System</dt>
+<dd>System where tasks execute simultaneously on different processors.
+These systems are often used to speed up program execution or
+perform several unrelated tasks at once.  In many general-purpose
+parallel-processing systems, several operating-system threads or
+processes can be executed in parallel.</dd>
+</dl>
+<p>Our code crafting tools are designed to allow software components to
+execute concurrently in all of these environments with minimal effort.
+This is critical for real-time applications, but is also useful for
+speeding up non-real-time applications by breaking up software into
+independent pieces that can run in parallel on separate processors.
+Most software components should not need to know anything about
+threads, processes, or priorities.  Our tools allow these details to
+be easily specified when low-level components are instantiated and
+combined together into a higher-level component or application.</p>
+</div>
 <div class="section" id="programming-language-support">
 <h3>Programming Language Support<a class="headerlink" href="#programming-language-support" title="Permalink to this headline">¶</a></h3>
 <p>At a fundamental level, we require all software components to interact
@@ -370,15 +408,33 @@ data transmission.  Depending on the design of the system, data may
 be passed by reference or by value. Message-passing systems have a
 number of benefits:</p>
 <ul class="last simple">
-<li>Many messaging systems support the transmission of messages
-between threads, or even processes, without any manual
-synchronization.</li>
+<li>Many implementations support the transmission of messages between
+threads, or even processes, without any manual synchronization.</li>
+<li>Multiple messaging system implementations can be supported with no
+changes to the software components.  The messaging system
+implementation can be chosen at compile, link or run time.</li>
+<li>The message sender does not need to know anything about the
+receiver.  Zero, one, or more message receivers can be connected
+to a single sender.</li>
+<li>The message sender and receiver only need to agree on the format
+of the data structure being passed, not the class hierarchy.</li>
+<li>The amount of custom top-level glue code required to transfer data
+between components is minimal.</li>
+<li>The message-passing concept maps naturally to many communication
+channels, such as network sockets, file I/O, serial and block
+device I/O, UNIX pipes, Qt signals and slots, event-driven
+systems, function calls, and message queues.</li>
+<li>Many real-time operating systems offer native support for message
+queues.</li>
+<li>Inter-language operation is straightforward to implement.</li>
 </ul>
 </dd>
 </dl>
-<p>In light of our goals and application domains, the versatility of the
-message-passing approach has proven to be a good choice for
-standardization.</p>
+<p>Although message-passing systems can be more complex and slower than
+some of the alternatives, the versatility offered by this approach
+makes it a great choice, given our design goals and application
+domains.  For this reason, we haven chosen to use message-passing as
+the standard means of inter-component communication in our software.</p>
 </div>
 </div>
 </div>
