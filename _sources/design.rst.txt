@@ -84,8 +84,9 @@ Components
 Run-Time Environment
   Provides components with a standardized interface to run-time
   functionality, such as inter-component communication, scheduling,
-  timing, and logging.  The underlying implementation may tailored to
-  a specific application domain or operating system.
+  timing, and logging.  The underlying implementation may be
+  general-purpose or tailored to a specific application domain or
+  operating system.
   
 Hierarchic Design
   Multiple components can be instantiated and connected together in
@@ -97,7 +98,11 @@ Application Executive
   and input-file processing, component configuration and
   initialization, and application termination may be handled by a
   generalized or domain-specific application executive.
-  
+
+Hardware and Operating System Abstraction Layer
+  Provides a uniform, hardware-independent programming interface to
+  standard operating system functionality.
+
 Utility Libraries
   Traditional procedural routines or object-oriented class libraries
   may be used within the implementation of a particular component,
@@ -145,24 +150,26 @@ parallel).  There are several categories of concurrency that we must
 consider:
 
 Preemptive Multitasking
-  Systems where the execution of a task may be forcibly suspended by
-  the operating system in order to give another task a turn.  Many
-  real-time systems, for example, have long-running lower-priority
-  tasks that must be preempted by high-priority short-duration tasks
-  in order to meet real-time deadlines.  This is typically achieved by
-  creating a separate operating-system thread or process for each
-  task.
+  Execution of a task may be forcibly suspended by the operating
+  system in order to give another task a turn.  Many real-time
+  systems, for example, have long-running lower-priority tasks that
+  must be preempted by high-priority short-duration tasks in order to
+  meet real-time deadlines.  This is typically achieved by creating a
+  separate operating-system thread or process for each task.  In many
+  real-time systems, these threads and processes can be assigned
+  priority values to ensure that high-priority tasks take precedence
+  over low-priority ones.
 
 Cooperative Multitasking
-  Systems where tasks may voluntarily yield execution to other tasks
-  at specific points in time.  One example of this type of concurrency
-  is a physics simulation involving several models, where each of
-  these models must be updated at each time step.
+  Tasks may voluntarily yield execution to other tasks at specific
+  points in time.  One example of this type of concurrency is a
+  physics simulation involving several models, where each of these
+  models must be updated at each time step.
 
-Parallel Processing System
-  System where tasks execute simultaneously on different processors.
-  These systems are often used to speed up program execution or
-  perform several unrelated tasks at once.  In many general-purpose
+Parallel Processing
+  Tasks execute simultaneously on different processors.  Parallel
+  processing is often used to speed up program execution or perform
+  several unrelated tasks at once.  In many general-purpose
   parallel-processing systems, several operating-system threads or
   processes can be executed in parallel.
 
@@ -172,9 +179,10 @@ This is critical for real-time applications, but is also useful for
 speeding up non-real-time applications by breaking up software into
 independent pieces that can run in parallel on separate processors.
 Most software components should not need to know anything about
-threads, processes, or priorities.  Our tools allow these details to
-be easily specified when low-level components are instantiated and
-combined together into a higher-level component or application.
+threads, processes, scheduling policies, or priorities.  Our tools
+allow these details to be easily specified when low-level components
+are instantiated and combined together into a higher-level component
+or application.
 
 Programming Language Support
 ----------------------------
@@ -296,64 +304,130 @@ Message Passing
 Although message-passing systems can be more complex and slower than
 some of the alternatives, the versatility offered by this approach
 makes it a great choice, given our design goals and application
-domains.  For this reason, we haven chosen to use message-passing as
-the standard means of inter-component communication in our software.
+domains.  For this reason, we haven chosen to use **message-passing as
+the standard means of inter-component communication** in our software.
+
+Standardized Component Interfaces
+---------------------------------
+
+[Document the importance of this.]
 
 ..
-  Configuration
-  -------------
+  Allows for interchanging of components with similar interfaces at
+  instantiation or compile-time.  Not enforced, but enabled by tool set.
 
-  Properties
+Configuration
+-------------
 
-  System Timing / Time / Real-time considerations
-  ----
+Since all but the simplest of software components require some type of
+configuration, our tools provide built-in support for this operation.
+In our system, software components are merely responsible for
+declaring the names, types, and default values of their configurable
+properties.  The actual assignment of these properties is typically
+handled by the run-time environment or application executive.
+This approach allows all of the software components in an application
+to be configured in a uniform way, and the configuration code can be
+leveraged across many applications.
 
-  real-time
+Since message-passing was chosen as the standardized means of
+inter-component communication, it makes sense that components should
+be configured by sending them messages.  Under the hood, a
+configuration property is simply a member variable whose value can be
+set via an input message.  Typically, components also send an output
+message when the value of a property changes so that the value of one
+property can by tied to the value of another.
 
-  Scheduling
-  ----------
+Since components delegate the configuration process to the outside
+world, configuration may be handled in various ways, depending on the
+application.  For embedded applications with no user interface or
+filesystem, configuration may simply consist of specifying property
+values at compile-time.  This can be done by instantiating derived
+components that override default property values or by making
+connections that tie the value of one property to another.  In other
+applications, software components may be configured through the use of
+command-line options, input files, or a GUI dialog box.  Since
+component properties are all defined in a uniform way, the code that
+handles the configuration does not need to be hand-coded for each
+application.
+
+So far, we have only considered the simple assignment of properties.
+In addition to the fundamental property attributes (i.e. name, type,
+default value), components can also declare additional attributes to
+supply information that may be useful in certain run-time
+environments.  The declaration of min/max value constraints could be
+used to automatically check that run-time property assignments are
+within the expected range.  Unit constraints could be used to check
+that the user has supplied values with the proper units or even
+perform automatic conversions.  Statistical constraints, like random
+distribution parameters, could be used by a simulation engine to make
+Monte Carlo draws.  The possibilities are endless.
+
+Logging and Screen Output
+-------------------------
+
+..
+  event/error/debug/status logging
   
-  File Input/Output
-  -----------------
+Timekeeping
+-----------
 
+..
+  System Timing / Time / Real-time considerations
+ 
+  hard/soft real-time, sim time, non-rt
+  reference clocks, sync, system
+  time types (freq, duration, abs time)
+  
+Scheduling
+----------
+
+..
+  non-blocking
+  policies/priorities
+  periodic, one-time, deferred
+  
+File Input and Output
+---------------------
+
+..
   Real-time, logging
 
-  Logging / Screen Output
-  -----------------------
+Data Logging
+------------
 
-  Data Logging
-  ------------
-  
+Run-time Environments
+---------------------
+
 ..
-  Run-time Environments
-  ---------------------
-
   - Messaging framework / run-time environment
+  - rt, msg/thread priorities, zeromq
   - Object oriented API
   - Single/multi-threaded
 
-..
-  Component Environment Interface
-  -------------------------------
-
-  - Abstract interface to main application and messaging framework
-  - Properties
+Application-Level Code
+----------------------
 
 ..
-  Standardized Component Interfaces
-  ---------------------------------
-
-  Allows for interchanging of components with similar interfaces at
-  instantiation or compile-time.
+  top-level code
+  scripting
+  glue
+  embedding
+  OO
+  
+File Formats
+------------
 
 ..
-  File Formats
-  ------------
-
   - Support for arbitrary metadata embedding
   - Code generation
   - Parameterization
 
+Code Generation
+---------------
+
+..
+  glue logic could be mentioned here
+  
 ..
   Comment section for ideas
   
@@ -375,8 +449,6 @@ the standard means of inter-component communication in our software.
   our tools and our so Laboratory and prototyping -- reconfigurability.
 
   Source vs binary compatibility
-  
-  Threading / concurrent / parallel execution
   
   Our tools are designed/support/be applicable/enable/deliver/transition
   

@@ -93,6 +93,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#concurrent-and-parallel-processing">Concurrent and Parallel Processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#programming-language-support">Programming Language Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#inter-component-communication-methodology">Inter-Component Communication Methodology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standardized-component-interfaces">Standardized Component Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging-and-screen-output">Logging and Screen Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#timekeeping">Timekeeping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scheduling">Scheduling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-input-and-output">File Input and Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-logging">Data Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-time-environments">Run-time Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#application-level-code">Application-Level Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-formats">File Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-generation">Code Generation</a></li>
 </ul>
 </li>
 </ul>
@@ -240,8 +251,9 @@ refers a software block that conforms to a very specific interface.</dd>
 <dt>Run-Time Environment</dt>
 <dd>Provides components with a standardized interface to run-time
 functionality, such as inter-component communication, scheduling,
-timing, and logging.  The underlying implementation may tailored to
-a specific application domain or operating system.</dd>
+timing, and logging.  The underlying implementation may be
+general-purpose or tailored to a specific application domain or
+operating system.</dd>
 <dt>Hierarchic Design</dt>
 <dd>Multiple components can be instantiated and connected together in
 the context of a specific run-time environment to construct
@@ -251,6 +263,9 @@ higher-level components and applications.</dd>
 and input-file processing, component configuration and
 initialization, and application termination may be handled by a
 generalized or domain-specific application executive.</dd>
+<dt>Hardware and Operating System Abstraction Layer</dt>
+<dd>Provides a uniform, hardware-independent programming interface to
+standard operating system functionality.</dd>
 <dt>Utility Libraries</dt>
 <dd>Traditional procedural routines or object-oriented class libraries
 may be used within the implementation of a particular component,
@@ -297,22 +312,24 @@ parallel).  There are several categories of concurrency that we must
 consider:</p>
 <dl class="docutils">
 <dt>Preemptive Multitasking</dt>
-<dd>Systems where the execution of a task may be forcibly suspended by
-the operating system in order to give another task a turn.  Many
-real-time systems, for example, have long-running lower-priority
-tasks that must be preempted by high-priority short-duration tasks
-in order to meet real-time deadlines.  This is typically achieved by
-creating a separate operating-system thread or process for each
-task.</dd>
+<dd>Execution of a task may be forcibly suspended by the operating
+system in order to give another task a turn.  Many real-time
+systems, for example, have long-running lower-priority tasks that
+must be preempted by high-priority short-duration tasks in order to
+meet real-time deadlines.  This is typically achieved by creating a
+separate operating-system thread or process for each task.  In many
+real-time systems, these threads and processes can be assigned
+priority values to ensure that high-priority tasks take precedence
+over low-priority ones.</dd>
 <dt>Cooperative Multitasking</dt>
-<dd>Systems where tasks may voluntarily yield execution to other tasks
-at specific points in time.  One example of this type of concurrency
-is a physics simulation involving several models, where each of
-these models must be updated at each time step.</dd>
-<dt>Parallel Processing System</dt>
-<dd>System where tasks execute simultaneously on different processors.
-These systems are often used to speed up program execution or
-perform several unrelated tasks at once.  In many general-purpose
+<dd>Tasks may voluntarily yield execution to other tasks at specific
+points in time.  One example of this type of concurrency is a
+physics simulation involving several models, where each of these
+models must be updated at each time step.</dd>
+<dt>Parallel Processing</dt>
+<dd>Tasks execute simultaneously on different processors.  Parallel
+processing is often used to speed up program execution or perform
+several unrelated tasks at once.  In many general-purpose
 parallel-processing systems, several operating-system threads or
 processes can be executed in parallel.</dd>
 </dl>
@@ -322,9 +339,10 @@ This is critical for real-time applications, but is also useful for
 speeding up non-real-time applications by breaking up software into
 independent pieces that can run in parallel on separate processors.
 Most software components should not need to know anything about
-threads, processes, or priorities.  Our tools allow these details to
-be easily specified when low-level components are instantiated and
-combined together into a higher-level component or application.</p>
+threads, processes, scheduling policies, or priorities.  Our tools
+allow these details to be easily specified when low-level components
+are instantiated and combined together into a higher-level component
+or application.</p>
 </div>
 <div class="section" id="programming-language-support">
 <h3>Programming Language Support<a class="headerlink" href="#programming-language-support" title="Permalink to this headline">¶</a></h3>
@@ -433,8 +451,81 @@ queues.</li>
 <p>Although message-passing systems can be more complex and slower than
 some of the alternatives, the versatility offered by this approach
 makes it a great choice, given our design goals and application
-domains.  For this reason, we haven chosen to use message-passing as
-the standard means of inter-component communication in our software.</p>
+domains.  For this reason, we haven chosen to use <strong>message-passing as
+the standard means of inter-component communication</strong> in our software.</p>
+</div>
+<div class="section" id="standardized-component-interfaces">
+<h3>Standardized Component Interfaces<a class="headerlink" href="#standardized-component-interfaces" title="Permalink to this headline">¶</a></h3>
+<p>[Document the importance of this.]</p>
+</div>
+<div class="section" id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>Since all but the simplest of software components require some type of
+configuration, our tools provide built-in support for this operation.
+In our system, software components are merely responsible for
+declaring the names, types, and default values of their configurable
+properties.  The actual assignment of these properties is typically
+handled by the run-time environment or application executive.
+This approach allows all of the software components in an application
+to be configured in a uniform way, and the configuration code can be
+leveraged across many applications.</p>
+<p>Since message-passing was chosen as the standardized means of
+inter-component communication, it makes sense that components should
+be configured by sending them messages.  Under the hood, a
+configuration property is simply a member variable whose value can be
+set via an input message.  Typically, components also send an output
+message when the value of a property changes so that the value of one
+property can by tied to the value of another.</p>
+<p>Since components delegate the configuration process to the outside
+world, configuration may be handled in various ways, depending on the
+application.  For embedded applications with no user interface or
+filesystem, configuration may simply consist of specifying property
+values at compile-time.  This can be done by instantiating derived
+components that override default property values or by making
+connections that tie the value of one property to another.  In other
+applications, software components may be configured through the use of
+command-line options, input files, or a GUI dialog box.  Since
+component properties are all defined in a uniform way, the code that
+handles the configuration does not need to be hand-coded for each
+application.</p>
+<p>So far, we have only considered the simple assignment of properties.
+In addition to the fundamental property attributes (i.e. name, type,
+default value), components can also declare additional attributes to
+supply information that may be useful in certain run-time
+environments.  The declaration of min/max value constraints could be
+used to automatically check that run-time property assignments are
+within the expected range.  Unit constraints could be used to check
+that the user has supplied values with the proper units or even
+perform automatic conversions.  Statistical constraints, like random
+distribution parameters, could be used by a simulation engine to make
+Monte Carlo draws.  The possibilities are endless.</p>
+</div>
+<div class="section" id="logging-and-screen-output">
+<h3>Logging and Screen Output<a class="headerlink" href="#logging-and-screen-output" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="timekeeping">
+<h3>Timekeeping<a class="headerlink" href="#timekeeping" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="scheduling">
+<h3>Scheduling<a class="headerlink" href="#scheduling" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="file-input-and-output">
+<h3>File Input and Output<a class="headerlink" href="#file-input-and-output" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="data-logging">
+<h3>Data Logging<a class="headerlink" href="#data-logging" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="run-time-environments">
+<h3>Run-time Environments<a class="headerlink" href="#run-time-environments" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="application-level-code">
+<h3>Application-Level Code<a class="headerlink" href="#application-level-code" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="file-formats">
+<h3>File Formats<a class="headerlink" href="#file-formats" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="code-generation">
+<h3>Code Generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
