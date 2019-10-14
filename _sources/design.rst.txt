@@ -304,17 +304,32 @@ Message Passing
 Although message-passing systems can be more complex and slower than
 some of the alternatives, the versatility offered by this approach
 makes it a great choice, given our design goals and application
-domains.  For this reason, we haven chosen to use **message-passing as
+domains.  For this reason, we haven chosen to use **message passing as
 the standard means of inter-component communication** in our software.
 
 Standardized Component Interfaces
 ---------------------------------
 
-[Document the importance of this.]
+In order for two components to communicate via message passing, the
+message sender and receiver must agree on the content and structure of
+the messages passed between them.  When designing sofware components,
+developers should give careful consideration to the format of the
+messages sent between components in order to make sure that components
+use compatible message types wherever possible.  Although not strictly
+required, the use of compatible message types reduces the amount of
+glue code required to connect components together.  In the cases where
+two components with incompatible message types must be connected,
+hand-coded or auto-generated message converter components must be
+employed.
 
-..
-  Allows for interchanging of components with similar interfaces at
-  instantiation or compile-time.  Not enforced, but enabled by tool set.
+Careful thought should also be given to a component's *interface*, or
+set of input/output message names and types.  If two components share
+the same interface, then these components can be interchanged at
+compile time, or even run time, without changing the application
+structure.  Although interface compatibility is highly desirable, it
+is not absolutely critical.  Unlike many object-oriented schemes,
+interfaces are not required to match in order for components to be
+used together, but it does make things easier.
 
 Configuration
 -------------
@@ -323,32 +338,32 @@ Since all but the simplest of software components require some type of
 configuration, our tools provide built-in support for this operation.
 In our system, software components are merely responsible for
 declaring the names, types, and default values of their configurable
-properties.  The actual assignment of these properties is typically
-handled by the run-time environment or application executive.
-This approach allows all of the software components in an application
-to be configured in a uniform way, and the configuration code can be
+properties.  The actual assignment of these properties is handled by
+the run-time environment or application executive.  This approach
+allows all of the software components in an application to be
+configured in a uniform way, and the configuration code can be
 leveraged across many applications.
 
-Since message-passing was chosen as the standardized means of
-inter-component communication, it makes sense that components should
-be configured by sending them messages.  Under the hood, a
-configuration property is simply a member variable whose value can be
-set via an input message.  Typically, components also send an output
-message when the value of a property changes so that the value of one
-property can by tied to the value of another.
+Because message-passing was chosen as the standardized means of
+inter-component communication, it follows that components should be
+configured by sending them messages.  Under the hood, a configuration
+property is simply a member variable whose value can be set via an
+input message.  Typically, components also send an output message when
+the value of a property changes so that the value of one property can
+by tied to the value of another.
 
-Since components delegate the configuration process to the outside
-world, configuration may be handled in various ways, depending on the
-application.  For embedded applications with no user interface or
-filesystem, configuration may simply consist of specifying property
-values at compile-time.  This can be done by instantiating derived
-components that override default property values or by making
-connections that tie the value of one property to another.  In other
-applications, software components may be configured through the use of
-command-line options, input files, or a GUI dialog box.  Since
-component properties are all defined in a uniform way, the code that
-handles the configuration does not need to be hand-coded for each
-application.
+In our system, components delegate the configuration process to the
+outside world, so configuration may be handled in various ways,
+depending on the application.  For embedded applications with no user
+interface or filesystem, configuration may be reduced to simply
+specifying property values at compile-time.  This can be done by
+instantiating derived components that override default property values
+or by making connections that tie the value of one property to
+another.  In other applications, software components may be configured
+through the use of command-line options, input files, or a GUI dialog
+box.  Since component properties are all defined in a uniform way, the
+code that handles the configuration does not need to be hand-coded for
+each application.
 
 So far, we have only considered the simple assignment of properties.
 In addition to the fundamental property attributes (i.e. name, type,
@@ -365,18 +380,64 @@ Monte Carlo draws.  The possibilities are endless.
 Logging and Screen Output
 -------------------------
 
-..
-  event/error/debug/status logging
-  
+Most software components require some mechanism for conveying run-time
+status information to the user.  This includes things like
+informational and debug messages as well as the logging of events,
+errors, and warnings.  Since the way these functions are handled
+varies widely from one application domain to another, the run-time
+environment provides a standardized programming interface for these
+functions.
+
+In some domains, direct screen and log file output is available.  In
+other systems, screen and log file output are available, but must be
+buffered due to real-time constraints.  In some embedded domains,
+reporting may be very restricted (e.g. a few words of information in a
+telemetry stream), so output is reduced to capturing error codes or
+source file and line numbers.  The programming interface provided by
+the run-time environment must take all of these cases into
+consideration.
+
+The amount of information reported by an application may also change
+due to compile-time options or run-time selection.  For example, users
+may choose to enable verbose or debug screen output, or record errors
+and warnings in a log file.  To provide the most flexibility, logging
+output levels should be selectable at component level.  This enables
+debug output to be enabled for one component without enabling debug
+output for all components, which would be overwhelming and
+counter-productive.
+
 Timekeeping
 -----------
 
-..
-  System Timing / Time / Real-time considerations
- 
-  hard/soft real-time, sim time, non-rt
-  reference clocks, sync, system
-  time types (freq, duration, abs time)
+Many components require some information about the passage of time in
+order to operate.  This might be determining the absolute time that an
+event occurred, measuring the elapsed time between events, or
+scheduling some processing to occur at a specific periodic frequency.
+In order to support this functionality, the run-time environment
+provides software components with a standardized timekeeping API that
+is consistent across all application domains.
+
+Real-Time
+  In systems that must meeting timing deadlines, the run-time
+  environment may deliver very precise time measurement and scheduling
+  functionality.
+
+Non-Real-Time
+  In systems where timing requirements are not as demanding, the
+  run-time environment may supply a less precise implementation.
+
+Simulated-Time
+  In some simulations, a software component's notion of time may not
+  be tied to the passage of time in the real world at all, but is
+  instead advanced by an external simulation executive.
+
+In some systems, there may not be a single authoritative time standard
+that is suitable for all purposes.  For instance, some events may be
+measured in terms of system time, and others with respect to an
+external timing source.  To support these use cases, the timekeeping
+API also provides support for the measurement of time according to
+multiple time references that may drift relative to one another, and
+for converting time values from one time base to another.
   
 Scheduling
 ----------
@@ -386,14 +447,14 @@ Scheduling
   policies/priorities
   periodic, one-time, deferred
   
-File Input and Output
----------------------
+File / Device Input and Output
+------------------------------
 
 ..
   Real-time, logging
 
-Data Logging
-------------
+Data Logging and Message Playback
+---------------------------------
 
 Run-time Environments
 ---------------------
@@ -460,6 +521,9 @@ Code Generation
   object-oriented component operation.
 
   blocking/non-blocking components
+  
+  Allows for interchanging of components with similar interfaces at
+  instantiation or compile-time.  Not enforced, but enabled by tool set.
   
 .. _Don't repeat yourself:
    https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
