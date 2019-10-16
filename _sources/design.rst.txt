@@ -58,9 +58,9 @@ application domains, including, but not limited to:
 Obviously, the code development cycle for some of these domains
 (e.g. embedded, real-time, and closed-loop systems) is much more
 cumbersome than for others (e.g. non-real-time simulation).  Because
-of this, it would be advantageous to develop and test as much code as
-possible in the simplified domains before moving into the more complex
-ones.
+of this, it would be advantageous to develop and **test as much code
+as possible in the simplified domains** before moving into the more
+complex ones.
 
 Application Structure
 ---------------------
@@ -69,8 +69,8 @@ In order to maximize both our productivity and the quality of our
 software, our tools facilitate the development of code that can be
 used (and reused) in a wide variety of application domains without
 alteration.  The following application structure helps us achieve this
-goal by separating the domain-independent code from the
-domain-specific code:
+goal by **separating the domain-independent code from the
+domain-specific code**:
 
 Components
   Well-defined software blocks which can, ideally, be used in a
@@ -174,15 +174,15 @@ Parallel Processing
   processes can be executed in parallel.
 
 Our code crafting tools are designed to allow software components to
-execute concurrently in all of these environments with minimal effort.
-This is critical for real-time applications, but is also useful for
-speeding up non-real-time applications by breaking up software into
-independent pieces that can run in parallel on separate processors.
-Most software components should not need to know anything about
-threads, processes, scheduling policies, or priorities.  Our tools
-allow these details to be easily specified when low-level components
-are instantiated and combined together into a higher-level component
-or application.
+**execute concurrently** in all of these environments with minimal
+effort.  This is critical for real-time applications, but is also
+useful for speeding up non-real-time applications by breaking up
+software into independent pieces that can run in parallel on separate
+processors.  Most software components should not need to know anything
+about threads, processes, scheduling policies, or priorities.  Our
+tools allow these details to be easily specified when low-level
+components are instantiated and combined together into a higher-level
+component or application.
 
 Programming Language Support
 ----------------------------
@@ -315,16 +315,16 @@ message sender and receiver must agree on the content and structure of
 the messages passed between them.  When designing sofware components,
 developers should give careful consideration to the format of the
 messages sent between components in order to make sure that components
-use compatible message types wherever possible.  Although not strictly
-required, the use of compatible message types reduces the amount of
-glue code required to connect components together.  In the cases where
-two components with incompatible message types must be connected,
-hand-coded or auto-generated message converter components must be
-employed.
+use **compatible message types** wherever possible.  Although not
+strictly required, the use of compatible message types reduces the
+amount of glue code required to connect components together.  In the
+cases where two components with incompatible message types must be
+connected, hand-coded or auto-generated message converter components
+must be employed.
 
 Careful thought should also be given to a component's *interface*, or
 set of input/output message names and types.  If two components share
-the same interface, then these components can be interchanged at
+the same interface, then these **components can be interchanged** at
 compile time, or even run time, without changing the application
 structure.  Although interface compatibility is highly desirable, it
 is not absolutely critical.  Unlike many object-oriented schemes,
@@ -338,8 +338,8 @@ Since all but the simplest of software components require some type of
 configuration, our tools provide built-in support for this operation.
 In our system, software components are merely responsible for
 declaring the names, types, and default values of their configurable
-properties.  The actual assignment of these properties is handled by
-the run-time environment or application executive.  This approach
+properties.  The actual **assignment of these properties is handled by
+the run-time environment or application executive**.  This approach
 allows all of the software components in an application to be
 configured in a uniform way, and the configuration code can be
 leveraged across many applications.
@@ -385,8 +385,8 @@ status information to the user.  This includes things like
 informational and debug messages as well as the logging of events,
 errors, and warnings.  Since the way these functions are handled
 varies widely from one application domain to another, the run-time
-environment provides a standardized programming interface for these
-functions.
+environment provides a **standardized programming interface for these
+functions**.
 
 In some domains, direct screen and log file output is available.  In
 other systems, screen and log file output are available, but must be
@@ -400,10 +400,10 @@ consideration.
 The amount of information reported by an application may also change
 due to compile-time options or run-time selection.  For example, users
 may choose to enable verbose or debug screen output, or record errors
-and warnings in a log file.  To provide the most flexibility, logging
-output levels should be selectable at component level.  This enables
-debug output to be enabled for one component without enabling debug
-output for all components, which would be overwhelming and
+and warnings in a log file.  To provide the most flexibility,
+**logging output levels are selectable at the component level**.  This
+enables debug output to be enabled for one component without enabling
+debug output for all components, which would be overwhelming and
 counter-productive.
 
 Timekeeping
@@ -414,8 +414,8 @@ order to operate.  This might be determining the absolute time that an
 event occurred, measuring the elapsed time between events, or
 scheduling some processing to occur at a specific periodic frequency.
 In order to support this functionality, the run-time environment
-provides software components with a standardized timekeeping API that
-is consistent across all application domains.
+provides software components with a **standardized timekeeping API**
+that is consistent across all application domains.
 
 Real-Time
   In systems that must meeting timing deadlines, the run-time
@@ -436,21 +436,65 @@ that is suitable for all purposes.  For instance, some events may be
 measured in terms of system time, and others with respect to an
 external timing source.  To support these use cases, the timekeeping
 API also provides support for the measurement of time according to
-multiple time references that may drift relative to one another, and
-for converting time values from one time base to another.
-  
+**multiple time references** that may drift relative to one another,
+and for converting time values from one time base to another.
+
+Blocking vs. Non-Blocking Operations
+------------------------------------
+
+[In progress]
+
+A blocking function call is one that may not return until some
+condition is met.  Non-blocking calls usually return an error code to
+indicate when no data is available.
+
 Scheduling
 ----------
 
-..
-  non-blocking
-  policies/priorities
-  periodic, one-time, deferred
-  
+In general terms, scheduling is a mechanism for software components to
+request that a particular section of code be executed by a processor
+on the host system.  From a software component's point of view,
+scheduling can be either explicit or implicit.  The run-time
+environments support several types of explicit scheduling:
+
+One-Shot Event
+  A component requests that a code segment be executed at a particular
+  point in time according to a specific time reference.  The time of
+  execution may be specified as an absolute time or as a relative time
+  (i.e. a delay).
+
+Periodic Event
+  This is similar to a one-shot event, except that after execution of
+  the code segment is complete, the event is automatically
+  re-scheduled to execute again after a fixed amount of time.  The
+  time between events may be specified in terms of a period or
+  frequency.
+
+Deferred Execution
+  Sometimes it is useful for a component to request that a code
+  segment be executed at some unspecfied time in the future.  This is
+  a way for components to voluntarily yield the processor to other
+  components (cooperative multitasking).
+
+In message-passing systems, implicit scheduling occurs when a
+component sends out a message.  The sending of a message causes the
+run-time environment to implicitly schedule one-time events for the
+message handling code in each of the receiving components.
+
+In multitasking systems, scheduling also involves arbitration.  If
+more than one event is scheduled to run at the same time, then some
+mechanism must be used to determine which one gets to execute.  This
+is usually handled by setting *scheduling policies* and *priorities*
+for components or for specific events.  Since arbitration involves
+multiple components, this aspect of scheduling must be specified when
+components are combined into a higher-level component or application,
+and not within individual components.
+
 File / Device Input and Output
 ------------------------------
 
 ..
+  Remove this section... handled in blocking section?
   Real-time, logging
 
 Data Logging and Message Playback
