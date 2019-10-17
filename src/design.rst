@@ -315,12 +315,12 @@ message sender and receiver must agree on the content and structure of
 the messages passed between them.  When designing sofware components,
 developers should give careful consideration to the format of the
 messages sent between components in order to make sure that components
-use **compatible message types** wherever possible.  Although not
-strictly required, the use of compatible message types reduces the
-amount of glue code required to connect components together.  In the
-cases where two components with incompatible message types must be
-connected, hand-coded or auto-generated message converter components
-must be employed.
+use **compatible message types** when sending and receiving similar
+kinds of data.  Although not strictly required, the use of
+standardized message types reduces the amount of glue code required to
+connect components together.  In the cases where two components with
+incompatible message types must be connected, hand-coded or
+auto-generated message converter components must be employed.
 
 Careful thought should also be given to a component's *interface*, or
 set of input/output message names and types.  If two components share
@@ -372,7 +372,7 @@ supply information that may be useful in certain run-time
 environments.  The declaration of min/max value constraints could be
 used to automatically check that run-time property assignments are
 within the expected range.  Unit constraints could be used to check
-that the user has supplied values with the proper units or even
+that the user has supplied values with the proper units, or even
 perform automatic conversions.  Statistical constraints, like random
 distribution parameters, could be used by a simulation engine to make
 Monte Carlo draws.  The possibilities are endless.
@@ -412,10 +412,11 @@ Timekeeping
 Many components require some information about the passage of time in
 order to operate.  This might be determining the absolute time that an
 event occurred, measuring the elapsed time between events, or
-scheduling some processing to occur at a specific periodic frequency.
-In order to support this functionality, the run-time environment
-provides software components with a **standardized timekeeping API**
-that is consistent across all application domains.
+scheduling some processing to occur at a specific time or periodic
+frequency.  In order to support this functionality, the run-time
+environment provides software components with a **standardized
+timekeeping API** that is consistent across all application domains
+and operates in the following timekeeping contexts:
 
 Real-Time
   In systems that must meeting timing deadlines, the run-time
@@ -438,15 +439,6 @@ external timing source.  To support these use cases, the timekeeping
 API also provides support for the measurement of time according to
 **multiple time references** that may drift relative to one another,
 and for converting time values from one time base to another.
-
-Blocking vs. Non-Blocking Operations
-------------------------------------
-
-[In progress]
-
-A blocking function call is one that may not return until some
-condition is met.  Non-blocking calls usually return an error code to
-indicate when no data is available.
 
 Scheduling
 ----------
@@ -490,16 +482,55 @@ multiple components, this aspect of scheduling must be specified when
 components are combined into a higher-level component or application,
 and not within individual components.
 
-File / Device Input and Output
-------------------------------
+Blocking vs. Non-Blocking Operations
+------------------------------------
+
+In computer programming, a task is considered to be *blocked* if it is
+waiting for some condition to occur before continuing execution.  The
+condition may be a resource becoming available, or the completion of a
+data transfer.  A blocking operation is function call that may block
+the calling task if some condition is not met (e.g. no input data is
+available from a device).  Conversely, a non-blocking operation is one
+that will not block the caller, even if the operation cannot be
+completed.  Non-blocking calls typically return an error code to
+indicate the condition that could not be satisfied.
+
+Blocking operations are often desirable if a program is performing a
+single sequential task, such as reading data from an input file,
+processing it, and then saving the results to an output file.  When
+multiple tasks must operate concurrently in the same thread of
+execution, however, blocking operations become a liability.  For
+example, the use of blocking network socket operations in a
+single-threaded web browser could cause the whole application to
+become non-responsive to user input if a web site was slow to respond.
+This type of problem is typically solved by running the blocking task
+in a separate thread, or by switching to non-blocking calls.
+
+Since we desire to build software components that can be used in a
+wide variety of contexts (e.g. single-threaded GUIs, multi-threaded
+real-time systems), the **use of blocking operations inside components
+is highly discouraged**.  In order to make up for this limitation, the
+run-time environment provides a mechanism that allows components to
+**schedule code to be executed when a resource becomes available**.
+
+File I/O
+--------
 
 ..
-  Remove this section... handled in blocking section?
-  Real-time, logging
+  Many components need to perform file I/O
+  Typically use blocking functions, although not a concern for many apps
+  Real-time concerns -- essentially blocking
+  although non-blocking could be used, manual buffering required everywhere
+  provide buffered file reading/writing API for RT systems (separate thread)
+  
+Data Recording and Message Playback
+-----------------------------------
 
-Data Logging and Message Playback
----------------------------------
-
+..
+  common operation is logging of data to file
+  provide standard components for recording and playing back data from
+    raw and standard format files (matlab, csv, etc.)
+  
 Run-time Environments
 ---------------------
 
@@ -509,16 +540,16 @@ Run-time Environments
   - Object oriented API
   - Single/multi-threaded
 
-Application-Level Code
-----------------------
+Top-Level Application Code
+--------------------------
 
 ..
   top-level code
   scripting
-  glue
+  glue logic
   embedding
   OO
-  
+
 File Formats
 ------------
 
@@ -527,12 +558,6 @@ File Formats
   - Code generation
   - Parameterization
 
-Code Generation
----------------
-
-..
-  glue logic could be mentioned here
-  
 ..
   Comment section for ideas
   
