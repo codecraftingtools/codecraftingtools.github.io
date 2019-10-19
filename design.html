@@ -100,10 +100,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#scheduling">Scheduling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#blocking-vs-non-blocking-operations">Blocking vs. Non-Blocking Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#file-i-o">File I/O</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data-recording-and-message-playback">Data Recording and Message Playback</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#run-time-environments">Run-time Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-recording-and-playback">Data Recording and Playback</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#top-level-application-code">Top-Level Application Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-generation">Code Generation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#file-formats">File Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#graphical-design-tools">Graphical Design Tools</a></li>
 </ul>
 </li>
 </ul>
@@ -255,12 +256,12 @@ timing, and logging.  The underlying implementation may be
 general-purpose or tailored to a specific application domain or
 operating system.</dd>
 <dt>Hierarchic Design</dt>
-<dd>Multiple components can be instantiated and connected together in
-the context of a specific run-time environment to construct
-higher-level components and applications.</dd>
+<dd>Multiple components can be instantiated and their inputs and outputs
+connected together in the context of a specific run-time environment
+to construct higher-level components and applications.</dd>
 <dt>Application Executive</dt>
 <dd>Common application-level functionality, such as command-line option
-and input-file processing, component configuration and
+and input file processing, component configuration and
 initialization, and application termination may be handled by a
 generalized or domain-specific application executive.</dd>
 <dt>Hardware and Operating System Abstraction Layer</dt>
@@ -342,7 +343,7 @@ processors.  Most software components should not need to know anything
 about threads, processes, scheduling policies, or priorities.  Our
 tools allow these details to be easily specified when low-level
 components are instantiated and combined together into a higher-level
-component or application.</p>
+component or application in the context of a run-time environment.</p>
 </div>
 <div class="section" id="programming-language-support">
 <h3>Programming Language Support<a class="headerlink" href="#programming-language-support" title="Permalink to this headline">¶</a></h3>
@@ -453,6 +454,22 @@ some of the alternatives, the versatility offered by this approach
 makes it a great choice, given our design goals and application
 domains.  For this reason, we haven chosen to use <strong>message passing as
 the standard means of inter-component communication</strong> in our software.</p>
+<p>The standardized messaging interface integrated into our software tool
+chain is designed to be as general-purpose as possible.  This allows
+each run-time environment implementation to choose a <strong>messaging
+system that is tailored to the specific application domain of
+interest</strong>.  For example, the run-time environment may choose to
+transmit messages between components via POSIX message queues, UDP
+sockets, ZeroMQ sockets, or Qt signals and slots.  Using a
+standardized messaging API isolates the components from the details of
+the underlying messaging system.</p>
+<p>Another significant point about the design of our messaging interface
+is that, unlike some messaging APIs, <strong>neither the source nor the
+destination components are aware of the specific component with which
+they are communicating</strong>.  The connection of message senders and
+receivers occurs outside of the component, when the component is
+instantiated and integrated into a higher-level component or
+application in the context of a run-time environment.</p>
 </div>
 <div class="section" id="standardized-component-interfaces">
 <h3>Standardized Component Interfaces<a class="headerlink" href="#standardized-component-interfaces" title="Permalink to this headline">¶</a></h3>
@@ -610,8 +627,9 @@ mechanism must be used to determine which one gets to execute.  This
 is usually handled by setting <em>scheduling policies</em> and <em>priorities</em>
 for components or for specific events.  Since arbitration involves
 multiple components, this aspect of scheduling must be specified when
-components are combined into a higher-level component or application,
-and not within individual components.</p>
+components are instantiated and combined into a higher-level component
+or application in the context of a run-time environment, and not
+within individual low-level components.</p>
 </div>
 <div class="section" id="blocking-vs-non-blocking-operations">
 <h3>Blocking vs. Non-Blocking Operations<a class="headerlink" href="#blocking-vs-non-blocking-operations" title="Permalink to this headline">¶</a></h3>
@@ -644,17 +662,20 @@ run-time environment provides a mechanism that allows components to
 <div class="section" id="file-i-o">
 <h3>File I/O<a class="headerlink" href="#file-i-o" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="data-recording-and-message-playback">
-<h3>Data Recording and Message Playback<a class="headerlink" href="#data-recording-and-message-playback" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="run-time-environments">
-<h3>Run-time Environments<a class="headerlink" href="#run-time-environments" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="data-recording-and-playback">
+<h3>Data Recording and Playback<a class="headerlink" href="#data-recording-and-playback" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="top-level-application-code">
 <h3>Top-Level Application Code<a class="headerlink" href="#top-level-application-code" title="Permalink to this headline">¶</a></h3>
 </div>
+<div class="section" id="code-generation">
+<h3>Code Generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h3>
+</div>
 <div class="section" id="file-formats">
 <h3>File Formats<a class="headerlink" href="#file-formats" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="graphical-design-tools">
+<h3>Graphical Design Tools<a class="headerlink" href="#graphical-design-tools" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>

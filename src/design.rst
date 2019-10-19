@@ -89,13 +89,13 @@ Run-Time Environment
   operating system.
   
 Hierarchic Design
-  Multiple components can be instantiated and connected together in
-  the context of a specific run-time environment to construct
-  higher-level components and applications.
+  Multiple components can be instantiated and their inputs and outputs
+  connected together in the context of a specific run-time environment
+  to construct higher-level components and applications.
 
 Application Executive
   Common application-level functionality, such as command-line option
-  and input-file processing, component configuration and
+  and input file processing, component configuration and
   initialization, and application termination may be handled by a
   generalized or domain-specific application executive.
 
@@ -182,7 +182,7 @@ processors.  Most software components should not need to know anything
 about threads, processes, scheduling policies, or priorities.  Our
 tools allow these details to be easily specified when low-level
 components are instantiated and combined together into a higher-level
-component or application.
+component or application in the context of a run-time environment.
 
 Programming Language Support
 ----------------------------
@@ -306,6 +306,24 @@ some of the alternatives, the versatility offered by this approach
 makes it a great choice, given our design goals and application
 domains.  For this reason, we haven chosen to use **message passing as
 the standard means of inter-component communication** in our software.
+
+The standardized messaging interface integrated into our software tool
+chain is designed to be as general-purpose as possible.  This allows
+each run-time environment implementation to choose a **messaging
+system that is tailored to the specific application domain of
+interest**.  For example, the run-time environment may choose to
+transmit messages between components via POSIX message queues, UDP
+sockets, ZeroMQ sockets, or Qt signals and slots.  Using a
+standardized messaging API isolates the components from the details of
+the underlying messaging system.
+
+Another significant point about the design of our messaging interface
+is that, unlike some messaging APIs, **neither the source nor the
+destination components are aware of the specific component with which
+they are communicating**.  The connection of message senders and
+receivers occurs outside of the component, when the component is
+instantiated and integrated into a higher-level component or
+application in the context of a run-time environment.
 
 Standardized Component Interfaces
 ---------------------------------
@@ -479,8 +497,9 @@ mechanism must be used to determine which one gets to execute.  This
 is usually handled by setting *scheduling policies* and *priorities*
 for components or for specific events.  Since arbitration involves
 multiple components, this aspect of scheduling must be specified when
-components are combined into a higher-level component or application,
-and not within individual components.
+components are instantiated and combined into a higher-level component
+or application in the context of a run-time environment, and not
+within individual low-level components.
 
 Blocking vs. Non-Blocking Operations
 ------------------------------------
@@ -521,42 +540,90 @@ File I/O
   Typically use blocking functions, although not a concern for many apps
   Real-time concerns -- essentially blocking
   although non-blocking could be used, manual buffering required everywhere
+    blocking syntax is just really convenient
+  abstracted file objects
+  run-time environment / OS abstraction layer
   provide buffered file reading/writing API for RT systems (separate thread)
   
-Data Recording and Message Playback
------------------------------------
+Data Recording and Playback
+---------------------------
 
 ..
-  common operation is logging of data to file
+  common operation is logging of data to file for later analysis
+  helpful in debugging
+  also helpful to play back "canned" data into a system for processing
   provide standard components for recording and playing back data from
     raw and standard format files (matlab, csv, etc.)
-  
-Run-time Environments
----------------------
-
-..
-  - Messaging framework / run-time environment
-  - rt, msg/thread priorities, zeromq
-  - Object oriented API
-  - Single/multi-threaded
-
+  simple recording and playing back raw message streams from/to files.
+  also message streams as entries in more complex data archive file formats
+    extended functionality
+    
 Top-Level Application Code
 --------------------------
 
 ..
-  top-level code
-  scripting
-  glue logic
-  embedding
-  OO
+  what does a main program do?
+    setup/cleanup
+    configuration
+    sequence through a sequence of operations
+    loop
+    state-machine
+  top-level code not reusable
+  factor reusable parts into components and application executive
+  application executive sequences through
+    creation, init, running, cleanup, & destruction
+  essentially glue logic
+  generate main program
+  also support alternative main program integration
+  - scripting
+  - embedding in other applications
+  - Object-oriented top-level component integration into outside applications
+      or frameworks
+
+Code Generation
+---------------
+
+..
+  Motivation/Reasons
+  1 Generation of boilerplate/glue code, tedious, error-prone, obscures function
+  2 reduce duplication of information (Don't repeat yourself)
+    language limitions force duplication can't include all info in same place
+    - header file / src file
+    multiple languages, documentation
+    extra metadata -- where does it go?
+    Consolidation of info
+  3 GUI tools
+  Don't mix generated and user-code in same file- base class
+  We do:
+    Generate:
+      main program
+      structural components
+      type class objects
+      interface base classes
 
 File Formats
 ------------
 
 ..
   - Support for arbitrary metadata embedding
-  - Code generation
-  - Parameterization
+    - Other approaches -- special comments
+  - Support for parsing with 3rd-party tools
+  - embed graphical information
+  - code generation
+  - Define types, interfaces, implementations (struct and behav stub)
+  - Parameterization of types, interfaces, implementations
+  - revision control (plain-text)
+
+Graphical Design Tools
+----------------------
+
+..
+  - entirely optional (debugging, revision control,
+      manipulation by 3rd-party scripts and tools)
+  - graphical block diagram editor for hierarchic components (struct impl)
+  - circuit design metaphor: ICs and wires -> components and connections
+  - also useful for creating component interfaces and message types
+  - support IDEs, where appropriate, but not required
 
 ..
   Comment section for ideas
@@ -569,30 +636,7 @@ File Formats
   
   Code reuse is maximized / code duplication is minimized
 
-  Generation of boilerplate/glue code
-   
-  Corollaries
-   
-  - Break software into reusable components
-
-   Some domains of interest are: of We desire
-  our tools and our so Laboratory and prototyping -- reconfigurability.
-
-  Source vs binary compatibility
-  
-  Our tools are designed/support/be applicable/enable/deliver/transition
-  
-  real-time concerns Input/Output, logging, timing/scheduling
-
-  app executive / embedding in other applications / python scripting / OO API
-  
-  Primary focus is on message passing, with some limited support for
-  object-oriented component operation.
-
-  blocking/non-blocking components
-  
-  Allows for interchanging of components with similar interfaces at
-  instantiation or compile-time.  Not enforced, but enabled by tool set.
+  Source vs binary compatibility  
   
 .. _Don't repeat yourself:
    https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
