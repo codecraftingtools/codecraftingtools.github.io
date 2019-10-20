@@ -535,45 +535,90 @@ run-time environment provides a mechanism that allows components to
 File I/O
 --------
 
-..
-  Many components need to perform file I/O
-  Typically use blocking functions, although not a concern for many apps
-  Real-time concerns -- essentially blocking
-  although non-blocking could be used, manual buffering required everywhere
-    blocking syntax is just really convenient
-  abstracted file objects
-  run-time environment / OS abstraction layer
-  provide buffered file reading/writing API for RT systems (separate thread)
+Many software components need to perform file input or output
+operations.  In the vast majority of cases, file I/O is performed
+using system calls that may potentially block the calling task.  For
+most applications, the delays associated with the reading and writing
+to the file system are inconsequential, but this can be a significant
+issue for some real-time systems.  This issue could be resolved by
+restricting components to using only non-blocking file I/O functions,
+but the plain fact of the matter is that, in most cases, this approach
+is just really inconvenient.
+
+In order to address these real-time concerns, we require software
+components to **use an API provided by the operating system
+abstraction layer when performing file I/O** instead of directly
+accessing files through the standard API provided by the operating
+system.  This approach allows the real-time operating system
+abstraction layer implementations to buffer file I/O in appropriate
+manner (e.g. pass output data to a separate non-real-time thread that
+accesses the file system) or call the standard operating system file
+I/O functions if this is not a problem in the specific application
+domain.
   
 Data Recording and Playback
 ---------------------------
 
-..
-  common operation is logging of data to file for later analysis
-  helpful in debugging
-  also helpful to play back "canned" data into a system for processing
-  provide standard components for recording and playing back data from
-    raw and standard format files (matlab, csv, etc.)
-  simple recording and playing back raw message streams from/to files.
-  also message streams as entries in more complex data archive file formats
-    extended functionality
-    
+In many applications, there is a need to record output data from
+software components to a file for later analysis or debugging
+purposes.  It is also helpful to be able to "play back" previously
+recorded (or "canned") data into components for further processing.
+In order to provide these generally-useful capabilities, our tool set
+delivers a standard set of components for message stream recording and
+playback in raw and structured data file formats.
+
 Top-Level Application Code
 --------------------------
 
+There is typically quite a bit of "top-level" code in an application
+that is not reusable (except, perhaps, in a copy-and-paste fashion).
+In our view, this is a shame because we would rather see developers
+devote their time and put their energy into writing code that will be
+used over and over again.  In order to address this issue, we must
+first consider what this top-level code is doing.
+
+In a typical application, the main program (or other top-level code)
+performs a series of tasks that looks something like this:
+
+- Process input data from the operating environment (e.g. command-line
+  options)
+- Allocate resources and instantiate top-level components
+- Read in configuration data
+- Configure components as specified
+- Initialize components
+- Perform processing operations, which usually amounts to one of these
+  steps:
+   
+  - Perform a single sequence of processing operations
+  - Repeat a sequence of processing operations over and over again
+  - Dispatch conditional processing operations in a state machine
+
+- Wait for program termination
+- Clean up resources
+
+Since this process is very similar from application to application,
+our approach is to factor the top-level code into two pieces:
+
+- An application-specific top-level software component
+
+- A reusable application executive that sequences the top-level
+  component through the steps mentioned above
+
+Different application domains may still require slightly different
+application executives, but this is much better than writing unique
+code for every application.
+
 ..
-  what does a main program do?
-    setup/cleanup
-    configuration
-    sequence through a sequence of operations
-    loop
-    state-machine
-  top-level code not reusable
-  factor reusable parts into components and application executive
-  application executive sequences through
-    creation, init, running, cleanup, & destruction
-  essentially glue logic
-  generate main program
+  this approach encapulates/moves boilerplate into reusable executive or
+    (possibly) auto-generated top-level component
+  since much of this code is very similar from application to application
+    and often amounts to boilerplate/glue logic and is tedious to write
+  our approach is to factor the top-level code into:
+    top-level component (processing operations) may not be reusable
+    reusable (multiple?) application executive the sequences through
+      creation, init, running, cleanup, & destruction
+  main program can then be auto-generated
+  
   also support alternative main program integration
   - scripting
   - embedding in other applications
