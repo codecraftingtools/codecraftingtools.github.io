@@ -17,6 +17,8 @@ that make software:
 - Easier to maintain
 - Easier to reuse
 
+.. _design_principles:
+
 Principles
 ==========
 
@@ -573,9 +575,9 @@ Top-Level Application Code
 There is typically quite a bit of "top-level" code in an application
 that is not reusable (except, perhaps, in a copy-and-paste fashion).
 In our view, this is a shame because we would rather see developers
-devote their time and put their energy into writing code that will be
-used over and over again.  In order to address this issue, we must
-first consider what this top-level code is doing.
+devote their time and put their energy into writing and debugging code
+that will be used over and over again.  In order to address this
+issue, we must first consider what this top-level code is doing.
 
 In a typical application, the main program (or other top-level code)
 performs a series of tasks that looks something like this:
@@ -591,7 +593,7 @@ performs a series of tasks that looks something like this:
    
   - Perform a single sequence of processing operations
   - Repeat a sequence of processing operations over and over again
-  - Dispatch conditional processing operations in a state machine
+  - Dispatch conditional processing operations using a state machine
 
 - Wait for program termination
 - Clean up resources
@@ -599,53 +601,69 @@ performs a series of tasks that looks something like this:
 Since this process is very similar from application to application,
 our approach is to factor the top-level code into two pieces:
 
-- An application-specific top-level software component
+- An application-specific **top-level software component** with a
+  standardized interface
 
-- A reusable application executive that sequences the top-level
+- A reusable **application executive** that sequences the top-level
   component through the steps mentioned above
 
 Different application domains may still require slightly different
 application executives, but this is much better than writing unique
 code for every application.
 
-..
-  this approach encapulates/moves boilerplate into reusable executive or
-    (possibly) auto-generated top-level component
-  since much of this code is very similar from application to application
-    and often amounts to boilerplate/glue logic and is tedious to write
-  our approach is to factor the top-level code into:
-    top-level component (processing operations) may not be reusable
-    reusable (multiple?) application executive the sequences through
-      creation, init, running, cleanup, & destruction
-  main program can then be auto-generated
-  
-  also support alternative main program integration
-  - scripting
-  - embedding in other applications
-  - Object-oriented top-level component integration into outside applications
-      or frameworks
+Of course, there are often cases where software components need to be
+integrated into a 3rd-party application or framework.  To support
+these use cases, our tools can generate **object-oriented wrappers**
+for any component.  If necessary, these wrappers can be tailored for
+specific contexts via specialized back-end code generators.
 
-Code Generation
----------------
+Finally, there is often a desire to interact with software components
+from a high-level **scripting environment**, so our tool set provides
+this functionality as well.  This capability has many uses, including
+procedural scripting, incorporating graphical user interfaces, and
+dynamically defining the application structure at run-time.
+
+Automatic Code Generation
+-------------------------
+
+Many developers have strong views on automatic code generation, either
+positive or negative.  Our position on this subject is practical.
+Although automatic code generation has been abused in many instances,
+it makes sense to consider using it for the following purposes:
+
+- To generate boilerplate or glue code that is tedious or error-prone
+  to write by hand.
+
+- To allow aspects of the program to be described in a graphical
+  manner.
+
+- To implement domain-specific languages that allow the program to be
+  written in a more concise and effective manner.
+  
+- To reduce the duplication of information (i.e. :ref:`Don't repeat
+  yourself<design_principles>`).
 
 ..
   Motivation/Reasons
-  1 Generation of boilerplate/glue code, tedious, error-prone, obscures function
   2 reduce duplication of information (Don't repeat yourself)
     language limitions force duplication can't include all info in same place
     - header file / src file
     multiple languages, documentation
     extra metadata -- where does it go?
     Consolidation of info
-  3 GUI tools
   Don't mix generated and user-code in same file- base class
   We do:
     Generate:
-      main program
-      structural components
+      main program (because of standard app exec/top-level comp. structure)
+      structural components (incl. top-level)
       type class objects
       interface base classes
-
+  All code is auto-generated in some sense (by the compiler)
+  We are using code-generation to provide a higher-level domain-specific
+    language better suited our needs, not take control away from the
+    programmer.  Always provide hooks to allow programmer to get the job
+    done.
+  
 File Formats
 ------------
 
