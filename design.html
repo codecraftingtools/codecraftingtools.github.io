@@ -738,7 +738,7 @@ specific contexts via specialized back-end code generators.</p>
 from a high-level <strong>scripting environment</strong>, so our tool set provides
 this functionality as well.  This capability has many uses, including
 procedural scripting, incorporating graphical user interfaces, and
-dynamically defining the application structure at run-time.</p>
+dynamically defining an application structure at run-time.</p>
 </div>
 <div class="section" id="automatic-code-generation">
 <h3>Automatic Code Generation<a class="headerlink" href="#automatic-code-generation" title="Permalink to this headline">¶</a></h3>
@@ -749,11 +749,44 @@ it makes sense to consider using it for the following purposes:</p>
 <ul class="simple">
 <li>To generate boilerplate or glue code that is tedious or error-prone
 to write by hand.</li>
+<li>To implement domain-specific languages that allow the program to be
+written in a more concise and effective manner.</li>
 <li>To allow aspects of the program to be described in a graphical
 manner.</li>
 <li>To reduce the duplication of information (i.e. <a class="reference internal" href="#design-principles"><span class="std std-ref">Don’t repeat
 yourself</span></a>).</li>
 </ul>
+<p>This last point may require a little more explanation.  There are many
+situations where automatic code generation could be used to help avoid
+the duplication of information:</p>
+<ul class="simple">
+<li>The same information must be included in code and documentation.</li>
+<li>The same information must be used in multiple programming languages.</li>
+<li>The programming language itself requires the duplication of information.</li>
+<li>The programming language source format does not allow additional
+documentation or metadata to be easily incorporated.</li>
+</ul>
+<p>Our code crafting tools <strong>employ automatic code generation</strong> to
+address many of these concerns because we believe the benefits
+outweigh the drawbacks introduced by the additional complexity.
+Automatic code generation is utilized in the following areas:</p>
+<ul class="simple">
+<li>Data type classes (e.g. message types)</li>
+<li>Component interface base classes</li>
+<li>Structural component implementations</li>
+<li>Main programs</li>
+</ul>
+<p>Much care, however, is taken to make a <strong>strong separation between
+auto-generated and hand-generated code</strong>.  If you still have
+reservations about the utility of automatic code generation at this
+point, please realize that all code is automatically-generated in some
+sense.  That is the primary job of compilers and interpreters.  Our
+code crafting tools simply take this a step further by using automatic
+code generation to build higher-level domain-specific languages that
+are better suited to our needs, not to take control away from the
+programmer.  We strive to provide ways to allow the programmer to
+customize the generated code and do things manually when it is
+beneficial to do so.</p>
 </div>
 <div class="section" id="file-formats">
 <h3>File Formats<a class="headerlink" href="#file-formats" title="Permalink to this headline">¶</a></h3>

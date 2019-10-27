@@ -621,7 +621,7 @@ Finally, there is often a desire to interact with software components
 from a high-level **scripting environment**, so our tool set provides
 this functionality as well.  This capability has many uses, including
 procedural scripting, incorporating graphical user interfaces, and
-dynamically defining the application structure at run-time.
+dynamically defining an application structure at run-time.
 
 Automatic Code Generation
 -------------------------
@@ -634,35 +634,46 @@ it makes sense to consider using it for the following purposes:
 - To generate boilerplate or glue code that is tedious or error-prone
   to write by hand.
 
-- To allow aspects of the program to be described in a graphical
-  manner.
-
 - To implement domain-specific languages that allow the program to be
   written in a more concise and effective manner.
   
+- To allow aspects of the program to be described in a graphical
+  manner.
+
 - To reduce the duplication of information (i.e. :ref:`Don't repeat
   yourself<design_principles>`).
 
-..
-  Motivation/Reasons
-  2 reduce duplication of information (Don't repeat yourself)
-    language limitions force duplication can't include all info in same place
-    - header file / src file
-    multiple languages, documentation
-    extra metadata -- where does it go?
-    Consolidation of info
-  Don't mix generated and user-code in same file- base class
-  We do:
-    Generate:
-      main program (because of standard app exec/top-level comp. structure)
-      structural components (incl. top-level)
-      type class objects
-      interface base classes
-  All code is auto-generated in some sense (by the compiler)
-  We are using code-generation to provide a higher-level domain-specific
-    language better suited our needs, not take control away from the
-    programmer.  Always provide hooks to allow programmer to get the job
-    done.
+This last point may require a little more explanation.  There are many
+situations where automatic code generation could be used to help avoid
+the duplication of information:
+
+- The same information must be included in code and documentation.
+- The same information must be used in multiple programming languages.
+- The programming language itself requires the duplication of information.
+- The programming language source format does not allow additional
+  documentation or metadata to be easily incorporated.
+
+Our code crafting tools **employ automatic code generation** to
+address many of these concerns because we believe the benefits
+outweigh the drawbacks introduced by the additional complexity.
+Automatic code generation is utilized in the following areas:
+
+- Data type classes (e.g. message types)
+- Component interface base classes
+- Structural component implementations
+- Main programs
+
+Much care, however, is taken to make a **strong separation between
+auto-generated and hand-generated code**.  If you still have
+reservations about the utility of automatic code generation at this
+point, please realize that all code is automatically-generated in some
+sense.  That is the primary job of compilers and interpreters.  Our
+code crafting tools simply take this a step further by using automatic
+code generation to build higher-level domain-specific languages that
+are better suited to our needs, not to take control away from the
+programmer.  We strive to provide ways to allow the programmer to
+customize the generated code and do things manually when it is
+beneficial to do so.
   
 File Formats
 ------------
