@@ -136,7 +136,7 @@ any supported real-time or non-real-time operating environment without
 modification.  In order to achieve this, any OS-specific code must be
 incorporated into a lower-level abstraction layer or handled by the
 run-time environment.  Although future possibilities are endless, the
-current focus is on providing support for:
+current focus is on providing support for:1
 
 - Standard desktop and embedded Linux
 - Real-time Linux (PREEMPT_RT)
@@ -672,21 +672,43 @@ code crafting tools simply take this a step further by using automatic
 code generation to build higher-level domain-specific languages that
 are better suited to our needs, not to take control away from the
 programmer.  We strive to provide ways to allow the programmer to
-customize the generated code and do things manually when it is
-beneficial to do so.
+customize generated code and do things manually when it is beneficial
+to do so.
   
 File Formats
 ------------
 
-..
-  - Support for arbitrary metadata embedding
-    - Other approaches -- special comments
-  - Support for parsing with 3rd-party tools
-  - embed graphical information
-  - code generation
-  - Define types, interfaces, implementations (struct and behav stub)
-  - Parameterization of types, interfaces, implementations
-  - revision control (plain-text)
+The format of data files is another topic that deserves thoughtful
+consideration.  In order to consolidate information and avoid
+:ref:`repeating ourselves<design_principles>`, the file formats used
+by our tools to store component interface, hierarchic structure,
+message description, and configuration information **allow arbitrary
+metadata to be incorporated** as the need arises.  This means that all
+the information required to generate documentation, graphical
+representations, various types of code, and other artifacts can be
+found in a single location.  This is much more powerful than
+alternative approaches that attempt to incorporate all of the
+additional information into specialized source-code comments.
+
+Our file formats also provide a mechanism for the **parameterization**
+of entities such as message types, component interfaces, and component
+implementations.  This is a powerful feature that can be leveraged to
+make a code base much more managable.
+
+All of our custom text-based file formats are designed to be very
+similar to one another in order to share as much code as possible
+between the various processing tools.  This also eases the mental
+burden on the programmer.  The use of **human-readable plain-text
+formats** allows these files to be managed effectively using standard
+source code management tools and makes life easier for software
+developers.  The file formats are well-defined and designed to be easy
+to process using 3rd-party tools.
+
+Please note that in this section we have been discussing the file
+formats used to store things like component descriptions, message
+definitions, and configuration data.  The storage and formatting of
+high-volume run-time input/output data is another matter entirely, and
+many other factors apply.
 
 Graphical Design Tools
 ----------------------
