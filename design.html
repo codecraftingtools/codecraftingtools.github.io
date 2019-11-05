@@ -228,8 +228,8 @@ application domains, including, but not limited to:</p>
 <p>Obviously, the code development cycle for some of these domains
 (e.g. embedded, real-time, and closed-loop systems) is much more
 cumbersome than for others (e.g. non-real-time simulation).  Because
-of this, it would be advantageous to develop and <strong>test as much code
-as possible in the simplified domains</strong> before moving into the more
+of this, it is advantageous to develop and <strong>test as much code as
+possible in the simplified domains</strong> before moving into the more
 complex ones.</p>
 </div>
 <div class="section" id="application-structure">
@@ -290,14 +290,14 @@ systems.</p>
 </div>
 <div class="section" id="operating-systems">
 <h3>Operating Systems<a class="headerlink" href="#operating-systems" title="Permalink to this headline">¶</a></h3>
-<p>The write-once, run-everywhere philosophy of our tool set also extends
+<p>The write-once, run-anywhere philosophy of our tool set also extends
 to operating systems, providing a way to develop software components
 that are not tied to a particular host OS, but are instead portable to
 any supported real-time or non-real-time operating environment without
 modification.  In order to achieve this, any OS-specific code must be
 incorporated into a lower-level abstraction layer or handled by the
 run-time environment.  Although future possibilities are endless, the
-current focus is on providing support for:1</p>
+current focus is on providing support for:</p>
 <ul class="simple">
 <li>Standard desktop and embedded Linux</li>
 <li>Real-time Linux (PREEMPT_RT)</li>
@@ -613,7 +613,7 @@ time between events may be specified in terms of a period or
 frequency.</dd>
 <dt>Deferred Execution</dt>
 <dd>Sometimes it is useful for a component to request that a code
-segment be executed at some unspecfied time in the future.  This is
+segment be executed at some unspecified time in the future.  This is
 a way for components to voluntarily yield the processor to other
 components (cooperative multitasking).</dd>
 </dl>
@@ -804,7 +804,7 @@ additional information into specialized source-code comments.</p>
 <p>Our file formats also provide a mechanism for the <strong>parameterization</strong>
 of entities such as message types, component interfaces, and component
 implementations.  This is a powerful feature that can be leveraged to
-make a code base much more managable.</p>
+make a code base much more manageable.</p>
 <p>All of our custom text-based file formats are designed to be very
 similar to one another in order to share as much code as possible
 between the various processing tools.  This also eases the mental
@@ -821,6 +821,28 @@ many other factors apply.</p>
 </div>
 <div class="section" id="graphical-design-tools">
 <h3>Graphical Design Tools<a class="headerlink" href="#graphical-design-tools" title="Permalink to this headline">¶</a></h3>
+<p>The Code Craftsmen believe that some aspects of a program are best
+described graphically and some aspects are more naturally expressed in
+textual form.  In light of this, we desire to support both visual and
+text-based workflows.</p>
+<p>Our primary focus in the area of graphical design tools is to provide
+a block diagram editor that allows hierarchic components and top-level
+applications to be designed by drawing block diagrams describing the
+input/output message connections between software components.  This
+workflow not only simplifies the design process, but also provides
+valuable documentation that helps developers visualize the flow of
+information in the program.  In addition to a block diagram editor, we
+also aim to provide other supporting tools that allow developers to
+design component interfaces and message types using a graphical
+interface.</p>
+<p>Although graphical tools can be very helpful, we also believe that the
+use of these tools should not be an essential part of a software
+development workflow.  At the lowest level, all aspects of a software
+application should be described using human-readable, text-based file
+formats that can be hand-coded, manipulated by 3rd-party tools, or
+manually inspected, if necessary.  The graphical tools simply provide
+an alternative means of constructing or manipulating the underlying
+text files.</p>
 </div>
 </div>
 </div>

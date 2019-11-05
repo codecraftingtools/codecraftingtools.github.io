@@ -4,7 +4,7 @@
 Vision
 ======
 
-The Code Craftsmen endeavour to provide a suite of tools that enables
+The Code Craftsmen endeavor to provide a suite of tools that enables
 software developers to design reusable software components that can be
 combined in a hierarchic fashion to form complex applications with
 minimal effort.

@@ -30,7 +30,7 @@ Chierps
 .. _Pidgen:
 
 Pidgen
-  Programming interface definition and generation toolset.  This is a
+  Programming interface definition and generation tool set.  This is a
   language for defining software component messaging interfaces and
   hierarchic component implementations.  It is a superset of `Tydl`_,
   which is used to define message content.

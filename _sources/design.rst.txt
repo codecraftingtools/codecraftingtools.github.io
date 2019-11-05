@@ -60,8 +60,8 @@ application domains, including, but not limited to:
 Obviously, the code development cycle for some of these domains
 (e.g. embedded, real-time, and closed-loop systems) is much more
 cumbersome than for others (e.g. non-real-time simulation).  Because
-of this, it would be advantageous to develop and **test as much code
-as possible in the simplified domains** before moving into the more
+of this, it is advantageous to develop and **test as much code as
+possible in the simplified domains** before moving into the more
 complex ones.
 
 Application Structure
@@ -129,14 +129,14 @@ systems.
 Operating Systems
 -----------------
 
-The write-once, run-everywhere philosophy of our tool set also extends
+The write-once, run-anywhere philosophy of our tool set also extends
 to operating systems, providing a way to develop software components
 that are not tied to a particular host OS, but are instead portable to
 any supported real-time or non-real-time operating environment without
 modification.  In order to achieve this, any OS-specific code must be
 incorporated into a lower-level abstraction layer or handled by the
 run-time environment.  Although future possibilities are endless, the
-current focus is on providing support for:1
+current focus is on providing support for:
 
 - Standard desktop and embedded Linux
 - Real-time Linux (PREEMPT_RT)
@@ -484,7 +484,7 @@ Periodic Event
 
 Deferred Execution
   Sometimes it is useful for a component to request that a code
-  segment be executed at some unspecfied time in the future.  This is
+  segment be executed at some unspecified time in the future.  This is
   a way for components to voluntarily yield the processor to other
   components (cooperative multitasking).
 
@@ -693,7 +693,7 @@ additional information into specialized source-code comments.
 Our file formats also provide a mechanism for the **parameterization**
 of entities such as message types, component interfaces, and component
 implementations.  This is a powerful feature that can be leveraged to
-make a code base much more managable.
+make a code base much more manageable.
 
 All of our custom text-based file formats are designed to be very
 similar to one another in order to share as much code as possible
@@ -713,26 +713,30 @@ many other factors apply.
 Graphical Design Tools
 ----------------------
 
-..
-  - entirely optional (debugging, revision control,
-      manipulation by 3rd-party scripts and tools)
-  - graphical block diagram editor for hierarchic components (struct impl)
-  - circuit design metaphor: ICs and wires -> components and connections
-  - also useful for creating component interfaces and message types
-  - support IDEs, where appropriate, but not required
+The Code Craftsmen believe that some aspects of a program are best
+described graphically and some aspects are more naturally expressed in
+textual form.  In light of this, we desire to support both visual and
+text-based workflows.
 
-..
-  Comment section for ideas
-  
-  A fully-featured application executive leverages standardized
-  component configuration and operation mechanisms to minimize
-  application-level boilerplate and code duplication.
+Our primary focus in the area of graphical design tools is to provide
+a block diagram editor that allows hierarchic components and top-level
+applications to be designed by drawing block diagrams describing the
+input/output message connections between software components.  This
+workflow not only simplifies the design process, but also provides
+valuable documentation that helps developers visualize the flow of
+information in the program.  In addition to a block diagram editor, we
+also aim to provide other supporting tools that allow developers to
+design component interfaces and message types using a graphical
+interface.
 
-  This is achieved by employing...
-  
-  Code reuse is maximized / code duplication is minimized
+Although graphical tools can be very helpful, we also believe that the
+use of these tools should not be an essential part of a software
+development workflow.  At the lowest level, all aspects of a software
+application should be described using human-readable, text-based file
+formats that can be hand-coded, manipulated by 3rd-party tools, or
+manually inspected, if necessary.  The graphical tools simply provide
+an alternative means of constructing or manipulating the underlying
+text files.
 
-  Source vs binary compatibility  
-  
 .. _Don't repeat yourself:
    https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
