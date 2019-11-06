@@ -249,7 +249,7 @@ Callback Functions
 
 Shared Memory
   The use of shared memory is a simple, commonly-used, and very
-  efficient, method of passing data between software components.  In
+  efficient method of passing data between software components.  In
   this scheme, components read input data from and write data to
   predetermined shared memory locations.  There are, however, several
   major drawbacks to this approach:
@@ -351,6 +351,45 @@ is not absolutely critical.  Unlike many object-oriented schemes,
 interfaces are not required to match in order for components to be
 used together, but it does make things easier.
 
+Initialization and Reset
+------------------------
+
+Although a few software components may be truly stateless (e.g. data
+converters), most components need to store some information
+internally.  The way in which this internal state gets initialized (or
+fails to get initialized) is significant.  Many types of bugs can be
+traced to improperly initialized data members.
+
+In many object-oriented systems, an object's internal state is
+initialized in the object's constructor.  Although this is a robust
+way to ensure that the data gets initialized, there are at least two
+potential issues with this approach:
+
+1. The data required for initialization may not be available at
+   construction time.
+
+2. There is no clean way to *reset* a component's internal state.
+
+Sometimes the first concern is addressed by deferring the
+initialization of some internal variables until the required data is
+available, but this process is error-prone.  There is usually no good
+way to keep track of which variables are initialized in the
+constructor, and which are initialized later.  Because of this, we
+require that **components initialize all of their internal variables
+to known values in one place**.  Even if the data required for proper
+initialization of a member is not available, it must be set to *some
+known value* (null or otherwise) so that the component's operation is
+at least deterministic.
+
+The reset issue is a difficult one to solve, and it may be impossible
+to come up with a foolproof way to handle this.  Nonetheless, the
+ability to reset a component to a known initial state is very
+desirable in many applications, so we desire to support it.  In order
+to provide this functionality, our tools require that **components
+initialize their internal state in a reset message handler** instead
+of a constructor.  This allows application executives to reset the
+component's state as required.
+
 Configuration
 -------------
 
@@ -387,15 +426,15 @@ each application.
 
 So far, we have only considered the simple assignment of properties.
 In addition to the fundamental property attributes (i.e. name, type,
-default value), components can also declare additional attributes to
-supply information that may be useful in certain run-time
-environments.  The declaration of min/max value constraints could be
-used to automatically check that run-time property assignments are
-within the expected range.  Unit constraints could be used to check
-that the user has supplied values with the proper units, or even
-perform automatic conversions.  Statistical constraints, like random
-distribution parameters, could be used by a simulation engine to make
-Monte Carlo draws.  The possibilities are endless.
+default value), components can also declare additional property
+attributes to supply information that may be useful in certain
+run-time environments.  The declaration of min/max value constraints
+could be used to automatically check that run-time property
+assignments are within the expected range.  Unit constraints could be
+used to check that the user has supplied values with the proper units,
+or even perform automatic conversions.  Statistical constraints, like
+random distribution parameters, could be used by a simulation engine
+to make Monte Carlo draws.  The possibilities are endless.
 
 Logging and Screen Output
 -------------------------
@@ -585,6 +624,7 @@ performs a series of tasks that looks something like this:
 - Process input data from the operating environment (e.g. command-line
   options)
 - Allocate resources and instantiate top-level components
+- Reset components to a known state
 - Read in configuration data
 - Configure components as specified
 - Initialize components
@@ -605,7 +645,8 @@ our approach is to factor the top-level code into two pieces:
   standardized interface
 
 - A reusable **application executive** that sequences the top-level
-  component through the steps mentioned above
+  component through a set of standardized *phases* corresponding to
+  the steps mentioned above
 
 Different application domains may still require slightly different
 application executives, but this is much better than writing unique
@@ -715,28 +756,28 @@ Graphical Design Tools
 
 The Code Craftsmen believe that some aspects of a program are best
 described graphically and some aspects are more naturally expressed in
-textual form.  In light of this, we desire to support both visual and
-text-based workflows.
+textual form.  In light of this, we desire to **support both visual
+and text-based workflows**.
 
 Our primary focus in the area of graphical design tools is to provide
-a block diagram editor that allows hierarchic components and top-level
-applications to be designed by drawing block diagrams describing the
-input/output message connections between software components.  This
-workflow not only simplifies the design process, but also provides
-valuable documentation that helps developers visualize the flow of
-information in the program.  In addition to a block diagram editor, we
-also aim to provide other supporting tools that allow developers to
-design component interfaces and message types using a graphical
-interface.
+a **block diagram editor** that allows hierarchic components and
+top-level applications to be designed by drawing block diagrams
+describing the input/output message connections between software
+components.  This workflow not only simplifies the design process, but
+also provides valuable documentation that helps developers visualize
+the flow of information in the program.  In addition to a block
+diagram editor, we also aim to provide other supporting tools that
+allow developers to design component interfaces and message types
+using a graphical interface.
 
 Although graphical tools can be very helpful, we also believe that the
 use of these tools should not be an essential part of a software
-development workflow.  At the lowest level, all aspects of a software
-application should be described using human-readable, text-based file
-formats that can be hand-coded, manipulated by 3rd-party tools, or
-manually inspected, if necessary.  The graphical tools simply provide
-an alternative means of constructing or manipulating the underlying
-text files.
+development workflow.  At the lowest level, **all aspects of a
+software application should be described using human-readable,
+text-based file formats** that can be hand-coded, manipulated by
+3rd-party tools, or manually inspected, if necessary.  The graphical
+tools simply provide an alternative means of constructing or
+manipulating the underlying text files.
 
 .. _Don't repeat yourself:
    https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
