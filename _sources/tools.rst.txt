@@ -4,10 +4,6 @@
 Tools
 =====
 
-..
-  Software Stack
-  ==============
-
 Overview
 ========
 
@@ -49,6 +45,27 @@ Tydl
   Widely useful macro programming syntax.  This general-purpose syntax
   is a foundation for building domain-specific languages such as
   `Tydl`_ and `Pidgen`_.
+
+.. only:: website_hide_for_now
+
+  Dependencies
+  ============
+
+  +----------------------+
+  | Gsd                  |
+  +----------------------+
+  | Chierps              |
+  +-------------+--------+
+  | Pidgen      | Turtal |
+  +-------------+--------+
+  | Tydl        | Flout  |
+  +-------------+--------+
+  | Bt                   |
+  +----------------------+
+  | Wumps                |
+  +----------------------+
+  | Flopi                |
+  +----------------------+
 
 .. _GitHub: https://github.com/codecraftingtools
 .. _Wumps-site: http://wumps.codecraftsmen.org
