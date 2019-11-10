@@ -9,8 +9,9 @@ Software
 Overview
 ========
 
-The following `code crafting tools <code crafting tools organization_>`_
-are (or will be) provided as Git repositories hosted on on `GitHub`_:
+The following `code crafting tools <code crafting tools
+organization_>`_ are (or will be) provided as :ref:`Git<Git>`
+repositories hosted on on :ref:`GitHub<GitHub>`:
 
 .. _Chierps:
 
@@ -81,5 +82,4 @@ Run-Time Software
    Typical Run-Time Software Stack
 	    
 .. _code crafting tools organization: https://github.com/codecraftingtools
-.. _GitHub: https://github.com
 .. _Wumps docs: http://wumps.readthedocs.io
