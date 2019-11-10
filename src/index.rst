@@ -35,6 +35,6 @@ Code Craftsmen
    status
    philosophy
    design
-   tools
+   software
    workflow
    foundation

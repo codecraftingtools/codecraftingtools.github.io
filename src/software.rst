@@ -1,14 +1,16 @@
-.. _tools:
+.. _software:
 
-=====	     
-Tools
-=====
+========
+Software
+========
+
+.. _code crafting tools:
 
 Overview
 ========
 
-The following code crafting tools are (or will be) available on
-`GitHub`_:
+The following `code crafting tools <code crafting tools organization_>`_
+are (or will be) provided as Git repositories hosted on on `GitHub`_:
 
 .. _Chierps:
 
@@ -41,16 +43,20 @@ Tydl
   
 .. _Wumps:
 
-`Wumps <Wumps-site_>`_
+`Wumps <Wumps docs_>`_
   Widely useful macro programming syntax.  This general-purpose syntax
   is a foundation for building domain-specific languages such as
   `Tydl`_ and `Pidgen`_.
 
+Development Tools
+=================
+
+.. figure:: images/devel_sw_stack.*
+
+   Development Tool Software Stack
+	    
 .. only:: website_hide_for_now
-
-  Dependencies
-  ============
-
+	  
   +----------------------+
   | Gsd                  |
   +----------------------+
@@ -67,5 +73,13 @@ Tydl
   | Flopi                |
   +----------------------+
 
-.. _GitHub: https://github.com/codecraftingtools
-.. _Wumps-site: http://wumps.codecraftsmen.org
+Run-Time Software
+=================
+
+.. figure:: images/run_time_sw_stack.*
+
+   Typical Run-Time Software Stack
+	    
+.. _code crafting tools organization: https://github.com/codecraftingtools
+.. _GitHub: https://github.com
+.. _Wumps docs: http://wumps.readthedocs.io

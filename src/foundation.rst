@@ -9,7 +9,7 @@ this is only possible because we are `standing on the shoulders of
 giants`_.  Software is not created in a vacuum: each piece is built on
 the code and ideas that have come before it.  The following external
 software projects serve as a foundation for our :ref:`code crafting
-tools<tools>`.  Although this list is by no means exhaustive, it
+tools<software>`.  Although this list is by no means exhaustive, it
 serves as an overview of the software dependencies and provides links
 to relevant local and upstream documentation.
 
