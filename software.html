@@ -165,30 +165,33 @@ repositories hosted on on <a class="reference internal" href="foundation.html#gi
 <dt>Chierps</dt>
 <dd>Component-based hierarchic programming system.  This is a framework
 for building software by implementing and connecting message-passing
-components.  The interfaces and hierarchic descriptions for
-components are defined using <a class="reference internal" href="#pidgen">Pidgen</a>.  The Chierps framework
-provides a messaging system implementation and tools to generate
-interface code from the component descriptions.</dd>
+software components.  Chierps provides a standardized run-time
+environment for inter-component communication, scheduling, timing,
+and logging functionality, as well as a set of generalized
+application executives.  Component messaging interfaces and
+hierarchic component structures are defined and generated using
+<a class="reference internal" href="#pidgen">Pidgen</a>.</dd>
 </dl>
 <dl class="docutils" id="pidgen">
 <dt>Pidgen</dt>
-<dd>Programming interface definition and generation tool set.  This is a
-language for defining software component messaging interfaces and
-hierarchic component implementations.  It is a superset of <a class="reference internal" href="#tydl">Tydl</a>,
-which is used to define message content.</dd>
+<dd>Programming interface definition and generation tool set.  This
+project provides a language for describing component input/output
+interfaces and hierarchic component structures, along with a set of
+tools to generate code and documentation from these descriptions.
+The structure of input and output data is defined using <a class="reference internal" href="#tydl">Tydl</a>.</dd>
 </dl>
 <dl class="docutils" id="tydl">
 <dt>Tydl</dt>
 <dd>Type definition language.  This language is used to define the
-content of messages sent between software or hardware components.
-Type definitions can be used to generate documentation or high-level
-code for manipulating messages in various programming languages.</dd>
+structure and layout of data types.  Type definitions can be used to
+generate documentation or high-level code for manipulating messages
+in various programming languages.</dd>
 </dl>
 <dl class="docutils" id="wumps">
 <dt><a class="reference external" href="http://wumps.readthedocs.io">Wumps</a></dt>
 <dd>Widely useful macro programming syntax.  This general-purpose syntax
-is a foundation for building domain-specific languages such as
-<a class="reference internal" href="#tydl">Tydl</a> and <a class="reference internal" href="#pidgen">Pidgen</a>.</dd>
+serves as a foundation for building domain-specific languages such
+as <a class="reference internal" href="#tydl">Tydl</a> and <a class="reference internal" href="#pidgen">Pidgen</a>.</dd>
 </dl>
 </div>
 <div class="section" id="development-tools">

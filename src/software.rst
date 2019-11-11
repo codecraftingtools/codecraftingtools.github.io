@@ -18,36 +18,36 @@ repositories hosted on on :ref:`GitHub<GitHub>`:
 Chierps
   Component-based hierarchic programming system.  This is a framework
   for building software by implementing and connecting message-passing
-  components.  The interfaces and hierarchic descriptions for
-  components are defined using `Pidgen`_.  The Chierps framework
-  provides a messaging system implementation and tools to generate
-  interface code from the component descriptions.
-
-..
-  Scdl: Structural component description language
+  software components.  Chierps provides a standardized run-time
+  environment for inter-component communication, scheduling, timing,
+  and logging functionality, as well as a set of generalized
+  application executives.  Component messaging interfaces and
+  hierarchic component structures are defined and generated using
+  `Pidgen`_.
   
 .. _Pidgen:
 
 Pidgen
-  Programming interface definition and generation tool set.  This is a
-  language for defining software component messaging interfaces and
-  hierarchic component implementations.  It is a superset of `Tydl`_,
-  which is used to define message content.
+  Programming interface definition and generation tool set.  This
+  project provides a language for describing component input/output
+  interfaces and hierarchic component structures, along with a set of
+  tools to generate code and documentation from these descriptions.
+  The structure of input and output data is defined using `Tydl`_.
 
 .. _Tydl:
 
 Tydl
   Type definition language.  This language is used to define the
-  content of messages sent between software or hardware components.
-  Type definitions can be used to generate documentation or high-level
-  code for manipulating messages in various programming languages.
+  structure and layout of data types.  Type definitions can be used to
+  generate documentation or high-level code for manipulating messages
+  in various programming languages.
   
 .. _Wumps:
 
 `Wumps <Wumps docs_>`_
   Widely useful macro programming syntax.  This general-purpose syntax
-  is a foundation for building domain-specific languages such as
-  `Tydl`_ and `Pidgen`_.
+  serves as a foundation for building domain-specific languages such
+  as `Tydl`_ and `Pidgen`_.
 
 Development Tools
 =================
