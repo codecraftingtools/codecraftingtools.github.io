@@ -16,38 +16,57 @@ repositories hosted on on :ref:`GitHub<GitHub>`:
 .. _Chierps:
 
 Chierps
-  Component-based hierarchic programming system.  This is a framework
-  for building software by implementing and connecting message-passing
-  software components.  Chierps provides a standardized run-time
-  environment for inter-component communication, scheduling, timing,
-  and logging functionality, as well as a set of generalized
+  Component-based hierarchic programming system.  Chierps is a
+  framework for building software by implementing and connecting
+  message-passing software components.  It provides a standardized
+  run-time environment for inter-component communication, scheduling,
+  timing, and logging functionality, as well as a set of generalized
   application executives.  Component messaging interfaces and
-  hierarchic component structures are defined and generated using
-  `Pidgen`_.
+  hierarchic structures are defined and generated using `Pidgen`_.
+
+..
+  Gracle
+  Graphical component layout environment
   
+.. _Turtal:
+
+Turtal
+  The underlying run-time abstraction layer that isolates high-level
+  code from the details related to a specific operating system,
+  hardware, or message-passing framework implementation.  This library
+  provides a set of uniform programming interfaces for constructs like
+  message queues, threads, file input/output, timers, and schedulers.
+
+.. _Flout:
+
+Flout
+  Fine-grained logging and output library that provides a standardized
+  programming interface for the display and recording of status,
+  event, debugging, warning, and error information.
+
 .. _Pidgen:
 
 Pidgen
   Programming interface definition and generation tool set.  This
-  project provides a language for describing component input/output
+  project provides a language for defining component input/output
   interfaces and hierarchic component structures, along with a set of
-  tools to generate code and documentation from these descriptions.
+  utilities to generate code and documentation from these definitions.
   The structure of input and output data is defined using `Tydl`_.
 
 .. _Tydl:
 
 Tydl
-  Type definition language.  This language is used to define the
-  structure and layout of data types.  Type definitions can be used to
-  generate documentation or high-level code for manipulating messages
-  in various programming languages.
+  Type definition language for specifying the structure, layout, and
+  semantic attributes of data types.  This project also provides a set
+  of tools that can be used to generate documentation or high-level
+  code from type specifications.
   
 .. _Wumps:
 
 `Wumps <Wumps docs_>`_
-  Widely useful macro programming syntax.  This general-purpose syntax
-  serves as a foundation for building domain-specific languages such
-  as `Tydl`_ and `Pidgen`_.
+  Widely useful macro programming syntax that serves as a foundation
+  for building domain-specific languages such as `Tydl`_ and
+  `Pidgen`_.
 
 Development Tools
 =================
