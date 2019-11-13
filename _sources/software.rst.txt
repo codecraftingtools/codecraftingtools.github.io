@@ -24,9 +24,13 @@ Chierps
   application executives.  Component messaging interfaces and
   hierarchic structures are defined and generated using `Pidgen`_.
 
-..
-  Gracle
-  Graphical component layout environment
+.. _Grasden:
+
+Grasden
+  Graphical system design environment for drawing block diagrams that
+  describe the hierarchic structure and flow of data between the
+  subcomponents of a system.  This tool can be used to graphically
+  construct `Chierps`_ applications.
   
 .. _Turtal:
 
@@ -60,6 +64,13 @@ Tydl
   semantic attributes of data types.  This project also provides a set
   of tools that can be used to generate documentation or high-level
   code from type specifications.
+
+.. _Bt:
+
+Bt
+  Build tool that manages the dependencies between software projects
+  and automates the retrieval, configuration, and building of
+  prerequisite software repositories.
   
 .. _Wumps:
 
@@ -68,37 +79,28 @@ Tydl
   for building domain-specific languages such as `Tydl`_ and
   `Pidgen`_.
 
+.. _Flopi:
+
+Flopi
+  Fine-grained logging and output Python interface for displaying and
+  recording status, event, debugging, warning, and error information.
+  Flopi can operate as a pure Python module, or in conjunction with
+  `Flout`_ when `extending or embedding`_ the Python interpreter.
+
 Development Tools
 =================
 
 .. figure:: images/devel_sw_stack.*
 
-   Development Tool Software Stack
+   Software Stack for Application Development
 	    
-.. only:: website_hide_for_now
-	  
-  +----------------------+
-  | Gsd                  |
-  +----------------------+
-  | Chierps              |
-  +-------------+--------+
-  | Pidgen      | Turtal |
-  +-------------+--------+
-  | Tydl        | Flout  |
-  +-------------+--------+
-  | Bt                   |
-  +----------------------+
-  | Wumps                |
-  +----------------------+
-  | Flopi                |
-  +----------------------+
-
 Run-Time Software
 =================
 
 .. figure:: images/run_time_sw_stack.*
 
-   Typical Run-Time Software Stack
+   Run-Time Software Stack for a Typical Application
 	    
 .. _code crafting tools organization: https://github.com/codecraftingtools
 .. _Wumps docs: http://wumps.readthedocs.io
+.. _extending or embedding: https://docs.python.org/3/extending
