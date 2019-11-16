@@ -91,10 +91,11 @@ Development Tools
 =================
 
 The following diagram illustrates how our :ref:`code crafting
-tools<code crafting tools>` work together with each other and with
-:ref:`external open-source software<Foundation>` to form a software
-stack for application development.  The arrows indicate project
-dependencies.
+tools<code crafting tools>` (represented by light gray blocks) work
+together with :ref:`external open-source software<Foundation>`
+(represented by dark gray blocks) to form a software stack for
+application development.  The arrows indicate project dependencies,
+with dotted lines representing optional usage.
 
 .. figure:: images/devel_sw_stack.*
 
