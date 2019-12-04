@@ -111,6 +111,10 @@ Utility Libraries
   run-time environment, or application executive, but do not factor
   into the interface between these code segments.
 
+.. figure:: images/run_time_sw_stack.*
+
+   Run-Time Software Stack (Conceptual)
+   
 Hardware Architectures
 ----------------------
 
