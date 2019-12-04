@@ -90,14 +90,18 @@ Flopi
 Development Tools
 =================
 
-The following diagram illustrates how our :ref:`code crafting
+The following diagrams illustrate how our :ref:`code crafting
 tools<code crafting tools>` work together with :ref:`external
 open-source software<Foundation>` to form a software stack for
 application development.
 
-.. figure:: images/devel_sw_stack.*
+.. figure:: images/conceptual_devel_sw_stack.*
 
-   Software Stack for Application Development
+   Software Stack for Application Development (Conceptual)
+	    
+.. figure:: images/detailed_devel_sw_stack.*
+
+   Software Stack for Application Development (Detailed)
 	    
 Run-Time Software
 =================
