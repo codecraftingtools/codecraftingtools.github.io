@@ -24,13 +24,14 @@ Chierps
   application executives.  Component messaging interfaces and
   hierarchic structures are defined and generated using `Pidgen`_.
 
-.. _Grasden:
+.. _Hildegard:
 
-Grasden
-  Graphical system design environment for drawing block diagrams that
-  describe the hierarchic structure and flow of data between the
-  subcomponents of a system.  This tool can be used to graphically
-  construct `Chierps`_ applications.
+`Hildegard <Hildegard docs_>`_
+  Hierarchic layout and design environment for generating applications
+  and rendering diagrams.  This is a graphical application for drawing
+  block diagrams that describe the hierarchic structure and flow of
+  data between the subcomponents of a system.  This tool can be used
+  to graphically construct `Chierps`_ applications.
   
 .. _Turtal:
 
@@ -122,5 +123,6 @@ open-source software<Foundation>`.
    Run-Time Software Stack (Detailed)
 	    
 .. _code crafting tools organization: https://github.com/codecraftingtools
+.. _Hildegard docs: https://github.com/codecraftingtools/hildegard
 .. _Wumps docs: http://wumps.readthedocs.io
 .. _extending or embedding: https://docs.python.org/3/extending
