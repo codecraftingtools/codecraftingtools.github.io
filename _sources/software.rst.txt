@@ -33,6 +33,13 @@ Chierps
   data between the subcomponents of a system.  This tool can be used
   to graphically construct `Chierps`_ applications.
   
+.. _Shasam:
+
+Shasam
+  Standardized hierarchic architecture for simulation and modeling.
+  This is a component-based 6-DOF simulation framework with Monte
+  Carlo capability that is built on top of `Chierps`_.
+  
 .. _Turtal:
 
 Turtal
