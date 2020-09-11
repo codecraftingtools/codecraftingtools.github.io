@@ -783,5 +783,19 @@ text-based file formats** that can be hand-coded, manipulated by
 tools simply provide an alternative means of constructing or
 manipulating the underlying text files.
 
+Software Stack for Application Development
+------------------------------------------
+
+In order to make our code crafting tools as useful as possible, they
+have been designed to work in conjunction with other open-source
+software to form a software stack.  Each layer of software builds on
+lower-level resources to provide additional functionality.  The
+following diagram offers a bird's-eye view of our software stack for
+application development.
+
+.. figure:: images/conceptual_devel_sw_stack.*
+
+   Software Stack for Application Development (Conceptual)
+
 .. _Don't repeat yourself:
    https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
