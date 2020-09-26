@@ -13,16 +13,16 @@ The following `code crafting tools <code crafting tools
 organization_>`_ are (or will be) provided as :ref:`Git<Git>`
 repositories hosted on on :ref:`GitHub<GitHub>`:
 
-.. _Chierps:
+.. _Chimps:
 
-Chierps
-  Component-based hierarchic programming system.  Chierps is a
+Chimps
+  Component-based hierarchic message-passing system.  Chimps is a
   framework for building software by implementing and connecting
   message-passing software components.  It provides a standardized
   run-time environment for inter-component communication, scheduling,
   timing, and logging functionality, as well as a set of generalized
   application executives.  Component messaging interfaces and
-  hierarchic structures are defined and generated using `Pidgen`_.
+  hierarchic structures are defined and generated using `Smidgen`_.
 
 .. _Hildegard:
 
@@ -31,14 +31,14 @@ Chierps
   and rendering diagrams.  This is a graphical application for drawing
   block diagrams that describe the hierarchic structure and flow of
   data between the subcomponents of a system.  This tool can be used
-  to graphically construct `Chierps`_ applications.
+  to graphically construct `Chimps`_ applications.
   
 .. _Shasam:
 
 Shasam
   Standardized hierarchic architecture for simulation and modeling.
   This is a component-based 6-DOF simulation framework with Monte
-  Carlo capability that is built on top of `Chierps`_.
+  Carlo capability that is built on top of `Chimps`_.
   
 .. _Turtal:
 
@@ -56,10 +56,10 @@ Flout
   programming interface for the display and recording of status,
   event, debugging, warning, and error information.
 
-.. _Pidgen:
+.. _Smidgen:
 
-Pidgen
-  Programming interface definition and generation tool set.  This
+Smidgen
+  Syntax for messaging interface definition and generation.  This
   project provides a language for defining component input/output
   interfaces and hierarchic component structures, along with a set of
   utilities to generate code and documentation from these definitions.
@@ -85,7 +85,7 @@ Bt
 `Wumps <Wumps docs_>`_
   Widely useful macro programming syntax that serves as a foundation
   for building domain-specific languages such as `Tydl`_ and
-  `Pidgen`_.
+  `Smidgen`_.
 
 .. _Flopi:
 
