@@ -22,8 +22,16 @@ Chimps
   run-time environment for inter-component communication, scheduling,
   timing, and logging functionality, as well as a set of generalized
   application executives.  Component messaging interfaces and
-  hierarchic structures are defined and generated using `Smidgen`_.
+  hierarchic structures are defined and generated using `Smidgen`_ and
+  and `Finch`_, respectively.
 
+.. _Shasam:
+
+Shasam
+  Standardized hierarchic architecture for simulation and modeling.
+  This is a component-based 6-DOF simulation framework with Monte
+  Carlo capability that is built on top of `Chimps`_.
+  
 .. _Hildegard:
 
 `Hildegard <Hildegard docs_>`_
@@ -31,14 +39,7 @@ Chimps
   and rendering diagrams.  This is a graphical application for drawing
   block diagrams that describe the hierarchic structure and flow of
   data between the subcomponents of a system.  This tool can be used
-  to graphically construct `Chimps`_ applications.
-  
-.. _Shasam:
-
-Shasam
-  Standardized hierarchic architecture for simulation and modeling.
-  This is a component-based 6-DOF simulation framework with Monte
-  Carlo capability that is built on top of `Chimps`_.
+  to graphically construct `Chimps`_ or `Shasam`_ applications.
   
 .. _Turtal:
 
@@ -56,14 +57,24 @@ Flout
   programming interface for the display and recording of status,
   event, debugging, warning, and error information.
 
+.. _Finch:
+
+Finch
+  Format for specifying interconnections and component hierarchies.
+  This project provides a language for making input/output connections
+  between components and defining hierarchic component structures,
+  along with a set of utilities to generate code and documentation
+  from these definitions.  Component input/output interfaces are defined
+  using `Smidgen`_.
+
 .. _Smidgen:
 
 Smidgen
   Syntax for messaging interface definition and generation.  This
   project provides a language for defining component input/output
-  interfaces and hierarchic component structures, along with a set of
-  utilities to generate code and documentation from these definitions.
-  The structure of input and output data is defined using `Tydl`_.
+  messaging interfaces and a set of utilities to generate code and
+  documentation from these definitions.  The structure of input and
+  output data is defined using `Tydl`_.
 
 .. _Tydl:
 

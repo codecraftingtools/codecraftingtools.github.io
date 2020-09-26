@@ -169,7 +169,14 @@ message-passing software components.  It provides a standardized
 run-time environment for inter-component communication, scheduling,
 timing, and logging functionality, as well as a set of generalized
 application executives.  Component messaging interfaces and
-hierarchic structures are defined and generated using <a class="reference internal" href="#smidgen">Smidgen</a>.</dd>
+hierarchic structures are defined and generated using <a class="reference internal" href="#smidgen">Smidgen</a> and
+and <a class="reference internal" href="#finch">Finch</a>, respectively.</dd>
+</dl>
+<dl class="docutils" id="shasam">
+<dt>Shasam</dt>
+<dd>Standardized hierarchic architecture for simulation and modeling.
+This is a component-based 6-DOF simulation framework with Monte
+Carlo capability that is built on top of <a class="reference internal" href="#chimps">Chimps</a>.</dd>
 </dl>
 <dl class="docutils" id="hildegard">
 <dt><a class="reference external" href="https://github.com/codecraftingtools/hildegard">Hildegard</a></dt>
@@ -177,13 +184,7 @@ hierarchic structures are defined and generated using <a class="reference intern
 and rendering diagrams.  This is a graphical application for drawing
 block diagrams that describe the hierarchic structure and flow of
 data between the subcomponents of a system.  This tool can be used
-to graphically construct <a class="reference internal" href="#chimps">Chimps</a> applications.</dd>
-</dl>
-<dl class="docutils" id="shasam">
-<dt>Shasam</dt>
-<dd>Standardized hierarchic architecture for simulation and modeling.
-This is a component-based 6-DOF simulation framework with Monte
-Carlo capability that is built on top of <a class="reference internal" href="#chimps">Chimps</a>.</dd>
+to graphically construct <a class="reference internal" href="#chimps">Chimps</a> or <a class="reference internal" href="#shasam">Shasam</a> applications.</dd>
 </dl>
 <dl class="docutils" id="turtal">
 <dt>Turtal</dt>
@@ -199,13 +200,22 @@ message queues, threads, file input/output, timers, and schedulers.</dd>
 programming interface for the display and recording of status,
 event, debugging, warning, and error information.</dd>
 </dl>
+<dl class="docutils" id="finch">
+<dt>Finch</dt>
+<dd>Format for specifying interconnections and component hierarchies.
+This project provides a language for making input/output connections
+between components and defining hierarchic component structures,
+along with a set of utilities to generate code and documentation
+from these definitions.  Component input/output interfaces are defined
+using <a class="reference internal" href="#smidgen">Smidgen</a>.</dd>
+</dl>
 <dl class="docutils" id="smidgen">
 <dt>Smidgen</dt>
 <dd>Syntax for messaging interface definition and generation.  This
 project provides a language for defining component input/output
-interfaces and hierarchic component structures, along with a set of
-utilities to generate code and documentation from these definitions.
-The structure of input and output data is defined using <a class="reference internal" href="#tydl">Tydl</a>.</dd>
+messaging interfaces and a set of utilities to generate code and
+documentation from these definitions.  The structure of input and
+output data is defined using <a class="reference internal" href="#tydl">Tydl</a>.</dd>
 </dl>
 <dl class="docutils" id="tydl">
 <dt>Tydl</dt>
