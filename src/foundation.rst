@@ -13,6 +13,16 @@ tools<code crafting tools>`.  Although this list is by no means
 exhaustive, it serves as an overview of the software dependencies and
 provides links to relevant local and upstream documentation.
 
+C++ Utility Libraries
+=====================
+
+.. _libavoid:
+
+:ref:`libavoid<libavoid notes>`
+  Cross-platform C++ library providing fast, object-avoiding
+  orthogonal and polyline connector routing for use in interactive
+  diagram editors
+
 Compilers and Interpreters
 ==========================
 

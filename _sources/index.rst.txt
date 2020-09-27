@@ -38,3 +38,4 @@ Code Craftsmen
    software
    workflow
    foundation
+   notes
