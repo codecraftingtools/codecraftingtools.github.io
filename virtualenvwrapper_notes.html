@@ -1,0 +1,310 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>virtualenvwrapper &mdash; Code Craftsmen  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Python 3" href="python_notes.html" />
+    <link rel="prev" title="libavoid" href="libavoid_notes.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Code Craftsmen
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vision.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="status.html">Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="foundation.html">Foundation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="notes.html">Notes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libavoid_notes.html">libavoid</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">virtualenvwrapper</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#external-documentation">External Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-notes">Installation Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python_notes.html">Python 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_notes.html">Git</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Code Craftsmen</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="notes.html">Notes</a> &raquo;</li>
+        
+      <li>virtualenvwrapper</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/virtualenvwrapper_notes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="virtualenvwrapper">
+<span id="virtualenvwrapper-notes"></span><h1>virtualenvwrapper<a class="headerlink" href="#virtualenvwrapper" title="Permalink to this headline">¶</a></h1>
+<p>virtualenvwrapper is a set of extensions to the
+<a class="reference internal" href="foundation.html#virtualenv"><span class="std std-ref">virtualenv</span></a> tool that includes wrappers for creating
+and deleting virtual <a class="reference internal" href="foundation.html#python"><span class="std std-ref">Python</span></a> environments.</p>
+<div class="section" id="external-documentation">
+<h2>External Documentation<a class="headerlink" href="#external-documentation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://virtualenvwrapper.readthedocs.io">virtualenvwrapper Web Site</a></li>
+</ul>
+</div>
+<div class="section" id="installation-notes">
+<h2>Installation Notes<a class="headerlink" href="#installation-notes" title="Permalink to this headline">¶</a></h2>
+<p>First, make sure that <a class="reference internal" href="python_notes.html#python-notes"><span class="std std-ref">Python 3</span></a> is installed.</p>
+<p>The virtualenvwrapper package can be installed on Ubuntu 18.04 using
+the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">virtualenvwrapper</span>
+</pre></div>
+</div>
+<p>The next step is to decide where you want your virtual Python
+environments to be stored.  By default, they will be stored here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/.</span><span class="n">virtualenvs</span>
+</pre></div>
+</div>
+<p>If you want them to be stored somewhere else, set the following
+environment variable in your <cite>~/.profile</cite> and then log out and log
+back in again:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">WORKON_HOME</span><span class="o">=~/</span><span class="n">venv</span>
+</pre></div>
+</div>
+<p>Now you should be able to create a new virtual Python environment for
+working with our code crafting tools:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkvirtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span> <span class="n">codecraftsmen</span>
+</pre></div>
+</div>
+<p>If the <cite>mkvirtualenv</cite> command is not found, you may need to run the
+following script to set up your shell environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">virtualenvwrapper</span><span class="o">/</span><span class="n">virtualenvwrapper</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>After the new environment is created, it should be automatically
+activated.  This should be evident by the <cite>(codecraftsmen)</cite> prefix
+shown in your command prompt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(codecraftsmen) user@host:~$
+</pre></div>
+</div>
+<p>The virtual environment can be deactivated like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deactivate</span>
+</pre></div>
+</div>
+<p>and reactivated like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">workon</span> <span class="n">codecraftsmen</span>
+</pre></div>
+</div>
+<p>When a virtual environment is activated, any new Python packages
+installed using <a class="reference internal" href="foundation.html#pip"><span class="std std-ref">pip</span></a> only apply to the active environment
+and global (system) site packages are disabled.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="python_notes.html" class="btn btn-neutral float-right" title="Python 3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="libavoid_notes.html" class="btn btn-neutral" title="libavoid" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, 2019, 2020 Jeffrey A. Webb
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+    /* Sidebar */
+    .wy-nav-side {
+      /*width:0px;*/
+    }
+    .wy-side-scroll {
+      /*width:0px;*/
+    }
+    .wy-breadcrumbs {
+      visibility: hidden;
+    }
+    /*
+    [role=search] {
+    visibility: hidden;
+    }
+    [role=navigation] {
+    visibility: hidden;
+    }
+    */
+    h1 {
+    font-size:400%;
+    }
+  </style>
+
+
+</body>
+</html>

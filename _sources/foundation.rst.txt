@@ -23,20 +23,39 @@ C++ Utility Libraries
   orthogonal and polyline connector routing for use in interactive
   diagram editors
 
+Python Development Tools
+========================
+
+.. _pip:
+
+`pip <pip site_>`_
+  The package installer for `Python`_
+
+.. _virtualenv:
+
+`virtualenv <virtualenv site_>`_
+  Tool for creating isolated `Python`_ environments
+
+.. _virtualenvwrapper:
+
+:ref:`virtualenvwrapper<virtualenvwrapper notes>`
+  Set of extensions to the :ref:`virtualenv<virtualenv>` tool that
+  includes wrappers for creating and deleting `Python`_ virtual environments
+
 Compilers and Interpreters
 ==========================
 
 .. _Python:
 
-`Python 3 <Python site_>`_
-  A productive, high-level language
+:ref:`Python 3<Python notes>`
+  A popular, productive, high-level language
 
 Source Code Management
 ======================
 
 .. _Git:
 
-`Git <Git site_>`_
+:ref:`Git <Git notes>`
   A free and open source distributed version control system
 
 Web Services
@@ -54,7 +73,7 @@ Web Services
 
 .. _standing on the shoulders of giants:
    https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants
-.. _Python site: https://www.python.org
-.. _Git site: https://git-scm.com/
+.. _pip site: https://pip.pypa.io
+.. _virtualenv site: https://pypi.org/project/virtualenv/
 .. _GitHub site: https://github.com
 .. _Read the Docs site: https://readthedocs.org/

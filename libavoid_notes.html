@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="virtualenvwrapper" href="virtualenvwrapper_notes.html" />
     <link rel="prev" title="Notes" href="notes.html" /> 
 
   
@@ -87,10 +88,13 @@
 <li class="toctree-l1"><a class="reference internal" href="foundation.html">Foundation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="notes.html">Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">libavoid</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-documentation">External Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-notes">Installation Notes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="virtualenvwrapper_notes.html">virtualenvwrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_notes.html">Python 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_notes.html">Git</a></li>
 </ul>
 </li>
 </ul>
@@ -161,38 +165,53 @@
             
   <div class="section" id="libavoid">
 <span id="libavoid-notes"></span><h1>libavoid<a class="headerlink" href="#libavoid" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://www.adaptagrams.org/documentation/libavoid.html">libavoid</a> is a cross-platform C++ library providing fast,
+<p>libavoid is a cross-platform C++ library providing fast,
 object-avoiding orthogonal and polyline connector routing for use in
-interactive diagram editors</p>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>libavoid is part of the <a class="reference external" href="https://www.adaptagrams.org">adaptagrams</a> project.
-The first step in installing <em>libavoid</em> is to check out a copy of the
-<em>adaptagrams</em> git repository:</p>
+interactive diagram editors.</p>
+<div class="section" id="external-documentation">
+<h2>External Documentation<a class="headerlink" href="#external-documentation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.adaptagrams.org/documentation/libavoid.html">libavoid Web Site</a></li>
+<li><a class="reference external" href="https://www.adaptagrams.org">Adaptagrams Project Web Site</a></li>
+<li><a class="reference external" href="https://www.adaptagrams.org/documentation/libavoid_example.html">Example Program</a></li>
+</ul>
+</div>
+<div class="section" id="installation-notes">
+<h2>Installation Notes<a class="headerlink" href="#installation-notes" title="Permalink to this headline">¶</a></h2>
+<p>libavoid is part of the Adaptagrams project, and is developed as part
+of that Git repository.  The first step in installing libavoid is to
+make sure that <a class="reference internal" href="git_notes.html#git-notes"><span class="std std-ref">Git</span></a> is installed, and then check out
+a copy of the adaptagrams repository:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mjwybrow</span><span class="o">/</span><span class="n">adaptagrams</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<p>There appear to be no tags or releases yet, so this is the commit I
+<p>There appear to be no tags or releases yet, so this is the commit we
 used for reference (Wed Mar 7, 2018):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="mi">86</span><span class="n">b46ed3694b13603a6625d2d6fff0352441f846</span>
 </pre></div>
 </div>
-<p>These packages should be installed if they are not present:</p>
+<p>On Ubuntu 18.04, these additional packages should be installed if they
+are not present:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libcairo2</span><span class="o">-</span><span class="n">dev</span> <span class="n">automake</span> <span class="n">m4</span> <span class="n">swig</span>
 </pre></div>
 </div>
-<p>These commands should build the C libraries:</p>
+<p>These commands should build the C++ libraries:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">adaptagrams</span><span class="o">/</span><span class="n">cola</span>
 <span class="o">./</span><span class="n">autogen</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>This resulted in some test suite failures, but the <em>libavoid.so</em> library
-was built correctly.  The location of the library is here:</p>
+<p>This may result in some test suite failures, but the <cite>libavoid.so</cite>
+library should be built correctly.  The location of the library is
+here:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adaptagrams</span><span class="o">/</span><span class="n">cola</span><span class="o">/</span><span class="n">libavoid</span><span class="o">/.</span><span class="n">libs</span><span class="o">/</span><span class="n">libavoid</span><span class="o">.</span><span class="n">so</span>
 </pre></div>
 </div>
-<p>Now we need to install the python wrappers.  First, change this line
-in <em>swig-python-setup.py</em> to make it work under Python 3:</p>
+<p>Now that we have built the required C++ libraries, we need to install
+the Python wrapper.  Before proceeding, make sure that you have
+created and activated the <cite>codecraftsmen</cite> virtual Python environment
+as described <a class="reference internal" href="virtualenvwrapper_notes.html#virtualenvwrapper-notes"><span class="std std-ref">here</span></a>.</p>
+<p>Next, change this line in <cite>swig-python-setup.py</cite> to make it work under
+Python 3:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">sysconfig</span><span class="o">.</span><span class="n">get_config_vars</span><span class="p">()</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;OPT&quot;</span><span class="p">):</span>
 </pre></div>
 </div>
@@ -200,21 +219,17 @@ in <em>swig-python-setup.py</em> to make it work under Python 3:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s2">&quot;OPT&quot;</span> <span class="ow">in</span> <span class="n">sysconfig</span><span class="o">.</span><span class="n">get_config_vars</span><span class="p">():</span>
 </pre></div>
 </div>
-<p>Then build the python wrappers:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">workon</span> <span class="n">kivy</span>
+<p>Then build the Python wrapper:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">workon</span> <span class="n">codecraftsmen</span>
 <span class="n">make</span> <span class="o">-</span><span class="n">f</span> <span class="n">Makefile</span><span class="o">-</span><span class="n">swig</span><span class="o">-</span><span class="n">python</span>
 </pre></div>
 </div>
-<p>Now install the python package:</p>
+<p>Now install the Python package:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">swig</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span>
 <span class="n">cd</span> <span class="o">..</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">cola</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>An example program can be found <a class="reference external" href="https://www.adaptagrams.org/documentation/libavoid_example.html">here</a>.</p>
 </div>
 </div>
 
@@ -225,6 +240,8 @@ in <em>swig-python-setup.py</em> to make it work under Python 3:</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="virtualenvwrapper_notes.html" class="btn btn-neutral float-right" title="virtualenvwrapper" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="notes.html" class="btn btn-neutral" title="Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
