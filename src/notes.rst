@@ -10,6 +10,7 @@ installing or using various external open-source software packages.
 .. toctree::
    :maxdepth: 1
 
+   notes_on_lark
    notes_on_libavoid
    notes_on_qt
    notes_on_virtualenvwrapper

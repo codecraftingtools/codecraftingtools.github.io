@@ -13,6 +13,31 @@ tools <code crafting tools>`.  Although this list is by no means
 exhaustive, it serves as an overview of the software dependencies and
 provides links to relevant local and upstream documentation.
 
+Documentation Generation Tools
+==============================
+
+.. _Sphinx:
+
+`Sphinx <Sphinx site_>`_
+  Documentation generation tool originally created for the generating
+  the `Python`_ language documentation
+  
+Build Tools
+===========
+
+.. _Make:
+
+`GNU Make <Make docs_>`_
+  The granddaddy of all build tools
+
+Python Packages
+===============
+
+.. _lark:
+
+:ref:`Lark <Lark notes>`
+  A parsing toolkit for `Python`_
+  
 C++ Utility Libraries
 =====================
 
@@ -55,6 +80,41 @@ Compilers and Interpreters
 :ref:`Python 3 <Python notes>`
   A popular, productive, high-level language
 
+.. _GCC:
+
+`GCC <GCC site_>`_
+  The GNU Compiler Collection
+
+Operating Systems
+=================
+
+.. _Linux:
+
+`Linux <Linux site_>`_
+  A free and open-source operating system kernel
+  
+.. _GNU:
+
+`GNU <GNU site_>`_
+  A Unix-like operating system that is free software
+  
+.. _Ubuntu:
+
+`Ubuntu <Ubuntu site_>`_
+  An open-source operating system distribution built on :ref:`Linux
+  <Linux>` and :ref:`GNU <GNU>` software
+  
+.. _Xenomai:
+
+`Xenomai <Xenomai site_>`_
+  Free software project focused on building a real-time framework for
+  the :ref:`Linux <Linux>` platform
+
+.. _RTEMS:
+
+`RTEMS <RTEMs site_>`_
+  Embedded, open-source, real-time operating system
+
 Source Code Management
 ======================
 
@@ -78,7 +138,15 @@ Web Services
 
 .. _standing on the shoulders of giants:
    https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants
+.. _Sphinx site: https://www.sphinx-doc.org
+.. _Make docs: https://www.gnu.org/software/make/manual/html_node/index.html
 .. _pip site: https://pip.pypa.io
-.. _virtualenv site: https://pypi.org/project/virtualenv/
+.. _virtualenv site: https://pypi.org/project/virtualenv
+.. _GCC site:  https://gcc.gnu.org
+.. _Linux site: https://www.kernel.org
+.. _GNU site: https://www.gnu.org
+.. _Ubuntu site: https://ubuntu.com
+.. _Xenomai site: https://www.xenomai.org
+.. _RTEMS site: https://www.rtems.org
 .. _GitHub site: https://github.com
-.. _Read the Docs site: https://readthedocs.org/
+.. _Read the Docs site: https://readthedocs.org
