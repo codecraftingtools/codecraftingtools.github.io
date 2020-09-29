@@ -41,6 +41,11 @@ Python Packages
 C++ Utility Libraries
 =====================
 
+.. _Eigen:
+
+`Eigen <Eigen site_>`_
+  Open-source C++ matrix library
+  
 .. _libavoid:
 
 :ref:`libavoid <libavoid notes>`
@@ -52,6 +57,11 @@ C++ Utility Libraries
 
 :ref:`Qt <Qt notes>`
   Cross-platform C++ library for constructing graphical user interfaces
+
+.. _TCLAP:
+
+`TCLAP <TCLAP site_>`_
+  Templatized C++ command-line parsing library
 
 Python Development Tools
 ========================
@@ -115,6 +125,11 @@ Operating Systems
 `RTEMS <RTEMs site_>`_
   Embedded, open-source, real-time operating system
 
+.. _CONFIG_PREEMPT_RT:
+
+`CONFIG_PREEMPT_RT <CONFIG_PREEMPT_RT site_>`_
+  :ref:`Linux <Linux>` patch set for improved real-time performance
+  
 Source Code Management
 ======================
 
@@ -140,6 +155,8 @@ Web Services
    https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants
 .. _Sphinx site: https://www.sphinx-doc.org
 .. _Make docs: https://www.gnu.org/software/make/manual/html_node/index.html
+.. _Eigen site: http://eigen.tuxfamily.org
+.. _TCLAP site: http://tclap.sourceforge.net
 .. _pip site: https://pip.pypa.io
 .. _virtualenv site: https://pypi.org/project/virtualenv
 .. _GCC site:  https://gcc.gnu.org
@@ -148,5 +165,6 @@ Web Services
 .. _Ubuntu site: https://ubuntu.com
 .. _Xenomai site: https://www.xenomai.org
 .. _RTEMS site: https://www.rtems.org
+.. _CONFIG_PREEMPT_RT site: https://rt.wiki.kernel.org
 .. _GitHub site: https://github.com
 .. _Read the Docs site: https://readthedocs.org
