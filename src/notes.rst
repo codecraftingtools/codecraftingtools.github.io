@@ -11,6 +11,7 @@ installing or using various external open-source software packages.
    :maxdepth: 1
 
    notes_on_libavoid
+   notes_on_qt
    notes_on_virtualenvwrapper
    notes_on_python
    notes_on_git

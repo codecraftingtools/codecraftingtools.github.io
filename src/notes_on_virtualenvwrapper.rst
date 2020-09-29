@@ -5,8 +5,8 @@ virtualenvwrapper
 =================
 
 virtualenvwrapper is a set of extensions to the
-:ref:`virtualenv<virtualenv>` tool that includes wrappers for creating
-and deleting virtual :ref:`Python<Python>` environments.
+:ref:`virtualenv <virtualenv>` tool that includes wrappers for creating
+and deleting virtual :ref:`Python <Python>` environments.
 
 External Documentation
 ======================
@@ -16,7 +16,7 @@ External Documentation
 Installation Notes
 ==================
 
-First, make sure that :ref:`Python 3<Python notes>` is installed.
+First, make sure that :ref:`Python 3 <Python notes>` is installed.
 
 The virtualenvwrapper package can be installed on Ubuntu 18.04 using
 the following command::
@@ -59,7 +59,7 @@ and reactivated like this::
   workon codecraftsmen
 
 When a virtual environment is activated, any new Python packages
-installed using :ref:`pip<pip>` only apply to the active environment
+installed using :ref:`pip <pip>` only apply to the active environment
 and global (system) site packages are disabled.
 
 .. _virtualenvwrapper site: https://virtualenvwrapper.readthedocs.io

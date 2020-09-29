@@ -20,7 +20,7 @@ Installation Notes
 
 libavoid is part of the Adaptagrams project, and is developed as part
 of that Git repository.  The first step in installing libavoid is to
-make sure that :ref:`Git<Git notes>` is installed, and then check out
+make sure that :ref:`Git <Git notes>` is installed, and then check out
 a copy of the adaptagrams repository::
 
   git clone https://github.com/mjwybrow/adaptagrams.git
@@ -49,7 +49,7 @@ here::
 Now that we have built the required C++ libraries, we need to install
 the Python wrapper.  Before proceeding, make sure that you have
 created and activated the `codecraftsmen` virtual Python environment
-as described :ref:`here<virtualenvwrapper notes>`.
+as described :ref:`here <virtualenvwrapper notes>`.
 
 Next, change this line in `swig-python-setup.py` to make it work under
 Python 3::

@@ -686,7 +686,7 @@ it makes sense to consider using it for the following purposes:
   manner.
 
 - To reduce the duplication of information (i.e. :ref:`Don't repeat
-  yourself<design_principles>`).
+  yourself <design_principles>`).
 
 This last point may require a little more explanation.  There are many
 situations where automatic code generation could be used to help avoid
@@ -725,7 +725,7 @@ File Formats
 
 The format of data files is another topic that deserves thoughtful
 consideration.  In order to consolidate information and avoid
-:ref:`repeating ourselves<design_principles>`, the file formats used
+:ref:`repeating ourselves <design_principles>`, the file formats used
 by our tools to store component interface, hierarchic structure,
 message description, and configuration information **allow arbitrary
 metadata to be incorporated** as the need arises.  This means that all
