@@ -21,7 +21,7 @@ Before proceeding, make sure that you have created and activated the
 
 Lark can be now be installed using :ref:`pip <pip>`::
 
-  pip install -e lark-parser
+  pip install lark-parser
 
 .. _Lark site: https://github.com/lark-parser/lark
 .. _Lark docs: https://lark-parser.readthedocs.io

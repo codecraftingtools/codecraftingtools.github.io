@@ -11,7 +11,7 @@ External Documentation
 ======================
 
 - `Qt Web Site <Qt site_>`_
-- `Official Documentation <Qt docs_>`_
+- `Qt Documentation <Qt docs_>`_
 
 Installation Notes
 ==================
