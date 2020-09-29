@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>virtualenvwrapper &mdash; Code Craftsmen  documentation</title>
+  <title>Python 3 &mdash; Code Craftsmen  documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Python 3" href="python_notes.html" />
-    <link rel="prev" title="libavoid" href="libavoid_notes.html" /> 
+    <link rel="next" title="Git" href="notes_on_git.html" />
+    <link rel="prev" title="virtualenvwrapper" href="notes_on_virtualenvwrapper.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -87,14 +87,14 @@
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="foundation.html">Foundation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="notes.html">Notes</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="libavoid_notes.html">libavoid</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">virtualenvwrapper</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notes_on_libavoid.html">libavoid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notes_on_virtualenvwrapper.html">virtualenvwrapper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python 3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#external-documentation">External Documentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installation-notes">Installation Notes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="python_notes.html">Python 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_notes.html">Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notes_on_git.html">Git</a></li>
 </ul>
 </li>
 </ul>
@@ -144,13 +144,13 @@
         
           <li><a href="notes.html">Notes</a> &raquo;</li>
         
-      <li>virtualenvwrapper</li>
+      <li>Python 3</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/virtualenvwrapper_notes.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/notes_on_python.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,63 +163,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="virtualenvwrapper">
-<span id="virtualenvwrapper-notes"></span><h1>virtualenvwrapper<a class="headerlink" href="#virtualenvwrapper" title="Permalink to this headline">¶</a></h1>
-<p>virtualenvwrapper is a set of extensions to the
-<a class="reference internal" href="foundation.html#virtualenv"><span class="std std-ref">virtualenv</span></a> tool that includes wrappers for creating
-and deleting virtual <a class="reference internal" href="foundation.html#python"><span class="std std-ref">Python</span></a> environments.</p>
+  <div class="section" id="python-3">
+<span id="python-notes"></span><h1>Python 3<a class="headerlink" href="#python-3" title="Permalink to this headline">¶</a></h1>
+<p>Python 3 is a popular, productive, high-level language.</p>
 <div class="section" id="external-documentation">
 <h2>External Documentation<a class="headerlink" href="#external-documentation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://virtualenvwrapper.readthedocs.io">virtualenvwrapper Web Site</a></li>
+<li><a class="reference external" href="https://www.python.org">Python Web Site</a></li>
+<li><a class="reference external" href="https://docs.python.org/3/">Official Documentation</a></li>
 </ul>
 </div>
 <div class="section" id="installation-notes">
 <h2>Installation Notes<a class="headerlink" href="#installation-notes" title="Permalink to this headline">¶</a></h2>
-<p>First, make sure that <a class="reference internal" href="python_notes.html#python-notes"><span class="std std-ref">Python 3</span></a> is installed.</p>
-<p>The virtualenvwrapper package can be installed on Ubuntu 18.04 using
-the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">virtualenvwrapper</span>
+<p>Python 3 can be installed on Ubuntu 18.04 using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span>
 </pre></div>
 </div>
-<p>The next step is to decide where you want your virtual Python
-environments to be stored.  By default, they will be stored here:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/.</span><span class="n">virtualenvs</span>
-</pre></div>
-</div>
-<p>If you want them to be stored somewhere else, set the following
-environment variable in your <cite>~/.profile</cite> and then log out and log
-back in again:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">WORKON_HOME</span><span class="o">=~/</span><span class="n">venv</span>
-</pre></div>
-</div>
-<p>Now you should be able to create a new virtual Python environment for
-working with our code crafting tools:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkvirtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span> <span class="n">codecraftsmen</span>
-</pre></div>
-</div>
-<p>If the <cite>mkvirtualenv</cite> command is not found, you may need to run the
-following script to set up your shell environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">virtualenvwrapper</span><span class="o">/</span><span class="n">virtualenvwrapper</span><span class="o">.</span><span class="n">sh</span>
-</pre></div>
-</div>
-<p>After the new environment is created, it should be automatically
-activated.  This should be evident by the <cite>(codecraftsmen)</cite> prefix
-shown in your command prompt:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(codecraftsmen) user@host:~$
-</pre></div>
-</div>
-<p>The virtual environment can be deactivated like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deactivate</span>
-</pre></div>
-</div>
-<p>and reactivated like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">workon</span> <span class="n">codecraftsmen</span>
-</pre></div>
-</div>
-<p>When a virtual environment is activated, any new Python packages
-installed using <a class="reference internal" href="foundation.html#pip"><span class="std std-ref">pip</span></a> only apply to the active environment
-and global (system) site packages are disabled.</p>
 </div>
 </div>
 
@@ -231,10 +190,10 @@ and global (system) site packages are disabled.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="python_notes.html" class="btn btn-neutral float-right" title="Python 3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="notes_on_git.html" class="btn btn-neutral float-right" title="Git" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="libavoid_notes.html" class="btn btn-neutral" title="libavoid" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="notes_on_virtualenvwrapper.html" class="btn btn-neutral" title="virtualenvwrapper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
