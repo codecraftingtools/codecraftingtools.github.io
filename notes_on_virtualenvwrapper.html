@@ -190,19 +190,18 @@ environments to be stored.  By default, they will be stored here:</p>
 </pre></div>
 </div>
 <p>If you want them to be stored somewhere else, set the following
-environment variable in your <cite>~/.profile</cite> and then log out and log
-back in again:</p>
+environment variable in your <cite>~/.profile</cite>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">WORKON_HOME</span><span class="o">=~/</span><span class="n">venv</span>
+</pre></div>
+</div>
+<p>Now add the following line to your <cite>~/.bashrc</cite> and then log out and log
+back in again to set up your shell environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">virtualenvwrapper</span><span class="o">/</span><span class="n">virtualenvwrapper</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>Now you should be able to create a new virtual Python environment for
 working with our code crafting tools:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkvirtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span> <span class="n">codecraftsmen</span>
-</pre></div>
-</div>
-<p>If the <cite>mkvirtualenv</cite> command is not found, you may need to run the
-following script to set up your shell environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">virtualenvwrapper</span><span class="o">/</span><span class="n">virtualenvwrapper</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>After the new environment is created, it should be automatically

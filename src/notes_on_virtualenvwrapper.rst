@@ -29,20 +29,19 @@ environments to be stored.  By default, they will be stored here::
   ~/.virtualenvs
 
 If you want them to be stored somewhere else, set the following
-environment variable in your `~/.profile` and then log out and log
-back in again::
+environment variable in your `~/.profile`::
 
   export WORKON_HOME=~/venv
 
+Now add the following line to your `~/.bashrc` and then log out and log
+back in again to set up your shell environment::
+  
+  source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+  
 Now you should be able to create a new virtual Python environment for
 working with our code crafting tools::
 
   mkvirtualenv --python=/usr/bin/python3 codecraftsmen
-
-If the `mkvirtualenv` command is not found, you may need to run the
-following script to set up your shell environment::
-
-  source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 After the new environment is created, it should be automatically
 activated.  This should be evident by the `(codecraftsmen)` prefix

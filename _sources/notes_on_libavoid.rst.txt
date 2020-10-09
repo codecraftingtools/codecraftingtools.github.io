@@ -20,36 +20,44 @@ Installation Notes
 
 libavoid is part of the Adaptagrams project, and is developed as part
 of that Git repository.  The first step in installing libavoid is to
-make sure that :ref:`Git <Git notes>` is installed, and then check out
+make sure that :ref:`Git <Git notes>` is installed, and then pull down
 a copy of the adaptagrams repository::
 
+  mkdir -p ~/git
+  cd ~/git
   git clone https://github.com/mjwybrow/adaptagrams.git
   
 There appear to be no tags or releases yet, so this is the commit we
 used for reference (Wed Mar 7, 2018)::
 
+  cd adaptagrams
   git checkout 86b46ed3694b13603a6625d2d6fff0352441f846
 
-On Ubuntu 18.04, these additional packages should be installed if they
-are not present::
+On Ubuntu 20.04/18.04, these additional packages should be installed
+if they are not present::
 
-  sudo apt-get install libcairo2-dev automake m4 swig
+  sudo apt-get install build-essential automake libtool
   
 These commands should build the C++ libraries::
 
-  cd adaptagrams/cola
+  cd cola
   ./autogen.sh
 
-This may result in some test suite failures, but the `libavoid.so`
-library should be built correctly.  The location of the library is
-here::
+This may result in a build failure, but the required `libavoid.so`
+library should have been built correctly.  The location of the library
+is here::
 
-  adaptagrams/cola/libavoid/.libs/libavoid.so
+  ~/git/adaptagrams/cola/libavoid/.libs/libavoid.so
 
-Now that we have built the required C++ libraries, we need to install
-the Python wrapper.  Before proceeding, make sure that you have
-created and activated the `codecraftsmen` virtual Python environment
-as described :ref:`here <virtualenvwrapper notes>`.
+Now that we have built the required C++ libraries, we need to build
+and install the Python wrapper.  Under Ubuntu 20.04/18.04, these
+additional packages are required::
+
+  sudo apt-get install swig python3-dev
+
+Before proceeding, also make sure that you have created and activated
+the `codecraftsmen` virtual Python environment as described :ref:`here
+<virtualenvwrapper notes>`.
 
 Next, change this line in `swig-python-setup.py` to make it work under
 Python 3::

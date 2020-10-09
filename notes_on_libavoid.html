@@ -182,36 +182,43 @@ interactive diagram editors.</p>
 <h2>Installation Notes<a class="headerlink" href="#installation-notes" title="Permalink to this headline">¶</a></h2>
 <p>libavoid is part of the Adaptagrams project, and is developed as part
 of that Git repository.  The first step in installing libavoid is to
-make sure that <a class="reference internal" href="notes_on_git.html#git-notes"><span class="std std-ref">Git</span></a> is installed, and then check out
+make sure that <a class="reference internal" href="notes_on_git.html#git-notes"><span class="std std-ref">Git</span></a> is installed, and then pull down
 a copy of the adaptagrams repository:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mjwybrow</span><span class="o">/</span><span class="n">adaptagrams</span><span class="o">.</span><span class="n">git</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">git</span>
+<span class="n">cd</span> <span class="o">~/</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mjwybrow</span><span class="o">/</span><span class="n">adaptagrams</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
 <p>There appear to be no tags or releases yet, so this is the commit we
 used for reference (Wed Mar 7, 2018):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="mi">86</span><span class="n">b46ed3694b13603a6625d2d6fff0352441f846</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">adaptagrams</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="mi">86</span><span class="n">b46ed3694b13603a6625d2d6fff0352441f846</span>
 </pre></div>
 </div>
-<p>On Ubuntu 18.04, these additional packages should be installed if they
-are not present:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libcairo2</span><span class="o">-</span><span class="n">dev</span> <span class="n">automake</span> <span class="n">m4</span> <span class="n">swig</span>
+<p>On Ubuntu 20.04/18.04, these additional packages should be installed
+if they are not present:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">automake</span> <span class="n">libtool</span>
 </pre></div>
 </div>
 <p>These commands should build the C++ libraries:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">adaptagrams</span><span class="o">/</span><span class="n">cola</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">cola</span>
 <span class="o">./</span><span class="n">autogen</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>This may result in some test suite failures, but the <cite>libavoid.so</cite>
-library should be built correctly.  The location of the library is
-here:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adaptagrams</span><span class="o">/</span><span class="n">cola</span><span class="o">/</span><span class="n">libavoid</span><span class="o">/.</span><span class="n">libs</span><span class="o">/</span><span class="n">libavoid</span><span class="o">.</span><span class="n">so</span>
+<p>This may result in a build failure, but the required <cite>libavoid.so</cite>
+library should have been built correctly.  The location of the library
+is here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">git</span><span class="o">/</span><span class="n">adaptagrams</span><span class="o">/</span><span class="n">cola</span><span class="o">/</span><span class="n">libavoid</span><span class="o">/.</span><span class="n">libs</span><span class="o">/</span><span class="n">libavoid</span><span class="o">.</span><span class="n">so</span>
 </pre></div>
 </div>
-<p>Now that we have built the required C++ libraries, we need to install
-the Python wrapper.  Before proceeding, make sure that you have
-created and activated the <cite>codecraftsmen</cite> virtual Python environment
-as described <a class="reference internal" href="notes_on_virtualenvwrapper.html#virtualenvwrapper-notes"><span class="std std-ref">here</span></a>.</p>
+<p>Now that we have built the required C++ libraries, we need to build
+and install the Python wrapper.  Under Ubuntu 20.04/18.04, these
+additional packages are required:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">swig</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Before proceeding, also make sure that you have created and activated
+the <cite>codecraftsmen</cite> virtual Python environment as described <a class="reference internal" href="notes_on_virtualenvwrapper.html#virtualenvwrapper-notes"><span class="std std-ref">here</span></a>.</p>
 <p>Next, change this line in <cite>swig-python-setup.py</cite> to make it work under
 Python 3:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">sysconfig</span><span class="o">.</span><span class="n">get_config_vars</span><span class="p">()</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;OPT&quot;</span><span class="p">):</span>
