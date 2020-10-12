@@ -178,9 +178,36 @@ interfaces.</p>
 </div>
 <div class="section" id="installation-notes">
 <h2>Installation Notes<a class="headerlink" href="#installation-notes" title="Permalink to this headline">¶</a></h2>
-<p>The required Qt 5 C++ libraries can be installed on Ubuntu 18.04 using
-the following command:</p>
+<p>The required Qt 5 C++ libraries can be installed on Ubuntu 20.04/18.04
+using the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">qt5</span><span class="o">-</span><span class="n">default</span>
+</pre></div>
+</div>
+<p>Although these packages should be sufficient for running C++ Qt
+programs, some additional setup is required to support Python Qt
+applications.  First, create a <cite>codecraftsmen</cite> virtual Python
+environment as described <a class="reference internal" href="notes_on_virtualenvwrapper.html#virtualenvwrapper-notes"><span class="std std-ref">here</span></a>.  Next,
+activate this environment and install the Python language bindings for
+Qt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">workon</span> <span class="n">codecraftsmen</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">PyQt5</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">qtpy</span>
+</pre></div>
+</div>
+<p>The following program can be used to test your PyQt5 installation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QLabel</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+<span class="n">label</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If the code shown above is saved in a file named <code class="docutils literal notranslate"><span class="pre">hello.py</span></code>, you can
+run it in the <cite>codecraftsmen</cite> virtual Python environment like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">workon</span> <span class="n">codecraftsmen</span>
+<span class="n">python</span> <span class="n">hello</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </div>

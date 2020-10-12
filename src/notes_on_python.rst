@@ -15,7 +15,8 @@ External Documentation
 Installation Notes
 ==================
 
-Python 3 can be installed on Ubuntu 18.04 using the following command::
+Python 3 should be installed by default under Ubuntu 20.04/18.04, but
+this command can be used to install it in any case::
 
   sudo apt-get install python3
 

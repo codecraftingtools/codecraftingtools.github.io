@@ -16,7 +16,8 @@ External Documentation
 Installation Notes
 ==================
 
-Git can be installed on Ubuntu 18.04 using the following command::
+Git can be installed on Ubuntu 20.04/18.04 using the following
+command::
 
   sudo apt-get install git
 

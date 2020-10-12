@@ -18,8 +18,8 @@ Installation Notes
 
 First, make sure that :ref:`Python 3 <Python notes>` is installed.
 
-The virtualenvwrapper package can be installed on Ubuntu 18.04 using
-the following command::
+The virtualenvwrapper package can be installed on Ubuntu 20.04/18.04
+using the following command::
 
   sudo apt-get install virtualenvwrapper
   
@@ -62,4 +62,3 @@ installed using :ref:`pip <pip>` only apply to the active environment
 and global (system) site packages are disabled.
 
 .. _virtualenvwrapper site: https://virtualenvwrapper.readthedocs.io
-
