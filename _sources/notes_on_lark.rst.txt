@@ -21,6 +21,7 @@ Before proceeding, make sure that you have created and activated the
 
 Lark can be now be installed using :ref:`pip <pip>`::
 
+  workon codecraftsmen
   pip install lark-parser
 
 .. _Lark site: https://github.com/lark-parser/lark
