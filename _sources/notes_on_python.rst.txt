@@ -12,6 +12,15 @@ External Documentation
 - `Python Web Site <Python site_>`_
 - `Official Documentation <Python docs_>`_
 
+Supported Versions
+==================
+
+The following versions of Python are regularly tested with our code
+crafting tools:
+
+- 3.6.9 (Ubuntu 18.04)
+- 3.8.5 (Ubuntu 20.04)
+
 Installation Notes
 ==================
 
