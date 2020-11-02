@@ -37,7 +37,11 @@ On Ubuntu 20.04/18.04, these additional packages should be installed
 if they are not present::
 
   sudo apt-get install build-essential automake libtool
-  
+
+The following extra package is required on Ubuntu 18.04::
+
+  sudo apt-get install libcairo2-dev
+
 These commands should build the C++ libraries::
 
   cd cola

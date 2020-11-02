@@ -13,6 +13,15 @@ External Documentation
 - `Qt Web Site <Qt site_>`_
 - `Qt Documentation <Qt docs_>`_
 
+Supported Versions
+==================
+
+The following versions of Qt are regularly tested with our code
+crafting tools:
+
+- libqt5 5.9.5 (Ubuntu 18.04)
+- libqt5 5.12.8 (Ubuntu 20.04)
+
 Installation Notes
 ==================
 
