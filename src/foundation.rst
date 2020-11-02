@@ -110,7 +110,7 @@ Operating Systems
   
 .. _Ubuntu:
 
-`Ubuntu <Ubuntu site_>`_
+:ref:`Ubuntu <Ubuntu notes>`
   An open-source operating system distribution built on :ref:`Linux
   <Linux>` and :ref:`GNU <GNU>` software
   
@@ -162,7 +162,6 @@ Web Services
 .. _GCC site:  https://gcc.gnu.org
 .. _Linux site: https://www.kernel.org
 .. _GNU site: https://www.gnu.org
-.. _Ubuntu site: https://ubuntu.com
 .. _Xenomai site: https://www.xenomai.org
 .. _RTEMS site: https://www.rtems.org
 .. _CONFIG_PREEMPT_RT site: https://rt.wiki.kernel.org

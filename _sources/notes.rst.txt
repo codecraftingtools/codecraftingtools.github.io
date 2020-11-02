@@ -16,3 +16,5 @@ installing or using various external open-source software packages.
    notes_on_virtualenvwrapper
    notes_on_python
    notes_on_git
+   notes_on_ubuntu
+   
