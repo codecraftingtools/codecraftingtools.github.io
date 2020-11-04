@@ -12,7 +12,7 @@ The following `code crafting tools <code-crafting-tools-org_>`_ are
 .. _chimps:
 
 Chimps
-  Component-based hierarchic message-passing system.  Chimps is a
+  Concurrent hierarchic message-based programming system.  Chimps is a
   framework for building software by implementing and connecting
   message-passing software components.  It provides a standardized
   run-time environment for inter-component communication, scheduling,
