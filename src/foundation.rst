@@ -16,7 +16,7 @@ Documentation Generation Tools
 
 .. _sphinx:
 
-`Sphinx <sphinx-site_>`_
+`Sphinx <sphinx-notes>`
   Documentation generation tool originally created for the generating
   the `Python <python>` language documentation
   
@@ -152,7 +152,6 @@ Web Services
 
 .. _standing on the shoulders of giants:
    https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants
-.. _sphinx-site: https://www.sphinx-doc.org
 .. _make-docs: https://www.gnu.org/software/make/manual/html_node/index.html
 .. _eigen-site: http://eigen.tuxfamily.org
 .. _tclap-site: http://tclap.sourceforge.net

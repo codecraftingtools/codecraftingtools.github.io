@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Ubuntu &mdash; Code Craftsmen  documentation</title>
+  <title>Sphinx &mdash; Code Craftsmen  documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Git" href="git-notes.html" />
-    <link rel="prev" title="Python 3" href="python-notes.html" /> 
+    <link rel="next" title="Lark" href="lark-notes.html" />
+    <link rel="prev" title="Notes" href="notes.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -87,17 +87,18 @@
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="foundation.html">Foundation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="notes.html">Notes</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sphinx-notes.html">Sphinx</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#external-documentation">External Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-notes">Installation Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miscellaneous-notes">Miscellaneous Notes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="lark-notes.html">Lark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libavoid-notes.html">libavoid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qt-notes.html">Qt 5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtualenvwrapper-notes.html">virtualenvwrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python-notes.html">Python 3</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Ubuntu</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#external-documentation">External Documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#supported-versions">Supported Versions</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="ubuntu-notes.html">Ubuntu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-notes.html">Git</a></li>
 </ul>
 </li>
@@ -148,13 +149,13 @@
         
           <li><a href="notes.html">Notes</a> &raquo;</li>
         
-      <li>Ubuntu</li>
+      <li>Sphinx</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/ubuntu-notes.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/sphinx-notes.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,24 +168,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ubuntu">
-<h1>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="foundation.html#ubuntu"><span class="std std-ref">Ubuntu</span></a> is an open-source operating system distribution
-built on <a class="reference internal" href="foundation.html#linux"><span class="std std-ref">Linux</span></a> and <a class="reference internal" href="foundation.html#gnu"><span class="std std-ref">GNU</span></a> software.</p>
+  <div class="section" id="sphinx">
+<h1>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="foundation.html#sphinx"><span class="std std-ref">Sphinx</span></a> is a documentation generation tool originally created
+for the generating the <a class="reference internal" href="foundation.html#python"><span class="std std-ref">Python</span></a> language documentation.</p>
 <div class="section" id="external-documentation">
 <h2>External Documentation<a class="headerlink" href="#external-documentation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://ubuntu.com">Ubuntu Web Site</a></li>
+<li><a class="reference external" href="https://www.sphinx-doc.org">Sphinx Web Site</a></li>
+<li><a class="reference external" href="https://www.sphinx-doc.org/en/master/contents.html">Sphinx Documentation</a></li>
 </ul>
 </div>
-<div class="section" id="supported-versions">
-<h2>Supported Versions<a class="headerlink" href="#supported-versions" title="Permalink to this headline">¶</a></h2>
-<p>The following versions of Ubuntu are regularly tested with our code
-crafting tools:</p>
-<ul class="simple">
-<li>18.04</li>
-<li>20.04</li>
-</ul>
+<div class="section" id="installation-notes">
+<span id="sphinx-install"></span><h2>Installation Notes<a class="headerlink" href="#installation-notes" title="Permalink to this headline">¶</a></h2>
+<p>Before proceeding, make sure that you have created and activated the
+<code class="docutils literal notranslate"><span class="pre">codecraftsmen</span></code> virtual Python environment as described <a class="reference internal" href="virtualenvwrapper-notes.html#virtualenvwrapper-install"><span class="std std-ref">here</span></a>.</p>
+<p>Sphinx can be installed using <a class="reference internal" href="foundation.html#pip"><span class="std std-ref">pip</span></a> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">workon</span> <span class="n">codecraftsmen</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
+</pre></div>
+</div>
+<p>This should be sufficient for building the HTML documentation.  If you
+want to build PDF output, you will need to install these additional
+packages on Ubuntu 20.04/18.04:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">latexmk</span> <span class="n">texlive</span><span class="o">-</span><span class="n">latex</span><span class="o">-</span><span class="n">extra</span> <span class="n">texlive</span><span class="o">-</span><span class="n">latex</span><span class="o">-</span><span class="n">recommended</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="miscellaneous-notes">
+<h2>Miscellaneous Notes<a class="headerlink" href="#miscellaneous-notes" title="Permalink to this headline">¶</a></h2>
+<p>Official <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/quickstart.html">Sphinx Quickstart</a></p>
+<p><a class="reference external" href="https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html">Read the Docs Sphinx Quickstart</a></p>
+<p>How to install the <a class="reference external" href="https://sphinx-rtd-theme.readthedocs.io/en/latest/">Read the Docs Sphinx Theme</a>.</p>
+<p><a class="reference external" href="https://muffinresearch.co.uk/selectively-including-parts-readme-rst-in-your-docs">Including parts of README.rst in your sphinx docs</a>.</p>
 </div>
 </div>
 
@@ -196,10 +213,10 @@ crafting tools:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="git-notes.html" class="btn btn-neutral float-right" title="Git" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="lark-notes.html" class="btn btn-neutral float-right" title="Lark" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python-notes.html" class="btn btn-neutral" title="Python 3" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="notes.html" class="btn btn-neutral" title="Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,6 +8,7 @@ installing or using various external open-source software packages.
 .. toctree::
    :maxdepth: 1
 
+   sphinx-notes
    lark-notes
    libavoid-notes
    qt-notes
