@@ -1,5 +1,3 @@
-.. _foundation:
-
 ==========
 Foundation
 ==========
@@ -8,26 +6,26 @@ If the Code Craftsmen have produced anything useful, we realize that
 this is only possible because we are `standing on the shoulders of
 giants`_.  Software is not created in a vacuum: each piece is built on
 the code and ideas that have come before it.  The following external
-software projects serve as a foundation for our :ref:`code crafting
-tools <code crafting tools>`.  Although this list is by no means
-exhaustive, it serves as an overview of the software dependencies and
-provides links to relevant local and upstream documentation.
+software projects serve as a foundation for our `code crafting tools
+<software>`.  Although this list is by no means exhaustive, it serves
+as an overview of the software dependencies and provides links to
+relevant local and upstream documentation.
 
 Documentation Generation Tools
 ==============================
 
-.. _Sphinx:
+.. _sphinx:
 
-`Sphinx <Sphinx site_>`_
+`Sphinx <sphinx-site_>`_
   Documentation generation tool originally created for the generating
-  the `Python`_ language documentation
+  the `Python <python>` language documentation
   
 Build Tools
 ===========
 
-.. _Make:
+.. _make:
 
-`GNU Make <Make docs_>`_
+`GNU Make <make-docs_>`_
   The granddaddy of all build tools
 
 Python Packages
@@ -35,32 +33,32 @@ Python Packages
 
 .. _lark:
 
-:ref:`Lark <Lark notes>`
-  A parsing toolkit for `Python`_
+`Lark <lark-notes>`
+  A parsing toolkit for `Python <python>`
   
 C++ Utility Libraries
 =====================
 
-.. _Eigen:
+.. _eigen:
 
-`Eigen <Eigen site_>`_
+`Eigen <eigen-site_>`_
   Open-source C++ matrix library
   
 .. _libavoid:
 
-:ref:`libavoid <libavoid notes>`
+`libavoid <libavoid-notes>`
   Cross-platform C++ library providing fast, object-avoiding
   orthogonal and polyline connector routing for use in interactive
   diagram editors
 
-.. _Qt:
+.. _qt:
 
-:ref:`Qt <Qt notes>`
+`Qt <qt-notes>`
   Cross-platform C++ library for constructing graphical user interfaces
 
-.. _TCLAP:
+.. _tclap:
 
-`TCLAP <TCLAP site_>`_
+`TCLAP <tclap-site_>`_
   Templatized C++ command-line parsing library
 
 Python Development Tools
@@ -68,102 +66,103 @@ Python Development Tools
 
 .. _pip:
 
-`pip <pip site_>`_
-  The package installer for `Python`_
+`pip <pip-site_>`_
+  The package installer for `Python <python>`
 
 .. _virtualenv:
 
-`virtualenv <virtualenv site_>`_
-  Tool for creating isolated `Python`_ environments
+`virtualenv <virtualenv-site_>`_
+  Tool for creating isolated `Python <python>` environments
 
 .. _virtualenvwrapper:
 
-:ref:`virtualenvwrapper <virtualenvwrapper notes>`
-  Set of extensions to the :ref:`virtualenv <virtualenv>` tool that
-  includes wrappers for creating and deleting `Python`_ virtual environments
+`virtualenvwrapper <virtualenvwrapper-notes>`
+  Set of extensions to the `virtualenv <virtualenv>` tool that
+  includes wrappers for creating and deleting `Python <python>`
+  virtual environments
 
 Compilers and Interpreters
 ==========================
 
-.. _Python:
+.. _python:
 
-:ref:`Python 3 <Python notes>`
+`Python 3 <python-notes>`
   A popular, productive, high-level language
 
-.. _GCC:
+.. _gcc:
 
-`GCC <GCC site_>`_
+`GCC <gcc-site_>`_
   The GNU Compiler Collection
 
 Operating Systems
 =================
 
-.. _Linux:
+.. _linux:
 
-`Linux <Linux site_>`_
+`Linux <linux-site_>`_
   A free and open-source operating system kernel
   
-.. _GNU:
+.. _gnu:
 
-`GNU <GNU site_>`_
+`GNU <gnu-site_>`_
   A Unix-like operating system that is free software
   
-.. _Ubuntu:
+.. _ubuntu:
 
-:ref:`Ubuntu <Ubuntu notes>`
-  An open-source operating system distribution built on :ref:`Linux
-  <Linux>` and :ref:`GNU <GNU>` software
+`Ubuntu <ubuntu-notes>`
+  An open-source operating system distribution built on `Linux
+  <linux>` and `GNU <gnu>` software
   
-.. _Xenomai:
+.. _xenomai:
 
-`Xenomai <Xenomai site_>`_
+`Xenomai <xenomai-site_>`_
   Free software project focused on building a real-time framework for
   the :ref:`Linux <Linux>` platform
 
-.. _RTEMS:
+.. _rtems:
 
-`RTEMS <RTEMs site_>`_
+`RTEMS <rtems-site_>`_
   Embedded, open-source, real-time operating system
 
-.. _CONFIG_PREEMPT_RT:
+.. _config_preempt_rt:
 
-`CONFIG_PREEMPT_RT <CONFIG_PREEMPT_RT site_>`_
-  :ref:`Linux <Linux>` patch set for improved real-time performance
+`CONFIG_PREEMPT_RT <config-preempt-rt-site_>`_
+  `Linux <linux>` patch set for improved real-time performance
   
 Source Code Management
 ======================
 
-.. _Git:
+.. _git:
 
-:ref:`Git <Git notes>`
+`Git <git-notes>`
   A free and open source distributed version control system
 
 Web Services
 ============
 
-.. _GitHub:
+.. _github:
 
-`GitHub <GitHub site_>`_
+`GitHub <github-site_>`_
   A popular website for hosting open-source code repositories
 
-.. _Read the Docs:
+.. _read-the-docs:
 
-`Read the Docs <Read the Docs site_>`_
+`Read the Docs <read-the-docs-site_>`_
   A popular website for hosting open-source software documentation
 
 .. _standing on the shoulders of giants:
    https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants
-.. _Sphinx site: https://www.sphinx-doc.org
-.. _Make docs: https://www.gnu.org/software/make/manual/html_node/index.html
-.. _Eigen site: http://eigen.tuxfamily.org
-.. _TCLAP site: http://tclap.sourceforge.net
-.. _pip site: https://pip.pypa.io
-.. _virtualenv site: https://pypi.org/project/virtualenv
-.. _GCC site:  https://gcc.gnu.org
-.. _Linux site: https://www.kernel.org
-.. _GNU site: https://www.gnu.org
-.. _Xenomai site: https://www.xenomai.org
-.. _RTEMS site: https://www.rtems.org
-.. _CONFIG_PREEMPT_RT site: https://rt.wiki.kernel.org
-.. _GitHub site: https://github.com
-.. _Read the Docs site: https://readthedocs.org
+.. _sphinx-site: https://www.sphinx-doc.org
+.. _make-docs: https://www.gnu.org/software/make/manual/html_node/index.html
+.. _eigen-site: http://eigen.tuxfamily.org
+.. _tclap-site: http://tclap.sourceforge.net
+.. _pip-site: https://pip.pypa.io
+.. _virtualenv-site: https://pypi.org/project/virtualenv
+.. _gcc-site:  https://gcc.gnu.org
+.. _linux-site: https://www.kernel.org
+.. _gnu-site: https://www.gnu.org
+.. _xenomai-site: https://www.xenomai.org
+.. _rtems-site: https://www.rtems.org
+.. _config-preempt-rt-site: https://rt.wiki.kernel.org
+.. _github-site: https://github.com
+.. _read-the-docs-site: https://readthedocs.org

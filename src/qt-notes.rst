@@ -1,17 +1,15 @@
-.. _Qt notes:
-
 ====
 Qt 5
 ====
 
-Qt is a cross-platform C++ library for constructing graphical user
-interfaces.
+`Qt <qt>` is a cross-platform C++ library for constructing graphical
+user interfaces.
 
 External Documentation
 ======================
 
-- `Qt Web Site <Qt site_>`_
-- `Qt Documentation <Qt docs_>`_
+- `Qt Web Site <qt-site_>`_
+- `Qt Documentation <qt-docs_>`_
 
 Supported Versions
 ==================
@@ -21,6 +19,8 @@ crafting tools:
 
 - libqt5 5.9.5 (Ubuntu 18.04)
 - libqt5 5.12.8 (Ubuntu 20.04)
+
+.. _qt-install:
 
 Installation Notes
 ==================
@@ -32,8 +32,8 @@ using the following command::
 
 Although these packages should be sufficient for running C++ Qt
 programs, some additional setup is required to support Python Qt
-applications.  First, create a `codecraftsmen` virtual Python
-environment as described :ref:`here <virtualenvwrapper notes>`.  Next,
+applications.  First, create a ``codecraftsmen`` virtual Python
+environment as described `here <virtualenvwrapper-install>`.  Next,
 activate this environment and install the Python language bindings for
 Qt::
 
@@ -53,11 +53,12 @@ The following program can be used to test your PyQt5 installation:
     label.show()
     app.exec_()
 
-If the code shown above is saved in a file named ``hello.py``, you can
-run it in the `codecraftsmen` virtual Python environment like this::
+If the code shown above is saved in a file named :file:`hello.py`, you
+can run it in the ``codecraftsmen`` virtual Python environment like
+this::
 
   workon codecraftsmen
   python hello.py
 
-.. _Qt site: https://www.qt.io/
-.. _Qt docs: https://doc.qt.io/
+.. _qt-site: https://www.qt.io/
+.. _qt-docs: https://doc.qt.io/

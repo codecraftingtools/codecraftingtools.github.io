@@ -1,5 +1,3 @@
-.. _design:
-
 ======
 Design
 ======
@@ -17,7 +15,7 @@ that make software:
 - Easier to maintain
 - Easier to reuse
 
-.. _design_principles:
+.. _design-principles:
 
 Principles
 ==========
@@ -685,8 +683,8 @@ it makes sense to consider using it for the following purposes:
 - To allow aspects of the program to be described in a graphical
   manner.
 
-- To reduce the duplication of information (i.e. :ref:`Don't repeat
-  yourself <design_principles>`).
+- To reduce the duplication of information (i.e. `Don't repeat
+  yourself <design-principles>`).
 
 This last point may require a little more explanation.  There are many
 situations where automatic code generation could be used to help avoid
@@ -725,11 +723,11 @@ File Formats
 
 The format of data files is another topic that deserves thoughtful
 consideration.  In order to consolidate information and avoid
-:ref:`repeating ourselves <design_principles>`, the file formats used
-by our tools to store component interface, hierarchic structure,
-message description, and configuration information **allow arbitrary
-metadata to be incorporated** as the need arises.  This means that all
-the information required to generate documentation, graphical
+`repeating ourselves <design-principles>`, the file formats used by
+our tools to store component interface, hierarchic structure, message
+description, and configuration information **allow arbitrary metadata
+to be incorporated** as the need arises.  This means that all the
+information required to generate documentation, graphical
 representations, various types of code, and other artifacts can be
 found in a single location.  This is much more powerful than
 alternative approaches that attempt to incorporate all of the

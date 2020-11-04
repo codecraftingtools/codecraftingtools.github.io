@@ -1,22 +1,22 @@
-.. _virtualenvwrapper notes:
-
 =================
 virtualenvwrapper
 =================
 
-virtualenvwrapper is a set of extensions to the
-:ref:`virtualenv <virtualenv>` tool that includes wrappers for creating
-and deleting virtual :ref:`Python <Python>` environments.
+`virtualenvwrapper <virtualenvwrapper>` is a set of extensions to the
+`virtualenv <virtualenv>` tool that includes wrappers for creating and
+deleting virtual `Python <python>` environments.
 
 External Documentation
 ======================
 
-- `virtualenvwrapper Web Site <virtualenvwrapper site_>`_
+- `virtualenvwrapper Web Site <virtualenvwrapper-site_>`_
+
+.. _virtualenvwrapper-install:
 
 Installation Notes
 ==================
 
-First, make sure that :ref:`Python 3 <Python notes>` is installed.
+First, make sure that `Python 3 <python-install>` is installed.
 
 The virtualenvwrapper package can be installed on Ubuntu 20.04/18.04
 using the following command::
@@ -29,12 +29,12 @@ environments to be stored.  By default, they will be stored here::
   ~/.virtualenvs
 
 If you want them to be stored somewhere else, set the following
-environment variable in your `~/.profile`::
+environment variable in your :file:`~/.profile`::
 
   export WORKON_HOME=~/venv
 
-Now add the following line to your `~/.bashrc` and then log out and log
-back in again to set up your shell environment::
+Now add the following line to your :file:`~/.bashrc` and then log out
+and log back in again to set up your shell environment::
   
   source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
   
@@ -44,7 +44,7 @@ working with our code crafting tools::
   mkvirtualenv --python=/usr/bin/python3 codecraftsmen
 
 After the new environment is created, it should be automatically
-activated.  This should be evident by the `(codecraftsmen)` prefix
+activated.  This should be evident by the ``(codecraftsmen)`` prefix
 shown in your command prompt::
 
   (codecraftsmen) user@host:~$
@@ -58,7 +58,7 @@ and reactivated like this::
   workon codecraftsmen
 
 When a virtual environment is activated, any new Python packages
-installed using :ref:`pip <pip>` only apply to the active environment
-and global (system) site packages are disabled.
+installed using `pip <pip>` only apply to the active environment and
+global (system) site packages are disabled.
 
-.. _virtualenvwrapper site: https://virtualenvwrapper.readthedocs.io
+.. _virtualenvwrapper-site: https://virtualenvwrapper.readthedocs.io

@@ -1,16 +1,14 @@
-.. _Python notes:
-
 ========
 Python 3
 ========
 
-Python 3 is a popular, productive, high-level language.
+`Python 3 <python>` is a popular, productive, high-level language.
 
 External Documentation
 ======================
 
-- `Python Web Site <Python site_>`_
-- `Official Documentation <Python docs_>`_
+- `Python Web Site <python-site_>`_
+- `Official Documentation <python-docs_>`_
 
 Supported Versions
 ==================
@@ -21,6 +19,8 @@ crafting tools:
 - 3.6.9 (Ubuntu 18.04)
 - 3.8.5 (Ubuntu 20.04)
 
+.. _python-install:
+
 Installation Notes
 ==================
 
@@ -29,5 +29,5 @@ this command can be used to install it in any case::
 
   sudo apt-get install python3
 
-.. _Python site: https://www.python.org
-.. _Python docs: https://docs.python.org/3/
+.. _python-site: https://www.python.org
+.. _python-docs: https://docs.python.org/3/

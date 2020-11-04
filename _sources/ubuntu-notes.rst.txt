@@ -1,16 +1,14 @@
-.. _Ubuntu notes:
-
 ======
 Ubuntu
 ======
 
-Ubuntu is an open-source operating system distribution built on
-:ref:`Linux <Linux>` and :ref:`GNU <GNU>` software.
+`Ubuntu <ubuntu>` is an open-source operating system distribution
+built on `Linux <linux>` and `GNU <gnu>` software.
 
 External Documentation
 ======================
 
-- `Ubuntu Web Site <Ubuntu site_>`_
+- `Ubuntu Web Site <ubuntu-site_>`_
 
 Supported Versions
 ==================
@@ -21,4 +19,4 @@ crafting tools:
 - 18.04
 - 20.04
 
-.. _Ubuntu site: https://ubuntu.com
+.. _ubuntu-site: https://ubuntu.com

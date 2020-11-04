@@ -1,5 +1,3 @@
-.. _philosopy:
-
 ==========
 Philosophy
 ==========
@@ -34,7 +32,7 @@ building those tools and getting them into the hands of developers.
 Programmers are Caretakers
 ==========================
 
-The Code Craftsmen also realize that, with very few `exceptions`_, a
+The Code Craftsmen also realize that, with very few exceptions_, a
 computer program is never really finished.  A large part of our work
 is maintaining existing code and adapting it to meet new requirements.
 Sometimes, with a long-lived code base, it seems as if the program

@@ -1,27 +1,27 @@
-.. _libavoid notes:
-
 ========
 libavoid
 ========
 
-libavoid is a cross-platform C++ library providing fast,
+`libavoid <libavoid>` is a cross-platform C++ library providing fast,
 object-avoiding orthogonal and polyline connector routing for use in
 interactive diagram editors.
 
 External Documentation
 ======================
 
-- `libavoid Web Site <libavoid site_>`_
-- `Adaptagrams Project Web Site <adaptagrams site_>`_
-- `Example Program <libavoid example_>`_
+- `libavoid Web Site <libavoid-site_>`_
+- `Adaptagrams Project Web Site <adaptagrams-site_>`_
+- `Example Program <libavoid-example_>`_
+
+.. _libavoid-install:
 
 Installation Notes
 ==================
 
 libavoid is part of the Adaptagrams project, and is developed as part
 of that Git repository.  The first step in installing libavoid is to
-make sure that :ref:`Git <Git notes>` is installed, and then pull down
-a copy of the adaptagrams repository::
+make sure that `Git <git-install>` is installed, and then pull down a
+copy of the adaptagrams repository::
 
   mkdir -p ~/git
   cd ~/git
@@ -47,7 +47,7 @@ These commands should build the C++ libraries::
   cd cola
   ./autogen.sh
 
-This may result in a build failure, but the required `libavoid.so`
+This may result in a build failure, but the required :file:`libavoid.so`
 library should have been built correctly.  The location of the library
 is here::
 
@@ -60,11 +60,11 @@ additional packages are required::
   sudo apt-get install swig python3-dev
 
 Before proceeding, also make sure that you have created and activated
-the `codecraftsmen` virtual Python environment as described :ref:`here
-<virtualenvwrapper notes>`.
+the ``codecraftsmen`` virtual Python environment as described `here
+<virtualenvwrapper-install>`.
 
-Next, change this line in `swig-python-setup.py` to make it work under
-Python 3::
+Next, change this line in :file:`swig-python-setup.py` to make it work
+under Python 3::
 
   if sysconfig.get_config_vars().has_key("OPT"):
   
@@ -83,6 +83,7 @@ Now install the Python package::
   cd ..
   pip install -e cola
 
-.. _libavoid site: https://www.adaptagrams.org/documentation/libavoid.html
-.. _adaptagrams site: https://www.adaptagrams.org
-.. _libavoid example: https://www.adaptagrams.org/documentation/libavoid_example.html
+.. _libavoid-site: https://www.adaptagrams.org/documentation/libavoid.html
+.. _adaptagrams-site: https://www.adaptagrams.org
+.. _libavoid-example:
+   https://www.adaptagrams.org/documentation/libavoid_example.html

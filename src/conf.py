@@ -70,6 +70,7 @@ exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store']
 pygments_style = None
 
 # numfig = True
+default_role = 'any'
 
 # -- Options for HTML output -------------------------------------------------
 

@@ -1,19 +1,15 @@
-.. _software:
-
 ========
 Software
 ========
 
-.. _code crafting tools:
-
 Overview
 ========
 
-The following `code crafting tools <code crafting tools
-organization_>`_ are (or will be) provided as :ref:`Git <Git>`
-repositories hosted on on :ref:`GitHub <GitHub>`:
+The following `code crafting tools <code-crafting-tools-org_>`_ are
+(or will be) provided as `Git <git>` repositories hosted on `GitHub
+<github>`:
 
-.. _Chimps:
+.. _chimps:
 
 Chimps
   Component-based hierarchic message-passing system.  Chimps is a
@@ -22,26 +18,27 @@ Chimps
   run-time environment for inter-component communication, scheduling,
   timing, and logging functionality, as well as a set of generalized
   application executives.  Component messaging interfaces and
-  hierarchic structures are defined and generated using `Smidgen`_ and
-  and `Finch`_, respectively.
+  hierarchic structures are defined and generated using `Smidgen
+  <smidgen>` and and `Finch <finch>`, respectively.
 
-.. _Shasam:
-
+.. _shasam:
+	      
 Shasam
   Standardized hierarchic architecture for simulation and modeling.
   This is a component-based 6-DOF simulation framework with Monte
-  Carlo capability that is built on top of `Chimps`_.
+  Carlo capability that is built on top of `Chimps <chimps>`.
   
-.. _Hildegard:
+.. _hildegard:
 
-`Hildegard <Hildegard docs_>`_
+`Hildegard <hildegard-docs_>`_
   Hierarchic layout and design environment for generating applications
   and rendering diagrams.  This is a graphical application for drawing
   block diagrams that describe the hierarchic structure and flow of
   data between the subcomponents of a system.  This tool can be used
-  to graphically construct `Chimps`_ or `Shasam`_ applications.
+  to graphically construct `Chimps <chimps>` or `Shasam <shasam>`
+  applications.
   
-.. _Finch:
+.. _finch:
 
 Finch
   Format for specifying interconnections and component hierarchies.
@@ -49,18 +46,18 @@ Finch
   between components and defining hierarchic component structures,
   along with a set of utilities to generate code and documentation
   from these definitions.  Component input/output interfaces are defined
-  using `Smidgen`_.
+  using `Smidgen <smidgen>`.
 
-.. _Smidgen:
+.. _smidgen:
 
 Smidgen
   Syntax for messaging interface definition and generation.  This
   project provides a language for defining component input/output
   messaging interfaces and a set of utilities to generate code and
   documentation from these definitions.  The structure of input and
-  output data is defined using `Tydl`_.
+  output data is defined using `Tydl <tydl>`.
 
-.. _Tydl:
+.. _tydl:
 
 Tydl
   Type definition language for specifying the structure, layout, and
@@ -68,29 +65,30 @@ Tydl
   of tools that can be used to generate documentation or high-level
   code from type specifications.
 
-.. _Bt:
+.. _bt:
 
 Bt
   Build tool that manages the dependencies between software projects
   and automates the retrieval, configuration, and building of
   prerequisite software repositories.
   
-.. _Wumps:
+.. _wumps:
 
-`Wumps <Wumps docs_>`_
+`Wumps <wumps-docs_>`_
   Widely useful macro programming syntax that serves as a foundation
-  for building domain-specific languages such as `Tydl`_ and
-  `Smidgen`_.
+  for building domain-specific languages such as `Tydl <tydl>` and
+  `Smidgen <smidgen>`.
 
-.. _Flopi:
+.. _flopi:
 
 Flopi
   Fine-grained logging and output Python interface for displaying and
   recording status, event, debugging, warning, and error information.
   Flopi can operate as a pure Python module, or in conjunction with
-  `Flout`_ when `extending or embedding`_ the Python interpreter.
+  `Flout <flout>` when `extending or embedding`_ the Python
+  interpreter.
 
-.. _Turtal:
+.. _turtal:
 
 Turtal
   The underlying run-time abstraction layer that isolates high-level
@@ -99,14 +97,14 @@ Turtal
   provides a set of uniform programming interfaces for constructs like
   message queues, threads, file input/output, timers, and schedulers.
 
-.. _Flout:
+.. _flout:
 
 Flout
   Fine-grained logging and output library that provides a standardized
   programming interface for the display and recording of status,
   event, debugging, warning, and error information.
 
-.. _Ranger:
+.. _ranger:
 
 Ranger
   Random number generation routines.  This library provides routines
@@ -114,14 +112,14 @@ Ranger
   draws from these streams into random variables that exhibit specific
   probability distributions.
   
-.. _Todes:
+.. _todes:
 
 Todes
   Time-stepping ordinary differential equation solver.  This library
   provides an engine for the numerical solution of differential
   equations.
   
-.. _Caveman:
+.. _caveman:
 
 Caveman
   Common API for vector and matrix numerical operations.  This library
@@ -131,10 +129,9 @@ Caveman
 Development Tools
 =================
 
-The following diagram illustrates how our :ref:`code crafting
-tools <code crafting tools>` work together with :ref:`external
-open-source software <foundation>` to form a software stack for
-application development.
+The following diagram illustrates how our `code crafting tools
+<software>` work together with `external open-source software
+<foundation>` to form a software stack for application development.
 
 .. figure:: images/simplified_devel_sw_stack.*
 
@@ -154,8 +151,8 @@ The following diagram describes the structure and run-time software
 dependencies for a typical application developed using our code
 crafting tools.  They show how in-house (application developer) code
 interacts with 3rd-party code, the code generated by our tools, the
-:ref:`libraries we provide <code crafting tools>`, and :ref:`external
-open-source software <foundation>`.
+`libraries we provide <software>`, and `external open-source software
+<foundation>`.
 
 .. figure:: images/simplified_run_time_sw_stack.*
 
@@ -168,7 +165,7 @@ dependencies between the various software projects more explicitly.
 
    Run-Time Software Stack (Detailed)
 	    
-.. _code crafting tools organization: https://github.com/codecraftingtools
-.. _Hildegard docs: https://github.com/codecraftingtools/hildegard
-.. _Wumps docs: http://wumps.readthedocs.io
+.. _code-crafting-tools-org: https://github.com/codecraftingtools
+.. _hildegard-docs: https://github.com/codecraftingtools/hildegard
+.. _wumps-docs: http://wumps.readthedocs.io
 .. _extending or embedding: https://docs.python.org/3/extending

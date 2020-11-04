@@ -157,11 +157,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="software">
-<span id="id1"></span><h1>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h1>
+<h1>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
-<span id="code-crafting-tools"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The following <a class="reference external" href="https://github.com/codecraftingtools">code crafting tools</a> are (or will be) provided as <a class="reference internal" href="foundation.html#git"><span class="std std-ref">Git</span></a>
-repositories hosted on on <a class="reference internal" href="foundation.html#github"><span class="std std-ref">GitHub</span></a>:</p>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The following <a class="reference external" href="https://github.com/codecraftingtools">code crafting tools</a> are
+(or will be) provided as <a class="reference internal" href="foundation.html#git"><span class="std std-ref">Git</span></a> repositories hosted on <a class="reference internal" href="foundation.html#github"><span class="std std-ref">GitHub</span></a>:</p>
 <dl class="docutils" id="chimps">
 <dt>Chimps</dt>
 <dd>Component-based hierarchic message-passing system.  Chimps is a
@@ -170,14 +170,13 @@ message-passing software components.  It provides a standardized
 run-time environment for inter-component communication, scheduling,
 timing, and logging functionality, as well as a set of generalized
 application executives.  Component messaging interfaces and
-hierarchic structures are defined and generated using <a class="reference internal" href="#smidgen">Smidgen</a> and
-and <a class="reference internal" href="#finch">Finch</a>, respectively.</dd>
+hierarchic structures are defined and generated using <a class="reference internal" href="#smidgen"><span class="std std-ref">Smidgen</span></a> and and <a class="reference internal" href="#finch"><span class="std std-ref">Finch</span></a>, respectively.</dd>
 </dl>
 <dl class="docutils" id="shasam">
 <dt>Shasam</dt>
 <dd>Standardized hierarchic architecture for simulation and modeling.
 This is a component-based 6-DOF simulation framework with Monte
-Carlo capability that is built on top of <a class="reference internal" href="#chimps">Chimps</a>.</dd>
+Carlo capability that is built on top of <a class="reference internal" href="#chimps"><span class="std std-ref">Chimps</span></a>.</dd>
 </dl>
 <dl class="docutils" id="hildegard">
 <dt><a class="reference external" href="https://github.com/codecraftingtools/hildegard">Hildegard</a></dt>
@@ -185,7 +184,8 @@ Carlo capability that is built on top of <a class="reference internal" href="#ch
 and rendering diagrams.  This is a graphical application for drawing
 block diagrams that describe the hierarchic structure and flow of
 data between the subcomponents of a system.  This tool can be used
-to graphically construct <a class="reference internal" href="#chimps">Chimps</a> or <a class="reference internal" href="#shasam">Shasam</a> applications.</dd>
+to graphically construct <a class="reference internal" href="#chimps"><span class="std std-ref">Chimps</span></a> or <a class="reference internal" href="#shasam"><span class="std std-ref">Shasam</span></a>
+applications.</dd>
 </dl>
 <dl class="docutils" id="finch">
 <dt>Finch</dt>
@@ -194,7 +194,7 @@ This project provides a language for making input/output connections
 between components and defining hierarchic component structures,
 along with a set of utilities to generate code and documentation
 from these definitions.  Component input/output interfaces are defined
-using <a class="reference internal" href="#smidgen">Smidgen</a>.</dd>
+using <a class="reference internal" href="#smidgen"><span class="std std-ref">Smidgen</span></a>.</dd>
 </dl>
 <dl class="docutils" id="smidgen">
 <dt>Smidgen</dt>
@@ -202,7 +202,7 @@ using <a class="reference internal" href="#smidgen">Smidgen</a>.</dd>
 project provides a language for defining component input/output
 messaging interfaces and a set of utilities to generate code and
 documentation from these definitions.  The structure of input and
-output data is defined using <a class="reference internal" href="#tydl">Tydl</a>.</dd>
+output data is defined using <a class="reference internal" href="#tydl"><span class="std std-ref">Tydl</span></a>.</dd>
 </dl>
 <dl class="docutils" id="tydl">
 <dt>Tydl</dt>
@@ -220,15 +220,16 @@ prerequisite software repositories.</dd>
 <dl class="docutils" id="wumps">
 <dt><a class="reference external" href="http://wumps.readthedocs.io">Wumps</a></dt>
 <dd>Widely useful macro programming syntax that serves as a foundation
-for building domain-specific languages such as <a class="reference internal" href="#tydl">Tydl</a> and
-<a class="reference internal" href="#smidgen">Smidgen</a>.</dd>
+for building domain-specific languages such as <a class="reference internal" href="#tydl"><span class="std std-ref">Tydl</span></a> and
+<a class="reference internal" href="#smidgen"><span class="std std-ref">Smidgen</span></a>.</dd>
 </dl>
 <dl class="docutils" id="flopi">
 <dt>Flopi</dt>
 <dd>Fine-grained logging and output Python interface for displaying and
 recording status, event, debugging, warning, and error information.
 Flopi can operate as a pure Python module, or in conjunction with
-<a class="reference internal" href="#flout">Flout</a> when <a class="reference external" href="https://docs.python.org/3/extending">extending or embedding</a> the Python interpreter.</dd>
+<a class="reference internal" href="#flout"><span class="std std-ref">Flout</span></a> when <a class="reference external" href="https://docs.python.org/3/extending">extending or embedding</a> the Python
+interpreter.</dd>
 </dl>
 <dl class="docutils" id="turtal">
 <dt>Turtal</dt>
@@ -266,16 +267,13 @@ explicit dependencies on lower-level matrix libraries.</dd>
 </div>
 <div class="section" id="development-tools">
 <h2>Development Tools<a class="headerlink" href="#development-tools" title="Permalink to this headline">¶</a></h2>
-<p>The following diagram illustrates how our <a class="reference internal" href="#code-crafting-tools"><span class="std std-ref">code crafting
-tools</span></a> work together with <a class="reference internal" href="foundation.html#foundation"><span class="std std-ref">external
-open-source software</span></a> to form a software stack for
-application development.</p>
-<div class="figure" id="id2">
+<p>The following diagram illustrates how our <a class="reference internal" href="#"><span class="doc">code crafting tools</span></a> work together with <a class="reference internal" href="foundation.html"><span class="doc">external open-source software</span></a> to form a software stack for application development.</p>
+<div class="figure" id="id1">
 <img alt="_images/simplified_devel_sw_stack.svg" src="_images/simplified_devel_sw_stack.svg" /><p class="caption"><span class="caption-text">Software Stack for Application Development (Simplified)</span></p>
 </div>
 <p>An expanded, more detailed version of this diagram shows the
 dependencies between the various software projects more explicitly.</p>
-<div class="figure" id="id3">
+<div class="figure" id="id2">
 <img alt="_images/detailed_devel_sw_stack.svg" src="_images/detailed_devel_sw_stack.svg" /><p class="caption"><span class="caption-text">Software Stack for Application Development (Detailed)</span></p>
 </div>
 </div>
@@ -285,14 +283,13 @@ dependencies between the various software projects more explicitly.</p>
 dependencies for a typical application developed using our code
 crafting tools.  They show how in-house (application developer) code
 interacts with 3rd-party code, the code generated by our tools, the
-<a class="reference internal" href="#code-crafting-tools"><span class="std std-ref">libraries we provide</span></a>, and <a class="reference internal" href="foundation.html#foundation"><span class="std std-ref">external
-open-source software</span></a>.</p>
-<div class="figure" id="id4">
+<a class="reference internal" href="#"><span class="doc">libraries we provide</span></a>, and <a class="reference internal" href="foundation.html"><span class="doc">external open-source software</span></a>.</p>
+<div class="figure" id="id3">
 <img alt="_images/simplified_run_time_sw_stack.svg" src="_images/simplified_run_time_sw_stack.svg" /><p class="caption"><span class="caption-text">Run-Time Software Stack (Simplified)</span></p>
 </div>
 <p>An expanded, more detailed version of this diagram shows the
 dependencies between the various software projects more explicitly.</p>
-<div class="figure" id="id5">
+<div class="figure" id="id4">
 <img alt="_images/detailed_run_time_sw_stack.svg" src="_images/detailed_run_time_sw_stack.svg" /><p class="caption"><span class="caption-text">Run-Time Software Stack (Detailed)</span></p>
 </div>
 </div>

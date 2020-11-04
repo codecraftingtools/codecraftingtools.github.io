@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Qt 5" href="notes_on_qt.html" />
-    <link rel="prev" title="Lark" href="notes_on_lark.html" /> 
+    <link rel="next" title="Qt 5" href="qt-notes.html" />
+    <link rel="prev" title="Lark" href="lark-notes.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -87,16 +87,17 @@
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="foundation.html">Foundation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="notes.html">Notes</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="notes_on_lark.html">Lark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lark-notes.html">Lark</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">libavoid</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#external-documentation">External Documentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installation-notes">Installation Notes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="notes_on_qt.html">Qt 5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notes_on_virtualenvwrapper.html">virtualenvwrapper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notes_on_python.html">Python 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notes_on_git.html">Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qt-notes.html">Qt 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualenvwrapper-notes.html">virtualenvwrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python-notes.html">Python 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ubuntu-notes.html">Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-notes.html">Git</a></li>
 </ul>
 </li>
 </ul>
@@ -152,7 +153,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/notes_on_libavoid.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/libavoid-notes.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -166,8 +167,8 @@
            <div itemprop="articleBody">
             
   <div class="section" id="libavoid">
-<span id="libavoid-notes"></span><h1>libavoid<a class="headerlink" href="#libavoid" title="Permalink to this headline">¶</a></h1>
-<p>libavoid is a cross-platform C++ library providing fast,
+<h1>libavoid<a class="headerlink" href="#libavoid" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="foundation.html#libavoid"><span class="std std-ref">libavoid</span></a> is a cross-platform C++ library providing fast,
 object-avoiding orthogonal and polyline connector routing for use in
 interactive diagram editors.</p>
 <div class="section" id="external-documentation">
@@ -179,11 +180,11 @@ interactive diagram editors.</p>
 </ul>
 </div>
 <div class="section" id="installation-notes">
-<h2>Installation Notes<a class="headerlink" href="#installation-notes" title="Permalink to this headline">¶</a></h2>
+<span id="libavoid-install"></span><h2>Installation Notes<a class="headerlink" href="#installation-notes" title="Permalink to this headline">¶</a></h2>
 <p>libavoid is part of the Adaptagrams project, and is developed as part
 of that Git repository.  The first step in installing libavoid is to
-make sure that <a class="reference internal" href="notes_on_git.html#git-notes"><span class="std std-ref">Git</span></a> is installed, and then pull down
-a copy of the adaptagrams repository:</p>
+make sure that <a class="reference internal" href="git-notes.html#git-install"><span class="std std-ref">Git</span></a> is installed, and then pull down a
+copy of the adaptagrams repository:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">git</span>
 <span class="n">cd</span> <span class="o">~/</span><span class="n">git</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mjwybrow</span><span class="o">/</span><span class="n">adaptagrams</span><span class="o">.</span><span class="n">git</span>
@@ -209,7 +210,7 @@ if they are not present:</p>
 <span class="o">./</span><span class="n">autogen</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>This may result in a build failure, but the required <cite>libavoid.so</cite>
+<p>This may result in a build failure, but the required <code class="file docutils literal notranslate"><span class="pre">libavoid.so</span></code>
 library should have been built correctly.  The location of the library
 is here:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">git</span><span class="o">/</span><span class="n">adaptagrams</span><span class="o">/</span><span class="n">cola</span><span class="o">/</span><span class="n">libavoid</span><span class="o">/.</span><span class="n">libs</span><span class="o">/</span><span class="n">libavoid</span><span class="o">.</span><span class="n">so</span>
@@ -222,9 +223,9 @@ additional packages are required:</p>
 </pre></div>
 </div>
 <p>Before proceeding, also make sure that you have created and activated
-the <cite>codecraftsmen</cite> virtual Python environment as described <a class="reference internal" href="notes_on_virtualenvwrapper.html#virtualenvwrapper-notes"><span class="std std-ref">here</span></a>.</p>
-<p>Next, change this line in <cite>swig-python-setup.py</cite> to make it work under
-Python 3:</p>
+the <code class="docutils literal notranslate"><span class="pre">codecraftsmen</span></code> virtual Python environment as described <a class="reference internal" href="virtualenvwrapper-notes.html#virtualenvwrapper-install"><span class="std std-ref">here</span></a>.</p>
+<p>Next, change this line in <code class="file docutils literal notranslate"><span class="pre">swig-python-setup.py</span></code> to make it work
+under Python 3:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">sysconfig</span><span class="o">.</span><span class="n">get_config_vars</span><span class="p">()</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;OPT&quot;</span><span class="p">):</span>
 </pre></div>
 </div>
@@ -254,10 +255,10 @@ Python 3:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="notes_on_qt.html" class="btn btn-neutral float-right" title="Qt 5" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="qt-notes.html" class="btn btn-neutral float-right" title="Qt 5" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="notes_on_lark.html" class="btn btn-neutral" title="Lark" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="lark-notes.html" class="btn btn-neutral" title="Lark" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
