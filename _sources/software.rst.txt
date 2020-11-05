@@ -166,6 +166,6 @@ dependencies between the various software projects more explicitly.
    Run-Time Software Stack (Detailed)
 	    
 .. _code-crafting-tools-org: https://github.com/codecraftingtools
-.. _hildegard-docs: https://github.com/codecraftingtools/hildegard
+.. _hildegard-docs: https://hildegard.readthedocs.io
 .. _wumps-docs: http://wumps.readthedocs.io
 .. _extending or embedding: https://docs.python.org/3/extending
