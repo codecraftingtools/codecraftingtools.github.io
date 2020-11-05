@@ -35,14 +35,14 @@ packages on Ubuntu 20.04/18.04::
 Miscellaneous Notes
 ===================
 
-Official `Sphinx Quickstart`_
+- Official `Sphinx Quickstart`_
 
-`Read the Docs Sphinx Quickstart`_
-
-How to install the `Read the Docs Sphinx Theme`_.
-
-`Including parts of README.rst in your sphinx docs`_.
-
+- `Read the Docs Sphinx Quickstart`_
+- How to install the `Read the Docs Sphinx Theme`_
+- How to `include parts of README.rst`_ in your sphinx docs
+- How to embed `Clickable SVG Files`_
+- How to `conditionally include block based on documentation type`_
+  
 .. _sphinx-site: https://www.sphinx-doc.org
 .. _sphinx-docs: https://www.sphinx-doc.org/en/master/contents.html
 .. _Read the Docs Sphinx Quickstart:
@@ -51,5 +51,9 @@ How to install the `Read the Docs Sphinx Theme`_.
    https://www.sphinx-doc.org/en/master/usage/quickstart.html
 .. _Read the Docs Sphinx Theme:
    https://sphinx-rtd-theme.readthedocs.io/en/latest/
-.. _Including parts of README.rst in your sphinx docs:
+.. _include parts of README.rst:
    https://muffinresearch.co.uk/selectively-including-parts-readme-rst-in-your-docs
+.. _Clickable SVG Files:
+   https://stackoverflow.com/questions/34777943/insert-clickable-svg-image-into-sphinx-documentation
+.. _conditionally include block based on documentation type:
+   https://stackoverflow.com/questions/2215518/conditional-output-in-sphinx-documentation

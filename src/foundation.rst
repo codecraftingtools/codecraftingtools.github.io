@@ -124,10 +124,15 @@ Operating Systems
 `RTEMS <rtems-site_>`_
   Embedded, open-source, real-time operating system
 
-.. _config_preempt_rt:
+.. _config-preempt-rt:
 
 `CONFIG_PREEMPT_RT <config-preempt-rt-site_>`_
   `Linux <linux>` patch set for improved real-time performance
+
+.. _posix:
+
+`POSIX <posix-docs_>`_
+  Portable operating system standard, based on Unix
   
 Source Code Management
 ======================
@@ -163,5 +168,6 @@ Web Services
 .. _xenomai-site: https://www.xenomai.org
 .. _rtems-site: https://www.rtems.org
 .. _config-preempt-rt-site: https://rt.wiki.kernel.org
+.. _posix-docs: https://en.wikipedia.org/wiki/POSIX
 .. _github-site: https://github.com
 .. _read-the-docs-site: https://readthedocs.org
