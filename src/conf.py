@@ -40,6 +40,8 @@ release = u''
 # ones.
 extensions = [
     'sphinx.ext.githubpages',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.extlinks',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -185,3 +187,11 @@ epub_exclude_files = ['search.html']
 
 
 # -- Extension configuration -------------------------------------------------
+intersphinx_mapping = {
+    'wumps': ('https://wumps.readthedocs.io/en/latest/', None),
+    'hildegard': ('https://hildegard.readthedocs.io/en/latest/', None)
+}
+
+extlinks = {
+    #'repo': ('https://github.com/codecraftingtools/wumps/blob/master/%s','')
+}
