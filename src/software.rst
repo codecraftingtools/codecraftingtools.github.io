@@ -21,13 +21,6 @@ Chimps
   hierarchic structures are defined and generated using `Smidgen
   <smidgen>` and and `Finch <finch>`, respectively.
 
-.. _shasam:
-	      
-Shasam
-  Standardized hierarchic architecture for simulation and modeling.
-  This is a component-based 6-DOF simulation framework with Monte
-  Carlo capability that is built on top of `Chimps <chimps>`.
-  
 .. _hildegard:
 
 `Hildegard <hildegard-docs_>`_
@@ -37,6 +30,13 @@ Shasam
   data between the subcomponents of a system.  This tool can be used
   to graphically construct `Chimps <chimps>` or `Shasam <shasam>`
   applications.
+  
+.. _shasam:
+	      
+Shasam
+  Standardized hierarchic architecture for simulation and modeling.
+  This is a component-based 6-DOF simulation framework with Monte
+  Carlo capability that is built on top of `Chimps <chimps>`.
   
 .. _finch:
 
@@ -97,13 +97,6 @@ Flopi
   provides a set of uniform programming interfaces for constructs like
   message queues, threads, file input/output, timers, and schedulers.
 
-.. _flout:
-
-Flout
-  Fine-grained logging and output library that provides a standardized
-  programming interface for the display and recording of status,
-  event, debugging, warning, and error information.
-
 .. _ranger:
 
 Ranger
@@ -126,6 +119,13 @@ Caveman
   provides standardized matrix and vector class interfaces to avoid
   explicit dependencies on lower-level matrix libraries.
   
+.. _flout:
+
+Flout
+  Fine-grained logging and output library that provides a standardized
+  programming interface for the display and recording of status,
+  event, debugging, warning, and error information.
+
 Development Tools
 =================
 
