@@ -81,7 +81,7 @@ Bt
 
 .. _flopi:
 
-Flopi
+`Flopi <flopi-docs_>`_
   Fine-grained logging and output Python interface for displaying and
   recording status, event, debugging, warning, and error information.
   Flopi can operate as a pure Python module, or in conjunction with
@@ -204,5 +204,6 @@ dependencies between the various software projects more explicitly.
 .. _code-crafting-tools-org: https://github.com/codecraftingtools
 .. _hildegard-docs: https://hildegard.readthedocs.io
 .. _wumps-docs: http://wumps.readthedocs.io
+.. _flopi-docs: http://flopi.readthedocs.io
 .. _turtal-docs: http://turtal.readthedocs.io
 .. _extending or embedding: https://docs.python.org/3/extending
