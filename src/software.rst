@@ -90,7 +90,7 @@ Flopi
 
 .. _turtal:
 
-Turtal
+`Turtal <turtal-docs_>`_
   The underlying run-time abstraction layer that isolates high-level
   code from the details related to a specific operating system,
   hardware, or message-passing framework implementation.  This library
@@ -204,4 +204,5 @@ dependencies between the various software projects more explicitly.
 .. _code-crafting-tools-org: https://github.com/codecraftingtools
 .. _hildegard-docs: https://hildegard.readthedocs.io
 .. _wumps-docs: http://wumps.readthedocs.io
+.. _turtal-docs: http://turtal.readthedocs.io
 .. _extending or embedding: https://docs.python.org/3/extending
