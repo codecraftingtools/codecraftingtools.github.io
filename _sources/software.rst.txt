@@ -59,7 +59,7 @@ Smidgen
 
 .. _tydl:
 
-Tydl
+`Tydl <tydl-docs_>`_
   Type definition language for specifying the structure, layout, and
   semantic attributes of data types.  This project also provides a set
   of tools that can be used to generate documentation or high-level
@@ -209,6 +209,7 @@ dependencies between the various software projects more explicitly.
 	    
 .. _code-crafting-tools-org: https://github.com/codecraftingtools
 .. _hildegard-docs: https://hildegard.readthedocs.io
+.. _tydl-docs: http://tydl.readthedocs.io
 .. _wumps-docs: http://wumps.readthedocs.io
 .. _flopi-docs: http://flopi.readthedocs.io
 .. _turtal-docs: http://turtal.readthedocs.io
