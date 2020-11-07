@@ -62,6 +62,8 @@ of this, it is advantageous to develop and **test as much code as
 possible in the simplified domains** before moving into the more
 complex ones.
 
+.. _application-structure:
+
 Application Structure
 ---------------------
 

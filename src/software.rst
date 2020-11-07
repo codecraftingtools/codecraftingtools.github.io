@@ -126,6 +126,8 @@ Flout
   programming interface for the display and recording of status,
   event, debugging, warning, and error information.
 
+.. _development-tools:
+
 Development Tools
 =================
 
@@ -161,7 +163,9 @@ dependencies between the various software projects more explicitly.
 .. only:: latex
 	  
    .. figure:: images/detailed_devel_sw_stack.*
-	    
+
+.. _run-time-software:
+   
 Run-Time Software
 =================
 
