@@ -11,7 +11,7 @@ The following `code crafting tools <code-crafting-tools-org_>`_ are
 
 .. _chimps:
 
-Chimps
+`Chimps <chimps-docs_>`_
   Concurrent hierarchic message-based programming system.  Chimps is a
   framework for building software by implementing and connecting
   message-passing software components.  It provides a standardized
@@ -19,7 +19,7 @@ Chimps
   timing, and logging functionality, as well as a set of generalized
   application executives.  Component messaging interfaces and
   hierarchic structures are defined and generated using `Smidgen
-  <smidgen>` and and `Finch <finch>`, respectively.
+  <smidgen>` and `Finch <finch>`, respectively.
 
 .. _hildegard:
 
@@ -33,14 +33,14 @@ Chimps
   
 .. _shasam:
 	      
-Shasam
+`Shasam <shasam-docs_>`_
   Standardized hierarchic architecture for simulation and modeling.
   This is a component-based 6-DOF simulation framework with Monte
   Carlo capability that is built on top of `Chimps <chimps>`.
   
 .. _finch:
 
-Finch
+`Finch <finch-docs_>`_
   Format for specifying interconnections and component hierarchies.
   This project provides a language for making input/output connections
   between components and defining hierarchic component structures,
@@ -50,7 +50,7 @@ Finch
 
 .. _smidgen:
 
-Smidgen
+`Smidgen <smidgen-docs_>`_
   Syntax for messaging interface definition and generation.  This
   project provides a language for defining component input/output
   messaging interfaces and a set of utilities to generate code and
@@ -208,7 +208,11 @@ dependencies between the various software projects more explicitly.
    .. figure:: images/detailed_run_time_sw_stack.*
 	    
 .. _code-crafting-tools-org: https://github.com/codecraftingtools
+.. _chimps-docs: https://chimps.readthedocs.io
 .. _hildegard-docs: https://hildegard.readthedocs.io
+.. _shasam-docs: https://shasam.readthedocs.io
+.. _finch-docs: http://finch-doc.readthedocs.io
+.. _smidgen-docs: http://smidgen.readthedocs.io
 .. _tydl-docs: http://tydl.readthedocs.io
 .. _wumps-docs: http://wumps.readthedocs.io
 .. _flopi-docs: http://flopi.readthedocs.io

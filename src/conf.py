@@ -188,7 +188,11 @@ epub_exclude_files = ['search.html']
 
 # -- Extension configuration -------------------------------------------------
 intersphinx_mapping = {
+    'chimps': ('https://chimps.readthedocs.io/en/latest/', None),
     'hildegard': ('https://hildegard.readthedocs.io/en/latest/', None),
+    'shasam': ('https://shasam.readthedocs.io/en/latest/', None),
+    'finch': ('https://finch-doc.readthedocs.io/en/latest/', None),
+    'smidgen': ('https://smidgen.readthedocs.io/en/latest/', None),
     'tydl': ('https://tydl.readthedocs.io/en/latest/', None),
     'wumps': ('https://wumps.readthedocs.io/en/latest/', None),
     'flopi': ('https://flopi.readthedocs.io/en/latest/', None),
