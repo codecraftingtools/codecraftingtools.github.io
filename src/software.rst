@@ -121,7 +121,7 @@ Caveman
   
 .. _flout:
 
-Flout
+`Flout <flout-docs_>`_
   Fine-grained logging and output library that provides a standardized
   programming interface for the display and recording of status,
   event, debugging, warning, and error information.
@@ -212,4 +212,5 @@ dependencies between the various software projects more explicitly.
 .. _wumps-docs: http://wumps.readthedocs.io
 .. _flopi-docs: http://flopi.readthedocs.io
 .. _turtal-docs: http://turtal.readthedocs.io
+.. _flout-docs: http://flout.readthedocs.io
 .. _extending or embedding: https://docs.python.org/3/extending

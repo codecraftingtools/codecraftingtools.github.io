@@ -192,6 +192,7 @@ intersphinx_mapping = {
     'wumps': ('https://wumps.readthedocs.io/en/latest/', None),
     'flopi': ('https://flopi.readthedocs.io/en/latest/', None),
     'turtal': ('https://turtal.readthedocs.io/en/latest/', None),
+    'flout': ('https://flout.readthedocs.io/en/latest/', None),
 }
 
 extlinks = {
