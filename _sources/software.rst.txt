@@ -211,7 +211,7 @@ dependencies between the various software projects more explicitly.
 .. _chimps-docs: https://chimps.readthedocs.io
 .. _hildegard-docs: https://hildegard.readthedocs.io
 .. _shasam-docs: https://shasam.readthedocs.io
-.. _finch-docs: http://finch-doc.readthedocs.io
+.. _finch-docs: http://finch-format.readthedocs.io
 .. _smidgen-docs: http://smidgen.readthedocs.io
 .. _tydl-docs: http://tydl.readthedocs.io
 .. _wumps-docs: http://wumps.readthedocs.io
