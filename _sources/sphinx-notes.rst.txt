@@ -42,7 +42,10 @@ Miscellaneous Notes
 - How to `include parts of README.rst`_ in your sphinx docs
 - How to embed `Clickable SVG Files`_
 - How to `conditionally include block based on documentation type`_
-  
+- Extracting `API documentation`_ from Python doc strings
+- Documentation on the `autodoc extension`_
+- Documentation on other Sphinx `extensions`_
+
 .. _sphinx-site: https://www.sphinx-doc.org
 .. _sphinx-docs: https://www.sphinx-doc.org/en/master/contents.html
 .. _Read the Docs Sphinx Quickstart:
@@ -57,3 +60,9 @@ Miscellaneous Notes
    https://stackoverflow.com/questions/34777943/insert-clickable-svg-image-into-sphinx-documentation
 .. _conditionally include block based on documentation type:
    https://stackoverflow.com/questions/2215518/conditional-output-in-sphinx-documentation
+.. _API documentation:
+   https://www.sphinx-doc.org/en/master/usage/quickstart.html#autodoc
+.. _autodoc extension:
+   https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
+.. _extensions:
+   https://www.sphinx-doc.org/en/master/usage/extensions/index.html

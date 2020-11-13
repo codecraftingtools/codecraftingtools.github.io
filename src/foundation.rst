@@ -145,6 +145,11 @@ Source Code Management
 Web Services
 ============
 
+.. _pypi:
+
+`Python Package Index (PyPI) <pypi-site_>`_
+  A repository of software for the Python programming language
+  
 .. _github:
 
 `GitHub <github-site_>`_
@@ -169,5 +174,6 @@ Web Services
 .. _rtems-site: https://www.rtems.org
 .. _config-preempt-rt-site: https://rt.wiki.kernel.org
 .. _posix-docs: https://en.wikipedia.org/wiki/POSIX
+.. _pypi-site: https://pypi.org
 .. _github-site: https://github.com
 .. _read-the-docs-site: https://readthedocs.org
