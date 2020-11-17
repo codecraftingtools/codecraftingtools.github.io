@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,43 +11,47 @@
   
 
   
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Software" href="software.html" />
     <link rel="prev" title="Philosophy" href="philosophy.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> Code Craftsmen
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Code Craftsmen
           
 
           
@@ -71,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -120,6 +124,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -158,7 +163,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Design</li>
     
@@ -188,10 +193,10 @@ difficult than it needs to be.  Our hope, and our primary goal, is to
 <strong>restore the joy in programming</strong> by developing code crafting tools
 that make software:</p>
 <ul class="simple">
-<li>Easier to read</li>
-<li>Easier to write</li>
-<li>Easier to maintain</li>
-<li>Easier to reuse</li>
+<li><p>Easier to read</p></li>
+<li><p>Easier to write</p></li>
+<li><p>Easier to maintain</p></li>
+<li><p>Easier to reuse</p></li>
 </ul>
 </div>
 <div class="section" id="principles">
@@ -199,10 +204,10 @@ that make software:</p>
 <p>There are a few key principles that support these goals and drive our
 design strategy, such as:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">Don’t repeat yourself</a></li>
-<li>Design for testability</li>
-<li>Documentation is important</li>
-<li>Don’t repeat yourself (unless it’s worth saying twice)</li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">Don’t repeat yourself</a></p></li>
+<li><p>Design for testability</p></li>
+<li><p>Documentation is important</p></li>
+<li><p>Don’t repeat yourself (unless it’s worth saying twice)</p></li>
 </ul>
 <p>Although there are surely some other principles worth adding to this
 list, the ones listed here play a major role in many of our design
@@ -218,15 +223,15 @@ tools.</p>
 <p>Our tools support the development of software for a wide variety of
 application domains, including, but not limited to:</p>
 <ul class="simple">
-<li>Embedded systems</li>
-<li>Hard and soft real-time systems</li>
-<li>Open and closed-loop control systems</li>
-<li>Hardware testing</li>
-<li>Data acquisition</li>
-<li>Simulation</li>
-<li>Data processing</li>
-<li>Data display</li>
-<li>Desktop applications</li>
+<li><p>Embedded systems</p></li>
+<li><p>Hard and soft real-time systems</p></li>
+<li><p>Open and closed-loop control systems</p></li>
+<li><p>Hardware testing</p></li>
+<li><p>Data acquisition</p></li>
+<li><p>Simulation</p></li>
+<li><p>Data processing</p></li>
+<li><p>Data display</p></li>
+<li><p>Desktop applications</p></li>
 </ul>
 <p>Obviously, the code development cycle for some of these domains
 (e.g. embedded, real-time, and closed-loop systems) is much more
@@ -243,41 +248,40 @@ used (and reused) in a wide variety of application domains without
 alteration.  The following application structure helps us achieve this
 goal by <strong>separating the domain-independent code from the
 domain-specific code</strong>:</p>
-<dl class="docutils">
-<dt>Components</dt>
-<dd>Well-defined software blocks which can, ideally, be used in a
+<dl class="simple">
+<dt>Components</dt><dd><p>Well-defined software blocks which can, ideally, be used in a
 variety of application domains without alteration.  Components
 communicate with other components and interact with their
 environment through a standardized, domain-independent interface.
 It is important to note that when the Code Craftsmen use the term
 <em>component</em>, it is rarely in the general sense, but almost always
-refers a software block that conforms to a very specific interface.</dd>
-<dt>Run-Time Environment</dt>
-<dd>Provides components with a standardized interface to run-time
+refers a software block that conforms to a very specific interface.</p>
+</dd>
+<dt>Run-Time Environment</dt><dd><p>Provides components with a standardized interface to run-time
 functionality, such as inter-component communication, scheduling,
 timing, and logging.  The underlying implementation may be
 general-purpose or tailored to a specific application domain or
-operating system.</dd>
-<dt>Hierarchic Design</dt>
-<dd>Multiple components can be instantiated and their inputs and outputs
+operating system.</p>
+</dd>
+<dt>Hierarchic Design</dt><dd><p>Multiple components can be instantiated and their inputs and outputs
 connected together in the context of a specific run-time environment
-to construct higher-level components and applications.</dd>
-<dt>Application Executive</dt>
-<dd>Common application-level functionality, such as command-line option
+to construct higher-level components and applications.</p>
+</dd>
+<dt>Application Executive</dt><dd><p>Common application-level functionality, such as command-line option
 and input file processing, component configuration and
 initialization, and application termination may be handled by a
-generalized or domain-specific application executive.</dd>
-<dt>Hardware and Operating System Abstraction Layer</dt>
-<dd>Provides a uniform, hardware-independent programming interface to
-standard operating system functionality.</dd>
-<dt>Utility Libraries</dt>
-<dd>Traditional procedural routines or object-oriented class libraries
+generalized or domain-specific application executive.</p>
+</dd>
+<dt>Hardware and Operating System Abstraction Layer</dt><dd><p>Provides a uniform, hardware-independent programming interface to
+standard operating system functionality.</p>
+</dd>
+<dt>Utility Libraries</dt><dd><p>Traditional procedural routines or object-oriented class libraries
 may be used within the implementation of a particular component,
 run-time environment, or application executive, but do not factor
-into the interface between these code segments.</dd>
+into the interface between these code segments.</p>
+</dd>
 </dl>
-<a class="reference internal image-reference" href="_images/conceptual_run_time_sw_stack.svg"><div align="center" class="align-center"><img alt="_images/conceptual_run_time_sw_stack.svg" src="_images/conceptual_run_time_sw_stack.svg" /></div>
-</a>
+<a class="reference internal image-reference" href="_images/conceptual_run_time_sw_stack.svg"><img alt="_images/conceptual_run_time_sw_stack.svg" class="align-center" src="_images/conceptual_run_time_sw_stack.svg" /></a>
 </div>
 <div class="section" id="hardware-architectures">
 <h3>Hardware Architectures<a class="headerlink" href="#hardware-architectures" title="Permalink to this headline">¶</a></h3>
@@ -304,10 +308,10 @@ incorporated into a lower-level abstraction layer or handled by the
 run-time environment.  Although future possibilities are endless, the
 current focus is on providing support for:</p>
 <ul class="simple">
-<li>Standard desktop and embedded Linux</li>
-<li>Real-time Linux (PREEMPT_RT)</li>
-<li>Real-time Linux (Xenomai/cobalt)</li>
-<li>RTEMS</li>
+<li><p>Standard desktop and embedded Linux</p></li>
+<li><p>Real-time Linux (PREEMPT_RT)</p></li>
+<li><p>Real-time Linux (Xenomai/cobalt)</p></li>
+<li><p>RTEMS</p></li>
 </ul>
 </div>
 <div class="section" id="concurrent-and-parallel-processing">
@@ -316,9 +320,8 @@ current focus is on providing support for:</p>
 software components executing concurrently, or even simultaneously (in
 parallel).  There are several categories of concurrency that we must
 consider:</p>
-<dl class="docutils">
-<dt>Preemptive Multitasking</dt>
-<dd>Execution of a task may be forcibly suspended by the operating
+<dl class="simple">
+<dt>Preemptive Multitasking</dt><dd><p>Execution of a task may be forcibly suspended by the operating
 system in order to give another task a turn.  Many real-time
 systems, for example, have long-running lower-priority tasks that
 must be preempted by high-priority short-duration tasks in order to
@@ -326,18 +329,19 @@ meet real-time deadlines.  This is typically achieved by creating a
 separate operating-system thread or process for each task.  In many
 real-time systems, these threads and processes can be assigned
 priority values to ensure that high-priority tasks take precedence
-over low-priority ones.</dd>
-<dt>Cooperative Multitasking</dt>
-<dd>Tasks may voluntarily yield execution to other tasks at specific
+over low-priority ones.</p>
+</dd>
+<dt>Cooperative Multitasking</dt><dd><p>Tasks may voluntarily yield execution to other tasks at specific
 points in time.  One example of this type of concurrency is a
 physics simulation involving several models, where each of these
-models must be updated at each time step.</dd>
-<dt>Parallel Processing</dt>
-<dd>Tasks execute simultaneously on different processors.  Parallel
+models must be updated at each time step.</p>
+</dd>
+<dt>Parallel Processing</dt><dd><p>Tasks execute simultaneously on different processors.  Parallel
 processing is often used to speed up program execution or perform
 several unrelated tasks at once.  In many general-purpose
 parallel-processing systems, several operating-system threads or
-processes can be executed in parallel.</dd>
+processes can be executed in parallel.</p>
+</dd>
 </dl>
 <p>Our code crafting tools are designed to allow software components to
 <strong>execute concurrently</strong> in all of these environments with minimal
@@ -371,86 +375,82 @@ design approach requires components to communicate with one another in
 a standardized way.  There are many mechanisms that could be used to
 transfer data between components, each with their own advantages and
 disadvantages:</p>
-<dl class="docutils">
-<dt>Method Calls</dt>
-<dd><p class="first">In object-oriented programming languages, data is typically
+<dl class="simple">
+<dt>Method Calls</dt><dd><p>In object-oriented programming languages, data is typically
 transferred between objects by having one object pass data to (or
 receive data from) another object using method calls (member
 functions).  This approach is simple and well understood, but has
 many drawbacks:</p>
-<ul class="last simple">
-<li>Passing data between objects using method calls is not
+<ul class="simple">
+<li><p>Passing data between objects using method calls is not
 thread-safe, so data transfer between objects in different threads
-typically requires manual, error-prone synchronization.</li>
-<li>Objects typically have no way to “send out” information.
+typically requires manual, error-prone synchronization.</p></li>
+<li><p>Objects typically have no way to “send out” information.
 Typically, the outputs of an object must be retrieved by a
-higher-level object.</li>
-<li>Custom top-level glue code must often be written to extract data from
-one component and pass it into another.</li>
-<li>In languages with strict typing, it is difficult to “connect” objects
-that were not designed specifically to work together.</li>
-<li>Inter-language operation is usually possible, but tedious to
-implement.</li>
+higher-level object.</p></li>
+<li><p>Custom top-level glue code must often be written to extract data from
+one component and pass it into another.</p></li>
+<li><p>In languages with strict typing, it is difficult to “connect” objects
+that were not designed specifically to work together.</p></li>
+<li><p>Inter-language operation is usually possible, but tedious to
+implement.</p></li>
 </ul>
 </dd>
-<dt>Callback Functions</dt>
-<dd><p class="first">In some object-oriented architectures, objects do attempt to “send
+<dt>Callback Functions</dt><dd><p>In some object-oriented architectures, objects do attempt to “send
 out” data by storing a pointer to an output object and calling a
 member-function of that object to send data to that object.  This
 approach still has many issues:</p>
-<ul class="last simple">
-<li>Manual checks may have to be performed to see if a destination
-object has been “connected”.</li>
-<li>Multiple destination objects are usually not a possibility.</li>
-<li>Callback loops can cause issues with non-reentrant code.</li>
+<ul class="simple">
+<li><p>Manual checks may have to be performed to see if a destination
+object has been “connected”.</p></li>
+<li><p>Multiple destination objects are usually not a possibility.</p></li>
+<li><p>Callback loops can cause issues with non-reentrant code.</p></li>
 </ul>
 </dd>
-<dt>Shared Memory</dt>
-<dd><p class="first">The use of shared memory is a simple, commonly-used, and very
+<dt>Shared Memory</dt><dd><p>The use of shared memory is a simple, commonly-used, and very
 efficient method of passing data between software components.  In
 this scheme, components read input data from and write data to
 predetermined shared memory locations.  There are, however, several
 major drawbacks to this approach:</p>
-<ul class="last simple">
-<li>Passing data between components using shared memory is not
+<ul class="simple">
+<li><p>Passing data between components using shared memory is not
 thread-safe, so data transfer between components in different
-threads typically requires manual, error-prone synchronization.</li>
-<li>Memory usage may be high.</li>
-<li>If pointers are used to specify the location of input or output
+threads typically requires manual, error-prone synchronization.</p></li>
+<li><p>Memory usage may be high.</p></li>
+<li><p>If pointers are used to specify the location of input or output
 variables, manual checks may be required to make sure these
-pointers have been initialized.</li>
-<li>Some shared memory communication schemes use global variable
-locations, which introduces a host of well-known issues.</li>
+pointers have been initialized.</p></li>
+<li><p>Some shared memory communication schemes use global variable
+locations, which introduces a host of well-known issues.</p></li>
 </ul>
 </dd>
-<dt>Message Passing</dt>
-<dd><p class="first">In message-passing systems, information is transmitted by passing
+<dt>Message Passing</dt><dd><p>In message-passing systems, information is transmitted by passing
 data structures from one software component to another through some
 sort of message delivery framework.  The messaging framework
 typically employs some form of message queues to synchronize the
 data transmission.  Depending on the design of the system, data may
 be passed by reference or by value. Message-passing systems have a
 number of benefits:</p>
-<ul class="last simple">
-<li>Many implementations support the transmission of messages between
-threads, or even processes, without any manual synchronization.</li>
-<li>Multiple messaging system implementations can be supported with no
+<ul class="simple">
+<li><p>Many implementations support the transmission of messages between
+threads, or even processes, without any manual synchronization.</p></li>
+<li><p>Multiple messaging system implementations can be supported with no
 changes to the software components.  The messaging system
-implementation can be chosen at compile, link or run time.</li>
-<li>The message sender does not need to know anything about the
+implementation can be chosen at compile, link or run time.</p></li>
+<li><p>The message sender does not need to know anything about the
 receiver.  Zero, one, or more message receivers can be connected
-to a single sender.</li>
-<li>The message sender and receiver only need to agree on the format
-of the data structure being passed, not the class hierarchy.</li>
-<li>The amount of custom top-level glue code required to transfer data
-between components is minimal.</li>
-<li>The message-passing concept maps naturally to many communication
+to a single sender.</p></li>
+<li><p>The message sender and receiver only need to agree on the format
+of the data structure being passed, not the class hierarchy.</p></li>
+<li><p>The amount of custom top-level glue code required to transfer data
+between components is minimal.</p></li>
+<li><p>The message-passing concept maps naturally to many communication
 channels, such as network sockets, file I/O, serial and block
 device I/O, UNIX pipes, Qt signals and slots, event-driven
-systems, function calls, and message queues.</li>
-<li>Many real-time operating systems offer native support for message
-queues.</li>
-<li>Inter-language operation is straightforward to implement.</li>
+systems, function calls, and message queues.</p></li>
+<li><p>Many real-time operating systems offer native support for message
+queues.</p></li>
+<li><p>Inter-language operation is straightforward to implement.</p></li>
 </ul>
 </dd>
 </dl>
@@ -510,9 +510,9 @@ initialized in the object’s constructor.  Although this is a robust
 way to ensure that the data gets initialized, there are at least two
 potential issues with this approach:</p>
 <ol class="arabic simple">
-<li>The data required for initialization may not be available at
-construction time.</li>
-<li>There is no clean way to <em>reset</em> a component’s internal state.</li>
+<li><p>The data required for initialization may not be available at
+construction time.</p></li>
+<li><p>There is no clean way to <em>reset</em> a component’s internal state.</p></li>
 </ol>
 <p>Sometimes the first concern is addressed by deferring the
 initialization of some internal variables until the required data is
@@ -611,18 +611,18 @@ frequency.  In order to support this functionality, the run-time
 environment provides software components with a <strong>standardized
 timekeeping API</strong> that is consistent across all application domains
 and operates in the following timekeeping contexts:</p>
-<dl class="docutils">
-<dt>Real-Time</dt>
-<dd>In systems that must meeting timing deadlines, the run-time
+<dl class="simple">
+<dt>Real-Time</dt><dd><p>In systems that must meeting timing deadlines, the run-time
 environment may deliver very precise time measurement and scheduling
-functionality.</dd>
-<dt>Non-Real-Time</dt>
-<dd>In systems where timing requirements are not as demanding, the
-run-time environment may supply a less precise implementation.</dd>
-<dt>Simulated-Time</dt>
-<dd>In some simulations, a software component’s notion of time may not
+functionality.</p>
+</dd>
+<dt>Non-Real-Time</dt><dd><p>In systems where timing requirements are not as demanding, the
+run-time environment may supply a less precise implementation.</p>
+</dd>
+<dt>Simulated-Time</dt><dd><p>In some simulations, a software component’s notion of time may not
 be tied to the passage of time in the real world at all, but is
-instead advanced by an external simulation executive.</dd>
+instead advanced by an external simulation executive.</p>
+</dd>
 </dl>
 <p>In some systems, there may not be a single authoritative time standard
 that is suitable for all purposes.  For instance, some events may be
@@ -639,23 +639,23 @@ request that a particular section of code be executed by a processor
 on the host system.  From a software component’s point of view,
 scheduling can be either explicit or implicit.  The run-time
 environments support several types of explicit scheduling:</p>
-<dl class="docutils">
-<dt>One-Shot Event</dt>
-<dd>A component requests that a code segment be executed at a particular
+<dl class="simple">
+<dt>One-Shot Event</dt><dd><p>A component requests that a code segment be executed at a particular
 point in time according to a specific time reference.  The time of
 execution may be specified as an absolute time or as a relative time
-(i.e. a delay).</dd>
-<dt>Periodic Event</dt>
-<dd>This is similar to a one-shot event, except that after execution of
+(i.e. a delay).</p>
+</dd>
+<dt>Periodic Event</dt><dd><p>This is similar to a one-shot event, except that after execution of
 the code segment is complete, the event is automatically
 re-scheduled to execute again after a fixed amount of time.  The
 time between events may be specified in terms of a period or
-frequency.</dd>
-<dt>Deferred Execution</dt>
-<dd>Sometimes it is useful for a component to request that a code
+frequency.</p>
+</dd>
+<dt>Deferred Execution</dt><dd><p>Sometimes it is useful for a component to request that a code
 segment be executed at some unspecified time in the future.  This is
 a way for components to voluntarily yield the processor to other
-components (cooperative multitasking).</dd>
+components (cooperative multitasking).</p>
+</dd>
 </dl>
 <p>In message-passing systems, implicit scheduling occurs when a
 component sends out a message.  The sending of a message causes the
@@ -742,31 +742,32 @@ issue, we must first consider what this top-level code is doing.</p>
 <p>In a typical application, the main program (or other top-level code)
 performs a series of tasks that looks something like this:</p>
 <ul class="simple">
-<li>Process input data from the operating environment (e.g. command-line
-options)</li>
-<li>Allocate resources and instantiate top-level components</li>
-<li>Reset components to a known state</li>
-<li>Read in configuration data</li>
-<li>Configure components as specified</li>
-<li>Initialize components</li>
-<li>Perform processing operations, which usually amounts to one of these
-steps:<ul>
-<li>Perform a single sequence of processing operations</li>
-<li>Repeat a sequence of processing operations over and over again</li>
-<li>Dispatch conditional processing operations using a state machine</li>
+<li><p>Process input data from the operating environment (e.g. command-line
+options)</p></li>
+<li><p>Allocate resources and instantiate top-level components</p></li>
+<li><p>Reset components to a known state</p></li>
+<li><p>Read in configuration data</p></li>
+<li><p>Configure components as specified</p></li>
+<li><p>Initialize components</p></li>
+<li><p>Perform processing operations, which usually amounts to one of these
+steps:</p>
+<ul>
+<li><p>Perform a single sequence of processing operations</p></li>
+<li><p>Repeat a sequence of processing operations over and over again</p></li>
+<li><p>Dispatch conditional processing operations using a state machine</p></li>
 </ul>
 </li>
-<li>Wait for program termination</li>
-<li>Clean up resources</li>
+<li><p>Wait for program termination</p></li>
+<li><p>Clean up resources</p></li>
 </ul>
 <p>Since this process is very similar from application to application,
 our approach is to factor the top-level code into two pieces:</p>
 <ul class="simple">
-<li>An application-specific <strong>top-level software component</strong> with a
-standardized interface</li>
-<li>A reusable <strong>application executive</strong> that sequences the top-level
+<li><p>An application-specific <strong>top-level software component</strong> with a
+standardized interface</p></li>
+<li><p>A reusable <strong>application executive</strong> that sequences the top-level
 component through a set of standardized <em>phases</em> corresponding to
-the steps mentioned above</li>
+the steps mentioned above</p></li>
 </ul>
 <p>Different application domains may still require slightly different
 application executives, but this is much better than writing unique
@@ -789,34 +790,34 @@ positive or negative.  Our position on this subject is practical.
 Although automatic code generation has been abused in many instances,
 it makes sense to consider using it for the following purposes:</p>
 <ul class="simple">
-<li>To generate boilerplate or glue code that is tedious or error-prone
-to write by hand.</li>
-<li>To implement domain-specific languages that allow the program to be
-written in a more concise and effective manner.</li>
-<li>To allow aspects of the program to be described in a graphical
-manner.</li>
-<li>To reduce the duplication of information (i.e. <a class="reference internal" href="#design-principles"><span class="std std-ref">Don't repeat
-yourself</span></a>).</li>
+<li><p>To generate boilerplate or glue code that is tedious or error-prone
+to write by hand.</p></li>
+<li><p>To implement domain-specific languages that allow the program to be
+written in a more concise and effective manner.</p></li>
+<li><p>To allow aspects of the program to be described in a graphical
+manner.</p></li>
+<li><p>To reduce the duplication of information (i.e. <a class="reference internal" href="#design-principles"><span class="std std-ref">Don't repeat
+yourself</span></a>).</p></li>
 </ul>
 <p>This last point may require a little more explanation.  There are many
 situations where automatic code generation could be used to help avoid
 the duplication of information:</p>
 <ul class="simple">
-<li>The same information must be included in code and documentation.</li>
-<li>The same information must be used in multiple programming languages.</li>
-<li>The programming language itself requires the duplication of information.</li>
-<li>The programming language source format does not allow additional
-documentation or metadata to be easily incorporated.</li>
+<li><p>The same information must be included in code and documentation.</p></li>
+<li><p>The same information must be used in multiple programming languages.</p></li>
+<li><p>The programming language itself requires the duplication of information.</p></li>
+<li><p>The programming language source format does not allow additional
+documentation or metadata to be easily incorporated.</p></li>
 </ul>
 <p>Our code crafting tools <strong>employ automatic code generation</strong> to
 address many of these concerns because we believe the benefits
 outweigh the drawbacks introduced by the additional complexity.
 Automatic code generation is utilized in the following areas:</p>
 <ul class="simple">
-<li>Data type classes (e.g. message types)</li>
-<li>Component interface base classes</li>
-<li>Structural component implementations</li>
-<li>Main programs</li>
+<li><p>Data type classes (e.g. message types)</p></li>
+<li><p>Component interface base classes</p></li>
+<li><p>Structural component implementations</p></li>
+<li><p>Main programs</p></li>
 </ul>
 <p>Much care, however, is taken to make a <strong>strong separation between
 auto-generated and hand-generated code</strong>.  If you still have
@@ -894,8 +895,7 @@ software to form a software stack.  Each layer of software builds on
 lower-level resources to provide additional functionality.  The
 following diagram offers a bird’s-eye view of our software stack for
 application development.</p>
-<a class="reference internal image-reference" href="_images/conceptual_devel_sw_stack.svg"><div align="center" class="align-center"><img alt="_images/conceptual_devel_sw_stack.svg" src="_images/conceptual_devel_sw_stack.svg" /></div>
-</a>
+<a class="reference internal image-reference" href="_images/conceptual_devel_sw_stack.svg"><img alt="_images/conceptual_devel_sw_stack.svg" class="align-center" src="_images/conceptual_devel_sw_stack.svg" /></a>
 </div>
 </div>
 </div>
@@ -911,7 +911,7 @@ application development.</p>
         <a href="software.html" class="btn btn-neutral float-right" title="Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="philosophy.html" class="btn btn-neutral" title="Philosophy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="philosophy.html" class="btn btn-neutral float-left" title="Philosophy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -920,11 +920,19 @@ application development.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2018, 2019, 2020 Jeffrey A. Webb
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -936,27 +944,16 @@ application development.</p>
   </div>
   
 
-
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>  
+  </script>
+
+  
+  
+    
+    
 
   <style>
     /* Sidebar */

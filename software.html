@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,43 +11,47 @@
   
 
   
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Workflow" href="workflow.html" />
     <link rel="prev" title="Design" href="design.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> Code Craftsmen
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Code Craftsmen
           
 
           
@@ -71,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -105,6 +109,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -143,7 +148,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Software</li>
     
@@ -170,107 +175,107 @@
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>The following <a class="reference external" href="https://github.com/codecraftingtools">code crafting tools</a> are
 (or will be) provided as <a class="reference internal" href="foundation.html#git"><span class="std std-ref">Git</span></a> repositories hosted on <a class="reference internal" href="foundation.html#github"><span class="std std-ref">GitHub</span></a>:</p>
-<dl class="docutils" id="chimps">
-<dt><a class="reference external" href="https://chimps.readthedocs.io">Chimps</a></dt>
-<dd>Concurrent hierarchic message-based programming system.  Chimps is a
+<dl class="simple" id="chimps">
+<dt><a class="reference external" href="https://chimps.readthedocs.io">Chimps</a></dt><dd><p>Concurrent hierarchic message-based programming system.  Chimps is a
 framework for building software by implementing and connecting
 message-passing software components.  It provides a standardized
 run-time environment for inter-component communication, scheduling,
 timing, and logging functionality, as well as a set of generalized
 application executives.  Component messaging interfaces and
-hierarchic structures are defined and generated using <a class="reference internal" href="#smidgen"><span class="std std-ref">Smidgen</span></a> and <a class="reference internal" href="#finch"><span class="std std-ref">Finch</span></a>, respectively.</dd>
+hierarchic structures are defined and generated using <a class="reference internal" href="#smidgen"><span class="std std-ref">Smidgen</span></a> and <a class="reference internal" href="#finch"><span class="std std-ref">Finch</span></a>, respectively.</p>
+</dd>
 </dl>
-<dl class="docutils" id="hildegard">
-<dt><a class="reference external" href="https://hildegard.readthedocs.io">Hildegard</a></dt>
-<dd>Hierarchic layout and design environment for generating applications
+<dl class="simple" id="hildegard">
+<dt><a class="reference external" href="https://hildegard.readthedocs.io">Hildegard</a></dt><dd><p>Hierarchic layout and design environment for generating applications
 and rendering diagrams.  This is a graphical application for drawing
 block diagrams that describe the hierarchic structure and flow of
 data between the subcomponents of a system.  This tool can be used
 to graphically construct <a class="reference internal" href="#chimps"><span class="std std-ref">Chimps</span></a> or <a class="reference internal" href="#shasam"><span class="std std-ref">Shasam</span></a>
-applications.</dd>
+applications.</p>
+</dd>
 </dl>
-<dl class="docutils" id="shasam">
-<dt><a class="reference external" href="https://shasam.readthedocs.io">Shasam</a></dt>
-<dd>Standardized hierarchic architecture for simulation and modeling.
+<dl class="simple" id="shasam">
+<dt><a class="reference external" href="https://shasam.readthedocs.io">Shasam</a></dt><dd><p>Standardized hierarchic architecture for simulation and modeling.
 This is a component-based 6-DOF simulation framework with Monte
-Carlo capability that is built on top of <a class="reference internal" href="#chimps"><span class="std std-ref">Chimps</span></a>.</dd>
+Carlo capability that is built on top of <a class="reference internal" href="#chimps"><span class="std std-ref">Chimps</span></a>.</p>
+</dd>
 </dl>
-<dl class="docutils" id="finch">
-<dt><a class="reference external" href="http://finch-format.readthedocs.io">Finch</a></dt>
-<dd>Format for specifying interconnections and component hierarchies.
+<dl class="simple" id="finch">
+<dt><a class="reference external" href="http://finch-format.readthedocs.io">Finch</a></dt><dd><p>Format for specifying interconnections and component hierarchies.
 This project provides a language for making input/output connections
 between components and defining hierarchic component structures,
 along with a set of utilities to generate code and documentation
 from these definitions.  Component input/output interfaces are defined
-using <a class="reference internal" href="#smidgen"><span class="std std-ref">Smidgen</span></a>.</dd>
+using <a class="reference internal" href="#smidgen"><span class="std std-ref">Smidgen</span></a>.</p>
+</dd>
 </dl>
-<dl class="docutils" id="smidgen">
-<dt><a class="reference external" href="http://smidgen.readthedocs.io">Smidgen</a></dt>
-<dd>Syntax for messaging interface definition and generation.  This
+<dl class="simple" id="smidgen">
+<dt><a class="reference external" href="http://smidgen.readthedocs.io">Smidgen</a></dt><dd><p>Syntax for messaging interface definition and generation.  This
 project provides a language for defining component input/output
 messaging interfaces and a set of utilities to generate code and
 documentation from these definitions.  The structure of input and
-output data is defined using <a class="reference internal" href="#tydl"><span class="std std-ref">Tydl</span></a>.</dd>
+output data is defined using <a class="reference internal" href="#tydl"><span class="std std-ref">Tydl</span></a>.</p>
+</dd>
 </dl>
-<dl class="docutils" id="tydl">
-<dt><a class="reference external" href="http://tydl.readthedocs.io">Tydl</a></dt>
-<dd>Type definition language for specifying the structure, layout, and
+<dl class="simple" id="tydl">
+<dt><a class="reference external" href="http://tydl.readthedocs.io">Tydl</a></dt><dd><p>Type definition language for specifying the structure, layout, and
 semantic attributes of data types.  This project also provides a set
 of tools that can be used to generate documentation or high-level
-code from type specifications.</dd>
+code from type specifications.</p>
+</dd>
 </dl>
-<dl class="docutils" id="bt">
-<dt>Bt</dt>
-<dd>Build tool that manages the dependencies between software projects
+<dl class="simple" id="bt">
+<dt>Bt</dt><dd><p>Build tool that manages the dependencies between software projects
 and automates the retrieval, configuration, and building of
-prerequisite software repositories.</dd>
+prerequisite software repositories.</p>
+</dd>
 </dl>
-<dl class="docutils" id="wumps">
-<dt><a class="reference external" href="http://wumps.readthedocs.io">Wumps</a></dt>
-<dd>Widely useful macro programming syntax that serves as a foundation
+<dl class="simple" id="wumps">
+<dt><a class="reference external" href="http://wumps.readthedocs.io">Wumps</a></dt><dd><p>Widely useful macro programming syntax that serves as a foundation
 for building domain-specific languages such as <a class="reference internal" href="#tydl"><span class="std std-ref">Tydl</span></a> and
-<a class="reference internal" href="#smidgen"><span class="std std-ref">Smidgen</span></a>.</dd>
+<a class="reference internal" href="#smidgen"><span class="std std-ref">Smidgen</span></a>.</p>
+</dd>
 </dl>
-<dl class="docutils" id="flopi">
-<dt><a class="reference external" href="http://flopi.readthedocs.io">Flopi</a></dt>
-<dd>Fine-grained logging and output Python interface for displaying and
+<dl class="simple" id="flopi">
+<dt><a class="reference external" href="http://flopi.readthedocs.io">Flopi</a></dt><dd><p>Fine-grained logging and output Python interface for displaying and
 recording status, event, debugging, warning, and error information.
 Flopi can operate as a pure Python module, or in conjunction with
 <a class="reference internal" href="#flout"><span class="std std-ref">Flout</span></a> when <a class="reference external" href="https://docs.python.org/3/extending">extending or embedding</a> the Python
-interpreter.</dd>
+interpreter.</p>
+</dd>
 </dl>
-<dl class="docutils" id="turtal">
-<dt><a class="reference external" href="http://turtal.readthedocs.io">Turtal</a></dt>
-<dd>The underlying run-time abstraction layer that isolates high-level
+<dl class="simple" id="turtal">
+<dt><a class="reference external" href="http://turtal.readthedocs.io">Turtal</a></dt><dd><p>The underlying run-time abstraction layer that isolates high-level
 code from the details related to a specific operating system,
 hardware, or message-passing framework implementation.  This library
 provides a set of uniform programming interfaces for constructs like
-message queues, threads, file input/output, timers, and schedulers.</dd>
+message queues, threads, file input/output, timers, and schedulers.</p>
+</dd>
 </dl>
-<dl class="docutils" id="ranger">
-<dt>Ranger</dt>
-<dd>Random number generation routines.  This library provides routines
+<dl class="simple" id="ranger">
+<dt>Ranger</dt><dd><p>Random number generation routines.  This library provides routines
 for generating pseudo-random number streams and transforming the
 draws from these streams into random variables that exhibit specific
-probability distributions.</dd>
+probability distributions.</p>
+</dd>
 </dl>
-<dl class="docutils" id="todes">
-<dt>Todes</dt>
-<dd>Time-stepping ordinary differential equation solver.  This library
+<dl class="simple" id="todes">
+<dt>Todes</dt><dd><p>Time-stepping ordinary differential equation solver.  This library
 provides an engine for the numerical solution of differential
-equations.</dd>
+equations.</p>
+</dd>
 </dl>
-<dl class="docutils" id="caveman">
-<dt>Caveman</dt>
-<dd>Common API for vector and matrix numerical operations.  This library
+<dl class="simple" id="caveman">
+<dt>Caveman</dt><dd><p>Common API for vector and matrix numerical operations.  This library
 provides standardized matrix and vector class interfaces to avoid
-explicit dependencies on lower-level matrix libraries.</dd>
+explicit dependencies on lower-level matrix libraries.</p>
+</dd>
 </dl>
-<dl class="docutils" id="flout">
-<dt><a class="reference external" href="http://flout.readthedocs.io">Flout</a></dt>
-<dd>Fine-grained logging and output library that provides a standardized
+<dl class="simple" id="flout">
+<dt><a class="reference external" href="http://flout.readthedocs.io">Flout</a></dt><dd><p>Fine-grained logging and output library that provides a standardized
 programming interface for the display and recording of status,
-event, debugging, warning, and error information.</dd>
+event, debugging, warning, and error information.</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="development-tools">
@@ -332,7 +337,7 @@ dependencies between the various software projects more explicitly.</p>
         <a href="workflow.html" class="btn btn-neutral float-right" title="Workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="design.html" class="btn btn-neutral" title="Design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="design.html" class="btn btn-neutral float-left" title="Design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -341,11 +346,19 @@ dependencies between the various software projects more explicitly.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2018, 2019, 2020 Jeffrey A. Webb
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -357,27 +370,16 @@ dependencies between the various software projects more explicitly.</p>
   </div>
   
 
-
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>  
+  </script>
+
+  
+  
+    
+    
 
   <style>
     /* Sidebar */
