@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd images
+convert conceptual_devel_sw_stack.svg     conceptual_devel_sw_stack.png
+convert conceptual_run_time_sw_stack.svg  conceptual_run_time_sw_stack.png
+convert detailed_devel_sw_stack.svg	  detailed_devel_sw_stack.png
+convert detailed_run_time_sw_stack.svg	  detailed_run_time_sw_stack.png
+convert simplified_devel_sw_stack.svg	  simplified_devel_sw_stack.png
+convert simplified_run_time_sw_stack.svg  simplified_run_time_sw_stack.png
+cd ..
+make latexpdf

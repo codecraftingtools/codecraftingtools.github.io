@@ -141,7 +141,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'CodeCraftsmen.tex', u'Code Craftsmen Documentation',
+    (master_doc, 'CodeCraftsmen.tex', u'The Code Craftsmen Project',
      u'Jeff Webb', 'manual'),
 ]
 

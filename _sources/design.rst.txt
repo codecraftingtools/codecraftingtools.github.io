@@ -111,9 +111,9 @@ Utility Libraries
   run-time environment, or application executive, but do not factor
   into the interface between these code segments.
 
-.. figure:: images/conceptual_run_time_sw_stack.*
-
-   Run-Time Software Stack (Conceptual)
+.. image:: images/conceptual_run_time_sw_stack.*
+   :align: center
+   :scale: 100%
    
 Hardware Architectures
 ----------------------
@@ -793,9 +793,9 @@ lower-level resources to provide additional functionality.  The
 following diagram offers a bird's-eye view of our software stack for
 application development.
 
-.. figure:: images/conceptual_devel_sw_stack.*
-
-   Software Stack for Application Development (Conceptual)
+.. image:: images/conceptual_devel_sw_stack.*
+   :align: center
+   :scale: 100%
 
 .. _Don't repeat yourself:
    https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
