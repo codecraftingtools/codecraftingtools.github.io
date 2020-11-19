@@ -37,7 +37,7 @@ builds on `Tydl <tydl>`.
    :align: center
    :width: 100%
 
-Component Implementation
-------------------------
+Primitive Component Implementation
+----------------------------------
 
 Stay tuned...
