@@ -40,10 +40,10 @@ Code Craftsmen
    :maxdepth: 1
 
    vision
+   workflow
    status
    philosophy
    design
    software
-   workflow
    foundation
    notes

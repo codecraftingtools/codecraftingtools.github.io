@@ -8,4 +8,4 @@ building real-world applications using prototype implementations of
 these tools in an internal code base, but the process of knitting all
 of the pieces together into a cohesive, open-source suite of
 development tools will take some time.  Please continue reading to
-learn more about where we are headed.
+learn more about our approach and where we are headed.

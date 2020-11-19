@@ -36,8 +36,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Foundation" href="foundation.html" />
-    <link rel="prev" title="Software" href="software.html" /> 
+    <link rel="next" title="Status" href="status.html" />
+    <link rel="prev" title="Vision" href="vision.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,11 +84,19 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="vision.html">Vision</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bottom-up">Bottom-Up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#message-definition">Message Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component-interface-definition">Component Interface Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component-implementation">Component Implementation</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="status.html">Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="foundation.html">Foundation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notes.html">Notes</a></li>
 </ul>
@@ -158,8 +166,36 @@
             
   <div class="section" id="workflow">
 <h1>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h1>
-<p>This section will describe the workflow associated with our code
-crafting tools.</p>
+<p>Let us walk through a simple example to demonstrate how our code
+crafting tools can be leveraged in bottom-up or top-down software
+development workflows.</p>
+<div class="section" id="bottom-up">
+<h2>Bottom-Up<a class="headerlink" href="#bottom-up" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="message-definition">
+<h3>Message Definition<a class="headerlink" href="#message-definition" title="Permalink to this headline">¶</a></h3>
+<p>The first step in a bottom-up workflow is to define the data content
+and format of each message that is passed between software components
+in the application.  This is accomplished by writing suitable data
+structure declarations in <a class="reference internal" href="software.html#tydl"><span class="std std-ref">Tydl</span></a>, our custom type definition
+language.</p>
+<a class="reference internal image-reference" href="_images/workflow_types.svg"><img alt="_images/workflow_types.svg" class="align-center" src="_images/workflow_types.svg" width="50%" /></a>
+</div>
+<div class="section" id="component-interface-definition">
+<h3>Component Interface Definition<a class="headerlink" href="#component-interface-definition" title="Permalink to this headline">¶</a></h3>
+<p>The next step is to define the messaging interface for each software
+component in the application.  Components have input ports for
+receiving messages from other components and output ports for sending
+messages to other components.  Each port has a name and an associated
+data type that defines the message format.  Component messaging
+interfaces are defined using the <a class="reference internal" href="software.html#smidgen"><span class="std std-ref">Smidgen</span></a> syntax, which
+builds on <a class="reference internal" href="software.html#tydl"><span class="std std-ref">Tydl</span></a>.</p>
+<a class="reference internal image-reference" href="_images/workflow_interfaces.svg"><img alt="_images/workflow_interfaces.svg" class="align-center" src="_images/workflow_interfaces.svg" width="100%" /></a>
+</div>
+<div class="section" id="component-implementation">
+<h3>Component Implementation<a class="headerlink" href="#component-implementation" title="Permalink to this headline">¶</a></h3>
+<p>Stay tuned…</p>
+</div>
+</div>
 </div>
 
 
@@ -170,10 +206,10 @@ crafting tools.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="foundation.html" class="btn btn-neutral float-right" title="Foundation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="status.html" class="btn btn-neutral float-right" title="Status" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="software.html" class="btn btn-neutral float-left" title="Software" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vision.html" class="btn btn-neutral float-left" title="Vision" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

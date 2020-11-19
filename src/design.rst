@@ -113,7 +113,7 @@ Utility Libraries
 
 .. image:: images/conceptual_run_time_sw_stack.*
    :align: center
-   :scale: 100%
+   :width: 75%
    
 Hardware Architectures
 ----------------------
@@ -795,7 +795,7 @@ application development.
 
 .. image:: images/conceptual_devel_sw_stack.*
    :align: center
-   :scale: 100%
+   :width: 50%
 
 .. _Don't repeat yourself:
    https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
