@@ -18,9 +18,10 @@ in the application.  This is accomplished by writing suitable data
 structure declarations in `Tydl <tydl>`, our custom type definition
 language.
 
-.. image:: images/workflow_types.*
-   :align: center
-   :width: 50%
+.. highlight:: none
+
+.. literalinclude:: Sensor.tyd
+   :caption: Sensor.tyd
 
 Component Interface Definition
 ------------------------------
@@ -33,7 +34,15 @@ data type that defines the message format.  Component messaging
 interfaces are defined using the `Smidgen <smidgen>` syntax, which
 builds on `Tydl <tydl>`.
 
-.. image:: images/workflow_interfaces.*
++--------------------------+------------------------------+
+|                          | .. only:: latex              |
+|                          |                              |
+| .. literalinclude::      |      .                       |
+|    Sensor.cmi            |                              |
+|    :caption: Sensor.cmi  | .. image:: workflow_sensor.* |
++--------------------------+------------------------------+
+
+.. comment image:: workflow_interfaces.*
    :align: center
    :width: 100%
 

@@ -1,7 +1,6 @@
 #!/bin/bash
 
-rm -f images/workflow_types.png
-rm -f images/workflow_interfaces.png
+rm -f workflow/workflow_sensor.png
 rm -f images/conceptual_devel_sw_stack.png
 rm -f images/conceptual_run_time_sw_stack.png
 rm -f images/detailed_devel_sw_stack.png
@@ -9,5 +8,6 @@ rm -f images/detailed_run_time_sw_stack.png
 rm -f images/simplified_devel_sw_stack.png
 rm -f images/simplified_run_time_sw_stack.png
 rm -f ../*.html
+rm -rf ../workflow
 rm -rf ../_*
 rm -f ../objects.inv ../searchindex.js

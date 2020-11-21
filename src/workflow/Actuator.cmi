@@ -1,0 +1,10 @@
+import all: from: Smidgen
+import Stateful from: Chimps
+import Sensor
+
+Sensor.Ports: Messaging.Interface
+  extends: Stateful.Ports
+  ports:
+    Measurement: Messaging.Port
+      type: Sensor.Measurement
+      output:
