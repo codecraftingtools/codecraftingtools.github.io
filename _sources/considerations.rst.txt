@@ -1,37 +1,4 @@
-======
-Design
-======
-
-Goals
-=====
-
-In the Code Craftsmen's view, writing software is currently much more
-difficult than it needs to be.  Our hope, and our primary goal, is to
-**restore the joy in programming** by developing code crafting tools
-that make software:
-
-- Easier to read
-- Easier to write
-- Easier to maintain
-- Easier to reuse
-
-.. _design-principles:
-
-Principles
-==========
-
-There are a few key principles that support these goals and drive our
-design strategy, such as:
-
-- `Don't repeat yourself`_
-- Design for testability
-- Documentation is important
-- Don't repeat yourself (unless it's worth saying twice)
-
-Although there are surely some other principles worth adding to this
-list, the ones listed here play a major role in many of our design
-decisions.
-
+==============
 Considerations
 ==============
 
@@ -40,7 +7,7 @@ considerations that influence the development of our code crafting
 tools.
 
 Application Domains
--------------------
+===================
 
 Our tools support the development of software for a wide variety of
 application domains, including, but not limited to:
@@ -65,7 +32,7 @@ complex ones.
 .. _application-structure:
 
 Application Structure
----------------------
+=====================
 
 In order to maximize both our productivity and the quality of our
 software, our tools facilitate the development of code that can be
@@ -116,7 +83,7 @@ Utility Libraries
    :width: 75%
    
 Hardware Architectures
-----------------------
+======================
 
 Although there are significant differences between some of the
 relevant hardware platfoms, our tools enable developers to design
@@ -131,7 +98,7 @@ the current priority is support for **64-bit x86** and **32-bit ARM**
 systems.
 
 Operating Systems
------------------
+=================
 
 The write-once, run-anywhere philosophy of our tool set also extends
 to operating systems, providing a way to develop software components
@@ -148,7 +115,7 @@ current focus is on providing support for:
 - RTEMS
 
 Concurrent and Parallel Processing
-----------------------------------
+==================================
 
 Many of our application domains require support for independent
 software components executing concurrently, or even simultaneously (in
@@ -191,7 +158,7 @@ components are instantiated and combined together into a higher-level
 component or application in the context of a run-time environment.
 
 Programming Language Support
-----------------------------
+============================
 
 At a fundamental level, we require all software components to interact
 with their run-time environment via a standardized programming
@@ -206,7 +173,7 @@ current priority is the development of bindings for **C++** and
 programming languages.
 
 Inter-Component Communication Methodology
------------------------------------------
+=========================================
 
 For the many reasons described elsewhere in this documentation, our
 design approach requires components to communicate with one another in
@@ -332,7 +299,7 @@ instantiated and integrated into a higher-level component or
 application in the context of a run-time environment.
 
 Standardized Component Interfaces
----------------------------------
+=================================
 
 In order for two components to communicate via message passing, the
 message sender and receiver must agree on the content and structure of
@@ -356,7 +323,7 @@ interfaces are not required to match in order for components to be
 used together, but it does make things easier.
 
 Initialization and Reset
-------------------------
+========================
 
 Although a few software components may be truly stateless (e.g. data
 converters), most components need to store some information
@@ -395,7 +362,7 @@ of a constructor.  This allows application executives to reset the
 component's state as required.
 
 Configuration
--------------
+=============
 
 Since all but the simplest of software components require some type of
 configuration, our tools provide built-in support for this operation.
@@ -441,7 +408,7 @@ random distribution parameters, could be used by a simulation engine
 to make Monte Carlo draws.  The possibilities are endless.
 
 Logging and Screen Output
--------------------------
+=========================
 
 Most software components require some mechanism for conveying run-time
 status information to the user.  This includes things like
@@ -470,7 +437,7 @@ debug output for all components, which would be overwhelming and
 counter-productive.
 
 Timekeeping
------------
+===========
 
 Many components require some information about the passage of time in
 order to operate.  This might be determining the absolute time that an
@@ -504,7 +471,7 @@ API also provides support for the measurement of time according to
 and for converting time values from one time base to another.
 
 Scheduling
-----------
+==========
 
 In general terms, scheduling is a mechanism for software components to
 request that a particular section of code be executed by a processor
@@ -547,7 +514,7 @@ or application in the context of a run-time environment, and not
 within individual low-level components.
 
 Blocking vs. Non-Blocking Operations
-------------------------------------
+====================================
 
 In computer programming, a task is considered to be *blocked* if it is
 waiting for some condition to occur before continuing execution.  The
@@ -578,7 +545,7 @@ run-time environment provides a mechanism that allows components to
 **schedule code to be executed when a resource becomes available**.
 
 File I/O
---------
+========
 
 Many software components need to perform file input or output
 operations.  In the vast majority of cases, file I/O is performed
@@ -602,7 +569,7 @@ I/O functions if this is not a problem in the specific application
 domain.
   
 Data Recording and Playback
----------------------------
+===========================
 
 In many applications, there is a need to record output data from
 software components to a file for later analysis or debugging
@@ -613,7 +580,7 @@ delivers a standard set of components for message stream recording and
 playback in raw and structured data file formats.
 
 Top-Level Application Code
---------------------------
+==========================
 
 There is typically quite a bit of "top-level" code in an application
 that is not reusable (except, perhaps, in a copy-and-paste fashion).
@@ -669,7 +636,7 @@ procedural scripting, incorporating graphical user interfaces, and
 dynamically defining an application structure at run-time.
 
 Automatic Code Generation
--------------------------
+=========================
 
 Many developers have strong views on automatic code generation, either
 positive or negative.  Our position on this subject is practical.
@@ -686,7 +653,7 @@ it makes sense to consider using it for the following purposes:
   manner.
 
 - To reduce the duplication of information (i.e. `Don't repeat
-  yourself <design-principles>`).
+  yourself <principles>`).
 
 This last point may require a little more explanation.  There are many
 situations where automatic code generation could be used to help avoid
@@ -721,12 +688,12 @@ customize generated code and do things manually when it is beneficial
 to do so.
   
 File Formats
-------------
+============
 
 The format of data files is another topic that deserves thoughtful
 consideration.  In order to consolidate information and avoid
-`repeating ourselves <design-principles>`, the file formats used by
-our tools to store component interface, hierarchic structure, message
+`repeating ourselves <principles>`, the file formats used by our tools
+to store component interface, hierarchic structure, message
 description, and configuration information **allow arbitrary metadata
 to be incorporated** as the need arises.  This means that all the
 information required to generate documentation, graphical
@@ -756,7 +723,7 @@ high-volume run-time input/output data is another matter entirely, and
 many other factors apply.
 
 Graphical Design Tools
-----------------------
+======================
 
 The Code Craftsmen believe that some aspects of a program are best
 described graphically and some aspects are more naturally expressed in
@@ -784,7 +751,7 @@ tools simply provide an alternative means of constructing or
 manipulating the underlying text files.
 
 Software Stack for Application Development
-------------------------------------------
+==========================================
 
 In order to make our code crafting tools as useful as possible, they
 have been designed to work in conjunction with other open-source
@@ -796,6 +763,3 @@ application development.
 .. image:: images/conceptual_devel_sw_stack.*
    :align: center
    :width: 50%
-
-.. _Don't repeat yourself:
-   https://en.wikipedia.org/wiki/Don%27t_repeat_yourself

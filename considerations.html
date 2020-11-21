@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Design &mdash; Code Craftsmen  documentation</title>
+  <title>Considerations &mdash; Code Craftsmen  documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Software" href="software.html" />
-    <link rel="prev" title="Philosophy" href="philosophy.html" /> 
+    <link rel="prev" title="Guidelines" href="guidelines.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,33 +87,29 @@
 <li class="toctree-l1"><a class="reference internal" href="workflow/workflow.html">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="status.html">Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Design</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#goals">Goals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#principles">Principles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#considerations">Considerations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#application-domains">Application Domains</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#application-structure">Application Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hardware-architectures">Hardware Architectures</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#operating-systems">Operating Systems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#concurrent-and-parallel-processing">Concurrent and Parallel Processing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#programming-language-support">Programming Language Support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#inter-component-communication-methodology">Inter-Component Communication Methodology</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#standardized-component-interfaces">Standardized Component Interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#initialization-and-reset">Initialization and Reset</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#logging-and-screen-output">Logging and Screen Output</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#timekeeping">Timekeeping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#scheduling">Scheduling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#blocking-vs-non-blocking-operations">Blocking vs. Non-Blocking Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#file-i-o">File I/O</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data-recording-and-playback">Data Recording and Playback</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#top-level-application-code">Top-Level Application Code</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#automatic-code-generation">Automatic Code Generation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#file-formats">File Formats</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graphical-design-tools">Graphical Design Tools</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#software-stack-for-application-development">Software Stack for Application Development</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="guidelines.html">Guidelines</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#application-domains">Application Domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#application-structure">Application Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-architectures">Hardware Architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operating-systems">Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concurrent-and-parallel-processing">Concurrent and Parallel Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#programming-language-support">Programming Language Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inter-component-communication-methodology">Inter-Component Communication Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#standardized-component-interfaces">Standardized Component Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initialization-and-reset">Initialization and Reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-and-screen-output">Logging and Screen Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timekeeping">Timekeeping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scheduling">Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#blocking-vs-non-blocking-operations">Blocking vs. Non-Blocking Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-i-o">File I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-recording-and-playback">Data Recording and Playback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#top-level-application-code">Top-Level Application Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automatic-code-generation">Automatic Code Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-formats">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphical-design-tools">Graphical Design Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-stack-for-application-development">Software Stack for Application Development</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software</a></li>
@@ -165,13 +161,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Design</li>
+      <li>Considerations</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/design.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/considerations.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -184,42 +180,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="design">
-<h1>Design<a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
-<p>In the Code Craftsmen’s view, writing software is currently much more
-difficult than it needs to be.  Our hope, and our primary goal, is to
-<strong>restore the joy in programming</strong> by developing code crafting tools
-that make software:</p>
-<ul class="simple">
-<li><p>Easier to read</p></li>
-<li><p>Easier to write</p></li>
-<li><p>Easier to maintain</p></li>
-<li><p>Easier to reuse</p></li>
-</ul>
-</div>
-<div class="section" id="principles">
-<span id="design-principles"></span><h2>Principles<a class="headerlink" href="#principles" title="Permalink to this headline">¶</a></h2>
-<p>There are a few key principles that support these goals and drive our
-design strategy, such as:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">Don’t repeat yourself</a></p></li>
-<li><p>Design for testability</p></li>
-<li><p>Documentation is important</p></li>
-<li><p>Don’t repeat yourself (unless it’s worth saying twice)</p></li>
-</ul>
-<p>Although there are surely some other principles worth adding to this
-list, the ones listed here play a major role in many of our design
-decisions.</p>
-</div>
-<div class="section" id="considerations">
-<h2>Considerations<a class="headerlink" href="#considerations" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="considerations">
+<h1>Considerations<a class="headerlink" href="#considerations" title="Permalink to this headline">¶</a></h1>
 <p>In this section, we will briefly walk through a number of design
 considerations that influence the development of our code crafting
 tools.</p>
 <div class="section" id="application-domains">
-<h3>Application Domains<a class="headerlink" href="#application-domains" title="Permalink to this headline">¶</a></h3>
+<h2>Application Domains<a class="headerlink" href="#application-domains" title="Permalink to this headline">¶</a></h2>
 <p>Our tools support the development of software for a wide variety of
 application domains, including, but not limited to:</p>
 <ul class="simple">
@@ -241,7 +208,7 @@ possible in the simplified domains</strong> before moving into the more
 complex ones.</p>
 </div>
 <div class="section" id="application-structure">
-<span id="id1"></span><h3>Application Structure<a class="headerlink" href="#application-structure" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h2>Application Structure<a class="headerlink" href="#application-structure" title="Permalink to this headline">¶</a></h2>
 <p>In order to maximize both our productivity and the quality of our
 software, our tools facilitate the development of code that can be
 used (and reused) in a wide variety of application domains without
@@ -284,7 +251,7 @@ into the interface between these code segments.</p>
 <a class="reference internal image-reference" href="_images/conceptual_run_time_sw_stack.svg"><img alt="_images/conceptual_run_time_sw_stack.svg" class="align-center" src="_images/conceptual_run_time_sw_stack.svg" width="75%" /></a>
 </div>
 <div class="section" id="hardware-architectures">
-<h3>Hardware Architectures<a class="headerlink" href="#hardware-architectures" title="Permalink to this headline">¶</a></h3>
+<h2>Hardware Architectures<a class="headerlink" href="#hardware-architectures" title="Permalink to this headline">¶</a></h2>
 <p>Although there are significant differences between some of the
 relevant hardware platfoms, our tools enable developers to design
 software components that can be deployed on any supported hardware
@@ -298,7 +265,7 @@ the current priority is support for <strong>64-bit x86</strong> and <strong>32-b
 systems.</p>
 </div>
 <div class="section" id="operating-systems">
-<h3>Operating Systems<a class="headerlink" href="#operating-systems" title="Permalink to this headline">¶</a></h3>
+<h2>Operating Systems<a class="headerlink" href="#operating-systems" title="Permalink to this headline">¶</a></h2>
 <p>The write-once, run-anywhere philosophy of our tool set also extends
 to operating systems, providing a way to develop software components
 that are not tied to a particular host OS, but are instead portable to
@@ -315,7 +282,7 @@ current focus is on providing support for:</p>
 </ul>
 </div>
 <div class="section" id="concurrent-and-parallel-processing">
-<h3>Concurrent and Parallel Processing<a class="headerlink" href="#concurrent-and-parallel-processing" title="Permalink to this headline">¶</a></h3>
+<h2>Concurrent and Parallel Processing<a class="headerlink" href="#concurrent-and-parallel-processing" title="Permalink to this headline">¶</a></h2>
 <p>Many of our application domains require support for independent
 software components executing concurrently, or even simultaneously (in
 parallel).  There are several categories of concurrency that we must
@@ -355,7 +322,7 @@ components are instantiated and combined together into a higher-level
 component or application in the context of a run-time environment.</p>
 </div>
 <div class="section" id="programming-language-support">
-<h3>Programming Language Support<a class="headerlink" href="#programming-language-support" title="Permalink to this headline">¶</a></h3>
+<h2>Programming Language Support<a class="headerlink" href="#programming-language-support" title="Permalink to this headline">¶</a></h2>
 <p>At a fundamental level, we require all software components to interact
 with their run-time environment via a standardized programming
 interface based on C function calls.  Our tools provide a set of
@@ -369,7 +336,7 @@ current priority is the development of bindings for <strong>C++</strong> and
 programming languages.</p>
 </div>
 <div class="section" id="inter-component-communication-methodology">
-<h3>Inter-Component Communication Methodology<a class="headerlink" href="#inter-component-communication-methodology" title="Permalink to this headline">¶</a></h3>
+<h2>Inter-Component Communication Methodology<a class="headerlink" href="#inter-component-communication-methodology" title="Permalink to this headline">¶</a></h2>
 <p>For the many reasons described elsewhere in this documentation, our
 design approach requires components to communicate with one another in
 a standardized way.  There are many mechanisms that could be used to
@@ -477,7 +444,7 @@ instantiated and integrated into a higher-level component or
 application in the context of a run-time environment.</p>
 </div>
 <div class="section" id="standardized-component-interfaces">
-<h3>Standardized Component Interfaces<a class="headerlink" href="#standardized-component-interfaces" title="Permalink to this headline">¶</a></h3>
+<h2>Standardized Component Interfaces<a class="headerlink" href="#standardized-component-interfaces" title="Permalink to this headline">¶</a></h2>
 <p>In order for two components to communicate via message passing, the
 message sender and receiver must agree on the content and structure of
 the messages passed between them.  When designing sofware components,
@@ -499,7 +466,7 @@ interfaces are not required to match in order for components to be
 used together, but it does make things easier.</p>
 </div>
 <div class="section" id="initialization-and-reset">
-<h3>Initialization and Reset<a class="headerlink" href="#initialization-and-reset" title="Permalink to this headline">¶</a></h3>
+<h2>Initialization and Reset<a class="headerlink" href="#initialization-and-reset" title="Permalink to this headline">¶</a></h2>
 <p>Although a few software components may be truly stateless (e.g. data
 converters), most components need to store some information
 internally.  The way in which this internal state gets initialized (or
@@ -534,7 +501,7 @@ of a constructor.  This allows application executives to reset the
 component’s state as required.</p>
 </div>
 <div class="section" id="configuration">
-<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>Since all but the simplest of software components require some type of
 configuration, our tools provide built-in support for this operation.
 In our system, software components are merely responsible for
@@ -576,7 +543,7 @@ random distribution parameters, could be used by a simulation engine
 to make Monte Carlo draws.  The possibilities are endless.</p>
 </div>
 <div class="section" id="logging-and-screen-output">
-<h3>Logging and Screen Output<a class="headerlink" href="#logging-and-screen-output" title="Permalink to this headline">¶</a></h3>
+<h2>Logging and Screen Output<a class="headerlink" href="#logging-and-screen-output" title="Permalink to this headline">¶</a></h2>
 <p>Most software components require some mechanism for conveying run-time
 status information to the user.  This includes things like
 informational and debug messages as well as the logging of events,
@@ -602,7 +569,7 @@ debug output for all components, which would be overwhelming and
 counter-productive.</p>
 </div>
 <div class="section" id="timekeeping">
-<h3>Timekeeping<a class="headerlink" href="#timekeeping" title="Permalink to this headline">¶</a></h3>
+<h2>Timekeeping<a class="headerlink" href="#timekeeping" title="Permalink to this headline">¶</a></h2>
 <p>Many components require some information about the passage of time in
 order to operate.  This might be determining the absolute time that an
 event occurred, measuring the elapsed time between events, or
@@ -633,7 +600,7 @@ API also provides support for the measurement of time according to
 and for converting time values from one time base to another.</p>
 </div>
 <div class="section" id="scheduling">
-<h3>Scheduling<a class="headerlink" href="#scheduling" title="Permalink to this headline">¶</a></h3>
+<h2>Scheduling<a class="headerlink" href="#scheduling" title="Permalink to this headline">¶</a></h2>
 <p>In general terms, scheduling is a mechanism for software components to
 request that a particular section of code be executed by a processor
 on the host system.  From a software component’s point of view,
@@ -672,7 +639,7 @@ or application in the context of a run-time environment, and not
 within individual low-level components.</p>
 </div>
 <div class="section" id="blocking-vs-non-blocking-operations">
-<h3>Blocking vs. Non-Blocking Operations<a class="headerlink" href="#blocking-vs-non-blocking-operations" title="Permalink to this headline">¶</a></h3>
+<h2>Blocking vs. Non-Blocking Operations<a class="headerlink" href="#blocking-vs-non-blocking-operations" title="Permalink to this headline">¶</a></h2>
 <p>In computer programming, a task is considered to be <em>blocked</em> if it is
 waiting for some condition to occur before continuing execution.  The
 condition may be a resource becoming available, or the completion of a
@@ -700,7 +667,7 @@ run-time environment provides a mechanism that allows components to
 <strong>schedule code to be executed when a resource becomes available</strong>.</p>
 </div>
 <div class="section" id="file-i-o">
-<h3>File I/O<a class="headerlink" href="#file-i-o" title="Permalink to this headline">¶</a></h3>
+<h2>File I/O<a class="headerlink" href="#file-i-o" title="Permalink to this headline">¶</a></h2>
 <p>Many software components need to perform file input or output
 operations.  In the vast majority of cases, file I/O is performed
 using system calls that may potentially block the calling task.  For
@@ -722,7 +689,7 @@ I/O functions if this is not a problem in the specific application
 domain.</p>
 </div>
 <div class="section" id="data-recording-and-playback">
-<h3>Data Recording and Playback<a class="headerlink" href="#data-recording-and-playback" title="Permalink to this headline">¶</a></h3>
+<h2>Data Recording and Playback<a class="headerlink" href="#data-recording-and-playback" title="Permalink to this headline">¶</a></h2>
 <p>In many applications, there is a need to record output data from
 software components to a file for later analysis or debugging
 purposes.  It is also helpful to be able to “play back” previously
@@ -732,7 +699,7 @@ delivers a standard set of components for message stream recording and
 playback in raw and structured data file formats.</p>
 </div>
 <div class="section" id="top-level-application-code">
-<h3>Top-Level Application Code<a class="headerlink" href="#top-level-application-code" title="Permalink to this headline">¶</a></h3>
+<h2>Top-Level Application Code<a class="headerlink" href="#top-level-application-code" title="Permalink to this headline">¶</a></h2>
 <p>There is typically quite a bit of “top-level” code in an application
 that is not reusable (except, perhaps, in a copy-and-paste fashion).
 In our view, this is a shame because we would rather see developers
@@ -784,7 +751,7 @@ procedural scripting, incorporating graphical user interfaces, and
 dynamically defining an application structure at run-time.</p>
 </div>
 <div class="section" id="automatic-code-generation">
-<h3>Automatic Code Generation<a class="headerlink" href="#automatic-code-generation" title="Permalink to this headline">¶</a></h3>
+<h2>Automatic Code Generation<a class="headerlink" href="#automatic-code-generation" title="Permalink to this headline">¶</a></h2>
 <p>Many developers have strong views on automatic code generation, either
 positive or negative.  Our position on this subject is practical.
 Although automatic code generation has been abused in many instances,
@@ -796,7 +763,7 @@ to write by hand.</p></li>
 written in a more concise and effective manner.</p></li>
 <li><p>To allow aspects of the program to be described in a graphical
 manner.</p></li>
-<li><p>To reduce the duplication of information (i.e. <a class="reference internal" href="#design-principles"><span class="std std-ref">Don't repeat
+<li><p>To reduce the duplication of information (i.e. <a class="reference internal" href="guidelines.html#principles"><span class="std std-ref">Don't repeat
 yourself</span></a>).</p></li>
 </ul>
 <p>This last point may require a little more explanation.  There are many
@@ -832,11 +799,11 @@ customize generated code and do things manually when it is beneficial
 to do so.</p>
 </div>
 <div class="section" id="file-formats">
-<h3>File Formats<a class="headerlink" href="#file-formats" title="Permalink to this headline">¶</a></h3>
+<h2>File Formats<a class="headerlink" href="#file-formats" title="Permalink to this headline">¶</a></h2>
 <p>The format of data files is another topic that deserves thoughtful
 consideration.  In order to consolidate information and avoid
-<a class="reference internal" href="#design-principles"><span class="std std-ref">repeating ourselves</span></a>, the file formats used by
-our tools to store component interface, hierarchic structure, message
+<a class="reference internal" href="guidelines.html#principles"><span class="std std-ref">repeating ourselves</span></a>, the file formats used by our tools
+to store component interface, hierarchic structure, message
 description, and configuration information <strong>allow arbitrary metadata
 to be incorporated</strong> as the need arises.  This means that all the
 information required to generate documentation, graphical
@@ -863,7 +830,7 @@ high-volume run-time input/output data is another matter entirely, and
 many other factors apply.</p>
 </div>
 <div class="section" id="graphical-design-tools">
-<h3>Graphical Design Tools<a class="headerlink" href="#graphical-design-tools" title="Permalink to this headline">¶</a></h3>
+<h2>Graphical Design Tools<a class="headerlink" href="#graphical-design-tools" title="Permalink to this headline">¶</a></h2>
 <p>The Code Craftsmen believe that some aspects of a program are best
 described graphically and some aspects are more naturally expressed in
 textual form.  In light of this, we desire to <strong>support both visual
@@ -888,7 +855,7 @@ tools simply provide an alternative means of constructing or
 manipulating the underlying text files.</p>
 </div>
 <div class="section" id="software-stack-for-application-development">
-<h3>Software Stack for Application Development<a class="headerlink" href="#software-stack-for-application-development" title="Permalink to this headline">¶</a></h3>
+<h2>Software Stack for Application Development<a class="headerlink" href="#software-stack-for-application-development" title="Permalink to this headline">¶</a></h2>
 <p>In order to make our code crafting tools as useful as possible, they
 have been designed to work in conjunction with other open-source
 software to form a software stack.  Each layer of software builds on
@@ -896,7 +863,6 @@ lower-level resources to provide additional functionality.  The
 following diagram offers a bird’s-eye view of our software stack for
 application development.</p>
 <a class="reference internal image-reference" href="_images/conceptual_devel_sw_stack.svg"><img alt="_images/conceptual_devel_sw_stack.svg" class="align-center" src="_images/conceptual_devel_sw_stack.svg" width="50%" /></a>
-</div>
 </div>
 </div>
 
@@ -911,7 +877,7 @@ application development.</p>
         <a href="software.html" class="btn btn-neutral float-right" title="Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="philosophy.html" class="btn btn-neutral float-left" title="Philosophy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="guidelines.html" class="btn btn-neutral float-left" title="Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

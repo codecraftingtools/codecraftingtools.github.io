@@ -43,7 +43,8 @@ Code Craftsmen
    workflow/workflow
    status
    philosophy
-   design
+   guidelines
+   considerations
    software
    foundation
    notes
