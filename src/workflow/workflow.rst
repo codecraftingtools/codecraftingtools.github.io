@@ -42,9 +42,13 @@ builds on `Tydl <tydl>`.
 |    :caption:              | .. image:: sensor_cmi.*      |
 +---------------------------+------------------------------+
 
-.. comment image:: workflow_interfaces.*
-   :align: center
-   :width: 100%
++---------------------------+------------------------------+
+|                           | .. only:: latex              |
+|                           |                              |
+| .. literalinclude::       |      .                       |
+|    Heating/Element.cmi    |                              |
+|    :caption:              | .. image:: element_cmi.*     |
++---------------------------+------------------------------+
 
 Primitive Component Implementation
 ----------------------------------

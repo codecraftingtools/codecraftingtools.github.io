@@ -2,6 +2,7 @@
 
 cd workflow
 convert sensor_cmi.svg sensor_cmi.png
+convert element_cmi.svg element_cmi.png
 cd ..
 cd images
 convert conceptual_devel_sw_stack.svg     conceptual_devel_sw_stack.png

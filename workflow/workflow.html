@@ -230,6 +230,33 @@ Sensor.Ports: Messaging.Interface
 </tr>
 </tbody>
 </table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Heating/Element.cmi</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
+import Stateful from: Chimps
+
+file defines: members of: Namespace ...
+     named: Heating.Element
+
+Element.Ports: Messaging.Interface
+  extends: Stateful.Ports
+  ports:
+    Enable: Messaging.Port input:
+    Disable: Messaging.Port input:
+</pre></div>
+</div>
+</div>
+</td>
+<td><img alt="../_images/element_cmi.svg" src="../_images/element_cmi.svg" /></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="primitive-component-implementation">
 <h3>Primitive Component Implementation<a class="headerlink" href="#primitive-component-implementation" title="Permalink to this headline">¶</a></h3>
