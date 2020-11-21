@@ -2,7 +2,7 @@
 Considerations
 ==============
 
-In this section, we will briefly walk through a number of design
+In this section, we will walk through a number of design
 considerations that influence the development of our code crafting
 tools.
 
