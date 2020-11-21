@@ -20,8 +20,8 @@ language.
 
 .. highlight:: none
 
-.. literalinclude:: Sensor.tyd
-   :caption: Sensor.tyd
+.. literalinclude:: Temperature.tyd
+   :caption:
 
 Component Interface Definition
 ------------------------------
@@ -34,13 +34,13 @@ data type that defines the message format.  Component messaging
 interfaces are defined using the `Smidgen <smidgen>` syntax, which
 builds on `Tydl <tydl>`.
 
-+--------------------------+------------------------------+
-|                          | .. only:: latex              |
-|                          |                              |
-| .. literalinclude::      |      .                       |
-|    Sensor.cmi            |                              |
-|    :caption: Sensor.cmi  | .. image:: workflow_sensor.* |
-+--------------------------+------------------------------+
++---------------------------+------------------------------+
+|                           | .. only:: latex              |
+|                           |                              |
+| .. literalinclude::       |      .                       |
+|    Temperature/Sensor.cmi |                              |
+|    :caption:              | .. image:: sensor_cmi.*      |
++---------------------------+------------------------------+
 
 .. comment image:: workflow_interfaces.*
    :align: center

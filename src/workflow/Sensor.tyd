@@ -1,8 +1,0 @@
-import all: from: Tydl
-
-file defines: members of: Namespace named: Sensor
-
-Measurement: Data.Structure
-  fields:
-    Value: Data.Float64
-    Count: Data.UInt32

@@ -7,4 +7,4 @@ cp -r ./images/detailed_run_time_sw_stack.svg ../_images/
 cp -r ./images/simplified_devel_sw_stack.svg ../_images/
 cp -r ./images/simplified_run_time_sw_stack.svg ../_images/
 cd ..
-ln -s ./workflow/workflow.html workflow.html
+ln -sf ./workflow/workflow.html workflow.html

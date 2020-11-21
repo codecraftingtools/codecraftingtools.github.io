@@ -1,10 +1,12 @@
-import all: from: Smidgen
+import everything: from: Smidgen
 import Stateful from: Chimps
-import Sensor
+
+file defines: members of: Namespace ...
+     named: Temperature.Sensor
 
 Sensor.Ports: Messaging.Interface
   extends: Stateful.Ports
   ports:
     Measurement: Messaging.Port
-      type: Sensor.Measurement
+      type: Measurement
       output:

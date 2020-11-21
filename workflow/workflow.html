@@ -180,15 +180,15 @@ in the application.  This is accomplished by writing suitable data
 structure declarations in <a class="reference internal" href="../software.html#tydl"><span class="std std-ref">Tydl</span></a>, our custom type definition
 language.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Sensor.tyd</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Tydl
+<div class="code-block-caption"><span class="caption-text">Temperature.tyd</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Tydl
 
-file defines: members of: Namespace named: Sensor
+file defines: members of: Namespace named: Temperature
 
 Measurement: Data.Structure
   fields:
-    Value: Data.Float64
-    Count: Data.UInt32
+    Temperature: Data.Float32
+    Humidity: Data.Float32
 </pre></div>
 </div>
 </div>
@@ -204,27 +204,29 @@ interfaces are defined using the <a class="reference internal" href="../software
 builds on <a class="reference internal" href="../software.html#tydl"><span class="std std-ref">Tydl</span></a>.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
+<col style="width: 47%" />
+<col style="width: 53%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Sensor.cmi</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Smidgen
+<div class="code-block-caption"><span class="caption-text">Temperature/Sensor.cmi</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
 import Stateful from: Chimps
-import Sensor
+
+file defines: members of: Namespace ...
+     named: Temperature.Sensor
 
 Sensor.Ports: Messaging.Interface
   extends: Stateful.Ports
   ports:
     Measurement: Messaging.Port
-      type: Sensor.Measurement
+      type: Measurement
       output:
 </pre></div>
 </div>
 </div>
 </td>
-<td><img alt="../_images/workflow_sensor.svg" src="../_images/workflow_sensor.svg" /></td>
+<td><img alt="../_images/sensor_cmi.svg" src="../_images/sensor_cmi.svg" /></td>
 </tr>
 </tbody>
 </table>
