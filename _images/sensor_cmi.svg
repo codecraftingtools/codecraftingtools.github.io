@@ -40,7 +40,7 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     objecttolerance="1" />
+     objecttolerance="10" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -2684,14 +2684,27 @@
        font-style="normal"
        id="g7382" />
     <g
-       id="g10000"
-       transform="translate(-13.463057,38.819722)">
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,166.85715,121.28411)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g6188">
+      <rect
+         x="0"
+         y="0"
+         width="102.625"
+         height="25"
+         id="rect6186" />
+    </g>
+    <g
+       id="g539">
       <g
          id="g6130"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,161.13211,30.48565)"
+         transform="matrix(0.35239865,0,0,0.35239865,147.66905,69.305372)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <path
            id="path6128"
@@ -2704,12 +2717,12 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.26374235,0,0,0.35365178,186.41277,70.083613)"
+         transform="matrix(0.26374235,0,0,0.35365178,172.94971,108.90334)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#c0c0c0;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <rect
            id="rect6144"
            height="75"
-           width="137.5"
+           width="151.68723"
            y="0"
            x="0" />
       </g>
@@ -2718,12 +2731,12 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.26374235,0,0,0.35365178,186.41277,70.083613)"
+         transform="matrix(0.26374235,0,0,0.35365178,172.94971,108.90334)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#808080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <rect
            id="rect6152"
-           height="35"
-           width="137.5"
+           height="38.778709"
+           width="151.68723"
            y="0"
            x="0" />
       </g>
@@ -2732,38 +2745,24 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,196.02273,71.514396)"
+         transform="matrix(0.35239865,0,0,0.35239865,182.55967,110.33412)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <text
            id="text6162"
            font-style="normal"
            font-weight="400"
            font-size="11"
-           y="18"
-           x="4"
+           y="15.724711"
+           x="-21.028173"
            xml:space="preserve"
-           style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;stroke:none">Sensor</text>
-      </g>
-      <g
-         id="g6188"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,180.32021,82.464388)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6186"
-           height="25"
-           width="102.625"
-           y="0"
-           x="0" />
+           style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;stroke:none">Temperature.Sensor</text>
       </g>
       <g
          id="g6198"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,190.90355,82.086412)"
+         transform="matrix(0.35239865,0,0,0.35239865,177.44049,120.90613)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <text
            id="text6196"
@@ -2780,7 +2779,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,197.50862,82.086412)"
+         transform="matrix(0.35239865,0,0,0.35239865,184.04556,120.90613)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6228"
@@ -2794,7 +2793,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,206.47861,82.464388)"
+         transform="matrix(0.35239865,0,0,0.35239865,193.01555,121.28411)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6236"
@@ -2808,7 +2807,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,197.50862,79.884026)"
+         transform="matrix(0.35239865,0,0,0.35239865,184.04556,118.70375)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6260"
@@ -2822,7 +2821,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,206.47861,80.262002)"
+         transform="matrix(0.35239865,0,0,0.35239865,193.01555,119.08172)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6268"
@@ -2836,7 +2835,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,190.32707,89.071898)"
+         transform="matrix(0.35239865,0,0,0.35239865,176.86401,127.89162)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6284"
@@ -2850,7 +2849,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,206.47861,89.071898)"
+         transform="matrix(0.35239865,0,0,0.35239865,193.01555,127.89162)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6292"
@@ -2864,7 +2863,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,212.05813,85.988276)"
+         transform="matrix(0.35239865,0,0,0.35239865,198.59507,124.808)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6300"
@@ -2878,7 +2877,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,212.05813,85.988276)"
+         transform="matrix(0.35239865,0,0,0.35239865,198.59507,124.808)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6308"
@@ -2892,7 +2891,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,212.05813,70.130605)"
+         transform="matrix(0.35239865,0,0,0.35239865,198.59507,108.95033)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6316"
@@ -2906,7 +2905,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,212.05813,70.130605)"
+         transform="matrix(0.35239865,0,0,0.35239865,198.59507,108.95033)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6324"
@@ -2920,7 +2919,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,184.74755,85.988276)"
+         transform="matrix(0.35239865,0,0,0.35239865,171.28449,124.808)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6364"
@@ -2934,7 +2933,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,184.74755,70.130605)"
+         transform="matrix(0.35239865,0,0,0.35239865,171.28449,108.95033)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6372"
@@ -2948,7 +2947,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,212.05813,80.702621)"
+         transform="matrix(0.35239865,0,0,0.35239865,198.59507,119.52234)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
            id="rect6388"
@@ -2962,7 +2961,7 @@
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,161.66128,30.48565)"
+         transform="matrix(0.35239865,0,0,0.35239865,150.11047,69.305372)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <path
            id="path6926"
@@ -2970,34 +2969,34 @@
            inkscape:connector-curvature="0"
            style="vector-effect:none;fill-rule:evenodd" />
       </g>
-      <g
-         id="g7378"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,227.75728,71.823039)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect7376"
-           height="10"
-           width="30"
-           y="0"
-           x="0" />
-      </g>
-      <g
-         id="g7386"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,227.75728,71.823039)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect7384"
-           height="30"
-           width="10"
-           y="0"
-           x="20" />
-      </g>
+    </g>
+    <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,214.29422,110.64276)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7378">
+      <rect
+         x="0"
+         y="0"
+         width="30"
+         height="10"
+         id="rect7376" />
+    </g>
+    <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,214.29422,110.64276)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7386">
+      <rect
+         x="20"
+         y="0"
+         width="10"
+         height="30"
+         id="rect7384" />
     </g>
     <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"

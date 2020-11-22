@@ -49,7 +49,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -2895,9 +2895,9 @@
            font-weight="400"
            font-size="11"
            y="18"
-           x="4"
+           x="-12.685449"
            xml:space="preserve"
-           style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;stroke:none">Element</text>
+           style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;stroke:none">Heating.Element</text>
       </g>
       <g
          id="g6710"

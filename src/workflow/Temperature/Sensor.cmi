@@ -4,9 +4,11 @@ import Stateful from: Chimps
 file defines: members of: Namespace ...
      named: Temperature.Sensor
 
-Sensor.Ports: Messaging.Interface
+Temperature.Sensor.Ports: Messaging.Interface
   extends: Stateful.Ports
   ports:
     Measurement: Messaging.Port
-      type: Measurement
+      type: Temperature.Measurement
       output:
+    Period: Component.Property Data.Float32
+      default: 10

@@ -185,7 +185,7 @@ language.</p>
 
 file defines: members of: Namespace named: Temperature
 
-Measurement: Data.Structure
+Temperature.Measurement: Data.Structure
   fields:
     Temperature: Data.Float32
     Humidity: Data.Float32
@@ -202,10 +202,10 @@ messages to other components.  Each port has a name and an associated
 data type that defines the message format.  Component messaging
 interfaces are defined using the <a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a> syntax, which
 builds on <a class="reference internal" href="../software.html#tydl"><span class="std std-ref">Tydl</span></a>.</p>
-<table class="docutils align-default">
+<table class="colwidths-given docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 47%" />
-<col style="width: 53%" />
+<col style="width: 60%" />
+<col style="width: 40%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id2">
@@ -216,12 +216,14 @@ import Stateful from: Chimps
 file defines: members of: Namespace ...
      named: Temperature.Sensor
 
-Sensor.Ports: Messaging.Interface
+Temperature.Sensor.Ports: Messaging.Interface
   extends: Stateful.Ports
   ports:
     Measurement: Messaging.Port
-      type: Measurement
+      type: Temperature.Measurement
       output:
+    Period: Component.Property Data.Float32
+      default: 10
 </pre></div>
 </div>
 </div>
@@ -230,10 +232,10 @@ Sensor.Ports: Messaging.Interface
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default">
+<table class="colwidths-given docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 47%" />
-<col style="width: 53%" />
+<col style="width: 60%" />
+<col style="width: 40%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id3">
@@ -244,7 +246,7 @@ import Stateful from: Chimps
 file defines: members of: Namespace ...
      named: Heating.Element
 
-Element.Ports: Messaging.Interface
+Heating.Element.Ports: Messaging.Interface
   extends: Stateful.Ports
   ports:
     Enable: Messaging.Port input:

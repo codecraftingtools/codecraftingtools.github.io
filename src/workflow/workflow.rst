@@ -34,21 +34,29 @@ data type that defines the message format.  Component messaging
 interfaces are defined using the `Smidgen <smidgen>` syntax, which
 builds on `Tydl <tydl>`.
 
-+---------------------------+------------------------------+
-|                           | .. only:: latex              |
-|                           |                              |
-| .. literalinclude::       |      .                       |
-|    Temperature/Sensor.cmi |                              |
-|    :caption:              | .. image:: sensor_cmi.*      |
-+---------------------------+------------------------------+
+.. table::
+   :widths: 15 10
+   :width: 100%
 
-+---------------------------+------------------------------+
-|                           | .. only:: latex              |
-|                           |                              |
-| .. literalinclude::       |      .                       |
-|    Heating/Element.cmi    |                              |
-|    :caption:              | .. image:: element_cmi.*     |
-+---------------------------+------------------------------+
+   +---------------------------+------------------------------+
+   |                           | .. only:: latex              |
+   |                           |                              |
+   | .. literalinclude::       |      .                       |
+   |    Temperature/Sensor.cmi |                              |
+   |    :caption:              | .. image:: sensor_cmi.*      |
+   +---------------------------+------------------------------+
+
+.. table::
+   :widths: 15 10
+   :width: 100%
+	   
+   +---------------------------+------------------------------+
+   |                           | .. only:: latex              |
+   |                           |                              |
+   | .. literalinclude::       |      .                       |
+   |    Heating/Element.cmi    |                              |
+   |    :caption:              | .. image:: element_cmi.*     |
+   +---------------------------+------------------------------+
 
 Primitive Component Implementation
 ----------------------------------
