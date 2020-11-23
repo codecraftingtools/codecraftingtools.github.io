@@ -20,7 +20,7 @@ language.
 
 .. highlight:: none
 
-.. literalinclude:: Temperature.tyd
+.. literalinclude:: HVAC/Temperature.tyd
    :caption:
 
 Component Interface Definition
@@ -38,25 +38,30 @@ builds on `Tydl <tydl>`.
    :widths: 15 10
    :width: 100%
 
-   +---------------------------+------------------------------+
-   |                           | .. only:: latex              |
-   |                           |                              |
-   | .. literalinclude::       |      .                       |
-   |    Temperature/Sensor.cmi |                              |
-   |    :caption:              | .. image:: sensor_cmi.*      |
-   +---------------------------+------------------------------+
+   +--------------------------------+------------------------------+
+   |                                | .. only:: latex              |
+   |                                |                              |
+   | .. literalinclude::            |      .                       |
+   |    HVAC/Temperature/Sensor.cmi |                              |
+   |    :caption:                   | .. image:: sensor_cmi.*      |
+   +--------------------------------+------------------------------+
 
 .. table::
    :widths: 15 10
    :width: 100%
 	   
-   +---------------------------+------------------------------+
-   |                           | .. only:: latex              |
-   |                           |                              |
-   | .. literalinclude::       |      .                       |
-   |    Heating/Element.cmi    |                              |
-   |    :caption:              | .. image:: element_cmi.*     |
-   +---------------------------+------------------------------+
+   +-----------------------------+------------------------------+
+   |                             | .. only:: latex              |
+   |                             |                              |
+   | .. literalinclude::         |      .                       |
+   |    HVAC/Heating/Element.cmi |                              |
+   |    :caption:                | .. image:: element_cmi.*     |
+   +-----------------------------+------------------------------+
+
+Primitive Component Declaration
+--------------------------------
+
+Stay tuned...
 
 Primitive Component Implementation
 ----------------------------------

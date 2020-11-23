@@ -88,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#bottom-up">Bottom-Up</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#message-definition">Message Definition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#component-interface-definition">Component Interface Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#primitive-component-declaration">Primitive Component Declaration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#primitive-component-implementation">Primitive Component Implementation</a></li>
 </ul>
 </li>
@@ -180,12 +181,12 @@ in the application.  This is accomplished by writing suitable data
 structure declarations in <a class="reference internal" href="../software.html#tydl"><span class="std std-ref">Tydl</span></a>, our custom type definition
 language.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Temperature.tyd</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature.tyd</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Tydl
 
-file defines: members of: Namespace named: Temperature
+file defines: members of: Namespace named: HVAC.Temperature
 
-Temperature.Measurement: Data.Structure
+Temperature.Measurement: Data.Record
   fields:
     Temperature: Data.Float32
     Humidity: Data.Float32
@@ -209,12 +210,12 @@ builds on <a class="reference internal" href="../software.html#tydl"><span class
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Temperature/Sensor.cmi</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.cmi</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
 import Stateful from: Chimps
 
 file defines: members of: Namespace ...
-     named: Temperature.Sensor
+     named: HVAC.Temperature.Sensor
 
 Temperature.Sensor.Interface: Messaging.Interface
   extends: Stateful.Interface
@@ -222,9 +223,7 @@ Temperature.Sensor.Interface: Messaging.Interface
     Measurement: Messaging.Port
       type: Temperature.Measurement
       output:
-      
-  properties:
-    Period: Component.Property Data.Float32
+    Period: Component.Property Data.Float64
       default: 10
 </pre></div>
 </div>
@@ -241,12 +240,12 @@ Temperature.Sensor.Interface: Messaging.Interface
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">Heating/Element.cmi</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.cmi</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
 import Stateful from: Chimps
 
 file defines: members of: Namespace ...
-     named: Heating.Element
+     named: HVAC.Heating.Element
 
 Heating.Element.Interface: Messaging.Interface
   extends: Stateful.Interface
@@ -261,6 +260,10 @@ Heating.Element.Interface: Messaging.Interface
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="primitive-component-declaration">
+<h3>Primitive Component Declaration<a class="headerlink" href="#primitive-component-declaration" title="Permalink to this headline">¶</a></h3>
+<p>Stay tuned…</p>
 </div>
 <div class="section" id="primitive-component-implementation">
 <h3>Primitive Component Implementation<a class="headerlink" href="#primitive-component-implementation" title="Permalink to this headline">¶</a></h3>
