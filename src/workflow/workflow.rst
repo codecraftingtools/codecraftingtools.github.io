@@ -49,6 +49,18 @@ builds on `Tydl <tydl>`.
 .. table::
    :widths: 15 10
    :width: 100%
+
+   +------------------------------------+------------------------------+
+   |                                    | .. only:: latex              |
+   |                                    |                              |
+   | .. literalinclude::                |      .                       |
+   |    HVAC/Temperature/Controller.cmi |                              |
+   |    :caption:                       | .. image:: controller_cmi.*  |
+   +------------------------------------+------------------------------+
+
+.. table::
+   :widths: 15 10
+   :width: 100%
 	   
    +-----------------------------+------------------------------+
    |                             | .. only:: latex              |
@@ -58,8 +70,20 @@ builds on `Tydl <tydl>`.
    |    :caption:                | .. image:: element_cmi.*     |
    +-----------------------------+------------------------------+
 
+.. table::
+   :widths: 15 10
+   :width: 100%
+	   
+   +-----------------------------+------------------------------+
+   |                             | .. only:: latex              |
+   |                             |                              |
+   | .. literalinclude::         |      .                       |
+   |    HVAC/Thermostat.cmi      |                              |
+   |    :caption:                | .. image:: thermostat_cmi.*  |
+   +-----------------------------+------------------------------+
+
 Primitive Component Declaration
---------------------------------
+-------------------------------
 
 Stay tuned...
 

@@ -224,7 +224,7 @@ Temperature.Sensor.Interface: Messaging.Interface
       type: Temperature.Measurement
       output:
     Period: Component.Property Data.Float64
-      default: 10
+      default: 1.0
 </pre></div>
 </div>
 </div>
@@ -240,7 +240,39 @@ Temperature.Sensor.Interface: Messaging.Interface
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.cmi</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.cmi</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
+import Stateful from: Chimps
+
+file defines: members of: Namespace ...
+     named: HVAC.Temperature.Controller
+
+Temperature.Controller.Interface: Messaging.Interface
+  extends: Stateful.Interface
+  ports:
+    Measurement: Messaging.Port
+      type: Temperature.Measurement
+      input:
+    Enable: Messaging.Port output:
+    Disable: Messaging.Port output:
+    Setpoint: Component.Property Data.Float32
+      default: 65.0
+</pre></div>
+</div>
+</div>
+</td>
+<td><img alt="../_images/controller_cmi.svg" src="../_images/controller_cmi.svg" /></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 60%" />
+<col style="width: 40%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.cmi</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
 import Stateful from: Chimps
 
@@ -257,6 +289,33 @@ Heating.Element.Interface: Messaging.Interface
 </div>
 </td>
 <td><img alt="../_images/element_cmi.svg" src="../_images/element_cmi.svg" /></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 60%" />
+<col style="width: 40%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">HVAC/Thermostat.cmi</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
+import Stateful from: Chimps
+
+file defines: members of: Namespace ...
+     named: HVAC.Thermostat
+
+Thermostat.Interface: Messaging.Interface
+  extends: Stateful.Interface
+  ports:
+    Enable: Messaging.Port output:
+    Disable: Messaging.Port output:
+</pre></div>
+</div>
+</div>
+</td>
+<td><img alt="../_images/thermostat_cmi.svg" src="../_images/thermostat_cmi.svg" /></td>
 </tr>
 </tbody>
 </table>
