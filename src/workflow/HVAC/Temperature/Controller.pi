@@ -1,0 +1,9 @@
+import all: from:
+  Chimps
+  Chimps.Languages
+
+file namespace: HVAC.Temperature.Controller
+
+Controller.Implementation: Component.Primitive
+  interface: Controller.IO
+  language: 'C++'

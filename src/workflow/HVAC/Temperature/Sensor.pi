@@ -7,6 +7,5 @@ file namespace: HVAC.Temperature.Sensor
 Sensor.Implementation: Component.Primitive
   interface: Sensor.IO
   language: 'C++'
-  sources:
-    "Sensor.hpp"
-    "Sensor.cpp"
+  callbacks:
+    Measure:

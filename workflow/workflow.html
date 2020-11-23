@@ -329,9 +329,36 @@ file namespace: HVAC.Temperature.Sensor
 Sensor.Implementation: Component.Primitive
   interface: Sensor.IO
   language: &#39;C++&#39;
-  sources:
-    &quot;Sensor.hpp&quot;
-    &quot;Sensor.cpp&quot;
+  callbacks:
+    Measure:
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.pi</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from:
+  Chimps
+  Chimps.Languages
+
+file namespace: HVAC.Temperature.Controller
+
+Controller.Implementation: Component.Primitive
+  interface: Controller.IO
+  language: &#39;C++&#39;
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.pi</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from:
+  Chimps
+  Chimps.Languages
+
+file namespace: HVAC.Heating.Element
+
+Element.Implementation: Component.Primitive
+  interface: Element.IO
+  language: &#39;C++&#39;
 </pre></div>
 </div>
 </div>

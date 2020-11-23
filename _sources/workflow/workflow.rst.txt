@@ -88,6 +88,12 @@ Primitive Component Declaration
 .. literalinclude:: HVAC/Temperature/Sensor.pi
    :caption:
 
+.. literalinclude:: HVAC/Temperature/Controller.pi
+   :caption:
+
+.. literalinclude:: HVAC/Heating/Element.pi
+   :caption:
+
 Primitive Component Implementation
 ----------------------------------
 
