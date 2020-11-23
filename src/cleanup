@@ -1,7 +1,9 @@
 #!/bin/bash
 
 rm -f workflow/sensor_cmi.png
+rm -f workflow/controller_cmi.png
 rm -f workflow/element_cmi.png
+rm -f workflow/thermostat_cmi.png
 rm -f images/conceptual_devel_sw_stack.png
 rm -f images/conceptual_run_time_sw_stack.png
 rm -f images/detailed_devel_sw_stack.png

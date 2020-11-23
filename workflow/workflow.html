@@ -322,7 +322,20 @@ Thermostat.Interface: Messaging.Interface
 </div>
 <div class="section" id="primitive-component-declaration">
 <h3>Primitive Component Declaration<a class="headerlink" href="#primitive-component-declaration" title="Permalink to this headline">¶</a></h3>
-<p>Stay tuned…</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.cpi</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
+import Stateful from: Chimps
+
+file defines: members of: Namespace named: HVAC.Temperature.Sensor
+
+Temperature.Sensor.Implementation: Component.Primitive
+  extends: Stateful.Primitive
+  interface: Temperature.Sensor.Interface
+  language: Languages.&#39;C++&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="primitive-component-implementation">
 <h3>Primitive Component Implementation<a class="headerlink" href="#primitive-component-implementation" title="Permalink to this headline">¶</a></h3>

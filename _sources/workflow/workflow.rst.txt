@@ -85,7 +85,8 @@ builds on `Tydl <tydl>`.
 Primitive Component Declaration
 -------------------------------
 
-Stay tuned...
+.. literalinclude:: HVAC/Temperature/Sensor.cpi
+   :caption:
 
 Primitive Component Implementation
 ----------------------------------
