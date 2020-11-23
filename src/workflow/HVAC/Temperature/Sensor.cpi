@@ -1,9 +1,0 @@
-import everything: from: Smidgen
-import Stateful from: Chimps
-
-file defines: members of: Namespace named: HVAC.Temperature.Sensor
-
-Temperature.Sensor.Implementation: Component.Primitive
-  extends: Stateful.Primitive
-  interface: Temperature.Sensor.Interface
-  language: Languages.'C++'

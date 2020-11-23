@@ -1,8 +1,0 @@
-import everything: from: Tydl
-
-file defines: members of: Namespace named: HVAC.Temperature
-
-Temperature.Measurement: Data.Record
-  fields:
-    Temperature: Data.Float32
-    Humidity: Data.Float32

@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="68.376251mm"
-   height="31.80098mm"
-   viewBox="0 0 68.376248 31.800981"
+   width="45.342171mm"
+   height="30.115913mm"
+   viewBox="0 0 45.342169 30.115915"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="controller_cmi.svg">
+   sodipodi:docname="element_mi.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="133.47111"
-     inkscape:cy="71.645972"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="-109.27348"
+     inkscape:cy="81.862457"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -40,7 +40,7 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     objecttolerance="11" />
+     objecttolerance="1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -49,7 +49,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -57,7 +57,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-148.5986,-156.21697)">
+     transform="translate(-164.68614,-202.92187)">
     <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        font-size="11"
@@ -1830,6 +1830,20 @@
        font-style="normal"
        id="g6998" />
     <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,67.181541,85.760794)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7002">
+      <rect
+         x="0"
+         y="0"
+         width="216.66701"
+         height="25"
+         id="rect7000" />
+    </g>
+    <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,85.623138,84.157175)"
        font-size="11"
@@ -1956,6 +1970,20 @@
        font-style="normal"
        id="g7070" />
     <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,67.181541,112.19047)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7074">
+      <rect
+         x="0"
+         y="0"
+         width="216.66701"
+         height="25"
+         id="rect7072" />
+    </g>
+    <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,85.623138,110.58686)"
        font-size="11"
@@ -1998,6 +2026,20 @@
        font-style="normal"
        id="g7094" />
     <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,67.181541,121.00037)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7098">
+      <rect
+         x="0"
+         y="0"
+         width="216.66701"
+         height="25"
+         id="rect7096" />
+    </g>
+    <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,85.623138,119.39676)"
        font-size="11"
@@ -2011,13 +2053,6 @@
        font-weight="400"
        font-style="normal"
        id="g7102" />
-    <rect
-       style="font-style:normal;font-weight:400;font-size:medium;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:0.35239866;stroke-linecap:square;stroke-linejoin:bevel"
-       id="rect7104"
-       height="8.8099661"
-       width="76.353165"
-       y="142.38194"
-       x="152.88924" />
     <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,161.97639,119.39676)"
@@ -2046,6 +2081,20 @@
        font-weight="400"
        font-style="normal"
        id="g7118" />
+    <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,67.181541,129.81062)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7122">
+      <rect
+         x="0"
+         y="0"
+         width="216.66701"
+         height="25"
+         id="rect7120" />
+    </g>
     <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,85.623138,128.20701)"
@@ -2088,6 +2137,20 @@
        font-weight="400"
        font-style="normal"
        id="g7142" />
+    <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,67.181541,138.62051)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7146">
+      <rect
+         x="0"
+         y="0"
+         width="216.66701"
+         height="25"
+         id="rect7144" />
+    </g>
     <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,85.623138,137.0169)"
@@ -2144,6 +2207,20 @@
        font-weight="400"
        font-style="normal"
        id="g7174" />
+    <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,67.181541,83.558054)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7178">
+      <rect
+         x="0"
+         y="0"
+         width="216.66701"
+         height="12.5"
+         id="rect7176" />
+    </g>
     <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,85.623138,81.954437)"
@@ -2271,6 +2348,20 @@
        font-style="normal"
        id="g7246" />
     <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,67.181541,109.98809)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7250">
+      <rect
+         x="0"
+         y="0"
+         width="216.66701"
+         height="12.5"
+         id="rect7248" />
+    </g>
+    <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,85.623138,108.38448)"
        font-size="11"
@@ -2312,6 +2403,20 @@
        font-weight="400"
        font-style="normal"
        id="g7270" />
+    <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,67.181541,118.79798)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7274">
+      <rect
+         x="0"
+         y="0"
+         width="216.66701"
+         height="12.5"
+         id="rect7272" />
+    </g>
     <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,85.623138,117.19437)"
@@ -2355,6 +2460,20 @@
        font-style="normal"
        id="g7294" />
     <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,67.181541,127.60788)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7298">
+      <rect
+         x="0"
+         y="0"
+         width="216.66701"
+         height="12.5"
+         id="rect7296" />
+    </g>
+    <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,85.623138,126.00427)"
        font-size="11"
@@ -2368,13 +2487,6 @@
        font-weight="400"
        font-style="normal"
        id="g7302" />
-    <rect
-       style="font-style:normal;font-weight:400;font-size:medium;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:0.35239866;stroke-linecap:square;stroke-linejoin:bevel"
-       id="rect7304"
-       height="4.404983"
-       width="76.353165"
-       y="148.98946"
-       x="152.88924" />
     <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,161.97639,126.00427)"
@@ -2403,6 +2515,20 @@
        font-weight="400"
        font-style="normal"
        id="g7318" />
+    <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,67.181541,136.41813)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7322">
+      <rect
+         x="0"
+         y="0"
+         width="216.66701"
+         height="12.5"
+         id="rect7320" />
+    </g>
     <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,85.623138,134.81452)"
@@ -2446,6 +2572,20 @@
        font-style="normal"
        id="g7342" />
     <g
+       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       transform="matrix(0.35239865,0,0,0.35239865,67.181541,145.22802)"
+       font-size="11"
+       font-weight="400"
+       font-style="normal"
+       id="g7346">
+      <rect
+         x="0"
+         y="0"
+         width="216.66701"
+         height="21.25"
+         id="rect7344" />
+    </g>
+    <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,85.623138,143.62441)"
        font-size="11"
@@ -2487,174 +2627,6 @@
        font-weight="400"
        font-style="normal"
        id="g7366" />
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,158.34487,156.56937)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g6432">
-      <rect
-         x="0"
-         y="0"
-         width="187.5"
-         height="75"
-         id="rect6430" />
-    </g>
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,158.34487,156.56937)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g6492">
-      <rect
-         x="0"
-         y="0"
-         width="187.5"
-         height="75"
-         id="rect6490" />
-    </g>
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,158.34487,156.56937)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g6524">
-      <rect
-         x="0"
-         y="0"
-         width="187.5"
-         height="75"
-         id="rect6522" />
-    </g>
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,202.3947,166.70077)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g6548">
-      <rect
-         x="0"
-         y="0"
-         width="62.5"
-         height="12.5"
-         id="rect6546" />
-    </g>
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,213.8476,156.56937)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g6596">
-      <rect
-         x="0"
-         y="0"
-         width="30"
-         height="10"
-         id="rect6594" />
-    </g>
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,213.8476,156.56937)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g6604">
-      <rect
-         x="20"
-         y="0"
-         width="10"
-         height="30"
-         id="rect6602" />
-    </g>
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,213.8476,167.14139)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g6668">
-      <rect
-         x="20"
-         y="0"
-         width="10"
-         height="15"
-         id="rect6666" />
-    </g>
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,152.88923,151.19219)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g7130">
-      <rect
-         x="0"
-         y="0"
-         width="216.66701"
-         height="25"
-         id="rect7128" />
-    </g>
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,152.88923,160.00208)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g7154">
-      <rect
-         x="0"
-         y="0"
-         width="216.66701"
-         height="25"
-         id="rect7152" />
-    </g>
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,152.88923,157.7997)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g7330">
-      <rect
-         x="0"
-         y="0"
-         width="216.66701"
-         height="12.5"
-         id="rect7328" />
-    </g>
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,152.88923,166.60959)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g7354">
-      <rect
-         x="0"
-         y="0"
-         width="216.66701"
-         height="21.25"
-         id="rect7352" />
-    </g>
-    <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,218.67012,163.52597)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g7370">
-      <rect
-         x="20"
-         y="0"
-         width="10"
-         height="30"
-         id="rect7368" />
-    </g>
     <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,227.75728,140.54079)"
@@ -2796,20 +2768,6 @@
        font-style="normal"
        id="g7446" />
     <g
-       style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
-       transform="matrix(0.35239865,0,0,0.35239865,218.67012,105.38024)"
-       font-size="11"
-       font-weight="400"
-       font-style="normal"
-       id="g7450">
-      <rect
-         x="20"
-         y="0"
-         width="10"
-         height="165"
-         id="rect7448" />
-    </g>
-    <g
        style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
        transform="matrix(0.35239865,0,0,0.35239865,227.75728,82.395055)"
        font-size="11"
@@ -2868,163 +2826,116 @@
          y="105.5545"
          style="stroke-width:0.26458332" /></text>
     <g
-       id="g726">
-      <g
-         id="g6130-7-6"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,145.87785,122.56505)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
-        <path
-           id="path6128-6-2"
-           d="m 93.75,160 c 0,0 2,0 6,0 H 200"
-           inkscape:connector-curvature="0"
-           style="vector-effect:none;fill-rule:evenodd" />
-      </g>
-      <g
-         id="g6130-7"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,145.87762,117.27897)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
-        <path
-           id="path6128-6"
-           d="m 93.75,160 c 0,0 2,0 6,0 H 200"
-           inkscape:connector-curvature="0"
-           style="vector-effect:none;fill-rule:evenodd" />
-      </g>
-      <g
-         id="g6928-1"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,146.40679,117.27897)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
-        <path
-           id="path6926-4"
-           d="m 193.072,160 v 4 l 6.928,-4 -6.928,-4 v 4"
-           inkscape:connector-curvature="0"
-           style="vector-effect:none;fill-rule:evenodd" />
-      </g>
+       id="g886">
       <g
          id="g6138-3"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,12.129256,116.81734)"
+         transform="matrix(0.35239865,0,0,0.35239865,28.21679,170.25935)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <path
-           id="path6136-8"
+           id="path6136-6"
            d="m 388.25843,163.03372 c 0,0 2,0 6,0 h 87.75"
            inkscape:connector-curvature="0"
            style="vector-effect:none;fill-rule:evenodd" />
       </g>
-      <path
-         id="path6934-13"
-         d="m 156.02036,174.2702 v 1.4096 l 2.44142,-1.4096 -2.44142,-1.40959 v 1.40959"
-         inkscape:connector-curvature="0"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.35239863;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1" />
       <g
-         id="g6398"
+         id="g6138"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,156.56937)"
+         transform="matrix(0.35239865,0,0,0.35239865,28.216864,163.65184)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
+        <path
+           id="path6136"
+           d="m 388.25843,163.03372 c 0,0 2,0 6,0 h 87.75"
+           inkscape:connector-curvature="0"
+           style="vector-effect:none;fill-rule:evenodd" />
+      </g>
+      <g
+         id="g6676"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35204362,0,0,0.39106641,170.07136,203.31674)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#c0c0c0;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <rect
-           id="rect6396"
-           height="80.309006"
-           width="143.51109"
-           y="0"
-           x="0" />
+           style="stroke-width:1.87036991"
+           id="rect6674"
+           height="75.129631"
+           width="98.219467"
+           y="-0.064815007"
+           x="14.345345" />
       </g>
       <g
-         id="g6406"
+         id="g6684"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,156.56937)"
+         transform="matrix(0.30828405,0,0,0.35361583,175.03302,203.27549)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#808080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <rect
-           id="rect6404"
-           height="34.777367"
-           width="142.93713"
+           id="rect6682"
+           height="35"
+           width="112.5"
            y="0"
            x="0" />
       </g>
       <g
-         id="g6416"
+         id="g6694"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,161.42282,157.24585)"
+         transform="matrix(0.35239865,0,0,0.35239865,181.96748,204.79129)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <text
-           id="text6414"
+           id="text6692"
            font-style="normal"
            font-weight="400"
            font-size="11"
            y="18"
-           x="4"
+           x="-12.685449"
            xml:space="preserve"
-           style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;stroke:none">Temperature.Controller</text>
+           style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;stroke:none">       Element</text>
       </g>
       <g
-         id="g6440"
+         id="g6710"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,168.90315)"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04883,203.2968)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6438"
-           height="25"
-           width="102.625"
+           id="rect6708"
+           height="75"
+           width="112.5"
            y="0"
            x="0" />
       </g>
       <g
-         id="g6450"
+         id="g6718"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,168.90315)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
-        <text
-           id="text6448"
-           font-style="normal"
-           font-weight="400"
-           font-size="11"
-           y="18"
-           x="4"
-           xml:space="preserve"
-           style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;stroke:none">Measurement</text>
-      </g>
-      <g
-         id="g6466"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,180.4471,168.63588)"
+         transform="matrix(0.35239865,0,0,0.35239865,176.30391,215.63058)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6464"
+           id="rect6716"
            height="25"
            width="77"
            y="0"
            x="0" />
       </g>
       <g
-         id="g6476"
+         id="g6728"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,190.60334,168.90315)"
+         transform="matrix(0.35239865,0,0,0.35239865,183.25292,215.63058)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <text
-           id="text6474"
+           id="text6726"
            font-style="normal"
            font-weight="400"
            font-size="11"
@@ -3034,293 +2945,377 @@
            style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;stroke:none">Enable</text>
       </g>
       <g
-         id="g6500"
+         id="g6744"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,168.90315)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6498"
-           height="25"
-           width="62.5"
-           y="0"
-           x="0" />
-      </g>
-      <g
-         id="g6508"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,180.36978,168.90315)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6506"
-           height="25"
-           width="62.5"
-           y="0"
-           x="0" />
-      </g>
-      <g
-         id="g6516"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,185.55672,168.63588)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6514"
-           height="25"
-           width="62.5"
-           y="0"
-           x="0" />
-      </g>
-      <g
-         id="g6532"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,166.70077)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6530"
-           height="12.5"
-           width="62.5"
-           y="0"
-           x="0" />
-      </g>
-      <g
-         id="g6540"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,180.36978,166.70077)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6538"
-           height="12.5"
-           width="62.5"
-           y="0"
-           x="0" />
-      </g>
-      <g
-         id="g6556"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,175.51067)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6554"
-           height="21.25"
-           width="62.5"
-           y="0"
-           x="0" />
-      </g>
-      <g
-         id="g6564"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,180.36978,175.51067)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6562"
-           height="21.25"
-           width="62.5"
-           y="0"
-           x="0" />
-      </g>
-      <g
-         id="g6572"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,185.55672,175.2434)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6570"
-           height="21.25"
-           width="62.5"
-           y="0"
-           x="0" />
-      </g>
-      <g
-         id="g6580"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,197.00962,172.15977)"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04883,203.2968)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6578"
+           id="rect6742"
+           height="75"
+           width="112.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6752"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04883,215.63058)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6750"
+           height="25"
+           width="37.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6760"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,183.26385,215.63058)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6758"
+           height="25"
+           width="37.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6768"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,196.47887,215.63058)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6766"
+           height="25"
+           width="37.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6776"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04883,203.2968)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6774"
+           height="75"
+           width="112.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6784"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04883,213.42819)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6782"
+           height="12.5"
+           width="37.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6792"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,183.26385,213.42819)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6790"
+           height="12.5"
+           width="37.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6800"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,196.47887,213.42819)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6798"
+           height="12.5"
+           width="37.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6808"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04883,222.23809)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6806"
+           height="21.25"
+           width="37.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6816"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,183.26385,222.23809)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6814"
+           height="21.25"
+           width="37.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6824"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,196.47887,222.23809)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6822"
+           height="21.25"
+           width="37.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6832"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,199.12187,219.15447)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6830"
            height="10"
            width="30"
            y="20"
            x="0" />
       </g>
       <g
-         id="g6588"
+         id="g6840"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,197.00962,172.15977)"
+         transform="matrix(0.35239865,0,0,0.35239865,199.12187,219.15447)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6586"
+           id="rect6838"
            height="30"
            width="10"
            y="0"
            x="20" />
       </g>
       <g
-         id="g6612"
+         id="g6848"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,172.42704)"
+         transform="matrix(0.35239865,0,0,0.35239865,199.12187,203.2968)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6610"
-           height="10"
-           width="30"
-           y="20"
-           x="0" />
-      </g>
-      <g
-         id="g6620"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,172.42704)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6618"
-           height="30"
-           width="10"
-           y="0"
-           x="0" />
-      </g>
-      <g
-         id="g6628"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,156.56937)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6626"
+           id="rect6846"
            height="10"
            width="30"
            y="0"
            x="0" />
       </g>
       <g
-         id="g6636"
+         id="g6856"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,156.56937)"
+         transform="matrix(0.35239865,0,0,0.35239865,199.12187,203.2968)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6634"
+           id="rect6854"
+           height="30"
+           width="10"
+           y="0"
+           x="20" />
+      </g>
+      <g
+         id="g6864"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04883,219.15447)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6862"
+           height="10"
+           width="30"
+           y="20"
+           x="0" />
+      </g>
+      <g
+         id="g6872"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04883,219.15447)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6870"
            height="30"
            width="10"
            y="0"
            x="0" />
       </g>
       <g
-         id="g6644"
+         id="g6880"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,168.91688,172.42704)"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04883,203.2968)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6642"
+           id="rect6878"
            height="10"
-           width="127.5"
-           y="20"
-           x="0" />
-      </g>
-      <g
-         id="g6652"
-         font-style="normal"
-         font-weight="400"
-         font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,168.91688,156.56937)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect6650"
-           height="10"
-           width="127.5"
+           width="30"
            y="0"
            x="0" />
       </g>
       <g
-         id="g6660"
+         id="g6888"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,158.34487,167.14139)"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04883,203.2968)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6658"
+           id="rect6886"
+           height="30"
+           width="10"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6896"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,180.62084,219.15447)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6894"
+           height="10"
+           width="52.5"
+           y="20"
+           x="0" />
+      </g>
+      <g
+         id="g6904"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,180.62084,203.2968)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6902"
+           height="10"
+           width="52.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6912"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04883,213.86881)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6910"
            height="15"
            width="10"
            y="0"
            x="0" />
       </g>
       <g
-         id="g7362"
+         id="g6920"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,201.83214,163.2587)"
+         transform="matrix(0.35239865,0,0,0.35239865,199.12187,213.86881)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect7360"
-           height="10"
-           width="30"
-           y="20"
-           x="0" />
+           id="rect6918"
+           height="15"
+           width="10"
+           y="0"
+           x="20" />
       </g>
       <g
-         id="g6928-1-9"
+         id="g6936"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,146.40702,122.56505)"
+         transform="matrix(0.35239865,0,0,0.35239865,24.779965,164.72092)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <path
-           id="path6926-4-1"
-           d="m 193.072,160 v 4 l 6.928,-4 -6.928,-4 v 4"
+           id="path6934"
+           d="m 418.072,160 v 4 l 6.928,-4 -6.928,-4 v 4"
            inkscape:connector-curvature="0"
            style="vector-effect:none;fill-rule:evenodd" />
       </g>
       <g
-         id="g6466-2"
+         id="g6752-2"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,180.44732,173.92196)"
+         transform="matrix(0.35239865,0,0,0.35239865,189.12733,220.94493)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6750-2"
+           height="25"
+           width="37.5"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6718-7"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,176.30384,222.23809)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6464-7"
+           id="rect6716-5"
            height="25"
            width="77"
            y="0"
            x="0" />
       </g>
       <g
-         id="g6476-0"
+         id="g6728-3"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,190.60357,174.18923)"
+         transform="matrix(0.35239865,0,0,0.35239865,182.71831,222.23809)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
         <text
-           id="text6474-9"
+           id="text6726-5"
            font-style="normal"
            font-weight="400"
            font-size="11"
@@ -3330,74 +3325,87 @@
            style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;stroke:none">Disable</text>
       </g>
       <g
-         id="g6516-3"
+         id="g6752-6"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,185.55694,173.92196)"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04876,222.23809)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6514-6"
+           id="rect6750-29"
            height="25"
-           width="62.5"
+           width="37.5"
            y="0"
            x="0" />
       </g>
       <g
-         id="g6572-0"
+         id="g6760-1"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,185.55694,180.52948)"
+         transform="matrix(0.35239865,0,0,0.35239865,183.26378,222.23809)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6570-6"
-           height="21.25"
-           width="62.5"
+           id="rect6758-2"
+           height="25"
+           width="37.5"
            y="0"
            x="0" />
       </g>
       <g
-         id="g6580-2"
+         id="g6768-7"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,197.00984,177.44585)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+         transform="matrix(0.35239865,0,0,0.35239865,196.4788,222.23809)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;opacity:0.2;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6578-6"
-           height="10"
-           width="30"
-           y="20"
+           id="rect6766-0"
+           height="25"
+           width="37.5"
+           y="0"
            x="0" />
       </g>
       <g
-         id="g6588-1"
+         id="g6912-9"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,197.00984,177.44585)"
+         transform="matrix(0.35239865,0,0,0.35239865,170.04876,220.47632)"
          style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
         <rect
-           id="rect6586-8"
-           height="30"
+           id="rect6910-3"
+           height="15"
+           width="10"
+           y="0"
+           x="0" />
+      </g>
+      <g
+         id="g6920-6"
+         font-style="normal"
+         font-weight="400"
+         font-size="11"
+         transform="matrix(0.35239865,0,0,0.35239865,199.1218,220.47632)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <rect
+           id="rect6918-0"
+           height="15"
            width="10"
            y="0"
            x="20" />
       </g>
       <g
-         id="g7362-7"
+         id="g6936-6"
          font-style="normal"
          font-weight="400"
          font-size="11"
-         transform="matrix(0.35239865,0,0,0.35239865,201.83237,168.54478)"
-         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
-        <rect
-           id="rect7360-9"
-           height="10"
-           width="30"
-           y="20"
-           x="0" />
+         transform="matrix(0.35239865,0,0,0.35239865,24.779889,171.32843)"
+         style="font-style:normal;font-weight:400;font-size:11px;font-family:Ubuntu;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1">
+        <path
+           id="path6934-2"
+           d="m 418.072,160 v 4 l 6.928,-4 -6.928,-4 v 4"
+           inkscape:connector-curvature="0"
+           style="vector-effect:none;fill-rule:evenodd" />
       </g>
     </g>
   </g>

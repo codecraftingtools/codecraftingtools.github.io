@@ -1,10 +1,10 @@
 #!/bin/bash
 
 cd workflow
-convert sensor_cmi.svg sensor_cmi.png
-convert controller_cmi.svg controller_cmi.png
-convert element_cmi.svg element_cmi.png
-convert thermostat_cmi.svg thermostat_cmi.png
+convert sensor_mi.svg sensor_mi.png
+convert controller_mi.svg controller_mi.png
+convert element_mi.svg element_mi.png
+convert thermostat_mi.svg thermostat_mi.png
 cd ..
 cd images
 convert conceptual_devel_sw_stack.svg     conceptual_devel_sw_stack.png

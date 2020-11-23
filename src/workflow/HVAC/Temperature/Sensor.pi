@@ -1,0 +1,7 @@
+import all: from: (Chimps, Chimps.Languages)
+
+file namespace: HVAC.Temperature.Sensor
+
+Sensor.Implementation: Component.Primitive
+  interface: Sensor.IO
+  language: 'C++'

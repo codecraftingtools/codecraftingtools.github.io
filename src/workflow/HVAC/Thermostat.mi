@@ -1,0 +1,8 @@
+import all: from: Chimps
+
+file namespace: HVAC.Thermostat
+
+Thermostat.IO: Messaging.Interface
+  ports:
+    Enable: output:
+    Disable: output:

@@ -181,15 +181,15 @@ in the application.  This is accomplished by writing suitable data
 structure declarations in <a class="reference internal" href="../software.html#tydl"><span class="std std-ref">Tydl</span></a>, our custom type definition
 language.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">HVAC/Temperature.tyd</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Tydl
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature.td</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Tydl, Tydl.Data.Types)
 
-file defines: members of: Namespace named: HVAC.Temperature
+file namespace: HVAC.Temperature
 
-Temperature.Measurement: Data.Record
+Measurement: Record
   fields:
-    Temperature: Data.Float32
-    Humidity: Data.Float32
+    Temperature: Float32
+    Humidity: Float32
 </pre></div>
 </div>
 </div>
@@ -205,117 +205,107 @@ interfaces are defined using the <a class="reference internal" href="../software
 builds on <a class="reference internal" href="../software.html#tydl"><span class="std std-ref">Tydl</span></a>.</p>
 <table class="colwidths-given docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 65%" />
-<col style="width: 35%" />
+<col style="width: 60%" />
+<col style="width: 40%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.cmi</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
-import Stateful from: Chimps
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.mi</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Data.Types) 
 
-file defines: members of: Namespace ...
-     named: HVAC.Temperature.Sensor
+file namespace: HVAC.Temperature.Sensor
 
-Temperature.Sensor.Interface: Messaging.Interface
-  extends: Stateful.Interface
+Sensor.IO: Messaging.Interface
   ports:
-    Measurement: Messaging.Port
-      type: Temperature.Measurement
+    Measurement:
+      type: Measurement
       output:
-    Period: Component.Property Data.Float64
-      default: 1.0
+      
+  properties:
+    Period: Float64 default: 1.0
 </pre></div>
 </div>
 </div>
 </td>
-<td><img alt="../_images/sensor_cmi.svg" src="../_images/sensor_cmi.svg" /></td>
+<td><img alt="../_images/sensor_mi.svg" src="../_images/sensor_mi.svg" /></td>
 </tr>
 </tbody>
 </table>
 <table class="colwidths-given docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 65%" />
-<col style="width: 35%" />
+<col style="width: 60%" />
+<col style="width: 40%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.cmi</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
-import Stateful from: Chimps
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.mi</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Data.Types) 
 
-file defines: members of: Namespace ...
-     named: HVAC.Temperature.Controller
+file namespace: HVAC.Temperature.Controller
 
-Temperature.Controller.Interface: Messaging.Interface
-  extends: Stateful.Interface
+Controller.IO: Messaging.Interface
   ports:
-    Measurement: Messaging.Port
-      type: Temperature.Measurement
+    Measurement:
+      type: Measurement
       input:
-    Enable: Messaging.Port output:
-    Disable: Messaging.Port output:
-    Setpoint: Component.Property Data.Float32
-      default: 65.0
+    Enable: output:
+    Disable: output:
+    
+  properties:
+    Setpoint: Float32 default: 65.0
 </pre></div>
 </div>
 </div>
 </td>
-<td><img alt="../_images/controller_cmi.svg" src="../_images/controller_cmi.svg" /></td>
+<td><img alt="../_images/controller_mi.svg" src="../_images/controller_mi.svg" /></td>
 </tr>
 </tbody>
 </table>
 <table class="colwidths-given docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 65%" />
-<col style="width: 35%" />
+<col style="width: 60%" />
+<col style="width: 40%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.cmi</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
-import Stateful from: Chimps
+<div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.mi</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
 
-file defines: members of: Namespace ...
-     named: HVAC.Heating.Element
+file namespace: HVAC.Heating.Element
 
-Heating.Element.Interface: Messaging.Interface
-  extends: Stateful.Interface
+Element.IO: Messaging.Interface
   ports:
-    Enable: Messaging.Port input:
-    Disable: Messaging.Port input:
+    Enable: input:
+    Disable: input:
 </pre></div>
 </div>
 </div>
 </td>
-<td><img alt="../_images/element_cmi.svg" src="../_images/element_cmi.svg" /></td>
+<td><img alt="../_images/element_mi.svg" src="../_images/element_mi.svg" /></td>
 </tr>
 </tbody>
 </table>
 <table class="colwidths-given docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 65%" />
-<col style="width: 35%" />
+<col style="width: 60%" />
+<col style="width: 40%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">HVAC/Thermostat.cmi</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
-import Stateful from: Chimps
+<div class="code-block-caption"><span class="caption-text">HVAC/Thermostat.mi</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
 
-file defines: members of: Namespace ...
-     named: HVAC.Thermostat
+file namespace: HVAC.Thermostat
 
-Thermostat.Interface: Messaging.Interface
-  extends: Stateful.Interface
+Thermostat.IO: Messaging.Interface
   ports:
-    Enable: Messaging.Port output:
-    Disable: Messaging.Port output:
+    Enable: output:
+    Disable: output:
 </pre></div>
 </div>
 </div>
 </td>
-<td><img alt="../_images/thermostat_cmi.svg" src="../_images/thermostat_cmi.svg" /></td>
+<td><img alt="../_images/thermostat_mi.svg" src="../_images/thermostat_mi.svg" /></td>
 </tr>
 </tbody>
 </table>
@@ -323,16 +313,14 @@ Thermostat.Interface: Messaging.Interface
 <div class="section" id="primitive-component-declaration">
 <h3>Primitive Component Declaration<a class="headerlink" href="#primitive-component-declaration" title="Permalink to this headline">¶</a></h3>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.cpi</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import everything: from: Smidgen
-import Stateful from: Chimps
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.pi</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Languages)
 
-file defines: members of: Namespace named: HVAC.Temperature.Sensor
+file namespace: HVAC.Temperature.Sensor
 
-Temperature.Sensor.Implementation: Component.Primitive
-  extends: Stateful.Primitive
-  interface: Temperature.Sensor.Interface
-  language: Languages.&#39;C++&#39;
+Sensor.Implementation: Component.Primitive
+  interface: Sensor.IO
+  language: &#39;C++&#39;
 </pre></div>
 </div>
 </div>

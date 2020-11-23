@@ -20,7 +20,7 @@ language.
 
 .. highlight:: none
 
-.. literalinclude:: HVAC/Temperature.tyd
+.. literalinclude:: HVAC/Temperature.td
    :caption:
 
 Component Interface Definition
@@ -35,57 +35,57 @@ interfaces are defined using the `Smidgen <smidgen>` syntax, which
 builds on `Tydl <tydl>`.
 
 .. table::
-   :widths: 15 8
+   :widths: 15 10
    :width: 100%
 
-   +--------------------------------+------------------------------+
-   |                                | .. only:: latex              |
-   |                                |                              |
-   | .. literalinclude::            |      .                       |
-   |    HVAC/Temperature/Sensor.cmi |                              |
-   |    :caption:                   | .. image:: sensor_cmi.*      |
-   +--------------------------------+------------------------------+
+   +-----------------------------------+------------------------------+
+   |                                   | .. only:: latex              |
+   |                                   |                              |
+   | .. literalinclude::               |      .                       |
+   |    HVAC/Temperature/Sensor.mi     |                              |
+   |    :caption:                      | .. image:: sensor_mi.*       |
+   +-----------------------------------+------------------------------+
 
 .. table::
-   :widths: 15 8
+   :widths: 15 10
    :width: 100%
 
-   +------------------------------------+------------------------------+
-   |                                    | .. only:: latex              |
-   |                                    |                              |
-   | .. literalinclude::                |      .                       |
-   |    HVAC/Temperature/Controller.cmi |                              |
-   |    :caption:                       | .. image:: controller_cmi.*  |
-   +------------------------------------+------------------------------+
+   +-----------------------------------+------------------------------+
+   |                                   | .. only:: latex	      |
+   |				       |			      |
+   | .. literalinclude::	       |      .			      |
+   |	HVAC/Temperature/Controller.mi |			      |
+   |	:caption:		       | .. image:: controller_mi.*   |
+   +-----------------------------------+------------------------------+
 
 .. table::
-   :widths: 15 8
+   :widths: 15 10
    :width: 100%
 	   
-   +-----------------------------+------------------------------+
-   |                             | .. only:: latex              |
-   |                             |                              |
-   | .. literalinclude::         |      .                       |
-   |    HVAC/Heating/Element.cmi |                              |
-   |    :caption:                | .. image:: element_cmi.*     |
-   +-----------------------------+------------------------------+
+   +-----------------------------------+------------------------------+
+   |                                   | .. only:: latex              |
+   |                                   |                              |
+   | .. literalinclude::               |      .                       |
+   |    HVAC/Heating/Element.mi        |                              |
+   |    :caption:                      | .. image:: element_mi.*      |
+   +-----------------------------------+------------------------------+
 
 .. table::
-   :widths: 15 8
+   :widths: 15 10
    :width: 100%
 	   
-   +-----------------------------+------------------------------+
-   |                             | .. only:: latex              |
-   |                             |                              |
-   | .. literalinclude::         |      .                       |
-   |    HVAC/Thermostat.cmi      |                              |
-   |    :caption:                | .. image:: thermostat_cmi.*  |
-   +-----------------------------+------------------------------+
+   +-----------------------------------+------------------------------+
+   |                                   | .. only:: latex              |
+   |                                   |                              |
+   | .. literalinclude::               |      .                       |
+   |    HVAC/Thermostat.mi             |                              |
+   |    :caption:                      | .. image:: thermostat_mi.*   |
+   +-----------------------------------+------------------------------+
 
 Primitive Component Declaration
 -------------------------------
 
-.. literalinclude:: HVAC/Temperature/Sensor.cpi
+.. literalinclude:: HVAC/Temperature/Sensor.pi
    :caption:
 
 Primitive Component Implementation

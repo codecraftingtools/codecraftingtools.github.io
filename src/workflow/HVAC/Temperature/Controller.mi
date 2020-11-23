@@ -1,0 +1,14 @@
+import all: from: (Chimps, Chimps.Data.Types) 
+
+file namespace: HVAC.Temperature.Controller
+
+Controller.IO: Messaging.Interface
+  ports:
+    Measurement:
+      type: Measurement
+      input:
+    Enable: output:
+    Disable: output:
+    
+  properties:
+    Setpoint: Float32 default: 65.0

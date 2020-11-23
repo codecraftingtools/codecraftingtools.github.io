@@ -1,0 +1,8 @@
+import all: from: Chimps
+
+file namespace: HVAC.Heating.Element
+
+Element.IO: Messaging.Interface
+  ports:
+    Enable: input:
+    Disable: input:
