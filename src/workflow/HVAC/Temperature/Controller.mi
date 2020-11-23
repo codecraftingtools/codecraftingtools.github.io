@@ -12,3 +12,4 @@ Controller.IO: Messaging.Interface
     
   properties:
     Setpoint: Float32 default: 65.0
+    Hysteresis: Float32 default: 1.0

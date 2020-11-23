@@ -86,10 +86,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../vision.html">Vision</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Workflow</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#bottom-up">Bottom-Up</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#message-definition">Message Definition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#component-interface-definition">Component Interface Definition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#primitive-component-declaration">Primitive Component Declaration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#primitive-component-implementation">Primitive Component Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#define-message-data-structures">Define Message Data Structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#define-component-messaging-interfaces">Define Component Messaging Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#declare-primitive-components">Declare Primitive Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implement-primitive-components">Implement Primitive Components</a></li>
 </ul>
 </li>
 </ul>
@@ -173,8 +173,8 @@ crafting tools can be leveraged in bottom-up or top-down software
 development workflows.</p>
 <div class="section" id="bottom-up">
 <h2>Bottom-Up<a class="headerlink" href="#bottom-up" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="message-definition">
-<h3>Message Definition<a class="headerlink" href="#message-definition" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="define-message-data-structures">
+<h3>Define Message Data Structures<a class="headerlink" href="#define-message-data-structures" title="Permalink to this headline">¶</a></h3>
 <p>The first step in a bottom-up workflow is to define the data content
 and format of each message that is passed between software components
 in the application.  This is accomplished by writing suitable data
@@ -194,8 +194,8 @@ Measurement: Record
 </div>
 </div>
 </div>
-<div class="section" id="component-interface-definition">
-<h3>Component Interface Definition<a class="headerlink" href="#component-interface-definition" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="define-component-messaging-interfaces">
+<h3>Define Component Messaging Interfaces<a class="headerlink" href="#define-component-messaging-interfaces" title="Permalink to this headline">¶</a></h3>
 <p>The next step is to define the messaging interface for each software
 component in the application.  Components have input ports for
 receiving messages from other components and output ports for sending
@@ -253,6 +253,7 @@ Controller.IO: Messaging.Interface
     
   properties:
     Setpoint: Float32 default: 65.0
+    Hysteresis: Float32 default: 1.0
 </pre></div>
 </div>
 </div>
@@ -310,8 +311,11 @@ Thermostat.IO: Messaging.Interface
 </tbody>
 </table>
 </div>
-<div class="section" id="primitive-component-declaration">
-<h3>Primitive Component Declaration<a class="headerlink" href="#primitive-component-declaration" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="declare-primitive-components">
+<h3>Declare Primitive Components<a class="headerlink" href="#declare-primitive-components" title="Permalink to this headline">¶</a></h3>
+<p>After defining the component messaging interfaces, the next step is to
+provide declarations for each primitive component that is implemented
+in an external programming language.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.pi</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Languages)
@@ -351,9 +355,149 @@ Element.Implementation: Component.Primitive
 </div>
 </div>
 </div>
-<div class="section" id="primitive-component-implementation">
-<h3>Primitive Component Implementation<a class="headerlink" href="#primitive-component-implementation" title="Permalink to this headline">¶</a></h3>
-<p>Stay tuned…</p>
+<div class="section" id="implement-primitive-components">
+<h3>Implement Primitive Components<a class="headerlink" href="#implement-primitive-components" title="Permalink to this headline">¶</a></h3>
+<p>Primitive C++ components are implemented by suppling header and source
+files that provide conforming class declarations and definitions.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.hpp</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;generated/HVAC/Temperature/Sensor/Base.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Sensor</span><span class="o">::</span><span class="nl">Implementation</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">Base</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Reset</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Start</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  
+  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Measure</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+ <span class="k">protected</span><span class="o">:</span>
+  <span class="kt">double</span> <span class="n">read_hardware</span><span class="p">();</span>
+  
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">count_</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.cpp</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;Sensor.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Sensor</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">chimps</span><span class="o">::</span><span class="n">chrono</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Reset</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">count_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Start</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">schedule</span><span class="p">(</span><span class="n">Measure</span><span class="p">(),</span> <span class="n">every</span><span class="p">(</span><span class="mf">1.0</span><span class="n">_s</span> <span class="o">*</span> <span class="n">config</span><span class="p">.</span><span class="n">Period</span><span class="p">));</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Measure</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">temperature</span> <span class="o">=</span> <span class="n">read_hardware</span><span class="p">();</span>
+  <span class="n">log</span><span class="p">.</span><span class="n">verbose</span><span class="p">(</span><span class="s">&quot;measured: {:.1f}&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="p">);</span>
+  
+  <span class="n">send</span><span class="p">(</span><span class="n">Measurement</span><span class="p">()</span>
+       <span class="p">.</span><span class="n">Temperature</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+       <span class="p">.</span><span class="n">Humidity</span><span class="p">(</span><span class="mf">0.60</span><span class="p">)</span>
+       <span class="p">);</span>
+
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">float</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">read_hardware</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="p">;</span>
+
+  <span class="n">count_</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  
+  <span class="k">auto</span> <span class="n">t</span> <span class="o">=</span> <span class="n">count_</span> <span class="o">*</span> <span class="n">config</span><span class="p">.</span><span class="n">Period</span><span class="p">;</span> <span class="c1">// s</span>
+  <span class="k">auto</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="c1">// Hz</span>
+  <span class="k">auto</span> <span class="n">temperature</span> <span class="o">=</span> <span class="mf">60.0</span> <span class="o">+</span> <span class="mf">10.0</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+    
+  <span class="k">return</span> <span class="n">temperature</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.hpp</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;generated/HVAC/Temperature/Controller/Base.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="nl">Implementation</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">Base</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Initialize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Finalize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  
+  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Measurement</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.cpp</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;Controller.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Controller</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Initialize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">send</span><span class="p">(</span><span class="n">Disable</span><span class="p">());</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Finalize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">send</span><span class="p">(</span><span class="n">Disable</span><span class="p">());</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Measurement</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">Temperature</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">config</span><span class="p">.</span><span class="n">Setpoint</span> <span class="o">+</span> <span class="n">config</span><span class="p">.</span><span class="n">Hysteresis</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">send</span><span class="p">(</span><span class="n">Disable</span><span class="p">());</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">Temperature</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">config</span><span class="p">.</span><span class="n">Setpoint</span> <span class="o">-</span> <span class="n">config</span><span class="p">.</span><span class="n">Hysteresis</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">send</span><span class="p">(</span><span class="n">Enable</span><span class="p">());</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.hpp</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;generated/HVAC/Heating/Element/Base.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">HVAC</span><span class="o">::</span><span class="n">Heating</span><span class="o">::</span><span class="n">Element</span><span class="o">::</span><span class="nl">Implementation</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">Base</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Enable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Disable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.cpp</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;Element.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">HVAC</span><span class="o">::</span><span class="n">Heating</span><span class="o">::</span><span class="n">Element</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Enable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">log</span><span class="p">.</span><span class="n">verbose</span><span class="p">(</span><span class="s">&quot;enabled&quot;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Disable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">log</span><span class="p">.</span><span class="n">verbose</span><span class="p">(</span><span class="s">&quot;disabled&quot;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>

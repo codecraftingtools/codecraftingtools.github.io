@@ -9,8 +9,8 @@ development workflows.
 Bottom-Up
 =========
 
-Message Definition
-------------------
+Define Message Data Structures
+------------------------------
 
 The first step in a bottom-up workflow is to define the data content
 and format of each message that is passed between software components
@@ -23,8 +23,8 @@ language.
 .. literalinclude:: HVAC/Temperature.td
    :caption:
 
-Component Interface Definition
-------------------------------
+Define Component Messaging Interfaces
+-------------------------------------
 
 The next step is to define the messaging interface for each software
 component in the application.  Components have input ports for
@@ -82,8 +82,12 @@ builds on `Tydl <tydl>`.
    |    :caption:                      | .. image:: thermostat_mi.*   |
    +-----------------------------------+------------------------------+
 
-Primitive Component Declaration
--------------------------------
+Declare Primitive Components
+----------------------------
+
+After defining the component messaging interfaces, the next step is to
+provide declarations for each primitive component that is implemented
+in an external programming language.
 
 .. literalinclude:: HVAC/Temperature/Sensor.pi
    :caption:
@@ -94,7 +98,30 @@ Primitive Component Declaration
 .. literalinclude:: HVAC/Heating/Element.pi
    :caption:
 
-Primitive Component Implementation
-----------------------------------
+Implement Primitive Components
+------------------------------
 
-Stay tuned...
+Primitive C++ components are implemented by suppling header and source
+files that provide conforming class declarations and definitions.
+
+.. highlight:: C++
+
+.. literalinclude:: HVAC/Temperature/Sensor.hpp
+   :caption:
+
+.. literalinclude:: HVAC/Temperature/Sensor.cpp
+   :caption:
+
+.. literalinclude:: HVAC/Temperature/Controller.hpp
+   :caption:
+
+.. literalinclude:: HVAC/Temperature/Controller.cpp
+   :caption:
+
+.. literalinclude:: HVAC/Heating/Element.hpp
+   :caption:
+
+.. literalinclude:: HVAC/Heating/Element.cpp
+   :caption:
+
+.. highlight:: none
