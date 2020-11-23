@@ -1,4 +1,6 @@
-import all: from: (Tydl, Tydl.Data.Types)
+import all: from:
+  Tydl
+  Tydl.Data.Types
 
 file namespace: HVAC.Temperature
 

@@ -182,7 +182,9 @@ structure declarations in <a class="reference internal" href="../software.html#t
 language.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature.td</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Tydl, Tydl.Data.Types)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from:
+  Tydl
+  Tydl.Data.Types
 
 file namespace: HVAC.Temperature
 
@@ -211,7 +213,9 @@ builds on <a class="reference internal" href="../software.html#tydl"><span class
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.mi</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Data.Types) 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from:
+  Chimps
+  Chimps.Data.Types
 
 file namespace: HVAC.Temperature.Sensor
 
@@ -239,7 +243,9 @@ Sensor.IO: Messaging.Interface
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.mi</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Data.Types) 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from:
+  Chimps
+  Chimps.Data.Types
 
 file namespace: HVAC.Temperature.Controller
 
@@ -314,13 +320,18 @@ Thermostat.IO: Messaging.Interface
 <h3>Primitive Component Declaration<a class="headerlink" href="#primitive-component-declaration" title="Permalink to this headline">¶</a></h3>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.pi</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Languages)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from:
+  Chimps
+  Chimps.Languages
 
 file namespace: HVAC.Temperature.Sensor
 
 Sensor.Implementation: Component.Primitive
   interface: Sensor.IO
   language: &#39;C++&#39;
+  sources:
+    &quot;Sensor.hpp&quot;
+    &quot;Sensor.cpp&quot;
 </pre></div>
 </div>
 </div>
