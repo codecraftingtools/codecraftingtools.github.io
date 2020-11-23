@@ -1,6 +1,4 @@
-import all: from:
-  Chimps
-  Chimps.Data.Types
+import all: from: (Chimps, Chimps.Data.Types)
 
 file namespace: HVAC.Temperature.Sensor
 
