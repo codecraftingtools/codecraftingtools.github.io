@@ -2,12 +2,10 @@
 
 using namespace HVAC::Heating::Element;
 
-bool Implementation::handle(Enable &msg) {
+void Implementation::handle(Enable &msg) {
   log.verbose("enabled");
-  return true;
 }
 
-bool Implementation::handle(Disable &msg) {
+void Implementation::handle(Disable &msg) {
   log.verbose("disabled");
-  return true;
 }

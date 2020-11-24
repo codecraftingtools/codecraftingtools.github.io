@@ -3,17 +3,15 @@
 using namespace HVAC::Temperature::Sensor;
 using namespace chimps::chrono;
 
-bool Implementation::handle(Reset &msg) {
+void Implementation::handle(Reset &msg) {
   count_ = 0;
-  return true;
 }
 
-bool Implementation::handle(Start &msg) {
+void Implementation::handle(Start &msg) {
   schedule(Measure(), every(1.0_s * config.Period));
-  return true;
 }
 
-bool Implementation::handle(Measure &msg) {
+void Implementation::handle(Measure &msg) {
   auto temperature = read_hardware();
   log.verbose("measured: {:.1f}", temperature);
   
@@ -21,8 +19,6 @@ bool Implementation::handle(Measure &msg) {
        .Temperature(temperature)
        .Humidity(0.60)
        );
-
-  return true;
 }
 
 float Implementation::read_hardware() {

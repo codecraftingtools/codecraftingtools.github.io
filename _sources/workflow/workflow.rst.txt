@@ -2,9 +2,9 @@
 Workflow
 ========
 
-Let us walk through a simple example to demonstrate how our code
-crafting tools can be leveraged in bottom-up or top-down software
-development workflows.
+Let us walk through a simple (but complete) example to demonstrate how
+our code crafting tools can be leveraged in bottom-up or top-down
+software development workflows.
 
 Bottom-Up
 =========
@@ -101,7 +101,7 @@ in an external programming language.
 Implement Primitive Components
 ------------------------------
 
-Primitive C++ components are implemented by suppling header and source
+Primitive components are implemented by suppling header and source
 files that provide conforming class declarations and definitions.
 
 .. highlight:: C++

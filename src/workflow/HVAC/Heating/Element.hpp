@@ -4,6 +4,6 @@ class HVAC::Heating::Element::Implementation : public Base {
  public:
   using Base::Base;
 
-  bool handle(Enable &msg) override;
-  bool handle(Disable &msg) override;
+  void handle(Enable &msg) override;
+  void handle(Disable &msg) override;
 }

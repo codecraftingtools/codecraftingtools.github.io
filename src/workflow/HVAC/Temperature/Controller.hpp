@@ -4,8 +4,8 @@ class HVAC::Temperature::Controller::Implementation : public Base {
  public:
   using Base::Base;
 
-  bool handle(Initialize &msg) override;
-  bool handle(Finalize &msg) override;
+  void handle(Initialize &msg) override;
+  void handle(Finalize &msg) override;
   
-  bool handle(Measurement &msg) override;
+  void handle(Measurement &msg) override;
 }

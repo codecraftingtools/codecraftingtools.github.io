@@ -168,9 +168,9 @@
             
   <div class="section" id="workflow">
 <h1>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h1>
-<p>Let us walk through a simple example to demonstrate how our code
-crafting tools can be leveraged in bottom-up or top-down software
-development workflows.</p>
+<p>Let us walk through a simple (but complete) example to demonstrate how
+our code crafting tools can be leveraged in bottom-up or top-down
+software development workflows.</p>
 <div class="section" id="bottom-up">
 <h2>Bottom-Up<a class="headerlink" href="#bottom-up" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="define-message-data-structures">
@@ -357,7 +357,7 @@ Element.Implementation: Component.Primitive
 </div>
 <div class="section" id="implement-primitive-components">
 <h3>Implement Primitive Components<a class="headerlink" href="#implement-primitive-components" title="Permalink to this headline">¶</a></h3>
-<p>Primitive C++ components are implemented by suppling header and source
+<p>Primitive components are implemented by suppling header and source
 files that provide conforming class declarations and definitions.</p>
 <div class="literal-block-wrapper docutils container" id="id9">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.hpp</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
@@ -367,10 +367,10 @@ files that provide conforming class declarations and definitions.</p>
  <span class="k">public</span><span class="o">:</span>
   <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">Base</span><span class="p">;</span>
 
-  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Reset</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
-  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Start</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Reset</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Start</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
   
-  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Measure</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Measure</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
 
  <span class="k">protected</span><span class="o">:</span>
   <span class="kt">double</span> <span class="n">read_hardware</span><span class="p">();</span>
@@ -387,17 +387,15 @@ files that provide conforming class declarations and definitions.</p>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Sensor</span><span class="p">;</span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">chimps</span><span class="o">::</span><span class="n">chrono</span><span class="p">;</span>
 
-<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Reset</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Reset</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">count_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Start</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Start</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">schedule</span><span class="p">(</span><span class="n">Measure</span><span class="p">(),</span> <span class="n">every</span><span class="p">(</span><span class="mf">1.0</span><span class="n">_s</span> <span class="o">*</span> <span class="n">config</span><span class="p">.</span><span class="n">Period</span><span class="p">));</span>
-  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Measure</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Measure</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">auto</span> <span class="n">temperature</span> <span class="o">=</span> <span class="n">read_hardware</span><span class="p">();</span>
   <span class="n">log</span><span class="p">.</span><span class="n">verbose</span><span class="p">(</span><span class="s">&quot;measured: {:.1f}&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="p">);</span>
   
@@ -405,8 +403,6 @@ files that provide conforming class declarations and definitions.</p>
        <span class="p">.</span><span class="n">Temperature</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
        <span class="p">.</span><span class="n">Humidity</span><span class="p">(</span><span class="mf">0.60</span><span class="p">)</span>
        <span class="p">);</span>
-
-  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">float</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">read_hardware</span><span class="p">()</span> <span class="p">{</span>
@@ -431,10 +427,10 @@ files that provide conforming class declarations and definitions.</p>
  <span class="k">public</span><span class="o">:</span>
   <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">Base</span><span class="p">;</span>
 
-  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Initialize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
-  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Finalize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Initialize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Finalize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
   
-  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Measurement</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Measurement</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -445,23 +441,20 @@ files that provide conforming class declarations and definitions.</p>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Controller</span><span class="p">;</span>
 
-<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Initialize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Initialize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">send</span><span class="p">(</span><span class="n">Disable</span><span class="p">());</span>
-  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Finalize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Finalize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">send</span><span class="p">(</span><span class="n">Disable</span><span class="p">());</span>
-  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Measurement</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Measurement</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">Temperature</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">config</span><span class="p">.</span><span class="n">Setpoint</span> <span class="o">+</span> <span class="n">config</span><span class="p">.</span><span class="n">Hysteresis</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">send</span><span class="p">(</span><span class="n">Disable</span><span class="p">());</span>
   <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">Temperature</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">config</span><span class="p">.</span><span class="n">Setpoint</span> <span class="o">-</span> <span class="n">config</span><span class="p">.</span><span class="n">Hysteresis</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">send</span><span class="p">(</span><span class="n">Enable</span><span class="p">());</span>
   <span class="p">}</span>
-  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -474,8 +467,8 @@ files that provide conforming class declarations and definitions.</p>
  <span class="k">public</span><span class="o">:</span>
   <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">Base</span><span class="p">;</span>
 
-  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Enable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
-  <span class="kt">bool</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Disable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Enable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Disable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -486,14 +479,12 @@ files that provide conforming class declarations and definitions.</p>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">HVAC</span><span class="o">::</span><span class="n">Heating</span><span class="o">::</span><span class="n">Element</span><span class="p">;</span>
 
-<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Enable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Enable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">log</span><span class="p">.</span><span class="n">verbose</span><span class="p">(</span><span class="s">&quot;enabled&quot;</span><span class="p">);</span>
-  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">bool</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Disable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Disable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">log</span><span class="p">.</span><span class="n">verbose</span><span class="p">(</span><span class="s">&quot;disabled&quot;</span><span class="p">);</span>
-  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
