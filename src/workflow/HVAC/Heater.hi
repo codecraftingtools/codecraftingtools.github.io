@@ -1,0 +1,15 @@
+import all: from: Chimps
+import HVAC.Heating
+
+file namespace: HVAC.Heater
+
+Heater.Implementation: Component.Hierarchy
+  interface: Stateful.IO
+  subcomponents:
+    Thermostat: Thermostat
+    Element: Heating.Element
+  connections:
+    (source: Thermostat.Enable,
+     sink: Element.Enable)
+    (source: Thermostat.Disable,
+     sink: Element.Disable)

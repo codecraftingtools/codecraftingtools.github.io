@@ -101,7 +101,7 @@ in an external programming language.
 Implement Primitive Components
 ------------------------------
 
-Primitive components are implemented by suppling header and source
+Primitive C++ components are implemented by suppling header and source
 files that provide conforming class declarations and definitions.
 
 .. highlight:: C++
@@ -125,3 +125,34 @@ files that provide conforming class declarations and definitions.
    :caption:
 
 .. highlight:: none
+
+Define the Component Hierarchy
+------------------------------
+
+Once the primitive components have been implemented, they can be
+combined and connected to form composite components that build on one
+another in a hierarchic fashion.
+
+.. table::
+   :widths: 13 10
+   :width: 100%
+	   
+   +-----------------------------------+------------------------------+
+   |                                   | .. only:: latex              |
+   |                                   |                              |
+   | .. literalinclude::               |      .                       |
+   |    HVAC/Thermostat.hi             |                              |
+   |    :caption:                      | .. image:: thermostat_hi.*   |
+   +-----------------------------------+------------------------------+
+
+.. table::
+   :widths: 13 10
+   :width: 100%
+	   
+   +-----------------------------------+------------------------------+
+   |                                   | .. only:: latex              |
+   |                                   |                              |
+   | .. literalinclude::               |      .                       |
+   |    HVAC/Heater.hi                 |                              |
+   |    :caption:                      | .. image:: heater_hi.*       |
+   +-----------------------------------+------------------------------+

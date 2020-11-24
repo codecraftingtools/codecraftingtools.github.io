@@ -1,0 +1,17 @@
+import all: from: Chimps
+import HVAC.Temperature
+
+file namespace: HVAC.Thermostat
+
+Thermostat.Implementation: Component.Hierarchy
+  interface: Thermostat.IO
+  subcomponents:
+    Sensor: Temperature.Sensor
+    Controller: Temperature.Controller
+  connections:
+    (source: Sensor.Measurement,
+     sink: Controller.Measurement)
+    (source: Controller.Enable,
+     external: Enable)
+    (source: Controller.Disable,
+     external: Disable)

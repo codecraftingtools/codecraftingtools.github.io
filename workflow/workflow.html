@@ -90,6 +90,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#define-component-messaging-interfaces">Define Component Messaging Interfaces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#declare-primitive-components">Declare Primitive Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#implement-primitive-components">Implement Primitive Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#define-the-component-hierarchy">Define the Component Hierarchy</a></li>
 </ul>
 </li>
 </ul>
@@ -357,7 +358,7 @@ Element.Implementation: Component.Primitive
 </div>
 <div class="section" id="implement-primitive-components">
 <h3>Implement Primitive Components<a class="headerlink" href="#implement-primitive-components" title="Permalink to this headline">¶</a></h3>
-<p>Primitive components are implemented by suppling header and source
+<p>Primitive C++ components are implemented by suppling header and source
 files that provide conforming class declarations and definitions.</p>
 <div class="literal-block-wrapper docutils container" id="id9">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.hpp</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
@@ -489,6 +490,76 @@ files that provide conforming class declarations and definitions.</p>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="define-the-component-hierarchy">
+<h3>Define the Component Hierarchy<a class="headerlink" href="#define-the-component-hierarchy" title="Permalink to this headline">¶</a></h3>
+<p>Once the primitive components have been implemented, they can be
+combined and connected to form composite components that build on one
+another in a hierarchic fashion.</p>
+<table class="colwidths-given docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 43%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">HVAC/Thermostat.hi</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
+import HVAC.Temperature
+
+file namespace: HVAC.Thermostat
+
+Thermostat.Implementation: Component.Hierarchy
+  interface: Thermostat.IO
+  subcomponents:
+    Sensor: Temperature.Sensor
+    Controller: Temperature.Controller
+  connections:
+    (source: Sensor.Measurement,
+     sink: Controller.Measurement)
+    (source: Controller.Enable,
+     external: Enable)
+    (source: Controller.Disable,
+     external: Disable)
+</pre></div>
+</div>
+</div>
+</td>
+<td><img alt="../_images/thermostat_hi.svg" src="../_images/thermostat_hi.svg" /></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 43%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">HVAC/Heater.hi</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
+import HVAC.Heating
+
+file namespace: HVAC.Heater
+
+Heater.Implementation: Component.Hierarchy
+  interface: Stateful.IO
+  subcomponents:
+    Thermostat: Thermostat
+    Element: Heating.Element
+  connections:
+    (source: Thermostat.Enable,
+     sink: Element.Enable)
+    (source: Thermostat.Disable,
+     sink: Element.Disable)
+</pre></div>
+</div>
+</div>
+</td>
+<td><img alt="../_images/heater_hi.svg" src="../_images/heater_hi.svg" /></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

@@ -5,6 +5,8 @@ convert sensor_mi.svg sensor_mi.png
 convert controller_mi.svg controller_mi.png
 convert element_mi.svg element_mi.png
 convert thermostat_mi.svg thermostat_mi.png
+convert thermostat_hi.svg thermostat_hi.png
+convert heater_hi.svg heater_hi.png
 cd ..
 cd images
 convert conceptual_devel_sw_stack.svg     conceptual_devel_sw_stack.png
