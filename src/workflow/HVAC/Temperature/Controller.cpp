@@ -11,9 +11,9 @@ void Implementation::handle(Finalize &msg) {
 }
 
 void Implementation::handle(Measurement &msg) {
-  if (msg.Temperature() > config.Setpoint + config.Hysteresis/2.0) {
+  if (msg.Temperature() > config.Setpoint() + config.Hysteresis()/2.0) {
     send(Disable());
-  } else if (msg.Temperature() < config.Setpoint - config.Hysteresis/2.0) {
+  } else if (msg.Temperature() < config.Setpoint() - config.Hysteresis()/2.0) {
     send(Enable());
   }
 }

@@ -37,13 +37,13 @@ builds on `Tydl <tydl>`.
 .. table::
    :widths: 15 10
    :width: 100%
-
+	   
    +-----------------------------------+------------------------------+
    |                                   | .. only:: latex              |
    |                                   |                              |
    | .. literalinclude::               |      .                       |
-   |    HVAC/Temperature/Sensor.mi     |                              |
-   |    :caption:                      | .. image:: sensor_mi.*       |
+   |    HVAC/Heating/Element.mi        |                              |
+   |    :caption:                      | .. image:: element_mi.*      |
    +-----------------------------------+------------------------------+
 
 .. table::
@@ -61,13 +61,13 @@ builds on `Tydl <tydl>`.
 .. table::
    :widths: 15 10
    :width: 100%
-	   
+
    +-----------------------------------+------------------------------+
    |                                   | .. only:: latex              |
    |                                   |                              |
    | .. literalinclude::               |      .                       |
-   |    HVAC/Heating/Element.mi        |                              |
-   |    :caption:                      | .. image:: element_mi.*      |
+   |    HVAC/Temperature/Sensor.mi     |                              |
+   |    :caption:                      | .. image:: sensor_mi.*       |
    +-----------------------------------+------------------------------+
 
 .. table::
@@ -89,13 +89,13 @@ After defining the component messaging interfaces, the next step is to
 provide declarations for each primitive component that is implemented
 in an external programming language.
 
-.. literalinclude:: HVAC/Temperature/Sensor.pi
+.. literalinclude:: HVAC/Heating/Element.pi
    :caption:
 
 .. literalinclude:: HVAC/Temperature/Controller.pi
    :caption:
 
-.. literalinclude:: HVAC/Heating/Element.pi
+.. literalinclude:: HVAC/Temperature/Sensor.pi
    :caption:
 
 Implement Primitive Components
@@ -106,10 +106,10 @@ files that provide conforming class declarations and definitions.
 
 .. highlight:: C++
 
-.. literalinclude:: HVAC/Temperature/Sensor.hpp
+.. literalinclude:: HVAC/Heating/Element.hpp
    :caption:
 
-.. literalinclude:: HVAC/Temperature/Sensor.cpp
+.. literalinclude:: HVAC/Heating/Element.cpp
    :caption:
 
 .. literalinclude:: HVAC/Temperature/Controller.hpp
@@ -118,10 +118,10 @@ files that provide conforming class declarations and definitions.
 .. literalinclude:: HVAC/Temperature/Controller.cpp
    :caption:
 
-.. literalinclude:: HVAC/Heating/Element.hpp
+.. literalinclude:: HVAC/Temperature/Sensor.hpp
    :caption:
 
-.. literalinclude:: HVAC/Heating/Element.cpp
+.. literalinclude:: HVAC/Temperature/Sensor.cpp
    :caption:
 
 .. highlight:: none

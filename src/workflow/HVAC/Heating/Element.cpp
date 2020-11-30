@@ -3,9 +3,9 @@
 using namespace HVAC::Heating::Element;
 
 void Implementation::handle(Enable &msg) {
-  log.verbose("enabled");
+  log.verbose("heat enabled");
 }
 
 void Implementation::handle(Disable &msg) {
-  log.verbose("disabled");
+  log.verbose("heat disabled");
 }
