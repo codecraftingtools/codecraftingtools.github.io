@@ -156,3 +156,54 @@ another in a hierarchic fashion.
    |    HVAC/Heater.hi                 |                              |
    |    :caption:                      | .. image:: heater_hi.*       |
    +-----------------------------------+------------------------------+
+
+Specify the Application
+-----------------------
+
+TODO
+
+Build the Executable
+--------------------
+
+We now have the following directory structure::
+  
+  HVAC/
+  ├── Heater.ha
+  ├── Heater.hi
+  ├── Heating
+  │   ├── Element.cpp
+  │   ├── Element.hpp
+  │   ├── Element.mi
+  │   └── Element.pi
+  ├── Temperature
+  │   ├── Controller.cpp
+  │   ├── Controller.hpp
+  │   ├── Controller.mi
+  │   ├── Controller.pi
+  │   ├── Sensor.cpp
+  │   ├── Sensor.hpp
+  │   ├── Sensor.mi
+  │   └── Sensor.pi
+  ├── Temperature.td
+  ├── Thermostat.hi
+  └── Thermostat.mi
+
+From the parent directory, the application executable can be built
+like this::
+
+  chimps --compile=app --all HVAC
+
+The previous command performs the following individual steps, which
+have been broken out for instructional purposes::
+
+  chimps --generate=type --entity=HVAC.Temperature.Measurement HVAC
+  chimps --generate=base --entity=HVAC.Heating.Element.Impl HVAC
+  chimps --generate=base --entity=HVAC.Temperature.Controller.Impl HVAC
+  chimps --generate=base --entity=HVAC.Temperature.Sensor.Impl HVAC
+  chimps --generate=impl --entity=HVAC.Heating.Element.Impl HVAC
+  chimps --generate=impl --entity=HVAC.Temperature.Controller.Impl HVAC
+  chimps --generate=impl --entity=HVAC.Temperature.Sensor.Impl HVAC
+  chimps --generate=impl --entity=HVAC.Thermostat.Impl HVAC
+  chimps --generate=impl --entity=HVAC.Heater.Impl HVAC
+  chimps --generate=app  --entity=HVAC.Heater.App HVAC
+  chimps --compile=app   --entity=HVAC.Heater.App HVAC

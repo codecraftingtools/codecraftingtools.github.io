@@ -91,6 +91,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#declare-primitive-components">Declare Primitive Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#implement-primitive-components">Implement Primitive Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#define-the-component-hierarchy">Define the Component Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specify-the-application">Specify the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-the-executable">Build the Executable</a></li>
 </ul>
 </li>
 </ul>
@@ -562,6 +564,56 @@ Heater.Implementation: Component.Hierarchy
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="specify-the-application">
+<h3>Specify the Application<a class="headerlink" href="#specify-the-application" title="Permalink to this headline">¶</a></h3>
+<p>TODO</p>
+</div>
+<div class="section" id="build-the-executable">
+<h3>Build the Executable<a class="headerlink" href="#build-the-executable" title="Permalink to this headline">¶</a></h3>
+<p>We now have the following directory structure:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>HVAC/
+├── Heater.ha
+├── Heater.hi
+├── Heating
+│   ├── Element.cpp
+│   ├── Element.hpp
+│   ├── Element.mi
+│   └── Element.pi
+├── Temperature
+│   ├── Controller.cpp
+│   ├── Controller.hpp
+│   ├── Controller.mi
+│   ├── Controller.pi
+│   ├── Sensor.cpp
+│   ├── Sensor.hpp
+│   ├── Sensor.mi
+│   └── Sensor.pi
+├── Temperature.td
+├── Thermostat.hi
+└── Thermostat.mi
+</pre></div>
+</div>
+<p>From the parent directory, the application executable can be built
+like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chimps --compile=app --all HVAC
+</pre></div>
+</div>
+<p>The previous command performs the following individual steps, which
+have been broken out for instructional purposes:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chimps --generate=type --entity=HVAC.Temperature.Measurement HVAC
+chimps --generate=base --entity=HVAC.Heating.Element.Impl HVAC
+chimps --generate=base --entity=HVAC.Temperature.Controller.Impl HVAC
+chimps --generate=base --entity=HVAC.Temperature.Sensor.Impl HVAC
+chimps --generate=impl --entity=HVAC.Heating.Element.Impl HVAC
+chimps --generate=impl --entity=HVAC.Temperature.Controller.Impl HVAC
+chimps --generate=impl --entity=HVAC.Temperature.Sensor.Impl HVAC
+chimps --generate=impl --entity=HVAC.Thermostat.Impl HVAC
+chimps --generate=impl --entity=HVAC.Heater.Impl HVAC
+chimps --generate=app  --entity=HVAC.Heater.App HVAC
+chimps --compile=app   --entity=HVAC.Heater.App HVAC
+</pre></div>
+</div>
 </div>
 </div>
 </div>
