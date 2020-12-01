@@ -3,13 +3,11 @@ import all: from: (Chimps, Chimps.Data.Types)
 file namespace: HVAC.Temperature.Controller
 
 Controller.IO: Messaging.Interface
+  extends: Stateful.IO
   ports:
-    Measurement:
-      type: Measurement
-      input:
+    Measurement: input: type: Measurement
     Enable: output:
-    Disable: output:
-    
+    Disable: output:    
   properties:
     Setpoint: Float32 default: 65.0
     Hysteresis: Float32 default: 2.0

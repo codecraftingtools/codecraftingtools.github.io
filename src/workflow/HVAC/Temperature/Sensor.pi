@@ -1,9 +1,9 @@
-import all: from: (Chimps, Chimps.Languages)
+import all: from: Chimps
 
 file namespace: HVAC.Temperature.Sensor
 
-Sensor.Implementation: Component.Primitive
+Sensor.Impl: Component.Implementation
+  extends: Stateful.Primitive
   interface: Sensor.IO
-  language: 'C++'
   callbacks:
     Measure:

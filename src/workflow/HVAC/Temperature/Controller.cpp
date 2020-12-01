@@ -2,15 +2,15 @@
 
 using namespace HVAC::Temperature::Controller;
 
-void Implementation::handle(Initialize &msg) {
+void Impl::handle(Initialize &msg) {
   send(Disable());
 }
 
-void Implementation::handle(Finalize &msg) {
+void Impl::handle(Finalize &msg) {
   send(Disable());
 }
 
-void Implementation::handle(Measurement &msg) {
+void Impl::handle(Measurement &msg) {
   if (msg.Temperature() > config.Setpoint() + config.Hysteresis()/2.0) {
     send(Disable());
   } else if (msg.Temperature() < config.Setpoint() - config.Hysteresis()/2.0) {

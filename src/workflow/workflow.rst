@@ -86,8 +86,7 @@ Declare Primitive Components
 ----------------------------
 
 After defining the component messaging interfaces, the next step is to
-provide declarations for each primitive component that is implemented
-in an external programming language.
+provide declarations for each primitive C++ component.
 
 .. literalinclude:: HVAC/Heating/Element.pi
    :caption:
@@ -157,10 +156,11 @@ another in a hierarchic fashion.
    |    :caption:                      | .. image:: heater_hi.*       |
    +-----------------------------------+------------------------------+
 
-Specify the Application
------------------------
+Define the Application
+----------------------
 
-TODO
+.. literalinclude:: HVAC/Heater.ha
+   :caption:
 
 Build the Executable
 --------------------
@@ -191,19 +191,22 @@ We now have the following directory structure::
 From the parent directory, the application executable can be built
 like this::
 
-  chimps --compile=app --all HVAC
+  chimps --build=app --all HVAC
 
 The previous command performs the following individual steps, which
 have been broken out for instructional purposes::
 
   chimps --generate=type --entity=HVAC.Temperature.Measurement HVAC
-  chimps --generate=base --entity=HVAC.Heating.Element.Impl HVAC
-  chimps --generate=base --entity=HVAC.Temperature.Controller.Impl HVAC
-  chimps --generate=base --entity=HVAC.Temperature.Sensor.Impl HVAC
-  chimps --generate=impl --entity=HVAC.Heating.Element.Impl HVAC
-  chimps --generate=impl --entity=HVAC.Temperature.Controller.Impl HVAC
-  chimps --generate=impl --entity=HVAC.Temperature.Sensor.Impl HVAC
-  chimps --generate=impl --entity=HVAC.Thermostat.Impl HVAC
-  chimps --generate=impl --entity=HVAC.Heater.Impl HVAC
+  chimps --compile=type  --entity=HVAC.Temperature.Measurement HVAC
+  chimps --generate=impl --entity=HVAC.Heating.Element.Impl \
+                         --entity=HVAC.Temperature.Controller.Impl \
+                         --entity=HVAC.Temperature.Sensor.Impl \
+                         --entity=HVAC.Thermostat.Impl \
+                         --entity=HVAC.Heater.Impl HVAC
+  chimps --compile=impl  --entity=HVAC.Heating.Element.Impl \
+                         --entity=HVAC.Temperature.Controller.Impl \
+                         --entity=HVAC.Temperature.Sensor.Impl \
+                         --entity=HVAC.Thermostat.Impl \
+                         --entity=HVAC.Heater.Impl HVAC
   chimps --generate=app  --entity=HVAC.Heater.App HVAC
   chimps --compile=app   --entity=HVAC.Heater.App HVAC

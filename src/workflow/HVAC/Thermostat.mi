@@ -3,6 +3,7 @@ import all: from: Chimps
 file namespace: HVAC.Thermostat
 
 Thermostat.IO: Messaging.Interface
+  extends: Stateful.IO
   ports:
     Enable: output:
     Disable: output:

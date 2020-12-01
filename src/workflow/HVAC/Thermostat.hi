@@ -3,11 +3,12 @@ import Temperature from: HVAC
 
 file namespace: HVAC.Thermostat
 
-Thermostat.Implementation: Component.Hierarchy
+Thermostat.Impl: Component.Implementation
+  extends: Component.Hierarchy
   interface: Thermostat.IO
   subcomponents:
-    Sensor: Temperature.Sensor
-    Controller: Temperature.Controller
+    Sensor: Temperature.Sensor.Impl
+    Controller: Temperature.Controller.Impl
   connections:
     (source: Sensor.Measurement,
      sink: Controller.Measurement)

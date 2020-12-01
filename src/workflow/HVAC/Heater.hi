@@ -3,11 +3,12 @@ import Heating from: HVAC
 
 file namespace: HVAC.Heater
 
-Heater.Implementation: Component.Hierarchy
+Heater.Impl: Component.Implementation
+  extends: Component.Hierarchy
   interface: Stateful.IO
   subcomponents:
-    Thermostat: Thermostat
-    Element: Heating.Element
+    Thermostat: Thermostat.Impl
+    Element: Heating.Element.Impl
   connections:
     (source: Thermostat.Enable,
      sink: Element.Enable)

@@ -1,12 +1,12 @@
 #include "generated/HVAC/Temperature/Controller/Base.hpp"
 
-class HVAC::Temperature::Controller::Implementation : public Base {
+class HVAC::Temperature::Controller::Impl : public Base {
  public:
   using Base::Base;
 
  protected:
-  void handle(Initialize &msg) override;
-  void handle(Finalize &msg) override;
+  virtual void handle(Initialize &msg) override;
+  virtual void handle(Finalize &msg) override;
   
-  void handle(Measurement &msg) override;
+  virtual void handle(Measurement &msg) override;
 }

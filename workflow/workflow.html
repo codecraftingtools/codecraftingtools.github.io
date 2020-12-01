@@ -91,7 +91,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#declare-primitive-components">Declare Primitive Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#implement-primitive-components">Implement Primitive Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#define-the-component-hierarchy">Define the Component Hierarchy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#specify-the-application">Specify the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#define-the-application">Define the Application</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#build-the-executable">Build the Executable</a></li>
 </ul>
 </li>
@@ -219,6 +219,7 @@ builds on <a class="reference internal" href="../software.html#tydl"><span class
 file namespace: HVAC.Heating.Element
 
 Element.IO: Messaging.Interface
+  extends: Stateful.IO
   ports:
     Enable: input:
     Disable: input:
@@ -243,13 +244,11 @@ Element.IO: Messaging.Interface
 file namespace: HVAC.Temperature.Controller
 
 Controller.IO: Messaging.Interface
+  extends: Stateful.IO
   ports:
-    Measurement:
-      type: Measurement
-      input:
+    Measurement: input: type: Measurement
     Enable: output:
-    Disable: output:
-    
+    Disable: output:    
   properties:
     Setpoint: Float32 default: 65.0
     Hysteresis: Float32 default: 2.0
@@ -274,11 +273,9 @@ Controller.IO: Messaging.Interface
 file namespace: HVAC.Temperature.Sensor
 
 Sensor.IO: Messaging.Interface
+  extends: Stateful.IO
   ports:
-    Measurement:
-      type: Measurement
-      output:
-      
+    Measurement: output: type: Measurement      
   properties:
     Period: Float64 default: 1.0
 </pre></div>
@@ -302,6 +299,7 @@ Sensor.IO: Messaging.Interface
 file namespace: HVAC.Thermostat
 
 Thermostat.IO: Messaging.Interface
+  extends: Stateful.IO
   ports:
     Enable: output:
     Disable: output:
@@ -317,41 +315,40 @@ Thermostat.IO: Messaging.Interface
 <div class="section" id="declare-primitive-components">
 <h3>Declare Primitive Components<a class="headerlink" href="#declare-primitive-components" title="Permalink to this headline">¶</a></h3>
 <p>After defining the component messaging interfaces, the next step is to
-provide declarations for each primitive component that is implemented
-in an external programming language.</p>
+provide declarations for each primitive C++ component.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.pi</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Languages)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
 
 file namespace: HVAC.Heating.Element
 
-Element.Implementation: Component.Primitive
+Element.Impl: Component.Implementation
+  extends: Stateful.Primitive
   interface: Element.IO
-  language: &#39;C++&#39;
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id7">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.pi</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Languages)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
 
 file namespace: HVAC.Temperature.Controller
 
-Controller.Implementation: Component.Primitive
+Controller.Impl: Component.Implementation
+  extends: Stateful.Primitive
   interface: Controller.IO
-  language: &#39;C++&#39;
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id8">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.pi</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Languages)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
 
 file namespace: HVAC.Temperature.Sensor
 
-Sensor.Implementation: Component.Primitive
+Sensor.Impl: Component.Implementation
+  extends: Stateful.Primitive
   interface: Sensor.IO
-  language: &#39;C++&#39;
   callbacks:
     Measure:
 </pre></div>
@@ -366,13 +363,13 @@ files that provide conforming class declarations and definitions.</p>
 <div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.hpp</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;generated/HVAC/Heating/Element/Base.hpp&quot;</span><span class="cp"></span>
 
-<span class="k">class</span> <span class="nc">HVAC</span><span class="o">::</span><span class="n">Heating</span><span class="o">::</span><span class="n">Element</span><span class="o">::</span><span class="nl">Implementation</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+<span class="k">class</span> <span class="nc">HVAC</span><span class="o">::</span><span class="n">Heating</span><span class="o">::</span><span class="n">Element</span><span class="o">::</span><span class="nl">Impl</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">Base</span><span class="p">;</span>
 
  <span class="k">protected</span><span class="o">:</span>
-  <span class="kt">void</span> <span class="n">handle</span><span class="p">(</span><span class="n">Enable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
-  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Disable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">handle</span><span class="p">(</span><span class="n">Enable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">handle</span><span class="p">(</span><span class="n">Disable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -383,11 +380,11 @@ files that provide conforming class declarations and definitions.</p>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">HVAC</span><span class="o">::</span><span class="n">Heating</span><span class="o">::</span><span class="n">Element</span><span class="p">;</span>
 
-<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Enable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Impl</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Enable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">log</span><span class="p">.</span><span class="n">verbose</span><span class="p">(</span><span class="s">&quot;heat enabled&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Disable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Impl</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Disable</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">log</span><span class="p">.</span><span class="n">verbose</span><span class="p">(</span><span class="s">&quot;heat disabled&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -397,15 +394,15 @@ files that provide conforming class declarations and definitions.</p>
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.hpp</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;generated/HVAC/Temperature/Controller/Base.hpp&quot;</span><span class="cp"></span>
 
-<span class="k">class</span> <span class="nc">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="nl">Implementation</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+<span class="k">class</span> <span class="nc">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="nl">Impl</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">Base</span><span class="p">;</span>
 
  <span class="k">protected</span><span class="o">:</span>
-  <span class="kt">void</span> <span class="n">handle</span><span class="p">(</span><span class="n">Initialize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
-  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Finalize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">handle</span><span class="p">(</span><span class="n">Initialize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">handle</span><span class="p">(</span><span class="n">Finalize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
   
-  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Measurement</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">handle</span><span class="p">(</span><span class="n">Measurement</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -416,15 +413,15 @@ files that provide conforming class declarations and definitions.</p>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Controller</span><span class="p">;</span>
 
-<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Initialize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Impl</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Initialize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">send</span><span class="p">(</span><span class="n">Disable</span><span class="p">());</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Finalize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Impl</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Finalize</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">send</span><span class="p">(</span><span class="n">Disable</span><span class="p">());</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Measurement</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Impl</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Measurement</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">Temperature</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">config</span><span class="p">.</span><span class="n">Setpoint</span><span class="p">()</span> <span class="o">+</span> <span class="n">config</span><span class="p">.</span><span class="n">Hysteresis</span><span class="p">()</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">send</span><span class="p">(</span><span class="n">Disable</span><span class="p">());</span>
   <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">Temperature</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">config</span><span class="p">.</span><span class="n">Setpoint</span><span class="p">()</span> <span class="o">-</span> <span class="n">config</span><span class="p">.</span><span class="n">Hysteresis</span><span class="p">()</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="p">{</span>
@@ -438,15 +435,15 @@ files that provide conforming class declarations and definitions.</p>
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.hpp</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;generated/HVAC/Temperature/Sensor/Base.hpp&quot;</span><span class="cp"></span>
 
-<span class="k">class</span> <span class="nc">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Sensor</span><span class="o">::</span><span class="nl">Implementation</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+<span class="k">class</span> <span class="nc">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Sensor</span><span class="o">::</span><span class="nl">Impl</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">Base</span><span class="p">;</span>
 
  <span class="k">protected</span><span class="o">:</span>
-  <span class="kt">void</span> <span class="n">handle</span><span class="p">(</span><span class="n">Reset</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
-  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Start</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">handle</span><span class="p">(</span><span class="n">Reset</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">handle</span><span class="p">(</span><span class="n">Start</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
   
-  <span class="kt">void</span> <span class="nf">handle</span><span class="p">(</span><span class="n">Measure</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">handle</span><span class="p">(</span><span class="n">Measure</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
 
   <span class="kt">double</span> <span class="nf">read_hardware</span><span class="p">();</span>
   
@@ -462,15 +459,15 @@ files that provide conforming class declarations and definitions.</p>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">HVAC</span><span class="o">::</span><span class="n">Temperature</span><span class="o">::</span><span class="n">Sensor</span><span class="p">;</span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">chimps</span><span class="o">::</span><span class="n">chrono</span><span class="p">;</span>
 
-<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Reset</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Impl</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Reset</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">count_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Start</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Impl</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Start</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">schedule</span><span class="p">(</span><span class="n">Measure</span><span class="p">(),</span> <span class="n">every</span><span class="p">(</span><span class="mf">1.0</span><span class="n">_s</span> <span class="o">*</span> <span class="n">config</span><span class="p">.</span><span class="n">Period</span><span class="p">));</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Measure</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">Impl</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="n">Measure</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">auto</span> <span class="n">temperature</span> <span class="o">=</span> <span class="n">read_hardware</span><span class="p">();</span>
   <span class="n">log</span><span class="p">.</span><span class="n">verbose</span><span class="p">(</span><span class="s">&quot;measured: {:.1f}&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="p">);</span>
   
@@ -480,7 +477,7 @@ files that provide conforming class declarations and definitions.</p>
        <span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kt">float</span> <span class="n">Implementation</span><span class="o">::</span><span class="n">read_hardware</span><span class="p">()</span> <span class="p">{</span>
+<span class="kt">float</span> <span class="n">Impl</span><span class="o">::</span><span class="n">read_hardware</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">const</span> <span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="p">;</span>
 
   <span class="n">count_</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
@@ -513,11 +510,12 @@ import Temperature from: HVAC
 
 file namespace: HVAC.Thermostat
 
-Thermostat.Implementation: Component.Hierarchy
+Thermostat.Impl: Component.Implementation
+  extends: Component.Hierarchy
   interface: Thermostat.IO
   subcomponents:
-    Sensor: Temperature.Sensor
-    Controller: Temperature.Controller
+    Sensor: Temperature.Sensor.Impl
+    Controller: Temperature.Controller.Impl
   connections:
     (source: Sensor.Measurement,
      sink: Controller.Measurement)
@@ -546,11 +544,12 @@ import Heating from: HVAC
 
 file namespace: HVAC.Heater
 
-Heater.Implementation: Component.Hierarchy
+Heater.Impl: Component.Implementation
+  extends: Component.Hierarchy
   interface: Stateful.IO
   subcomponents:
-    Thermostat: Thermostat
-    Element: Heating.Element
+    Thermostat: Thermostat.Impl
+    Element: Heating.Element.Impl
   connections:
     (source: Thermostat.Enable,
      sink: Element.Enable)
@@ -565,9 +564,19 @@ Heater.Implementation: Component.Hierarchy
 </tbody>
 </table>
 </div>
-<div class="section" id="specify-the-application">
-<h3>Specify the Application<a class="headerlink" href="#specify-the-application" title="Permalink to this headline">¶</a></h3>
-<p>TODO</p>
+<div class="section" id="define-the-application">
+<h3>Define the Application<a class="headerlink" href="#define-the-application" title="Permalink to this headline">¶</a></h3>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">HVAC/Heater.ha</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
+
+file namespace: HVAC.Heater
+
+Heater.App: Application
+  implementation: Heater.Impl
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="build-the-executable">
 <h3>Build the Executable<a class="headerlink" href="#build-the-executable" title="Permalink to this headline">¶</a></h3>
@@ -596,20 +605,23 @@ Heater.Implementation: Component.Hierarchy
 </div>
 <p>From the parent directory, the application executable can be built
 like this:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chimps --compile=app --all HVAC
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chimps --build=app --all HVAC
 </pre></div>
 </div>
 <p>The previous command performs the following individual steps, which
 have been broken out for instructional purposes:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chimps --generate=type --entity=HVAC.Temperature.Measurement HVAC
-chimps --generate=base --entity=HVAC.Heating.Element.Impl HVAC
-chimps --generate=base --entity=HVAC.Temperature.Controller.Impl HVAC
-chimps --generate=base --entity=HVAC.Temperature.Sensor.Impl HVAC
-chimps --generate=impl --entity=HVAC.Heating.Element.Impl HVAC
-chimps --generate=impl --entity=HVAC.Temperature.Controller.Impl HVAC
-chimps --generate=impl --entity=HVAC.Temperature.Sensor.Impl HVAC
-chimps --generate=impl --entity=HVAC.Thermostat.Impl HVAC
-chimps --generate=impl --entity=HVAC.Heater.Impl HVAC
+chimps --compile=type  --entity=HVAC.Temperature.Measurement HVAC
+chimps --generate=impl --entity=HVAC.Heating.Element.Impl \
+                       --entity=HVAC.Temperature.Controller.Impl \
+                       --entity=HVAC.Temperature.Sensor.Impl \
+                       --entity=HVAC.Thermostat.Impl \
+                       --entity=HVAC.Heater.Impl HVAC
+chimps --compile=impl  --entity=HVAC.Heating.Element.Impl \
+                       --entity=HVAC.Temperature.Controller.Impl \
+                       --entity=HVAC.Temperature.Sensor.Impl \
+                       --entity=HVAC.Thermostat.Impl \
+                       --entity=HVAC.Heater.Impl HVAC
 chimps --generate=app  --entity=HVAC.Heater.App HVAC
 chimps --compile=app   --entity=HVAC.Heater.App HVAC
 </pre></div>

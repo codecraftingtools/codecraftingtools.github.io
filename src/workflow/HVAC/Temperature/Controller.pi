@@ -1,7 +1,7 @@
-import all: from: (Chimps, Chimps.Languages)
+import all: from: Chimps
 
 file namespace: HVAC.Temperature.Controller
 
-Controller.Implementation: Component.Primitive
+Controller.Impl: Component.Implementation
+  extends: Stateful.Primitive
   interface: Controller.IO
-  language: 'C++'

@@ -2,10 +2,10 @@
 
 using namespace HVAC::Heating::Element;
 
-void Implementation::handle(Enable &msg) {
+void Impl::handle(Enable &msg) {
   log.verbose("heat enabled");
 }
 
-void Implementation::handle(Disable &msg) {
+void Impl::handle(Disable &msg) {
   log.verbose("heat disabled");
 }

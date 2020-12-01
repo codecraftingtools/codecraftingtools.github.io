@@ -3,10 +3,8 @@ import all: from: (Chimps, Chimps.Data.Types)
 file namespace: HVAC.Temperature.Sensor
 
 Sensor.IO: Messaging.Interface
+  extends: Stateful.IO
   ports:
-    Measurement:
-      type: Measurement
-      output:
-      
+    Measurement: output: type: Measurement      
   properties:
     Period: Float64 default: 1.0
