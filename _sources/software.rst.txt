@@ -61,9 +61,10 @@ The following `code crafting tools <code-crafting-tools-org_>`_ are
 
 `Tydl <tydl-docs_>`_
   Type definition language for specifying the structure, layout, and
-  semantic attributes of data types.  This project also provides a set
-  of tools that can be used to generate documentation or high-level
-  code from type specifications.
+  semantic attributes of data types.  The syntax is based on `Wumps
+  <wumps>`.  This project also provides a set of tools that can be
+  used to generate documentation or high-level code from type
+  specifications.
 
 .. _bt:
 
@@ -76,8 +77,8 @@ Bt
 
 `Wumps <wumps-docs_>`_
   Widely useful macro programming syntax that serves as a foundation
-  for building domain-specific languages such as `Tydl <tydl>` and
-  `Smidgen <smidgen>`.
+  for building domain-specific languages such as `Tydl <tydl>`,
+  `Smidgen <smidgen>`, and `Finch <finch>`.
 
 .. _flopi:
 

@@ -1,4 +1,4 @@
-import all: from: Chimps
+import all: from: Finch
 import Heating from: HVAC
 
 file namespace: HVAC.Heater

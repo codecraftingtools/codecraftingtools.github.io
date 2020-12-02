@@ -92,7 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#implement-primitive-components">Implement Primitive Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#define-the-component-hierarchy">Define the Component Hierarchy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#define-the-application">Define the Application</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build-the-executable">Build the Executable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-an-executable-program">Build an Executable Program</a></li>
 </ul>
 </li>
 </ul>
@@ -203,9 +203,10 @@ Measurement: Record
 component in the application.  Components have input ports for
 receiving messages from other components and output ports for sending
 messages to other components.  Each port has a name and an associated
-data type that defines the message format.  Component messaging
-interfaces are defined using the <a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a> syntax, which
-builds on <a class="reference internal" href="../software.html#tydl"><span class="std std-ref">Tydl</span></a>.</p>
+data type that defines the message format.  If no data type is
+specified, all messages sent or received on that port are treated as
+events with no data content.  Component messaging interfaces are
+defined using the <a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a> syntax, which builds on <a class="reference internal" href="../software.html#tydl"><span class="std std-ref">Tydl</span></a>.</p>
 <table class="colwidths-given docutils align-default" style="width: 100%">
 <colgroup>
 <col style="width: 60%" />
@@ -214,15 +215,17 @@ builds on <a class="reference internal" href="../software.html#tydl"><span class
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.mi</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Smidgen
 
 file namespace: HVAC.Heating.Element
 
 Element.IO: Messaging.Interface
   extends: Stateful.IO
   ports:
-    Enable: input:
-    Disable: input:
+    Enable:
+      input:
+    Disable:
+      input:
 </pre></div>
 </div>
 </div>
@@ -239,16 +242,20 @@ Element.IO: Messaging.Interface
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.mi</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Data.Types)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data.Types)
 
 file namespace: HVAC.Temperature.Controller
 
 Controller.IO: Messaging.Interface
   extends: Stateful.IO
   ports:
-    Measurement: input: type: Measurement
-    Enable: output:
-    Disable: output:    
+    Measurement:
+      input:
+      type: Measurement
+    Enable:
+      output:
+    Disable:
+      output:    
   properties:
     Setpoint: Float32 default: 65.0
     Hysteresis: Float32 default: 2.0
@@ -268,14 +275,16 @@ Controller.IO: Messaging.Interface
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.mi</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Chimps, Chimps.Data.Types)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data.Types)
 
 file namespace: HVAC.Temperature.Sensor
 
 Sensor.IO: Messaging.Interface
   extends: Stateful.IO
   ports:
-    Measurement: output: type: Measurement      
+    Measurement:
+      output:
+      type: Measurement      
   properties:
     Period: Float64 default: 1.0
 </pre></div>
@@ -294,15 +303,17 @@ Sensor.IO: Messaging.Interface
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-text">HVAC/Thermostat.mi</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Smidgen
 
 file namespace: HVAC.Thermostat
 
 Thermostat.IO: Messaging.Interface
   extends: Stateful.IO
   ports:
-    Enable: output:
-    Disable: output:
+    Enable:
+      output:
+    Disable:
+      output:
 </pre></div>
 </div>
 </div>
@@ -315,7 +326,10 @@ Thermostat.IO: Messaging.Interface
 <div class="section" id="declare-primitive-components">
 <h3>Declare Primitive Components<a class="headerlink" href="#declare-primitive-components" title="Permalink to this headline">¶</a></h3>
 <p>After defining the component messaging interfaces, the next step is to
-provide declarations for each primitive C++ component.</p>
+provide declarations for each primitive C++ component that will be
+implemented using the <a class="reference internal" href="../software.html#chimps"><span class="std std-ref">Chimps</span></a> framework.  The <code class="docutils literal notranslate"><span class="pre">Chimps</span></code>
+namespace is a superset of <a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a> that provides some
+implementation-specific directives like <code class="docutils literal notranslate"><span class="pre">Stateful.Primitive</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.pi</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
@@ -358,7 +372,8 @@ Sensor.Impl: Component.Implementation
 <div class="section" id="implement-primitive-components">
 <h3>Implement Primitive Components<a class="headerlink" href="#implement-primitive-components" title="Permalink to this headline">¶</a></h3>
 <p>Primitive C++ components are implemented by suppling header and source
-files that provide conforming class declarations and definitions.</p>
+files that provide conforming class declarations and definitions.  The
+programming API is provided by <a class="reference internal" href="../software.html#chimps"><span class="std std-ref">Chimps</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="id9">
 <div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.hpp</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;generated/HVAC/Heating/Element/Base.hpp&quot;</span><span class="cp"></span>
@@ -496,7 +511,8 @@ files that provide conforming class declarations and definitions.</p>
 <h3>Define the Component Hierarchy<a class="headerlink" href="#define-the-component-hierarchy" title="Permalink to this headline">¶</a></h3>
 <p>Once the primitive components have been implemented, they can be
 combined and connected to form composite components that build on one
-another in a hierarchic fashion.</p>
+another in a hierarchic fashion.  <a class="reference internal" href="../software.html#finch"><span class="std std-ref">Finch</span></a> extends <a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a> to define a format for specifying interconnections and
+component hierarchies.</p>
 <table class="colwidths-given docutils align-default" style="width: 100%">
 <colgroup>
 <col style="width: 57%" />
@@ -505,7 +521,7 @@ another in a hierarchic fashion.</p>
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id15">
 <div class="code-block-caption"><span class="caption-text">HVAC/Thermostat.hi</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Finch
 import Temperature from: HVAC
 
 file namespace: HVAC.Thermostat
@@ -539,7 +555,7 @@ Thermostat.Impl: Component.Implementation
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id16">
 <div class="code-block-caption"><span class="caption-text">HVAC/Heater.hi</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Finch
 import Heating from: HVAC
 
 file namespace: HVAC.Heater
@@ -578,8 +594,8 @@ Heater.App: Application
 </div>
 </div>
 </div>
-<div class="section" id="build-the-executable">
-<h3>Build the Executable<a class="headerlink" href="#build-the-executable" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="build-an-executable-program">
+<h3>Build an Executable Program<a class="headerlink" href="#build-an-executable-program" title="Permalink to this headline">¶</a></h3>
 <p>We now have the following directory structure:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>HVAC/
 ├── Heater.ha

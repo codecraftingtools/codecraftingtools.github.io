@@ -1,9 +1,11 @@
-import all: from: Chimps
+import all: from: Smidgen
 
 file namespace: HVAC.Heating.Element
 
 Element.IO: Messaging.Interface
   extends: Stateful.IO
   ports:
-    Enable: input:
-    Disable: input:
+    Enable:
+      input:
+    Disable:
+      input:

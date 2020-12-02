@@ -1,10 +1,12 @@
-import all: from: (Chimps, Chimps.Data.Types)
+import all: from: (Smidgen, Smidgen.Data.Types)
 
 file namespace: HVAC.Temperature.Sensor
 
 Sensor.IO: Messaging.Interface
   extends: Stateful.IO
   ports:
-    Measurement: output: type: Measurement      
+    Measurement:
+      output:
+      type: Measurement      
   properties:
     Period: Float64 default: 1.0

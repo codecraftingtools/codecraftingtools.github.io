@@ -1,4 +1,4 @@
-import all: from: Chimps
+import all: from: Finch
 import Temperature from: HVAC
 
 file namespace: HVAC.Thermostat

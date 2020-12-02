@@ -1,13 +1,17 @@
-import all: from: (Chimps, Chimps.Data.Types)
+import all: from: (Smidgen, Smidgen.Data.Types)
 
 file namespace: HVAC.Temperature.Controller
 
 Controller.IO: Messaging.Interface
   extends: Stateful.IO
   ports:
-    Measurement: input: type: Measurement
-    Enable: output:
-    Disable: output:    
+    Measurement:
+      input:
+      type: Measurement
+    Enable:
+      output:
+    Disable:
+      output:    
   properties:
     Setpoint: Float32 default: 65.0
     Hysteresis: Float32 default: 2.0

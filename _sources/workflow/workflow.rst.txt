@@ -30,9 +30,11 @@ The next step is to define the messaging interface for each software
 component in the application.  Components have input ports for
 receiving messages from other components and output ports for sending
 messages to other components.  Each port has a name and an associated
-data type that defines the message format.  Component messaging
-interfaces are defined using the `Smidgen <smidgen>` syntax, which
-builds on `Tydl <tydl>`.
+data type that defines the message format.  If no data type is
+specified, all messages sent or received on that port are treated as
+events with no data content.  Component messaging interfaces are
+defined using the `Smidgen <smidgen>` syntax, which builds on `Tydl
+<tydl>`.
 
 .. table::
    :widths: 15 10
@@ -86,7 +88,10 @@ Declare Primitive Components
 ----------------------------
 
 After defining the component messaging interfaces, the next step is to
-provide declarations for each primitive C++ component.
+provide declarations for each primitive C++ component that will be
+implemented using the `Chimps <chimps>` framework.  The ``Chimps``
+namespace is a superset of `Smidgen <smidgen>` that provides some
+implementation-specific directives like ``Stateful.Primitive``.
 
 .. literalinclude:: HVAC/Heating/Element.pi
    :caption:
@@ -101,7 +106,8 @@ Implement Primitive Components
 ------------------------------
 
 Primitive C++ components are implemented by suppling header and source
-files that provide conforming class declarations and definitions.
+files that provide conforming class declarations and definitions.  The
+programming API is provided by `Chimps <chimps>`.
 
 .. highlight:: C++
 
@@ -130,7 +136,9 @@ Define the Component Hierarchy
 
 Once the primitive components have been implemented, they can be
 combined and connected to form composite components that build on one
-another in a hierarchic fashion.
+another in a hierarchic fashion.  `Finch <finch>` extends `Smidgen
+<smidgen>` to define a format for specifying interconnections and
+component hierarchies.
 
 .. table::
    :widths: 13 10
@@ -162,8 +170,8 @@ Define the Application
 .. literalinclude:: HVAC/Heater.ha
    :caption:
 
-Build the Executable
---------------------
+Build an Executable Program
+---------------------------
 
 We now have the following directory structure::
   

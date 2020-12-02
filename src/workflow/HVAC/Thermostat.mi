@@ -1,9 +1,11 @@
-import all: from: Chimps
+import all: from: Smidgen
 
 file namespace: HVAC.Thermostat
 
 Thermostat.IO: Messaging.Interface
   extends: Stateful.IO
   ports:
-    Enable: output:
-    Disable: output:
+    Enable:
+      output:
+    Disable:
+      output:
