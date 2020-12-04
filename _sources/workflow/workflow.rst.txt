@@ -3,7 +3,7 @@ Workflow
 ========
 
 Let us walk through a simple (but complete) example to demonstrate how
-our code crafting tools can be leveraged in bottom-up or top-down
+our code crafting tools can be leveraged in bottom-up and top-down
 software development workflows.
 
 Bottom-Up
@@ -26,7 +26,7 @@ language.
 Define Component Messaging Interfaces
 -------------------------------------
 
-The next step is to define the messaging interface for each software
+The second step is to define the messaging interface for each software
 component in the application.  Components have input ports for
 receiving messages from other components and output ports for sending
 messages to other components.  Each port has a name and an associated
@@ -91,7 +91,8 @@ After defining the component messaging interfaces, the next step is to
 provide declarations for each primitive C++ component that will be
 implemented using the `Chimps <chimps>` framework.  The ``Chimps``
 namespace is a superset of `Smidgen <smidgen>` that provides some
-implementation-specific directives like ``Stateful.Primitive``.
+additional implementation-specific constructs like
+``Stateful.Primitive``.
 
 .. literalinclude:: HVAC/Heating/Element.pi
    :caption:
@@ -105,9 +106,9 @@ implementation-specific directives like ``Stateful.Primitive``.
 Implement Primitive Components
 ------------------------------
 
-Primitive C++ components are implemented by suppling header and source
-files that provide conforming class declarations and definitions.  The
-programming API is provided by `Chimps <chimps>`.
+Primitive C++ components are implemented by supplying header and
+source files with class declarations and definitions that conform to
+the `Chimps <chimps>` API.
 
 .. highlight:: C++
 
@@ -131,14 +132,14 @@ programming API is provided by `Chimps <chimps>`.
 
 .. highlight:: none
 
-Define the Component Hierarchy
-------------------------------
+Define Composite Components
+---------------------------
 
 Once the primitive components have been implemented, they can be
 combined and connected to form composite components that build on one
-another in a hierarchic fashion.  `Finch <finch>` extends `Smidgen
-<smidgen>` to define a format for specifying interconnections and
-component hierarchies.
+another in a hierarchic fashion.  Interconnections and component
+hierarchies are specified using `Finch <finch>`, an extension of
+`Smidgen <smidgen>`.
 
 .. table::
    :widths: 13 10
@@ -164,16 +165,21 @@ component hierarchies.
    |    :caption:                      | .. image:: heater_hi.*       |
    +-----------------------------------+------------------------------+
 
-Define the Application
-----------------------
+Declare the Application
+-----------------------
+
+Configurable hierarchic applications can be automatically generated
+from any top-level component that implements the ``Stateful.IO``
+messaging interface.
 
 .. literalinclude:: HVAC/Heater.ha
    :caption:
 
-Build an Executable Program
----------------------------
+Arrange the Source Files
+------------------------
 
-We now have the following directory structure::
+Source files are generally arranged in a directory structure that
+reflects the namespace hierarchy::
   
   HVAC/
   ├── Heater.ha
@@ -196,25 +202,44 @@ We now have the following directory structure::
   ├── Thermostat.hi
   └── Thermostat.mi
 
-From the parent directory, the application executable can be built
-like this::
+Build the Application
+---------------------
+
+Finally, our code crafting command-line tool chain can be used to
+build an executable program from from the source files in accordance
+with the application declaration by issuing the following command in
+the parent directory::
 
   chimps --build=app --all HVAC
 
-The previous command performs the following individual steps, which
-have been broken out for instructional purposes::
+This command automatically performs all of the intermediate steps
+required to build the application, which are broken out below for
+instructional purposes::
 
   chimps --generate=type --entity=HVAC.Temperature.Measurement HVAC
-  chimps --compile=type  --entity=HVAC.Temperature.Measurement HVAC
   chimps --generate=impl --entity=HVAC.Heating.Element.Impl \
                          --entity=HVAC.Temperature.Controller.Impl \
                          --entity=HVAC.Temperature.Sensor.Impl \
                          --entity=HVAC.Thermostat.Impl \
                          --entity=HVAC.Heater.Impl HVAC
+  chimps --generate=app  --entity=HVAC.Heater.App HVAC
+  chimps --compile=type  --entity=HVAC.Temperature.Measurement HVAC
   chimps --compile=impl  --entity=HVAC.Heating.Element.Impl \
                          --entity=HVAC.Temperature.Controller.Impl \
                          --entity=HVAC.Temperature.Sensor.Impl \
                          --entity=HVAC.Thermostat.Impl \
                          --entity=HVAC.Heater.Impl HVAC
-  chimps --generate=app  --entity=HVAC.Heater.App HVAC
   chimps --compile=app   --entity=HVAC.Heater.App HVAC
+
+Run the Application
+-------------------
+
+The resulting program can be executed like this::
+  
+  ./Heater Thermostat.Controller.Setpoint=67.0
+
+
+Top-Down
+========
+
+Coming soon...

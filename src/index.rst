@@ -25,9 +25,9 @@ Code Craftsmen
   language
 - Implement primitive components in C++ or Python
 - Instantiate primitive components and connect them together to build
-  hierarchic components
-- Automatically generate configurable applications from hierarchic
-  components or write a customized main program
+  component hierarchies
+- Automatically generate configurable applications from component
+  hierarchies or write a customized main program
 - Develop multi-threaded real-time systems, simulations, or desktop
   applications
 - Utilize the same components in any supported run-time environment,

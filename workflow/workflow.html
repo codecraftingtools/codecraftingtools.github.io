@@ -90,11 +90,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#define-component-messaging-interfaces">Define Component Messaging Interfaces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#declare-primitive-components">Declare Primitive Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#implement-primitive-components">Implement Primitive Components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#define-the-component-hierarchy">Define the Component Hierarchy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#define-the-application">Define the Application</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build-an-executable-program">Build an Executable Program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#define-composite-components">Define Composite Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#declare-the-application">Declare the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arrange-the-source-files">Arrange the Source Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-the-application">Build the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-application">Run the Application</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#top-down">Top-Down</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../status.html">Status</a></li>
@@ -172,7 +175,7 @@
   <div class="section" id="workflow">
 <h1>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h1>
 <p>Let us walk through a simple (but complete) example to demonstrate how
-our code crafting tools can be leveraged in bottom-up or top-down
+our code crafting tools can be leveraged in bottom-up and top-down
 software development workflows.</p>
 <div class="section" id="bottom-up">
 <h2>Bottom-Up<a class="headerlink" href="#bottom-up" title="Permalink to this headline">¶</a></h2>
@@ -199,7 +202,7 @@ Measurement: Record
 </div>
 <div class="section" id="define-component-messaging-interfaces">
 <h3>Define Component Messaging Interfaces<a class="headerlink" href="#define-component-messaging-interfaces" title="Permalink to this headline">¶</a></h3>
-<p>The next step is to define the messaging interface for each software
+<p>The second step is to define the messaging interface for each software
 component in the application.  Components have input ports for
 receiving messages from other components and output ports for sending
 messages to other components.  Each port has a name and an associated
@@ -329,7 +332,8 @@ Thermostat.IO: Messaging.Interface
 provide declarations for each primitive C++ component that will be
 implemented using the <a class="reference internal" href="../software.html#chimps"><span class="std std-ref">Chimps</span></a> framework.  The <code class="docutils literal notranslate"><span class="pre">Chimps</span></code>
 namespace is a superset of <a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a> that provides some
-implementation-specific directives like <code class="docutils literal notranslate"><span class="pre">Stateful.Primitive</span></code>.</p>
+additional implementation-specific constructs like
+<code class="docutils literal notranslate"><span class="pre">Stateful.Primitive</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.pi</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
@@ -371,9 +375,9 @@ Sensor.Impl: Component.Implementation
 </div>
 <div class="section" id="implement-primitive-components">
 <h3>Implement Primitive Components<a class="headerlink" href="#implement-primitive-components" title="Permalink to this headline">¶</a></h3>
-<p>Primitive C++ components are implemented by suppling header and source
-files that provide conforming class declarations and definitions.  The
-programming API is provided by <a class="reference internal" href="../software.html#chimps"><span class="std std-ref">Chimps</span></a>.</p>
+<p>Primitive C++ components are implemented by supplying header and
+source files with class declarations and definitions that conform to
+the <a class="reference internal" href="../software.html#chimps"><span class="std std-ref">Chimps</span></a> API.</p>
 <div class="literal-block-wrapper docutils container" id="id9">
 <div class="code-block-caption"><span class="caption-text">HVAC/Heating/Element.hpp</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;generated/HVAC/Heating/Element/Base.hpp&quot;</span><span class="cp"></span>
@@ -507,12 +511,13 @@ programming API is provided by <a class="reference internal" href="../software.h
 </div>
 </div>
 </div>
-<div class="section" id="define-the-component-hierarchy">
-<h3>Define the Component Hierarchy<a class="headerlink" href="#define-the-component-hierarchy" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="define-composite-components">
+<h3>Define Composite Components<a class="headerlink" href="#define-composite-components" title="Permalink to this headline">¶</a></h3>
 <p>Once the primitive components have been implemented, they can be
 combined and connected to form composite components that build on one
-another in a hierarchic fashion.  <a class="reference internal" href="../software.html#finch"><span class="std std-ref">Finch</span></a> extends <a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a> to define a format for specifying interconnections and
-component hierarchies.</p>
+another in a hierarchic fashion.  Interconnections and component
+hierarchies are specified using <a class="reference internal" href="../software.html#finch"><span class="std std-ref">Finch</span></a>, an extension of
+<a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a>.</p>
 <table class="colwidths-given docutils align-default" style="width: 100%">
 <colgroup>
 <col style="width: 57%" />
@@ -580,8 +585,11 @@ Heater.Impl: Component.Implementation
 </tbody>
 </table>
 </div>
-<div class="section" id="define-the-application">
-<h3>Define the Application<a class="headerlink" href="#define-the-application" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="declare-the-application">
+<h3>Declare the Application<a class="headerlink" href="#declare-the-application" title="Permalink to this headline">¶</a></h3>
+<p>Configurable hierarchic applications can be automatically generated
+from any top-level component that implements the <code class="docutils literal notranslate"><span class="pre">Stateful.IO</span></code>
+messaging interface.</p>
 <div class="literal-block-wrapper docutils container" id="id17">
 <div class="code-block-caption"><span class="caption-text">HVAC/Heater.ha</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Chimps
@@ -594,9 +602,10 @@ Heater.App: Application
 </div>
 </div>
 </div>
-<div class="section" id="build-an-executable-program">
-<h3>Build an Executable Program<a class="headerlink" href="#build-an-executable-program" title="Permalink to this headline">¶</a></h3>
-<p>We now have the following directory structure:</p>
+<div class="section" id="arrange-the-source-files">
+<h3>Arrange the Source Files<a class="headerlink" href="#arrange-the-source-files" title="Permalink to this headline">¶</a></h3>
+<p>Source files are generally arranged in a directory structure that
+reflects the namespace hierarchy:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>HVAC/
 ├── Heater.ha
 ├── Heater.hi
@@ -619,30 +628,47 @@ Heater.App: Application
 └── Thermostat.mi
 </pre></div>
 </div>
-<p>From the parent directory, the application executable can be built
-like this:</p>
+</div>
+<div class="section" id="build-the-application">
+<h3>Build the Application<a class="headerlink" href="#build-the-application" title="Permalink to this headline">¶</a></h3>
+<p>Finally, our code crafting command-line tool chain can be used to
+build an executable program from from the source files in accordance
+with the application declaration by issuing the following command in
+the parent directory:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chimps --build=app --all HVAC
 </pre></div>
 </div>
-<p>The previous command performs the following individual steps, which
-have been broken out for instructional purposes:</p>
+<p>This command automatically performs all of the intermediate steps
+required to build the application, which are broken out below for
+instructional purposes:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chimps --generate=type --entity=HVAC.Temperature.Measurement HVAC
-chimps --compile=type  --entity=HVAC.Temperature.Measurement HVAC
 chimps --generate=impl --entity=HVAC.Heating.Element.Impl \
                        --entity=HVAC.Temperature.Controller.Impl \
                        --entity=HVAC.Temperature.Sensor.Impl \
                        --entity=HVAC.Thermostat.Impl \
                        --entity=HVAC.Heater.Impl HVAC
+chimps --generate=app  --entity=HVAC.Heater.App HVAC
+chimps --compile=type  --entity=HVAC.Temperature.Measurement HVAC
 chimps --compile=impl  --entity=HVAC.Heating.Element.Impl \
                        --entity=HVAC.Temperature.Controller.Impl \
                        --entity=HVAC.Temperature.Sensor.Impl \
                        --entity=HVAC.Thermostat.Impl \
                        --entity=HVAC.Heater.Impl HVAC
-chimps --generate=app  --entity=HVAC.Heater.App HVAC
 chimps --compile=app   --entity=HVAC.Heater.App HVAC
 </pre></div>
 </div>
 </div>
+<div class="section" id="run-the-application">
+<h3>Run the Application<a class="headerlink" href="#run-the-application" title="Permalink to this headline">¶</a></h3>
+<p>The resulting program can be executed like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./Heater Thermostat.Controller.Setpoint=67.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="top-down">
+<h2>Top-Down<a class="headerlink" href="#top-down" title="Permalink to this headline">¶</a></h2>
+<p>Coming soon…</p>
 </div>
 </div>
 
