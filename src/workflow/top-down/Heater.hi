@@ -1,0 +1,16 @@
+import all: from: Finch
+import Heating from: HVAC
+
+file namespace: HVAC.Heater
+
+Heater.Impl: Component.Implementation
+  extends: Component.Hierarchy
+  interface: Stateful.IO
+  subcomponents:
+    Thermostat: Thermostat.IO
+    Element: Heating.Element.IO
+  connections:
+    (source: Thermostat.Enable,
+     sink: Element.Enable)
+    (source: Thermostat.Disable,
+     sink: Element.Disable)

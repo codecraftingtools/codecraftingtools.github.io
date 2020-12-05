@@ -9,6 +9,11 @@ software development workflows.
 Bottom-Up
 =========
 
+In a bottom-up workflow, the most fundamental, low-level pieces of
+software are implemented first, and then functionality is
+progressively added by assembling these pieces into more complex,
+higher-level components.
+
 Define Message Data Structures
 ------------------------------
 
@@ -242,4 +247,53 @@ The resulting program can be executed like this::
 Top-Down
 ========
 
-Coming soon...
+In a top-down workflow, the process starts with a block diagram
+showing showing the high-level components and the flow of data between
+them.  Development proceeds by progresssively breaking down each
+component into smaller subcomponents and defining the data flow in
+more detail.  The final step is actually implementing the primitive
+components.
+
+Define the Top-Level Components and Data Flow
+---------------------------------------------
+
+The first step in a top-down workflow is to define the top-level
+components and the general data flow between them.  Application
+developers can describe the application structure directly using
+`Smidgen <smidgen>` and `Finch <finch>`, or by creating block diagrams
+using the `Hildegard <hildegard>` GUI application.
+
+.. image:: hildegard.png
+   :width: 60%
+
+Note that since we are not dealing with concrete implementations at
+this point in the design process, subcomponents are specified in terms
+of their interface (e.g. ``Thermostat.IO``) instead of their
+implementation (e.g. ``Thermostat.Impl``).
+
+.. literalinclude:: top-down/Heater.hi
+   :caption: HVAC/Heater.hi
+   :emphasize-lines: 10,11
+
+``HVAC/Thermostat.mi`` and ``HVAC/Heating/Element.mi`` are defined as
+shown in the `bottom-up section <Define Component Messaging
+Interfaces_>`_.
+
+Iteratively Define Subcomponents
+--------------------------------
+
+.. image:: thermostat_hi.*
+   :width: 60%
+
+.. literalinclude:: top-down/Thermostat.hi
+   :caption: HVAC/Thermostat.hi
+   :emphasize-lines: 10,11
+
+.. comment
+
+   The next step is to decide which components are primitive...
+   We decide that it's best to implement Element as a primitive component
+   but break down the thermostat into subcomponents.
+
+   ``HVAC/Thermostat.mi`` and ``HVAC/Heating/Element.mi`` are defined
+   `as before <Define Component Messaging Interfaces_>`_.

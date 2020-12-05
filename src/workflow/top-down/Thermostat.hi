@@ -1,0 +1,18 @@
+import all: from: Finch
+import Temperature from: HVAC
+
+file namespace: HVAC.Thermostat
+
+Thermostat.Impl: Component.Implementation
+  extends: Component.Hierarchy
+  interface: Thermostat.IO
+  subcomponents:
+    Sensor: Temperature.Sensor.IO
+    Controller: Temperature.Controller.IO
+  connections:
+    (source: Sensor.Measurement,
+     sink: Controller.Measurement)
+    (source: Controller.Enable,
+     external: Enable)
+    (source: Controller.Disable,
+     external: Disable)

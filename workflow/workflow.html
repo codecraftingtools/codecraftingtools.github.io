@@ -97,7 +97,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#run-the-application">Run the Application</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#top-down">Top-Down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#top-down">Top-Down</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#define-the-top-level-components-and-data-flow">Define the Top-Level Components and Data Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iteratively-define-subcomponents">Iteratively Define Subcomponents</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../status.html">Status</a></li>
@@ -179,6 +183,10 @@ our code crafting tools can be leveraged in bottom-up and top-down
 software development workflows.</p>
 <div class="section" id="bottom-up">
 <h2>Bottom-Up<a class="headerlink" href="#bottom-up" title="Permalink to this headline">¶</a></h2>
+<p>In a bottom-up workflow, the most fundamental, low-level pieces of
+software are implemented first, and then functionality is
+progressively added by assembling these pieces into more complex,
+higher-level components.</p>
 <div class="section" id="define-message-data-structures">
 <h3>Define Message Data Structures<a class="headerlink" href="#define-message-data-structures" title="Permalink to this headline">¶</a></h3>
 <p>The first step in a bottom-up workflow is to define the data content
@@ -668,7 +676,75 @@ chimps --compile=app   --entity=HVAC.Heater.App HVAC
 </div>
 <div class="section" id="top-down">
 <h2>Top-Down<a class="headerlink" href="#top-down" title="Permalink to this headline">¶</a></h2>
-<p>Coming soon…</p>
+<p>In a top-down workflow, the process starts with a block diagram
+showing showing the high-level components and the flow of data between
+them.  Development proceeds by progresssively breaking down each
+component into smaller subcomponents and defining the data flow in
+more detail.  The final step is actually implementing the primitive
+components.</p>
+<div class="section" id="define-the-top-level-components-and-data-flow">
+<h3>Define the Top-Level Components and Data Flow<a class="headerlink" href="#define-the-top-level-components-and-data-flow" title="Permalink to this headline">¶</a></h3>
+<p>The first step in a top-down workflow is to define the top-level
+components and the general data flow between them.  Application
+developers can describe the application structure directly using
+<a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a> and <a class="reference internal" href="../software.html#finch"><span class="std std-ref">Finch</span></a>, or by creating block diagrams
+using the <a class="reference internal" href="../software.html#hildegard"><span class="std std-ref">Hildegard</span></a> GUI application.</p>
+<a class="reference internal image-reference" href="../_images/hildegard.png"><img alt="../_images/hildegard.png" src="../_images/hildegard.png" style="width: 60%;" /></a>
+<p>Note that since we are not dealing with concrete implementations at
+this point in the design process, subcomponents are specified in terms
+of their interface (e.g. <code class="docutils literal notranslate"><span class="pre">Thermostat.IO</span></code>) instead of their
+implementation (e.g. <code class="docutils literal notranslate"><span class="pre">Thermostat.Impl</span></code>).</p>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">HVAC/Heater.hi</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Finch
+import Heating from: HVAC
+
+file namespace: HVAC.Heater
+
+Heater.Impl: Component.Implementation
+  extends: Component.Hierarchy
+  interface: Stateful.IO
+  subcomponents:
+<span class="hll">    Thermostat: Thermostat.IO
+</span><span class="hll">    Element: Heating.Element.IO
+</span>  connections:
+    (source: Thermostat.Enable,
+     sink: Element.Enable)
+    (source: Thermostat.Disable,
+     sink: Element.Disable)
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">HVAC/Thermostat.mi</span></code> and <code class="docutils literal notranslate"><span class="pre">HVAC/Heating/Element.mi</span></code> are defined as
+shown in the <a class="reference internal" href="#define-component-messaging-interfaces">bottom-up section</a>.</p>
+</div>
+<div class="section" id="iteratively-define-subcomponents">
+<h3>Iteratively Define Subcomponents<a class="headerlink" href="#iteratively-define-subcomponents" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/thermostat_hi.svg"><img alt="../_images/thermostat_hi.svg" src="../_images/thermostat_hi.svg" width="60%" /></a>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">HVAC/Thermostat.hi</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Finch
+import Temperature from: HVAC
+
+file namespace: HVAC.Thermostat
+
+Thermostat.Impl: Component.Implementation
+  extends: Component.Hierarchy
+  interface: Thermostat.IO
+  subcomponents:
+<span class="hll">    Sensor: Temperature.Sensor.IO
+</span><span class="hll">    Controller: Temperature.Controller.IO
+</span>  connections:
+    (source: Sensor.Measurement,
+     sink: Controller.Measurement)
+    (source: Controller.Enable,
+     external: Enable)
+    (source: Controller.Disable,
+     external: Disable)
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
