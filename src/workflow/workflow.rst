@@ -247,27 +247,26 @@ The resulting program can be executed like this::
 Top-Down
 ========
 
-In a top-down workflow, the process starts with a block diagram
-showing showing the high-level components and the flow of data between
-them.  Development proceeds by progresssively breaking down each
-component into smaller subcomponents and defining the data flow in
-more detail.  The final step is actually implementing the primitive
-components.
+In a top-down workflow, the process starts with defining the
+high-level components and generalized data flow.  Development proceeds
+by progressively breaking down each component into smaller
+subcomponents and defining the data flow in more detail.  The final
+step is actually implementing the primitive components.
 
 Define the Top-Level Components and Data Flow
 ---------------------------------------------
 
 The first step in a top-down workflow is to define the top-level
-components and the general data flow between them.  Application
-developers can describe the application structure directly using
-`Smidgen <smidgen>` and `Finch <finch>`, or by creating block diagrams
-using the `Hildegard <hildegard>` GUI application.
+components and how data flows between them.  The application structure
+can be described directly using `Smidgen <smidgen>` and `Finch
+<finch>`, or by creating block diagrams using the `Hildegard
+<hildegard>` GUI application.
 
 .. image:: hildegard.png
    :width: 60%
 
 Note that since we are not dealing with concrete implementations at
-this point in the design process, subcomponents are specified in terms
+this stage in the design process, subcomponents are specified in terms
 of their interface (e.g. ``Thermostat.IO``) instead of their
 implementation (e.g. ``Thermostat.Impl``).
 
@@ -282,18 +281,70 @@ Interfaces_>`_.
 Iteratively Define Subcomponents
 --------------------------------
 
+The second step is to break each component down into smaller
+subcomponents and repeat the process until the entire system can be
+described in terms of primitive components.  In this example,
+``Heating.Element`` is implemented as a primitive C++ component, but
+``Thermostat`` is is composite component consisting of a ``Sensor``
+and a ``Controller``.
+
 .. image:: thermostat_hi.*
    :width: 60%
+
+Once again, note that subcomponents are specified in terms of their
+interface (e.g. ``Sensor.IO``) instead of their implementation
+(e.g. ``Sensor.Impl``) at this point.
 
 .. literalinclude:: top-down/Thermostat.hi
    :caption: HVAC/Thermostat.hi
    :emphasize-lines: 10,11
 
-.. comment
+``HVAC/Temperature/Sensor.mi`` and ``HVAC/Temperature/Controller.mi``
+are similar to what was shown in the `bottom-up section <Define
+Component Messaging Interfaces_>`_.  The only differences are that the
+configuration properties and the message content for the sensor
+measurement have not yet been defined.
 
-   The next step is to decide which components are primitive...
-   We decide that it's best to implement Element as a primitive component
-   but break down the thermostat into subcomponents.
+.. literalinclude:: top-down/Sensor.mi
+   :caption: HVAC/Temperature/Sensor.mi
+   :emphasize-lines: 8,9
 
-   ``HVAC/Thermostat.mi`` and ``HVAC/Heating/Element.mi`` are defined
-   `as before <Define Component Messaging Interfaces_>`_.
+.. literalinclude:: top-down/Controller.mi
+   :caption: HVAC/Temperature/Controller.mi
+   :emphasize-lines: 8,9
+
+Refine Data Flow
+----------------
+
+The next step is to fully define the data content and format of each
+message that is passed between software components in the application.
+In this example, the only message with content is the sensor
+measurement, which is defined as shown in the `bottom-up section
+<Define Message Data Structures_>`_.  ``HVAC/Temperature/Sensor.mi``
+and ``HVAC/Temperature/Controller.mi`` should also be updated with a
+matching ``type`` attribute, as shown `before <Define Component
+Messaging Interfaces_>`_.
+
+Define Configuration Properties
+-------------------------------
+
+Before proceeding with the implementation, it is good to give some
+consideration to what configuration properties may be required.  These
+can be added to the component messaging interfaces, as shown
+previously in the `bottom-up section <Define Component Messaging
+Interfaces_>`_.
+
+Declare and Implement Primitive Components
+------------------------------------------
+
+Coming soon...
+
+Update Composite Component Definitions
+--------------------------------------
+
+More to come...
+
+Final Steps
+-----------
+
+This should do it...

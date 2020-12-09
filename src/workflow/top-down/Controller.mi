@@ -1,0 +1,13 @@
+import all: from: (Smidgen, Smidgen.Data.Types)
+
+file namespace: HVAC.Temperature.Controller
+
+Controller.IO: Messaging.Interface
+  extends: Stateful.IO
+  ports:
+    Measurement:
+      input:
+    Enable:
+      output:
+    Disable:
+      output:    

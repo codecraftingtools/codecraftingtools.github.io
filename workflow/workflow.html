@@ -100,6 +100,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#top-down">Top-Down</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#define-the-top-level-components-and-data-flow">Define the Top-Level Components and Data Flow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#iteratively-define-subcomponents">Iteratively Define Subcomponents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#refine-data-flow">Refine Data Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#define-configuration-properties">Define Configuration Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#declare-and-implement-primitive-components">Declare and Implement Primitive Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-composite-component-definitions">Update Composite Component Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#final-steps">Final Steps</a></li>
 </ul>
 </li>
 </ul>
@@ -676,22 +681,19 @@ chimps --compile=app   --entity=HVAC.Heater.App HVAC
 </div>
 <div class="section" id="top-down">
 <h2>Top-Down<a class="headerlink" href="#top-down" title="Permalink to this headline">¶</a></h2>
-<p>In a top-down workflow, the process starts with a block diagram
-showing showing the high-level components and the flow of data between
-them.  Development proceeds by progresssively breaking down each
-component into smaller subcomponents and defining the data flow in
-more detail.  The final step is actually implementing the primitive
-components.</p>
+<p>In a top-down workflow, the process starts with defining the
+high-level components and generalized data flow.  Development proceeds
+by progressively breaking down each component into smaller
+subcomponents and defining the data flow in more detail.  The final
+step is actually implementing the primitive components.</p>
 <div class="section" id="define-the-top-level-components-and-data-flow">
 <h3>Define the Top-Level Components and Data Flow<a class="headerlink" href="#define-the-top-level-components-and-data-flow" title="Permalink to this headline">¶</a></h3>
 <p>The first step in a top-down workflow is to define the top-level
-components and the general data flow between them.  Application
-developers can describe the application structure directly using
-<a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a> and <a class="reference internal" href="../software.html#finch"><span class="std std-ref">Finch</span></a>, or by creating block diagrams
-using the <a class="reference internal" href="../software.html#hildegard"><span class="std std-ref">Hildegard</span></a> GUI application.</p>
+components and how data flows between them.  The application structure
+can be described directly using <a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a> and <a class="reference internal" href="../software.html#finch"><span class="std std-ref">Finch</span></a>, or by creating block diagrams using the <a class="reference internal" href="../software.html#hildegard"><span class="std std-ref">Hildegard</span></a> GUI application.</p>
 <a class="reference internal image-reference" href="../_images/hildegard.png"><img alt="../_images/hildegard.png" src="../_images/hildegard.png" style="width: 60%;" /></a>
 <p>Note that since we are not dealing with concrete implementations at
-this point in the design process, subcomponents are specified in terms
+this stage in the design process, subcomponents are specified in terms
 of their interface (e.g. <code class="docutils literal notranslate"><span class="pre">Thermostat.IO</span></code>) instead of their
 implementation (e.g. <code class="docutils literal notranslate"><span class="pre">Thermostat.Impl</span></code>).</p>
 <div class="literal-block-wrapper docutils container" id="id18">
@@ -720,7 +722,16 @@ shown in the <a class="reference internal" href="#define-component-messaging-int
 </div>
 <div class="section" id="iteratively-define-subcomponents">
 <h3>Iteratively Define Subcomponents<a class="headerlink" href="#iteratively-define-subcomponents" title="Permalink to this headline">¶</a></h3>
+<p>The second step is to break each component down into smaller
+subcomponents and repeat the process until the entire system can be
+described in terms of primitive components.  In this example,
+<code class="docutils literal notranslate"><span class="pre">Heating.Element</span></code> is implemented as a primitive C++ component, but
+<code class="docutils literal notranslate"><span class="pre">Thermostat</span></code> is is composite component consisting of a <code class="docutils literal notranslate"><span class="pre">Sensor</span></code>
+and a <code class="docutils literal notranslate"><span class="pre">Controller</span></code>.</p>
 <a class="reference internal image-reference" href="../_images/thermostat_hi.svg"><img alt="../_images/thermostat_hi.svg" src="../_images/thermostat_hi.svg" width="60%" /></a>
+<p>Once again, note that subcomponents are specified in terms of their
+interface (e.g. <code class="docutils literal notranslate"><span class="pre">Sensor.IO</span></code>) instead of their implementation
+(e.g. <code class="docutils literal notranslate"><span class="pre">Sensor.Impl</span></code>) at this point.</p>
 <div class="literal-block-wrapper docutils container" id="id19">
 <div class="code-block-caption"><span class="caption-text">HVAC/Thermostat.hi</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: Finch
@@ -744,6 +755,70 @@ Thermostat.Impl: Component.Implementation
 </pre></div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">HVAC/Temperature/Sensor.mi</span></code> and <code class="docutils literal notranslate"><span class="pre">HVAC/Temperature/Controller.mi</span></code>
+are similar to what was shown in the <a class="reference internal" href="#define-component-messaging-interfaces">bottom-up section</a>.  The only differences are that the
+configuration properties and the message content for the sensor
+measurement have not yet been defined.</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.mi</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data.Types)
+
+file namespace: HVAC.Temperature.Sensor
+
+Sensor.IO: Messaging.Interface
+  extends: Stateful.IO
+  ports:
+<span class="hll">    Measurement:
+</span><span class="hll">      output:
+</span></pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.mi</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data.Types)
+
+file namespace: HVAC.Temperature.Controller
+
+Controller.IO: Messaging.Interface
+  extends: Stateful.IO
+  ports:
+<span class="hll">    Measurement:
+</span><span class="hll">      input:
+</span>    Enable:
+      output:
+    Disable:
+      output:    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="refine-data-flow">
+<h3>Refine Data Flow<a class="headerlink" href="#refine-data-flow" title="Permalink to this headline">¶</a></h3>
+<p>The next step is to fully define the data content and format of each
+message that is passed between software components in the application.
+In this example, the only message with content is the sensor
+measurement, which is defined as shown in the <a class="reference internal" href="#define-message-data-structures">bottom-up section</a>.  <code class="docutils literal notranslate"><span class="pre">HVAC/Temperature/Sensor.mi</span></code>
+and <code class="docutils literal notranslate"><span class="pre">HVAC/Temperature/Controller.mi</span></code> should also be updated with a
+matching <code class="docutils literal notranslate"><span class="pre">type</span></code> attribute, as shown <a class="reference internal" href="#define-component-messaging-interfaces">before</a>.</p>
+</div>
+<div class="section" id="define-configuration-properties">
+<h3>Define Configuration Properties<a class="headerlink" href="#define-configuration-properties" title="Permalink to this headline">¶</a></h3>
+<p>Before proceeding with the implementation, it is good to give some
+consideration to what configuration properties may be required.  These
+can be added to the component messaging interfaces, as shown
+previously in the <a class="reference internal" href="#define-component-messaging-interfaces">bottom-up section</a>.</p>
+</div>
+<div class="section" id="declare-and-implement-primitive-components">
+<h3>Declare and Implement Primitive Components<a class="headerlink" href="#declare-and-implement-primitive-components" title="Permalink to this headline">¶</a></h3>
+<p>Coming soon…</p>
+</div>
+<div class="section" id="update-composite-component-definitions">
+<h3>Update Composite Component Definitions<a class="headerlink" href="#update-composite-component-definitions" title="Permalink to this headline">¶</a></h3>
+<p>More to come…</p>
+</div>
+<div class="section" id="final-steps">
+<h3>Final Steps<a class="headerlink" href="#final-steps" title="Permalink to this headline">¶</a></h3>
+<p>This should do it…</p>
 </div>
 </div>
 </div>

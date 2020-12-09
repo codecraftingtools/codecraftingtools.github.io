@@ -1,0 +1,9 @@
+import all: from: (Smidgen, Smidgen.Data.Types)
+
+file namespace: HVAC.Temperature.Sensor
+
+Sensor.IO: Messaging.Interface
+  extends: Stateful.IO
+  ports:
+    Measurement:
+      output:
