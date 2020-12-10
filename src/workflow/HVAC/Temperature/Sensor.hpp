@@ -5,10 +5,10 @@ class HVAC::Temperature::Sensor::Impl : public Base {
   using Base::Base;
 
  protected:
-  virtual void handle(Reset &msg) override;
-  virtual void handle(Start &msg) override;
+  void handle(Reset &msg) override;
+  void handle(Start &msg) override;
   
-  virtual void handle(Measure &msg) override;
+  void handle(Measure &msg) override;
 
   double read_hardware();
   

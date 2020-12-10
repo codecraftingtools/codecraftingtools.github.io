@@ -248,18 +248,18 @@ Top-Down
 ========
 
 In a top-down workflow, the process starts with defining the
-high-level components and generalized data flow.  Development proceeds
-by progressively breaking down each component into smaller
-subcomponents and defining the data flow in more detail.  The final
-step is actually implementing the primitive components.
+high-level components and describing how data flows between them.
+Development proceeds by progressively breaking down each component
+into smaller subcomponents and defining the data flow in more detail.
+The final step is actually implementing the primitive components.
 
 Define the Top-Level Components and Data Flow
 ---------------------------------------------
 
-The first step in a top-down workflow is to define the top-level
-components and how data flows between them.  The application structure
-can be described directly using `Smidgen <smidgen>` and `Finch
-<finch>`, or by creating block diagrams using the `Hildegard
+The first step is to define the top-level components, the connections
+between them, and the direction of data flow.  This application
+structure can be described directly using `Smidgen <smidgen>` and
+`Finch <finch>`, or by creating block diagrams using the `Hildegard
 <hildegard>` GUI application.
 
 .. image:: hildegard.png
@@ -281,12 +281,12 @@ Interfaces_>`_.
 Iteratively Define Subcomponents
 --------------------------------
 
-The second step is to break each component down into smaller
-subcomponents and repeat the process until the entire system can be
-described in terms of primitive components.  In this example,
-``Heating.Element`` is implemented as a primitive C++ component, but
-``Thermostat`` is is composite component consisting of a ``Sensor``
-and a ``Controller``.
+The second step in a top-down workflow is to break each component down
+into smaller subcomponents and repeat the process until the entire
+system can be described in terms of primitive components.  In this
+example, ``Heating.Element`` is implemented as a primitive C++
+component, but ``Thermostat`` is a composite component consisting of a
+``Sensor`` and a ``Controller``.
 
 .. image:: thermostat_hi.*
    :width: 60%
@@ -316,19 +316,19 @@ measurement have not yet been defined.
 Refine Data Flow
 ----------------
 
-The next step is to fully define the data content and format of each
-message that is passed between software components in the application.
-In this example, the only message with content is the sensor
-measurement, which is defined as shown in the `bottom-up section
-<Define Message Data Structures_>`_.  ``HVAC/Temperature/Sensor.mi``
-and ``HVAC/Temperature/Controller.mi`` should also be updated with a
-matching ``type`` attribute, as shown `before <Define Component
-Messaging Interfaces_>`_.
+The next step in the process is to fully define the data content and
+format of each message that is passed between software components in
+the application.  In this example, the only message with content is
+the sensor measurement, which is defined as shown in the `bottom-up
+section <Define Message Data Structures_>`_.
+``HVAC/Temperature/Sensor.mi`` and ``HVAC/Temperature/Controller.mi``
+should also be updated with a matching ``type`` attribute, as shown
+`before <Define Component Messaging Interfaces_>`_.
 
 Define Configuration Properties
 -------------------------------
 
-Before proceeding with the implementation, it is good to give some
+Before proceeding with the implementation, it is wise to give some
 consideration to what configuration properties may be required.  These
 can be added to the component messaging interfaces, as shown
 previously in the `bottom-up section <Define Component Messaging
@@ -337,14 +337,28 @@ Interfaces_>`_.
 Declare and Implement Primitive Components
 ------------------------------------------
 
-Coming soon...
+Once the component interfaces have been fully defined, the primitive
+components can be `declared <Declare Primitive Components_>`_ and
+`implemented <Implement Primitive Components_>`_ as described in the
+bottom-up section.
 
 Update Composite Component Definitions
 --------------------------------------
 
-More to come...
+After implementing all of the primitive components, the composite
+component definitions can be updated to reference concrete
+implementations rather than abstract messaging interfaces.  This will
+result in the same `composite component definitions <Define Composite
+Components_>`_ listed in the bottom-up section.
 
 Final Steps
 -----------
 
-This should do it...
+The final steps in the top-down workflow are the same ones discussed
+in the bottom-up approach, namely:
+
+- `Declare the Application`_
+- `Arrange the Source Files`_
+- `Build the Application`_
+- `Run the Application`_
+

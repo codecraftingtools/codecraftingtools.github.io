@@ -5,6 +5,6 @@ class HVAC::Heating::Element::Impl : public Base {
   using Base::Base;
 
  protected:
-  virtual void handle(Enable &msg) override;
-  virtual void handle(Disable &msg) override;
+  void handle(Enable &msg) override;
+  void handle(Disable &msg) override;
 }

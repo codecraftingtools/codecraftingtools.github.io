@@ -5,8 +5,8 @@ class HVAC::Temperature::Controller::Impl : public Base {
   using Base::Base;
 
  protected:
-  virtual void handle(Initialize &msg) override;
-  virtual void handle(Finalize &msg) override;
+  void handle(Initialize &msg) override;
+  void handle(Finalize &msg) override;
   
-  virtual void handle(Measurement &msg) override;
+  void handle(Measurement &msg) override;
 }
