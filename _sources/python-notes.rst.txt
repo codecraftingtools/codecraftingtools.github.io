@@ -31,9 +31,3 @@ this command can be used to install it in any case::
 
 .. _python-site: https://www.python.org
 .. _python-docs: https://docs.python.org/3/
-
-Coding Standards
-================
-
-Code Craftsmen Python packages should be documented as described `here
-<documenting-python-code>`.

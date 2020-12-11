@@ -46,18 +46,14 @@ documentation, a `requirements.txt`_ file needs to be added to the
 project's documentation directory to allow the build to succeed on the
 `Read the Docs <read-the-docs>` site.
 
-.. _documenting-python-code:
+Extracting Embedded Documentation from Python Code
+==================================================
 
-Documenting Python Code
-=======================
-
-The API documentation for our Python packages is extracted from
-`docstrings`_ embedded in the code.  The docstrings are formatted
-according to the `Google docstring`_ style convention with `PEP 484`_
-type annotations.  The `napoleon`_ and `sphinx_autodoc_typehints`_
-Sphinx extensions are used to extract and format the API
-documentation.  See this `Google docstring example`_ to get a feel for
-this docstring format.
+- Python `docstrings`_
+- Extracting `API documentation`_ from Python docstrings
+- Documentation on the `autodoc extension`_
+- Documentation on the `napoleon`_ extension
+- Documentation on the `sphinx_autodoc_typehints`_ extension
 
 Miscellaneous Notes
 ===================
@@ -68,10 +64,6 @@ Miscellaneous Notes
 - How to `include parts of README.rst`_ in your sphinx docs
 - How to embed `Clickable SVG Files`_
 - How to `conditionally include block based on documentation type`_
-- Python `docstrings`_
-- Extracting `API documentation`_ from Python docstrings
-- Documentation on the `autodoc extension`_
-- Documentation on the `napoleon`_ extension
 - Documentation on other Sphinx `extensions`_
 
 .. _sphinx-site: https://www.sphinx-doc.org
@@ -81,12 +73,12 @@ Miscellaneous Notes
 .. _requirements.txt:
    https://docs.readthedocs.io/en/stable/guides/specifying-dependencies.html
 .. _docstrings: https://www.python.org/dev/peps/pep-0287/
-.. _Google docstring: https://google.github.io/styleguide/pyguide.html#Comments
-.. _PEP 484: https://www.python.org/dev/peps/pep-0484/
+.. _API documentation:
+   https://www.sphinx-doc.org/en/master/usage/quickstart.html#autodoc
+.. _autodoc extension:
+   https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
 .. _napoleon:
    https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html
-.. _Google docstring example:
-   https://www.sphinx-doc.org/en/master/usage/extensions/example_google.html#example-google
 .. _Sphinx Quickstart:
    https://www.sphinx-doc.org/en/master/usage/quickstart.html
 .. _Read the Docs Sphinx Quickstart:
@@ -99,9 +91,5 @@ Miscellaneous Notes
    https://stackoverflow.com/questions/34777943/insert-clickable-svg-image-into-sphinx-documentation
 .. _conditionally include block based on documentation type:
    https://stackoverflow.com/questions/2215518/conditional-output-in-sphinx-documentation
-.. _API documentation:
-   https://www.sphinx-doc.org/en/master/usage/quickstart.html#autodoc
-.. _autodoc extension:
-   https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
 .. _extensions:
    https://www.sphinx-doc.org/en/master/usage/extensions/index.html

@@ -91,12 +91,13 @@
 <li class="toctree-l1"><a class="reference internal" href="considerations.html">Considerations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="foundation.html">Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">Conventions</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="notes.html">Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Sphinx</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#external-documentation">External Documentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installation-notes">Installation Notes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extra-setup-for-projects-using-read-the-docs">Extra Setup for Projects Using Read the Docs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#documenting-python-code">Documenting Python Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extracting-embedded-documentation-from-python-code">Extracting Embedded Documentation from Python Code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#miscellaneous-notes">Miscellaneous Notes</a></li>
 </ul>
 </li>
@@ -217,15 +218,15 @@ documentation, a <a class="reference external" href="https://docs.readthedocs.io
 project’s documentation directory to allow the build to succeed on the
 <a class="reference internal" href="foundation.html#read-the-docs"><span class="std std-ref">Read the Docs</span></a> site.</p>
 </div>
-<div class="section" id="documenting-python-code">
-<span id="id1"></span><h2>Documenting Python Code<a class="headerlink" href="#documenting-python-code" title="Permalink to this headline">¶</a></h2>
-<p>The API documentation for our Python packages is extracted from
-<a class="reference external" href="https://www.python.org/dev/peps/pep-0287/">docstrings</a> embedded in the code.  The docstrings are formatted
-according to the <a class="reference external" href="https://google.github.io/styleguide/pyguide.html#Comments">Google docstring</a> style convention with <a class="reference external" href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a>
-type annotations.  The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html">napoleon</a> and <a class="reference external" href="https://pypi.org/project/sphinx-autodoc-typehints/">sphinx_autodoc_typehints</a>
-Sphinx extensions are used to extract and format the API
-documentation.  See this <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/example_google.html#example-google">Google docstring example</a> to get a feel for
-this docstring format.</p>
+<div class="section" id="extracting-embedded-documentation-from-python-code">
+<h2>Extracting Embedded Documentation from Python Code<a class="headerlink" href="#extracting-embedded-documentation-from-python-code" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Python <a class="reference external" href="https://www.python.org/dev/peps/pep-0287/">docstrings</a></p></li>
+<li><p>Extracting <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/quickstart.html#autodoc">API documentation</a> from Python docstrings</p></li>
+<li><p>Documentation on the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html">autodoc extension</a></p></li>
+<li><p>Documentation on the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html">napoleon</a> extension</p></li>
+<li><p>Documentation on the <a class="reference external" href="https://pypi.org/project/sphinx-autodoc-typehints/">sphinx_autodoc_typehints</a> extension</p></li>
+</ul>
 </div>
 <div class="section" id="miscellaneous-notes">
 <h2>Miscellaneous Notes<a class="headerlink" href="#miscellaneous-notes" title="Permalink to this headline">¶</a></h2>
@@ -236,10 +237,6 @@ this docstring format.</p>
 <li><p>How to <a class="reference external" href="https://muffinresearch.co.uk/selectively-including-parts-readme-rst-in-your-docs">include parts of README.rst</a> in your sphinx docs</p></li>
 <li><p>How to embed <a class="reference external" href="https://stackoverflow.com/questions/34777943/insert-clickable-svg-image-into-sphinx-documentation">Clickable SVG Files</a></p></li>
 <li><p>How to <a class="reference external" href="https://stackoverflow.com/questions/2215518/conditional-output-in-sphinx-documentation">conditionally include block based on documentation type</a></p></li>
-<li><p>Python <a class="reference external" href="https://www.python.org/dev/peps/pep-0287/">docstrings</a></p></li>
-<li><p>Extracting <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/quickstart.html#autodoc">API documentation</a> from Python docstrings</p></li>
-<li><p>Documentation on the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html">autodoc extension</a></p></li>
-<li><p>Documentation on the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html">napoleon</a> extension</p></li>
 <li><p>Documentation on other Sphinx <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/index.html">extensions</a></p></li>
 </ul>
 </div>

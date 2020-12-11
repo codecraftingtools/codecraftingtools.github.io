@@ -47,4 +47,5 @@ Code Craftsmen
    considerations
    software
    foundation
+   conventions
    notes

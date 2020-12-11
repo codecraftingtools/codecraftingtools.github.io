@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Notes &mdash; Code Craftsmen  documentation</title>
+  <title>Conventions &mdash; Code Craftsmen  documentation</title>
   
 
   
@@ -36,8 +36,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Sphinx" href="sphinx-notes.html" />
-    <link rel="prev" title="Conventions" href="conventions.html" /> 
+    <link rel="next" title="Notes" href="notes.html" />
+    <link rel="prev" title="Foundation" href="foundation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,18 +91,14 @@
 <li class="toctree-l1"><a class="reference internal" href="considerations.html">Considerations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="foundation.html">Foundation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conventions.html">Conventions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sphinx-notes.html">Sphinx</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lark-notes.html">Lark</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libavoid-notes.html">libavoid</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qt-notes.html">Qt 5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtualenvwrapper-notes.html">virtualenvwrapper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python-notes.html">Python 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ubuntu-notes.html">Ubuntu</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git-notes.html">Git</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Conventions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python-code">Python Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#embedded-documentation">Embedded Documentation</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notes.html">Notes</a></li>
 </ul>
 
             
@@ -149,13 +145,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Notes</li>
+      <li>Conventions</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/notes.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/conventions.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,21 +164,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="notes">
-<h1>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h1>
-<p>The following sections contain notes on various topics such as
-installing or using various external open-source software packages.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="sphinx-notes.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lark-notes.html">Lark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="libavoid-notes.html">libavoid</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qt-notes.html">Qt 5</a></li>
-<li class="toctree-l1"><a class="reference internal" href="virtualenvwrapper-notes.html">virtualenvwrapper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python-notes.html">Python 3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ubuntu-notes.html">Ubuntu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="git-notes.html">Git</a></li>
-</ul>
+  <div class="section" id="conventions">
+<h1>Conventions<a class="headerlink" href="#conventions" title="Permalink to this headline">¶</a></h1>
+<p>This sections describes the coding conventions adopted by the Code
+Craftsmen project.  These standards should be respected when making
+contributions to our Code Crafting tools.</p>
+<div class="section" id="python-code">
+<h2>Python Code<a class="headerlink" href="#python-code" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="embedded-documentation">
+<span id="documenting-python-code"></span><h3>Embedded Documentation<a class="headerlink" href="#embedded-documentation" title="Permalink to this headline">¶</a></h3>
+<p>The API documentation for our <a class="reference internal" href="foundation.html#python"><span class="std std-ref">Python</span></a> packages is extracted
+from <a class="reference external" href="https://www.python.org/dev/peps/pep-0287/">docstrings</a> embedded in the code using <a class="reference internal" href="foundation.html#sphinx"><span class="std std-ref">Sphinx</span></a>.  The
+docstrings are formatted according to the <a class="reference external" href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings">Google docstring</a> style
+convention with <a class="reference external" href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a> type annotations.  The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html">autodoc</a>,
+<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html">napoleon</a>, and <a class="reference external" href="https://pypi.org/project/sphinx-autodoc-typehints/">sphinx_autodoc_typehints</a> Sphinx extensions are
+used to extract and format the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/quickstart.html#autodoc">API documentation</a>.  See this <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/example_google.html#example-google">Google
+docstring example</a> to get a feel for this docstring format.</p>
+</div>
 </div>
 </div>
 
@@ -194,10 +192,10 @@ installing or using various external open-source software packages.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sphinx-notes.html" class="btn btn-neutral float-right" title="Sphinx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="notes.html" class="btn btn-neutral float-right" title="Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="conventions.html" class="btn btn-neutral float-left" title="Conventions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="foundation.html" class="btn btn-neutral float-left" title="Foundation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
