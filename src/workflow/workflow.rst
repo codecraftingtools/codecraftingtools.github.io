@@ -236,6 +236,11 @@ instructional purposes::
                          --entity=HVAC.Heater.Impl HVAC
   chimps --compile=app   --entity=HVAC.Heater.App HVAC
 
+Please note that this tool chain has not yet been implemented, so the
+command-line syntax shown above may change.  Although the commands are
+notional, they should give the reader some insight into the various
+steps that need to be performed.
+
 Run the Application
 -------------------
 
