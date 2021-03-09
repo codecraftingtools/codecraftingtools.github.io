@@ -567,7 +567,9 @@ manner (e.g. pass output data to a separate non-real-time thread that
 accesses the file system) or call the standard operating system file
 I/O functions if this is not a problem in the specific application
 domain.
-  
+
+.. _data-recording-and-playback-considerations:
+
 Data Recording and Playback
 ===========================
 
@@ -687,6 +689,8 @@ programmer.  We strive to provide ways to allow the programmer to
 customize generated code and do things manually when it is beneficial
 to do so.
   
+.. _file-format-considerations:
+
 File Formats
 ============
 
