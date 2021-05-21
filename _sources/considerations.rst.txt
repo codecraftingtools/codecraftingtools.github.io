@@ -637,6 +637,8 @@ this functionality as well.  This capability has many uses, including
 procedural scripting, incorporating graphical user interfaces, and
 dynamically defining an application structure at run-time.
 
+.. _automatic-code-generation:
+
 Automatic Code Generation
 =========================
 

@@ -1,4 +1,4 @@
-import all: from: (Smidgen, Smidgen.Data.Types)
+import all: from: (Smidgen, Smidgen.Data)
 
 file namespace: HVAC.Temperature.Sensor
 
@@ -9,4 +9,4 @@ Sensor.IO: Messaging.Interface
       output:
       type: Measurement      
   properties:
-    Period: Float64 default: 1.0
+    Period: Float64 default_value: 1.0

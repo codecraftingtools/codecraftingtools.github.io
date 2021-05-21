@@ -202,7 +202,7 @@ structure declarations in <a class="reference internal" href="../software.html#t
 language.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature.td</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Tydl, Tydl.Data.Types)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Tydl, Tydl.Data)
 
 file namespace: HVAC.Temperature
 
@@ -259,7 +259,7 @@ Element.IO: Messaging.Interface
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.mi</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data.Types)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data)
 
 file namespace: HVAC.Temperature.Controller
 
@@ -274,8 +274,8 @@ Controller.IO: Messaging.Interface
     Disable:
       output:    
   properties:
-    Setpoint: Float32 default: 65.0
-    Hysteresis: Float32 default: 2.0
+    Setpoint: Float32 default_value: 65.0
+    Hysteresis: Float32 default_value: 2.0
 </pre></div>
 </div>
 </div>
@@ -292,7 +292,7 @@ Controller.IO: Messaging.Interface
 <tbody>
 <tr class="row-odd"><td><div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.mi</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data.Types)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data)
 
 file namespace: HVAC.Temperature.Sensor
 
@@ -303,7 +303,7 @@ Sensor.IO: Messaging.Interface
       output:
       type: Measurement      
   properties:
-    Period: Float64 default: 1.0
+    Period: Float64 default_value: 1.0
 </pre></div>
 </div>
 </div>
@@ -767,7 +767,7 @@ configuration properties and the message content for the sensor
 measurement have not yet been defined.</p>
 <div class="literal-block-wrapper docutils container" id="id20">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Sensor.mi</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data.Types)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data)
 
 file namespace: HVAC.Temperature.Sensor
 
@@ -781,7 +781,7 @@ Sensor.IO: Messaging.Interface
 </div>
 <div class="literal-block-wrapper docutils container" id="id21">
 <div class="code-block-caption"><span class="caption-text">HVAC/Temperature/Controller.mi</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data.Types)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import all: from: (Smidgen, Smidgen.Data)
 
 file namespace: HVAC.Temperature.Controller
 

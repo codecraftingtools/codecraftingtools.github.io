@@ -1,4 +1,4 @@
-import all: from: (Smidgen, Smidgen.Data.Types)
+import all: from: (Smidgen, Smidgen.Data)
 
 file namespace: HVAC.Temperature.Controller
 
@@ -13,5 +13,5 @@ Controller.IO: Messaging.Interface
     Disable:
       output:    
   properties:
-    Setpoint: Float32 default: 65.0
-    Hysteresis: Float32 default: 2.0
+    Setpoint: Float32 default_value: 65.0
+    Hysteresis: Float32 default_value: 2.0

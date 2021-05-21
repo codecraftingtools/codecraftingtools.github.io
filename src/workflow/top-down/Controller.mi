@@ -1,4 +1,4 @@
-import all: from: (Smidgen, Smidgen.Data.Types)
+import all: from: (Smidgen, Smidgen.Data)
 
 file namespace: HVAC.Temperature.Controller
 
