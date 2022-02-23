@@ -127,6 +127,13 @@ Caveman
   programming interface for the display and recording of status,
   event, debugging, warning, and error information.
 
+.. _cuddl:
+
+`Cuddl <cuddl-docs_>`_
+  Cross-platform user-space device driver layer that provides a common API
+  for writing user-space device drivers that works under `Linux <linux>`,
+  `Xenomai <xenomai>`, and `RTEMS <rtems>`.
+
 .. _development-tools:
 
 Development Tools
@@ -241,4 +248,5 @@ dependencies between the various software projects more explicitly.
 .. _flopi-docs: http://flopi.readthedocs.io
 .. _turtal-docs: http://turtal.readthedocs.io
 .. _flout-docs: http://flout.readthedocs.io
+.. _cuddl-docs: http://cuddl.readthedocs.io
 .. _extending or embedding: https://docs.python.org/3/extending
