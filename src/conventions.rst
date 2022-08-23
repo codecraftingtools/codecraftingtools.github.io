@@ -41,6 +41,28 @@ yet, but the `Google C++ Style Guide`_ is worth a look as a starting
 point.  Until a style guide is defined, please look at existing code
 and try to match the style as closely as possible.
 
+Embedded Documentation
+----------------------
+
+The API documentation for our C++ packages is extracted from `special comment
+blocks`_ embedded in the source code using `Doxygen <doxygen>` and `Sphinx
+<sphinx>`.
+
+C Code
+======
+
+Style
+-----
+
+In general, C code should follow the `Linux kernel coding style`_.
+
+Embedded Documentation
+----------------------
+
+The API documentation for our C packages is extracted from special comment
+blocks embedded in the source code using the `kernel-doc`_ `Sphinx <sphinx>`
+extension.
+
 Text Files
 ==========
 
@@ -327,3 +349,9 @@ of the stream identifier subfield.
 .. _Google docstring example:
    https://www.sphinx-doc.org/en/master/usage/extensions/example_google.html#example-google
 .. _Google C++ Style Guide: https://google.github.io/styleguide/cppguide.html
+.. _special comment blocks:
+   https://www.doxygen.org/manual/docblocks.html
+.. _Linux kernel coding style:
+   https://www.kernel.org/doc/html/latest/process/coding-style.html
+.. _kernel-doc:
+   https://www.kernel.org/doc/html/latest/doc-guide/kernel-doc.html

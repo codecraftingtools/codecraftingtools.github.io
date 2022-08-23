@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -26,10 +28,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -99,6 +102,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#c-code">C++ Code</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Embedded Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">C Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Embedded Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#text-files">Text Files</a></li>
@@ -184,21 +193,21 @@
            <div itemprop="articleBody">
             
   <div class="section" id="conventions">
-<h1>Conventions<a class="headerlink" href="#conventions" title="Permalink to this headline">¶</a></h1>
+<h1>Conventions<a class="headerlink" href="#conventions" title="Permalink to this heading">¶</a></h1>
 <p>This sections describes the coding conventions adopted by the Code
 Craftsmen project.  These standards should be respected when making
 contributions to our Code Crafting tools.</p>
 <div class="section" id="python-code">
-<h2>Python Code<a class="headerlink" href="#python-code" title="Permalink to this headline">¶</a></h2>
+<h2>Python Code<a class="headerlink" href="#python-code" title="Permalink to this heading">¶</a></h2>
 <div class="section" id="style">
-<h3>Style<a class="headerlink" href="#style" title="Permalink to this headline">¶</a></h3>
+<h3>Style<a class="headerlink" href="#style" title="Permalink to this heading">¶</a></h3>
 <p>A formal style guide for Code Craftsmen <a class="reference internal" href="foundation.html#python"><span class="std std-ref">Python</span></a> code has not
 been defined yet, but the <a class="reference external" href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a> is worth a look
 as a starting point.  Until a style guide is defined, please look at
 existing code and try to match the style as closely as possible.</p>
 </div>
 <div class="section" id="embedded-documentation">
-<span id="documenting-python-code"></span><h3>Embedded Documentation<a class="headerlink" href="#embedded-documentation" title="Permalink to this headline">¶</a></h3>
+<span id="documenting-python-code"></span><h3>Embedded Documentation<a class="headerlink" href="#embedded-documentation" title="Permalink to this heading">¶</a></h3>
 <p>The API documentation for our <a class="reference internal" href="foundation.html#python"><span class="std std-ref">Python</span></a> packages is extracted
 from <a class="reference external" href="https://www.python.org/dev/peps/pep-0287/">docstrings</a> embedded in the code using <a class="reference internal" href="foundation.html#sphinx"><span class="std std-ref">Sphinx</span></a>.  The
 docstrings are formatted according to the <a class="reference external" href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings">Google docstring</a> style
@@ -209,17 +218,35 @@ docstring example</a> to get a feel for this docstring format.</p>
 </div>
 </div>
 <div class="section" id="c-code">
-<h2>C++ Code<a class="headerlink" href="#c-code" title="Permalink to this headline">¶</a></h2>
+<h2>C++ Code<a class="headerlink" href="#c-code" title="Permalink to this heading">¶</a></h2>
 <div class="section" id="id1">
-<h3>Style<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>Style<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <p>A formal style guide for Code Craftsmen C++ code has not been defined
 yet, but the <a class="reference external" href="https://google.github.io/styleguide/cppguide.html">Google C++ Style Guide</a> is worth a look as a starting
 point.  Until a style guide is defined, please look at existing code
 and try to match the style as closely as possible.</p>
 </div>
+<div class="section" id="id2">
+<h3>Embedded Documentation<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<p>The API documentation for our C++ packages is extracted from <a class="reference external" href="https://www.doxygen.org/manual/docblocks.html">special comment
+blocks</a> embedded in the source code using <a class="reference internal" href="foundation.html#doxygen"><span class="std std-ref">Doxygen</span></a> and <a class="reference internal" href="foundation.html#sphinx"><span class="std std-ref">Sphinx</span></a>.</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>C Code<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id4">
+<h3>Style<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<p>In general, C code should follow the <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html">Linux kernel coding style</a>.</p>
+</div>
+<div class="section" id="id5">
+<h3>Embedded Documentation<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
+<p>The API documentation for our C packages is extracted from special comment
+blocks embedded in the source code using the <a class="reference external" href="https://www.kernel.org/doc/html/latest/doc-guide/kernel-doc.html">kernel-doc</a> <a class="reference internal" href="foundation.html#sphinx"><span class="std std-ref">Sphinx</span></a>
+extension.</p>
+</div>
 </div>
 <div class="section" id="text-files">
-<h2>Text Files<a class="headerlink" href="#text-files" title="Permalink to this headline">¶</a></h2>
+<h2>Text Files<a class="headerlink" href="#text-files" title="Permalink to this heading">¶</a></h2>
 <p>Configuration, input, and source information should be specified in a
 human-readable text format, if it is practical to do so.  A
 <a class="reference internal" href="software.html#wumps"><span class="std std-ref">Wumps-based</span></a> syntax should be employed for these purposes
@@ -230,7 +257,7 @@ rationale for these recommendations can be found in the <a class="reference inte
 considerations</span></a> section.</p>
 </div>
 <div class="section" id="binary-data-files">
-<h2>Binary Data Files<a class="headerlink" href="#binary-data-files" title="Permalink to this headline">¶</a></h2>
+<h2>Binary Data Files<a class="headerlink" href="#binary-data-files" title="Permalink to this heading">¶</a></h2>
 <p>In some cases, such as those where data processing or storage
 efficiency is a significant concern, it may be more appropriate to
 store data in binary files instead of text files.  In these cases, it
@@ -243,10 +270,10 @@ traffic generated by an application.  Since messaging is such an
 integral part of our code crafting paradigm, we have developed our own
 standardized file format for storing binary message stream data.</p>
 <div class="section" id="binary-message-stream-recording-format">
-<h3>Binary Message Stream Recording Format<a class="headerlink" href="#binary-message-stream-recording-format" title="Permalink to this headline">¶</a></h3>
+<h3>Binary Message Stream Recording Format<a class="headerlink" href="#binary-message-stream-recording-format" title="Permalink to this heading">¶</a></h3>
 <p>A binary message stream file is simply a sequence of file <strong>entries</strong>.</p>
-<table class="docutils align-default" id="id2">
-<caption><span class="caption-text">File Content</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">File Content</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -264,8 +291,8 @@ standardized file format for storing binary message stream data.</p>
 <p>Each entry in the file consists of three sequential fields: an <strong>entry
 code</strong> identifying the type of entry, the <strong>entry size</strong> (in bytes),
 and the <strong>entry content</strong>.</p>
-<table class="docutils align-default" id="id3">
-<caption><span class="caption-text">Entry</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Entry</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -285,15 +312,15 @@ without introducing additional restrictions.</p>
 applications to skip over entries that are not of interest without
 having to understand the details of those specific entries.</p>
 <div class="section" id="entry-code">
-<h4>Entry Code<a class="headerlink" href="#entry-code" title="Permalink to this headline">¶</a></h4>
+<h4>Entry Code<a class="headerlink" href="#entry-code" title="Permalink to this heading">¶</a></h4>
 <p>The first field of a file entry is the entry code, which is used to
 indicate what type of data the following entry content field contains.
 The minimum size of the entry code field is one byte, and its size is
 determined by examining the content of this field as it is read in.
 If the most significant bit (bit 7) of the first byte of the entry
 code is <code class="docutils literal notranslate"><span class="pre">0</span></code>, then the entry code field is only one byte long.</p>
-<table class="docutils align-default" id="id4">
-<caption><span class="caption-text">Single-Byte Entry Code</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Single-Byte Entry Code</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 21%" />
 <col style="width: 53%" />
@@ -312,8 +339,8 @@ examined.  The same process is applied to each consecutive byte until
 a <code class="docutils literal notranslate"><span class="pre">0</span></code> is found in the most significant bit.  In theory, an entry
 code could be up to 4 bytes long, but more than one or two bytes
 should not be required.</p>
-<table class="docutils align-default" id="id5">
-<caption><span class="caption-text">Two-Byte Entry Code</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text">Two-Byte Entry Code</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 21%" />
 <col style="width: 53%" />
@@ -330,8 +357,8 @@ should not be required.</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id6">
-<caption><span class="caption-text">Three-Byte Entry Code</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-text">Three-Byte Entry Code</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 21%" />
 <col style="width: 53%" />
@@ -352,8 +379,8 @@ should not be required.</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id7">
-<caption><span class="caption-text">Four-Byte Entry Code</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-text">Four-Byte Entry Code</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 21%" />
 <col style="width: 53%" />
@@ -381,8 +408,8 @@ should not be required.</p>
 <p>Once the number of bytes in the entry code has been determined, the
 individual bytes are combined in little-endian byte order to construct
 the final entry code field value.</p>
-<table class="docutils align-default" id="id8">
-<caption><span class="caption-text">Resulting Entry Code Field Value</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-text">Resulting Entry Code Field Value</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 19%" />
 <col style="width: 19%" />
@@ -430,7 +457,7 @@ Result (Hex)</p></th>
 </table>
 </div>
 <div class="section" id="entry-size">
-<h4>Entry Size<a class="headerlink" href="#entry-size" title="Permalink to this headline">¶</a></h4>
+<h4>Entry Size<a class="headerlink" href="#entry-size" title="Permalink to this heading">¶</a></h4>
 <p>The second field of a file entry is the entry size, which indicates
 the number of bytes present in the following entry content field.  The
 entry size field is either one, two, four, or eight bytes in length,
@@ -475,7 +502,7 @@ field.</p>
 </table>
 </div>
 <div class="section" id="entry-content">
-<h4>Entry Content<a class="headerlink" href="#entry-content" title="Permalink to this headline">¶</a></h4>
+<h4>Entry Content<a class="headerlink" href="#entry-content" title="Permalink to this heading">¶</a></h4>
 <p>The third (and final) field of a file entry is the entry content,
 which is the actual data associated with the file entry.  The number
 of bytes present in the entry content field is equal to the value of
@@ -536,7 +563,7 @@ currently defined.</p>
 <p>All other entry codes are reserved for future use.</p>
 </div>
 <div class="section" id="file-format-id">
-<h4>File Format ID<a class="headerlink" href="#file-format-id" title="Permalink to this headline">¶</a></h4>
+<h4>File Format ID<a class="headerlink" href="#file-format-id" title="Permalink to this heading">¶</a></h4>
 <p>The content field for a <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">Format</span> <span class="pre">ID</span></code> entry contains a
 null-terminated string that specifies the file format used in the data
 file being read.  Files that conform to the <em>Binary Message Stream
@@ -551,7 +578,7 @@ to quickly determine if a specified data file is encoded in a
 supported format.</p>
 </div>
 <div class="section" id="source-application-id">
-<h4>Source Application ID<a class="headerlink" href="#source-application-id" title="Permalink to this headline">¶</a></h4>
+<h4>Source Application ID<a class="headerlink" href="#source-application-id" title="Permalink to this heading">¶</a></h4>
 <p>The content field for a <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Application</span> <span class="pre">ID</span></code> entry contains a
 null-terminated string that specifies the application that was used to
 generate the data file being read.  This string is typically used by
@@ -562,7 +589,7 @@ and message formats associated with the data in the file.</p>
 name collisions.</p>
 </div>
 <div class="section" id="message-content">
-<h4>Message Content<a class="headerlink" href="#message-content" title="Permalink to this headline">¶</a></h4>
+<h4>Message Content<a class="headerlink" href="#message-content" title="Permalink to this heading">¶</a></h4>
 <p>The content field for a <code class="docutils literal notranslate"><span class="pre">Message</span> <span class="pre">Content</span></code> entry contains an “opaque”
 block of raw data.  This is usually the content of a single message,
 but could, in theory, be any type of data.  Since there is no stream
@@ -571,12 +598,12 @@ typically used in data files where only one message stream is
 recorded.</p>
 </div>
 <div class="section" id="message-content-with-stream-id">
-<h4>Message Content with Stream ID<a class="headerlink" href="#message-content-with-stream-id" title="Permalink to this headline">¶</a></h4>
+<h4>Message Content with Stream ID<a class="headerlink" href="#message-content-with-stream-id" title="Permalink to this heading">¶</a></h4>
 <p>The content field for a <code class="docutils literal notranslate"><span class="pre">Message</span> <span class="pre">Content</span> <span class="pre">with</span> <span class="pre">Stream</span> <span class="pre">ID</span></code> entry
 contains two subfields: a stream identifier field followed by a
 message content field.</p>
-<table class="docutils align-default" id="id9">
-<caption><span class="caption-text">Message Content w/ Stream ID Subfield</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id13">
+<caption><span class="caption-text">Message Content w/ Stream ID Subfield</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 100%" />
 </colgroup>

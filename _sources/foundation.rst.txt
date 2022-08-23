@@ -20,6 +20,12 @@ Documentation Generation Tools
   Documentation generation tool originally created for the generating
   the `Python <python>` language documentation
   
+.. _doxygen:
+
+`Doxygen <doxygen-docs_>`_
+  Documentation generation tool for extracting API documentation from C++
+  source files
+  
 Build Tools
 ===========
 
@@ -162,6 +168,7 @@ Web Services
 
 .. _standing on the shoulders of giants:
    https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants
+.. _doxygen-docs: https://www.doxygen.org
 .. _make-docs: https://www.gnu.org/software/make/manual/html_node/index.html
 .. _eigen-site: http://eigen.tuxfamily.org
 .. _tclap-site: http://tclap.sourceforge.net

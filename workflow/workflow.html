@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -26,10 +28,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -183,18 +186,18 @@
            <div itemprop="articleBody">
             
   <div class="section" id="workflow">
-<h1>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h1>
+<h1>Workflow<a class="headerlink" href="#workflow" title="Permalink to this heading">¶</a></h1>
 <p>Let us walk through a simple (but complete) example to demonstrate how
 our code crafting tools can be leveraged in bottom-up and top-down
 software development workflows.</p>
 <div class="section" id="bottom-up">
-<h2>Bottom-Up<a class="headerlink" href="#bottom-up" title="Permalink to this headline">¶</a></h2>
+<h2>Bottom-Up<a class="headerlink" href="#bottom-up" title="Permalink to this heading">¶</a></h2>
 <p>In a bottom-up workflow, the most fundamental, low-level pieces of
 software are implemented first, and then functionality is
 progressively added by assembling these pieces into more complex,
 higher-level components.</p>
 <div class="section" id="define-message-data-structures">
-<h3>Define Message Data Structures<a class="headerlink" href="#define-message-data-structures" title="Permalink to this headline">¶</a></h3>
+<h3>Define Message Data Structures<a class="headerlink" href="#define-message-data-structures" title="Permalink to this heading">¶</a></h3>
 <p>The first step in a bottom-up workflow is to define the data content
 and format of each message that is passed between software components
 in the application.  This is accomplished by writing suitable data
@@ -215,7 +218,7 @@ Measurement: Record
 </div>
 </div>
 <div class="section" id="define-component-messaging-interfaces">
-<h3>Define Component Messaging Interfaces<a class="headerlink" href="#define-component-messaging-interfaces" title="Permalink to this headline">¶</a></h3>
+<h3>Define Component Messaging Interfaces<a class="headerlink" href="#define-component-messaging-interfaces" title="Permalink to this heading">¶</a></h3>
 <p>The second step is to define the messaging interface for each software
 component in the application.  Components have input ports for
 receiving messages from other components and output ports for sending
@@ -341,7 +344,7 @@ Thermostat.IO: Messaging.Interface
 </table>
 </div>
 <div class="section" id="declare-primitive-components">
-<h3>Declare Primitive Components<a class="headerlink" href="#declare-primitive-components" title="Permalink to this headline">¶</a></h3>
+<h3>Declare Primitive Components<a class="headerlink" href="#declare-primitive-components" title="Permalink to this heading">¶</a></h3>
 <p>After defining the component messaging interfaces, the next step is to
 provide declarations for each primitive C++ component that will be
 implemented using the <a class="reference internal" href="../software.html#chimps"><span class="std std-ref">Chimps</span></a> framework.  The <code class="docutils literal notranslate"><span class="pre">Chimps</span></code>
@@ -388,7 +391,7 @@ Sensor.Impl: Component.Implementation
 </div>
 </div>
 <div class="section" id="implement-primitive-components">
-<h3>Implement Primitive Components<a class="headerlink" href="#implement-primitive-components" title="Permalink to this headline">¶</a></h3>
+<h3>Implement Primitive Components<a class="headerlink" href="#implement-primitive-components" title="Permalink to this heading">¶</a></h3>
 <p>Primitive C++ components are implemented by supplying header and
 source files with class declarations and definitions that conform to
 the <a class="reference internal" href="../software.html#chimps"><span class="std std-ref">Chimps</span></a> API.</p>
@@ -526,7 +529,7 @@ the <a class="reference internal" href="../software.html#chimps"><span class="st
 </div>
 </div>
 <div class="section" id="define-composite-components">
-<h3>Define Composite Components<a class="headerlink" href="#define-composite-components" title="Permalink to this headline">¶</a></h3>
+<h3>Define Composite Components<a class="headerlink" href="#define-composite-components" title="Permalink to this heading">¶</a></h3>
 <p>Once the primitive components have been implemented, they can be
 combined and connected to form composite components that build on one
 another in a hierarchic fashion.  Interconnections and component
@@ -600,7 +603,7 @@ Heater.Impl: Component.Implementation
 </table>
 </div>
 <div class="section" id="declare-the-application">
-<h3>Declare the Application<a class="headerlink" href="#declare-the-application" title="Permalink to this headline">¶</a></h3>
+<h3>Declare the Application<a class="headerlink" href="#declare-the-application" title="Permalink to this heading">¶</a></h3>
 <p>Configurable hierarchic applications can be automatically generated
 from any top-level component that implements the <code class="docutils literal notranslate"><span class="pre">Stateful.IO</span></code>
 messaging interface.</p>
@@ -617,7 +620,7 @@ Heater.App: Application
 </div>
 </div>
 <div class="section" id="arrange-the-source-files">
-<h3>Arrange the Source Files<a class="headerlink" href="#arrange-the-source-files" title="Permalink to this headline">¶</a></h3>
+<h3>Arrange the Source Files<a class="headerlink" href="#arrange-the-source-files" title="Permalink to this heading">¶</a></h3>
 <p>Source files are generally arranged in a directory structure that
 reflects the namespace hierarchy:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>HVAC/
@@ -644,7 +647,7 @@ reflects the namespace hierarchy:</p>
 </div>
 </div>
 <div class="section" id="build-the-application">
-<h3>Build the Application<a class="headerlink" href="#build-the-application" title="Permalink to this headline">¶</a></h3>
+<h3>Build the Application<a class="headerlink" href="#build-the-application" title="Permalink to this heading">¶</a></h3>
 <p>Finally, our code crafting command-line tool chain can be used to
 build an executable program from from the source files in accordance
 with the application declaration by issuing the following command in
@@ -677,7 +680,7 @@ notional, they should give the reader some insight into the various
 steps that need to be performed.</p>
 </div>
 <div class="section" id="run-the-application">
-<h3>Run the Application<a class="headerlink" href="#run-the-application" title="Permalink to this headline">¶</a></h3>
+<h3>Run the Application<a class="headerlink" href="#run-the-application" title="Permalink to this heading">¶</a></h3>
 <p>The resulting program can be executed like this:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./Heater Thermostat.Controller.Setpoint=67.0
 </pre></div>
@@ -685,14 +688,14 @@ steps that need to be performed.</p>
 </div>
 </div>
 <div class="section" id="top-down">
-<h2>Top-Down<a class="headerlink" href="#top-down" title="Permalink to this headline">¶</a></h2>
+<h2>Top-Down<a class="headerlink" href="#top-down" title="Permalink to this heading">¶</a></h2>
 <p>In a top-down workflow, the process starts with defining the
 high-level components and describing how data flows between them.
 Development proceeds by progressively breaking down each component
 into smaller subcomponents and defining the data flow in more detail.
 The final step is actually implementing the primitive components.</p>
 <div class="section" id="define-the-top-level-components-and-data-flow">
-<h3>Define the Top-Level Components and Data Flow<a class="headerlink" href="#define-the-top-level-components-and-data-flow" title="Permalink to this headline">¶</a></h3>
+<h3>Define the Top-Level Components and Data Flow<a class="headerlink" href="#define-the-top-level-components-and-data-flow" title="Permalink to this heading">¶</a></h3>
 <p>The first step is to define the top-level components, the connections
 between them, and the direction of data flow.  This application
 structure can be described directly using <a class="reference internal" href="../software.html#smidgen"><span class="std std-ref">Smidgen</span></a> and
@@ -727,7 +730,7 @@ Heater.Impl: Component.Implementation
 shown in the <a class="reference internal" href="#define-component-messaging-interfaces">bottom-up section</a>.</p>
 </div>
 <div class="section" id="iteratively-define-subcomponents">
-<h3>Iteratively Define Subcomponents<a class="headerlink" href="#iteratively-define-subcomponents" title="Permalink to this headline">¶</a></h3>
+<h3>Iteratively Define Subcomponents<a class="headerlink" href="#iteratively-define-subcomponents" title="Permalink to this heading">¶</a></h3>
 <p>The second step in a top-down workflow is to break each component down
 into smaller subcomponents and repeat the process until the entire
 system can be described in terms of primitive components.  In this
@@ -799,7 +802,7 @@ Controller.IO: Messaging.Interface
 </div>
 </div>
 <div class="section" id="refine-data-flow">
-<h3>Refine Data Flow<a class="headerlink" href="#refine-data-flow" title="Permalink to this headline">¶</a></h3>
+<h3>Refine Data Flow<a class="headerlink" href="#refine-data-flow" title="Permalink to this heading">¶</a></h3>
 <p>The next step in the process is to fully define the data content and
 format of each message that is passed between software components in
 the application.  In this example, the only message with content is
@@ -810,28 +813,28 @@ should also be updated with a matching <code class="docutils literal notranslate
 <a class="reference internal" href="#define-component-messaging-interfaces">before</a>.</p>
 </div>
 <div class="section" id="define-configuration-properties">
-<h3>Define Configuration Properties<a class="headerlink" href="#define-configuration-properties" title="Permalink to this headline">¶</a></h3>
+<h3>Define Configuration Properties<a class="headerlink" href="#define-configuration-properties" title="Permalink to this heading">¶</a></h3>
 <p>Before proceeding with the implementation, it is wise to give some
 consideration to what configuration properties may be required.  These
 can be added to the component messaging interfaces, as shown
 previously in the <a class="reference internal" href="#define-component-messaging-interfaces">bottom-up section</a>.</p>
 </div>
 <div class="section" id="declare-and-implement-primitive-components">
-<h3>Declare and Implement Primitive Components<a class="headerlink" href="#declare-and-implement-primitive-components" title="Permalink to this headline">¶</a></h3>
+<h3>Declare and Implement Primitive Components<a class="headerlink" href="#declare-and-implement-primitive-components" title="Permalink to this heading">¶</a></h3>
 <p>Once the component interfaces have been fully defined, the primitive
 components can be <a class="reference internal" href="#declare-primitive-components">declared</a> and
 <a class="reference internal" href="#implement-primitive-components">implemented</a> as described in the
 bottom-up section.</p>
 </div>
 <div class="section" id="update-composite-component-definitions">
-<h3>Update Composite Component Definitions<a class="headerlink" href="#update-composite-component-definitions" title="Permalink to this headline">¶</a></h3>
+<h3>Update Composite Component Definitions<a class="headerlink" href="#update-composite-component-definitions" title="Permalink to this heading">¶</a></h3>
 <p>After implementing all of the primitive components, the composite
 component definitions can be updated to reference concrete
 implementations rather than abstract messaging interfaces.  This will
 result in the same <a class="reference internal" href="#define-composite-components">composite component definitions</a> listed in the bottom-up section.</p>
 </div>
 <div class="section" id="final-steps">
-<h3>Final Steps<a class="headerlink" href="#final-steps" title="Permalink to this headline">¶</a></h3>
+<h3>Final Steps<a class="headerlink" href="#final-steps" title="Permalink to this heading">¶</a></h3>
 <p>The final steps in the top-down workflow are the same ones discussed
 in the bottom-up approach, namely:</p>
 <ul class="simple">
