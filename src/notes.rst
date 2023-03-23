@@ -15,5 +15,7 @@ installing or using various external open-source software packages.
    virtualenvwrapper-notes
    python-notes
    ubuntu-notes
+   xenomai-notes
+   rtems-notes
    git-notes
    

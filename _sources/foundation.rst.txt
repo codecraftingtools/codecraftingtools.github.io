@@ -121,13 +121,13 @@ Operating Systems
   
 .. _xenomai:
 
-`Xenomai <xenomai-site_>`_
+`Xenomai <xenomai-notes>`
   Free software project focused on building a real-time framework for
   the :ref:`Linux <Linux>` platform
 
 .. _rtems:
 
-`RTEMS <rtems-site_>`_
+`RTEMS <rtems-notes>`
   Embedded, open-source, real-time operating system
 
 .. _config-preempt-rt:
@@ -177,8 +177,6 @@ Web Services
 .. _gcc-site:  https://gcc.gnu.org
 .. _linux-site: https://www.kernel.org
 .. _gnu-site: https://www.gnu.org
-.. _xenomai-site: https://www.xenomai.org
-.. _rtems-site: https://www.rtems.org
 .. _config-preempt-rt-site: https://rt.wiki.kernel.org
 .. _posix-docs: https://en.wikipedia.org/wiki/POSIX
 .. _pypi-site: https://pypi.org

@@ -49,3 +49,4 @@ Code Craftsmen
    foundation
    conventions
    notes
+   contact
