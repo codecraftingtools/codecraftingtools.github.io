@@ -106,6 +106,23 @@
 <li class="toctree-l2"><a class="reference internal" href="xenomai-notes.html">Xenomai</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">RTEMS</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#external-documentation">External Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-notes-ubuntu-18-04">Installation Notes (Ubuntu 18.04)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#build-the-rsb-tools">Build the RSB Tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-the-desired-rtems-bsps">Build the Desired RTEMS BSPs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compile-a-hello-world-application">Compile a Hello World Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-the-bootgen-tool-zynq-zynqmp-targets">Build the bootgen tool (Zynq/ZynqMP Targets)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-the-arm-trusted-firmware-for-zynqmp-targets">Building the ARM Trusted Firmware for ZynqMP Targets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-the-pmu-firmware-for-zynqmp">Building the PMU Firmware for ZynqMP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-a-boot-image-for-zynq-targets">Build a Boot Image for Zynq Targets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-a-boot-image-for-zynqmp-targets">Build a Boot Image for ZynqMP Targets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry-pi-setup">Raspberry Pi Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-a-raspberry-pi-kernel-image">Building a Raspberry Pi Kernel Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booting-a-raspberry-pi-kernel-image">Booting a Raspberry Pi Kernel Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booting-a-microzed-boot-bin-image">Booting a MicroZed BOOT.BIN Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booting-an-ultrazed-boot-bin-image">Booting an UltraZed BOOT.BIN Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-libbsd-for-rtems-optional">Build libbsd for RTEMS (Optional)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="git-notes.html">Git</a></li>
@@ -186,7 +203,358 @@
 <h2>External Documentation<a class="headerlink" href="#external-documentation" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.rtems.org">RTEMS Web Site</a></p></li>
+<li><p><a class="reference external" href="https://docs.rtems.org/branches/master/user/bsps/arm/raspberrypi.html">RTEMS Raspberry Pi Info</a></p></li>
 </ul>
+</div>
+<div class="section" id="installation-notes-ubuntu-18-04">
+<h2>Installation Notes (Ubuntu 18.04)<a class="headerlink" href="#installation-notes-ubuntu-18-04" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="build-the-rsb-tools">
+<h3>Build the RSB Tools<a class="headerlink" href="#build-the-rsb-tools" title="Permalink to this heading">¶</a></h3>
+<p>The first step is to build a suitable cross-compiler toolchain for the target
+CPU architectures.  This is done using the <code class="docutils literal notranslate"><span class="pre">rtems-source-builder</span></code> tool.</p>
+<p>First, install the system packages required to build the cross compiler:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">g</span><span class="o">++</span> <span class="n">gdb</span> <span class="n">git</span> <span class="n">unzip</span> <span class="n">pax</span> <span class="n">bison</span> <span class="n">flex</span> <span class="n">libpython</span><span class="o">-</span><span class="n">dev</span> <span class="n">libncurses5</span><span class="o">-</span><span class="n">dev</span> <span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Now pull down the Python-based <code class="docutils literal notranslate"><span class="pre">rtems-source-builder</span></code> project and
+(optionally) check out the specific revision that was used when writing these
+notes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">rtems</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">rtems</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">builder</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">rtems</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">builder</span><span class="o">/</span><span class="n">rtems</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">f0e34ea</span>
+</pre></div>
+</div>
+<p>These are some optional, but useful commands you can run at this point:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">source</span><span class="o">-</span><span class="n">builder</span><span class="o">/</span><span class="n">sb</span><span class="o">-</span><span class="n">check</span>
+<span class="o">../</span><span class="n">source</span><span class="o">-</span><span class="n">builder</span><span class="o">/</span><span class="n">sb</span><span class="o">-</span><span class="nb">set</span><span class="o">-</span><span class="n">builder</span> <span class="o">--</span><span class="nb">list</span><span class="o">-</span><span class="n">bsets</span>
+</pre></div>
+</div>
+<p>Then build the 32-bit ARM toolchain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ DOCBOOK_TO_MAN=&quot;xmlto man --skip-validation&quot; \
+  ../source-builder/sb-set-builder --without-rtems \
+  --prefix=/opt/rsb-tools-rtems-6-f0e34ea 6/rtems-arm
+</pre></div>
+</div>
+<p>and/or the 64-bit ARM toolchain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ DOCBOOK_TO_MAN=&quot;xmlto man --skip-validation&quot; \
+  ../source-builder/sb-set-builder --without-rtems \
+  --prefix=/opt/rsb-tools-rtems-6-f0e34ea 6/rtems-aarch64
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-the-desired-rtems-bsps">
+<h3>Build the Desired RTEMS BSPs<a class="headerlink" href="#build-the-desired-rtems-bsps" title="Permalink to this heading">¶</a></h3>
+<p>First, pull down the <code class="docutils literal notranslate"><span class="pre">rtems</span></code> source repository and (optionally) check out
+the specific revision that was used when writing these notes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">rtems</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">rtems</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">rtems</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">acf4eb2</span>
+</pre></div>
+</div>
+<p>Now make sure that the <code class="docutils literal notranslate"><span class="pre">rtems-source-builder</span></code> tools are in your path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;/opt/rsb-tools-rtems-6-f0e34ea/bin:$PATH&quot;</span>
+</pre></div>
+</div>
+<p>These are some optional, but useful commands you can run at this point:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">waf</span> <span class="n">bsplist</span>
+<span class="o">./</span><span class="n">waf</span> <span class="n">bsplist</span> <span class="o">--</span><span class="n">rtems</span><span class="o">-</span><span class="n">bsps</span><span class="o">=</span><span class="s1">&#39;arm/.*zynq.*&#39;</span>
+<span class="o">./</span><span class="n">waf</span> <span class="n">bsplist</span> <span class="o">--</span><span class="n">rtems</span><span class="o">-</span><span class="n">bsps</span><span class="o">=</span><span class="s1">&#39;aarch64/xilinx_zynqmp.*&#39;</span>
+<span class="o">./</span><span class="n">waf</span> <span class="n">bspdefaults</span> <span class="o">--</span><span class="n">rtems</span><span class="o">-</span><span class="n">bsps</span><span class="o">=</span><span class="s1">&#39;aarch64/xilinx_zynqmp_lp64_zu3eg&#39;</span>
+</pre></div>
+</div>
+<p>Now create a sample configuration file for the BSP to build.  The following
+is suitable for use with an UltraZed board:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;[aarch64/xilinx_zynqmp_lp64_zu3eg]&quot;</span> <span class="o">&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;BUILD_SAMPLES = False&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;RTEMS_POSIX_API = True&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;BSP_RESET_BOARD_AT_EXIT = 0&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>The following is suitable for use with a MicroZed or ZedBoard:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;[arm/xilinx_zynq_zedboard]&quot;</span> <span class="o">&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;BUILD_SAMPLES = False&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;RTEMS_POSIX_API = True&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;BSP_RESET_BOARD_AT_EXIT = 0&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;BSP_ARM_A9MPCORE_PERIPHCLK = 333333333&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;ZYNQ_RAM_LENGTH = 0x40000000&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>The following is suitable for use with a Zynq7000 QEMU setup:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;[arm/xilinx_zynq_a9_qemu]&quot;</span> <span class="o">&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;BUILD_SAMPLES = False&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;RTEMS_POSIX_API = True&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;BSP_RESET_BOARD_AT_EXIT = 0&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>The following is suitable for use with a Raspberry Pi:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;[arm/raspberrypi]&quot;</span> <span class="o">&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;BUILD_SAMPLES = False&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;RTEMS_POSIX_API = True&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;BSP_RESET_BOARD_AT_EXIT = 0&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>Once you have a config file, you can build an RTEMS BSP like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">waf</span> <span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span>
+<span class="o">./</span><span class="n">waf</span>
+<span class="o">./</span><span class="n">waf</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Note that appropriate compiler/linker flags for each BPS can be found in the
+associated <code class="docutils literal notranslate"><span class="pre">.pc</span></code> files found here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pkgconfig</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With the appropriate options, the RTEMS BSPs can alternatively be built from
+an “out-of-tree” build directory.  e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/path/to/rtems/waf --out=$PWD/build --top=/path/to/rtems --no-lock-in-top --no-lock-in-run --prefix=/opt/rsb-tools-rtems-6-f0e34ea configure --rtems-config $PWD/config.ini
+
+/path/to/rtems/waf --out=$PWD/build --top=/path/to/rtems --no-lock-in-top --no-lock-in-run --prefix=/opt/rsb-tools-rtems-6-f0e34ea
+
+/path/to/rtems/waf --out=$PWD/build --top=/path/to/rtems --no-lock-in-top --no-lock-in-run --prefix=/opt/rsb-tools-rtems-6-f0e34ea install
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="compile-a-hello-world-application">
+<h3>Compile a Hello World Application<a class="headerlink" href="#compile-a-hello-world-application" title="Permalink to this heading">¶</a></h3>
+<p>Create a file called <code class="docutils literal notranslate"><span class="pre">hello.c</span></code> containing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
+
+<span class="n">void</span> <span class="o">*</span><span class="n">POSIX_Init</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">#define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER</span>
+<span class="c1">#define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER</span>
+<span class="c1">#define CONFIGURE_MAXIMUM_POSIX_THREADS 1</span>
+<span class="c1">#define CONFIGURE_POSIX_INIT_THREAD_TABLE</span>
+<span class="c1">#define CONFIGURE_INIT</span>
+<span class="c1">#include &lt;rtems/confdefs.h&gt;</span>
+</pre></div>
+</div>
+<p>Then compile it, using any required flags found in the <code class="docutils literal notranslate"><span class="pre">.pc</span></code> file mentioned
+above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span><span class="n">gcc</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span><span class="o">.</span><span class="n">o</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">rtems6</span><span class="o">/</span><span class="n">raspberrypi</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">include</span> <span class="o">-</span><span class="n">mcpu</span><span class="o">=</span><span class="n">arm1176jzf</span><span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">ffunction</span><span class="o">-</span><span class="n">sections</span> <span class="o">-</span><span class="n">fdata</span><span class="o">-</span><span class="n">sections</span> <span class="n">hello</span><span class="o">.</span><span class="n">c</span>
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span><span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span><span class="o">.</span><span class="n">elf</span> <span class="o">-</span><span class="n">mcpu</span><span class="o">=</span><span class="n">arm1176jzf</span><span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">B</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">rtems6</span><span class="o">/</span><span class="n">raspberrypi</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">qrtems</span> <span class="o">-</span><span class="n">Wl</span><span class="p">,</span><span class="o">--</span><span class="n">gc</span><span class="o">-</span><span class="n">sections</span> <span class="n">hello</span><span class="o">.</span><span class="n">o</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-the-bootgen-tool-zynq-zynqmp-targets">
+<h3>Build the bootgen tool (Zynq/ZynqMP Targets)<a class="headerlink" href="#build-the-bootgen-tool-zynq-zynqmp-targets" title="Permalink to this heading">¶</a></h3>
+<p>First, pull down the <code class="docutils literal notranslate"><span class="pre">bootgen</span></code> source repository and (optionally) check out
+the specific revision that was used when writing these notes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Xilinx</span><span class="o">/</span><span class="n">bootgen</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">bootgen</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">xilinx_v2021</span><span class="o">.</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Now make sure that you have the <code class="docutils literal notranslate"><span class="pre">libssl-dev</span></code> package required in order to compile <code class="docutils literal notranslate"><span class="pre">bootgen</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libssl</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Now you can build <code class="docutils literal notranslate"><span class="pre">bootgen</span></code>:</p>
+<blockquote>
+<div><p>make</p>
+</div></blockquote>
+<p>This should generate the <code class="docutils literal notranslate"><span class="pre">bootgen</span></code> executable.</p>
+</div>
+<div class="section" id="building-the-arm-trusted-firmware-for-zynqmp-targets">
+<h3>Building the ARM Trusted Firmware for ZynqMP Targets<a class="headerlink" href="#building-the-arm-trusted-firmware-for-zynqmp-targets" title="Permalink to this heading">¶</a></h3>
+<p>First, pull down the source code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Xilinx</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">trusted</span><span class="o">-</span><span class="n">firmware</span>
+<span class="n">cd</span> <span class="n">arm</span><span class="o">-</span><span class="n">trusted</span><span class="o">-</span><span class="n">firmware</span>
+</pre></div>
+</div>
+<p>Now build it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CROSS_COMPILE</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span> <span class="n">make</span> <span class="n">PLAT</span><span class="o">=</span><span class="n">zynqmp</span> <span class="n">RESET_TO_BL31</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>If you run into trouble, you can build with with debug output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CROSS_COMPILE</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span> <span class="n">make</span> <span class="n">PLAT</span><span class="o">=</span><span class="n">zynqmp</span> <span class="n">RESET_TO_BL31</span><span class="o">=</span><span class="mi">1</span> <span class="n">LOG_LEVEL</span><span class="o">=</span><span class="mi">50</span> <span class="n">ZYNQMP_ATF_MEM_BASE</span><span class="o">=</span><span class="mh">0x12000000</span> <span class="n">ZYNQMP_ATF_MEM_SIZE</span><span class="o">=</span><span class="mh">0x00100000</span>
+</pre></div>
+</div>
+<p>This yields a <code class="docutils literal notranslate"><span class="pre">bl31.elf</span></code> file that is used with <code class="docutils literal notranslate"><span class="pre">bootgen</span></code>.</p>
+</div>
+<div class="section" id="building-the-pmu-firmware-for-zynqmp">
+<h3>Building the PMU Firmware for ZynqMP<a class="headerlink" href="#building-the-pmu-firmware-for-zynqmp" title="Permalink to this heading">¶</a></h3>
+<p>In Vivado SDK, perform the following steps:</p>
+<ul class="simple">
+<li><p>File-&gt;New-&gt;Application Project</p></li>
+<li><p>Project name: pmu</p></li>
+<li><p>Processor: psu_pmu_0</p></li>
+<li><p>Next, PSU PMU Firmware, Finish</p></li>
+<li><p>Yields pmu.elf</p></li>
+</ul>
+</div>
+<div class="section" id="build-a-boot-image-for-zynq-targets">
+<h3>Build a Boot Image for Zynq Targets<a class="headerlink" href="#build-a-boot-image-for-zynq-targets" title="Permalink to this heading">¶</a></h3>
+<p>Create a file called <code class="docutils literal notranslate"><span class="pre">hello.bif</span></code> containing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+  <span class="p">[</span><span class="n">bootloader</span><span class="p">]</span><span class="n">fsbl</span><span class="o">.</span><span class="n">elf</span>
+  <span class="n">system_wrapper</span><span class="o">.</span><span class="n">bit</span>
+  <span class="n">hello</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">fsbl.elf</span></code> and <code class="docutils literal notranslate"><span class="pre">system_wrapper.bit</span></code> files are generated in Vivado.</p>
+<p>Now generate a bootable image for the “Hello World” application:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">bootgen</span> <span class="o">-</span><span class="n">arch</span> <span class="n">zynq</span> <span class="o">-</span><span class="n">image</span> <span class="n">hello</span><span class="o">.</span><span class="n">bif</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span><span class="o">.</span><span class="n">bin</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-a-boot-image-for-zynqmp-targets">
+<h3>Build a Boot Image for ZynqMP Targets<a class="headerlink" href="#build-a-boot-image-for-zynqmp-targets" title="Permalink to this heading">¶</a></h3>
+<p>Create a file called <code class="docutils literal notranslate"><span class="pre">hello.bif</span></code> containing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+        <span class="o">//</span><span class="p">[</span><span class="n">pmufw_image</span><span class="p">]</span><span class="n">pmu</span><span class="o">.</span><span class="n">elf</span> <span class="o">//</span> <span class="n">pmu</span> <span class="n">fw</span> <span class="n">loaded</span> <span class="n">by</span> <span class="n">boot</span> <span class="n">rom</span>
+        <span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">destination_cpu</span><span class="o">=</span><span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span><span class="n">fsbl</span><span class="o">.</span><span class="n">elf</span>
+        <span class="p">[</span><span class="n">destination_cpu</span><span class="o">=</span><span class="n">pmu</span><span class="p">]</span><span class="n">pmu</span><span class="o">.</span><span class="n">elf</span> <span class="o">//</span> <span class="n">pmu</span> <span class="n">fw</span> <span class="n">loaded</span> <span class="n">by</span> <span class="n">fsbl</span>
+        <span class="p">[</span><span class="n">destination_device</span><span class="o">=</span><span class="n">pl</span><span class="p">]</span><span class="n">system_wrapper</span><span class="o">.</span><span class="n">bit</span> <span class="o">//</span> <span class="n">optional</span>
+        <span class="p">[</span><span class="n">destination_cpu</span><span class="o">=</span><span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span><span class="o">=</span><span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">]</span><span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+        <span class="p">[</span><span class="n">destination_cpu</span><span class="o">=</span><span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span><span class="o">=</span><span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="n">hello</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">fsbl.elf</span></code>, <code class="docutils literal notranslate"><span class="pre">pmu.elf</span></code> and <code class="docutils literal notranslate"><span class="pre">system_wrapper.bit</span></code> files are generated
+in Vivado.</p>
+<p>Now generate a bootable image for the “Hello World” application:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">bootgen</span> <span class="o">-</span><span class="n">arch</span> <span class="n">zynqmp</span> <span class="o">-</span><span class="n">image</span> <span class="n">hello</span><span class="o">.</span><span class="n">bif</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span><span class="o">.</span><span class="n">bin</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="raspberry-pi-setup">
+<h3>Raspberry Pi Setup<a class="headerlink" href="#raspberry-pi-setup" title="Permalink to this heading">¶</a></h3>
+<p>The following instructions were tested with a first-generation Raspberry Pi.</p>
+<p>First, configure an SD card for booting the Raspberry Pi using the standard
+process, but choose one of the minimal images.  On Ubuntu, this is best done
+via:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">rpi</span><span class="o">-</span><span class="n">imager</span>
+<span class="n">rpi</span><span class="o">-</span><span class="n">imager</span>
+</pre></div>
+</div>
+<p>Choose the <code class="docutils literal notranslate"><span class="pre">Raspberry</span> <span class="pre">Pi</span> <span class="pre">OS</span> <span class="pre">Lite</span> <span class="pre">(Legacy/Buster)</span></code> image and write it to an
+SD card.</p>
+<p>The default configuration should have the serial boot console enabled.
+Connect up something like the <a class="reference external" href="https://www.ftdichip.com/Support/Documents/DataSheets/Cables/DS_TTL-232R_CABLES.pdf">FTDI TTL-232R-3V3 cable</a>
+to your PC.  With this cable, the yellow PC-RXD pin connects to the PI-TXD
+(P1-PIN8) pin and the black PC-GND pin connects to the PI-GND (P1-PIN6) as
+shown <a class="reference external" href="https://www.raspberrypi.com/documentation/computers/raspberry-pi.html">here</a>.</p>
+<p>Now run the following command in a terminal window and power up the Pi with
+the SD card inserted:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">picocom</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB0</span> <span class="o">--</span><span class="n">b</span> <span class="mi">115200</span> <span class="o">--</span><span class="n">d</span> <span class="mi">8</span> <span class="o">--</span><span class="n">p</span> <span class="n">n</span> <span class="o">--</span><span class="n">f</span>
+</pre></div>
+</div>
+<p>You should see kernel boot output.  Now type &lt;ctrl-a&gt;&lt;ctrl-q&gt; to quit
+picocom.</p>
+<p>Booting RTEMS currently requires an older version of the Pi firmware to be
+installed on the SD card, so download a zip file with the required firmware
+from <a class="reference external" href="https://github.com/raspberrypi/firmware/tree/1.20200601">this link</a>.
+Checking out the whole Git repo takes a very long time.</p>
+<p>Now mount the SD card boot partition and move all the files in that boot
+directory into a subdirectory (except for <code class="docutils literal notranslate"><span class="pre">config.txt</span></code>), as they will be
+replaced.  Now copy all the files from the boot directory of the zip file you
+just downloaded onto the boot partition of the SD card:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">backup</span>
+<span class="n">mv</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">boot</span><span class="o">/*</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">backup</span>
+<span class="n">mv</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">txt</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">boot</span>
+<span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">firmware</span><span class="o">-</span><span class="mf">1.20200601</span><span class="o">/</span><span class="n">boot</span><span class="o">/*</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">boot</span>
+</pre></div>
+</div>
+<p>We also need to add the following lines to the end of <code class="docutils literal notranslate"><span class="pre">config.txt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dtoverlay</span><span class="o">=</span><span class="n">disable</span><span class="o">-</span><span class="n">bt</span>
+<span class="n">kernel_address</span><span class="o">=</span><span class="mh">0x200000</span>
+<span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="o">.</span><span class="n">img</span>
+</pre></div>
+</div>
+<p>You can test the booting of this configuration once more to make sure you
+still see serial output.</p>
+</div>
+<div class="section" id="building-a-raspberry-pi-kernel-image">
+<h3>Building a Raspberry Pi Kernel Image<a class="headerlink" href="#building-a-raspberry-pi-kernel-image" title="Permalink to this heading">¶</a></h3>
+<p>In order to create a bootable image for use on the Raspberry Pi, you must run
+the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span><span class="n">objcopy</span> <span class="o">-</span><span class="n">Obinary</span> <span class="n">hello</span><span class="o">.</span><span class="n">elf</span> <span class="n">kernel</span><span class="o">.</span><span class="n">img</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="booting-a-raspberry-pi-kernel-image">
+<h3>Booting a Raspberry Pi Kernel Image<a class="headerlink" href="#booting-a-raspberry-pi-kernel-image" title="Permalink to this heading">¶</a></h3>
+<p>You can now copy the <code class="docutils literal notranslate"><span class="pre">kernel.img</span></code> file you created previously onto the boot
+partition of the Raspberry Pi SD card (overwriting the existing one) and
+power up the board:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">kernel</span><span class="o">.</span><span class="n">img</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>You should text see output appear in the <code class="docutils literal notranslate"><span class="pre">picocom</span></code> terminal window that you
+set up previously.</p>
+</div>
+<div class="section" id="booting-a-microzed-boot-bin-image">
+<h3>Booting a MicroZed BOOT.BIN Image<a class="headerlink" href="#booting-a-microzed-boot-bin-image" title="Permalink to this heading">¶</a></h3>
+<p>Now copy the <code class="docutils literal notranslate"><span class="pre">hello.bin</span></code> file (generated via <code class="docutils literal notranslate"><span class="pre">bootgen</span></code>) into the root
+directory of a MicroZed’s SD card, renaming it <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code>.</p>
+<p>Now put the SD card into the MicroZed and boot it up.</p>
+<p>Before turning on power to the development board, connect up the USB UART
+cable to your workstation and run this command in a terminal window:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">picocom</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB0</span> <span class="o">--</span><span class="n">b</span> <span class="mi">115200</span> <span class="o">--</span><span class="n">d</span> <span class="mi">8</span> <span class="o">--</span><span class="n">p</span> <span class="n">n</span> <span class="o">--</span><span class="n">f</span> <span class="n">n</span>
+</pre></div>
+</div>
+<p>Now type &lt;ctrl-a&gt;&lt;ctrl-q&gt; to quit picocom.</p>
+</div>
+<div class="section" id="booting-an-ultrazed-boot-bin-image">
+<h3>Booting an UltraZed BOOT.BIN Image<a class="headerlink" href="#booting-an-ultrazed-boot-bin-image" title="Permalink to this heading">¶</a></h3>
+<p>Now copy the <code class="docutils literal notranslate"><span class="pre">hello.bin</span></code> file (generated via <code class="docutils literal notranslate"><span class="pre">bootgen</span></code>) into the root
+directory of an UltaZed’s SD card, renaming it <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code>.</p>
+<p>Now put the SD card into the UltraZed and boot it up.</p>
+<p>Before turning on power to the development board, connect up the USB UART
+cable to your workstation and run this command in a terminal window:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">picocom</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB1</span> <span class="o">--</span><span class="n">b</span> <span class="mi">115200</span> <span class="o">--</span><span class="n">d</span> <span class="mi">8</span> <span class="o">--</span><span class="n">p</span> <span class="n">n</span> <span class="o">--</span><span class="n">f</span> <span class="n">n</span>
+</pre></div>
+</div>
+<p>Now type &lt;ctrl-a&gt;&lt;ctrl-q&gt; to quit picocom.</p>
+</div>
+<div class="section" id="build-libbsd-for-rtems-optional">
+<h3>Build libbsd for RTEMS (Optional)<a class="headerlink" href="#build-libbsd-for-rtems-optional" title="Permalink to this heading">¶</a></h3>
+<p>If you want extra features like networking and SD card drivers, you will also
+need to build <code class="docutils literal notranslate"><span class="pre">libbsd</span></code>.</p>
+<p>In order to do this, first pull down the <code class="docutils literal notranslate"><span class="pre">rtems-libbsd</span></code> source repository
+and (optionally) check out the required branch that works with RTEMS (commit
+<code class="docutils literal notranslate"><span class="pre">ac4cf946a28329cc65cbc0c30ec1ed0d6449d7cc</span></code> was used when writing these
+notes):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">rtems</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">rtems</span><span class="o">-</span><span class="n">libbsd</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">rtems</span><span class="o">-</span><span class="n">libbsd</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="mi">6</span><span class="o">-</span><span class="n">freebsd</span><span class="o">-</span><span class="mi">12</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span> <span class="n">rtems_waf</span>
+<span class="o">./</span><span class="n">waf</span> <span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span> \
+  <span class="o">--</span><span class="n">rtems</span><span class="o">-</span><span class="n">bsps</span><span class="o">=</span><span class="s2">&quot;aarch64/xilinx_zynqmp_lp64_zu3eg&quot;</span> \
+  <span class="o">--</span><span class="n">buildset</span><span class="o">=</span><span class="n">buildset</span><span class="o">/</span><span class="n">default</span><span class="o">.</span><span class="n">ini</span>
+<span class="o">./</span><span class="n">waf</span>
+<span class="o">./</span><span class="n">waf</span> <span class="n">install</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With the appropriate command-line options, libbsd can alternatively be built
+from an “out-of-tree” build directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/path/to/libbsd/waf --prefix=/opt/rsb-tools-rtems-6-f0e34ea --rtems-bsps=&quot;aarch64/xilinx_zynqmp_lp64_zu3eg&quot; --buildset=buildset/default.ini --out=$PWD/build --top=/path/to/libbsd configure
+
+/path/to/libbsd/waf --prefix=/opt/rsb-tools-rtems-6-f0e34ea --rtems-bsps=&quot;aarch64/xilinx_zynqmp_lp64_zu3eg&quot; --buildset=buildset/default.ini --out=$PWD/build --top=/path/to/libbsd
+
+/path/to/libbsd/waf --prefix=/opt/rsb-tools-rtems-6-f0e34ea --rtems-bsps=&quot;aarch64/xilinx_zynqmp_lp64_zu3eg&quot; --buildset=buildset/default.ini --out=$PWD/build --top=/path/to/libbsd install
+</pre></div>
+</div>
+<p>Please note that (unlike the RTEMS out-of-tree build) the
+<code class="docutils literal notranslate"><span class="pre">--no-lock-in-top</span></code> and <code class="docutils literal notranslate"><span class="pre">--no-lock-in-run</span></code> options cannot be specified
+because the waf configuration is loaded from the lock files during the
+“build” phase.</p>
+</div>
+</div>
 </div>
 </div>
 
