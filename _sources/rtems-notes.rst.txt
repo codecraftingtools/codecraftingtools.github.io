@@ -132,7 +132,7 @@ Compile a Hello World Application
 
 Create a file called ``hello.c`` containing:
 
-.. code-block:: python
+.. code-block:: c
 
   #include <stdio.h>
    
@@ -144,9 +144,10 @@ Create a file called ``hello.c`` containing:
    
   #define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
   #define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
-  #define CONFIGURE_MAXIMUM_POSIX_THREADS 1
   #define CONFIGURE_POSIX_INIT_THREAD_TABLE
   #define CONFIGURE_INIT
+  #define CONFIGURE_UNLIMITED_OBJECTS
+  #define CONFIGURE_UNIFIED_WORK_AREAS
   #include <rtems/confdefs.h>
 
 Then compile it, using any required flags found in the ``.pc`` file mentioned
@@ -263,8 +264,8 @@ The default configuration should have the serial boot console enabled.
 Connect up something like the `FTDI TTL-232R-3V3 cable
 <https://www.ftdichip.com/Support/Documents/DataSheets/Cables/DS_TTL-232R_CABLES.pdf>`_
 to your PC.  With this cable, the yellow PC-RXD pin connects to the PI-TXD
-(P1-PIN8) pin and the black PC-GND pin connects to the PI-GND (P1-PIN6) as
-shown `here
+(P1-PIN8), the black PC-GND pin connects to the PI-GND (P1-PIN6), and the
+orange PC-TXD pin connects to the PI-RXD (P1-PIN10) as shown `here
 <https://www.raspberrypi.com/documentation/computers/raspberry-pi.html>`_.
 
 Now run the following command in a terminal window and power up the Pi with
@@ -386,3 +387,86 @@ notes)::
   ``--no-lock-in-top`` and ``--no-lock-in-run`` options cannot be specified
   because the waf configuration is loaded from the lock files during the
   "build" phase.
+
+An Application to Test libbsd
+-----------------------------
+
+In order to test ``libbsd``, you can create a file called ``netcon.c``
+containing:
+
+.. code-block:: c
+
+  #include <stdio.h>
+  #include <rtems/shell.h>
+  #include <rtems/bsd/bsd.h>
+  #include <machine/rtems-bsd-rc-conf.h>
+   
+  #define BOARD_ETH_IFC "cgem0" // microzed and ultrazed
+   
+  static const char* rc_conf_text = \
+    "hostname=\"rtems\"\n" \
+    "ifconfig_" BOARD_ETH_IFC "=\"inet 172.18.14.227 netmask 255.255.0.0\"\n" \
+    "\n";
+   
+  void *POSIX_Init(void * arg)
+  {
+      rtems_status_code sc;
+      
+      sc = rtems_bsd_initialize();
+      if (sc != RTEMS_SUCCESSFUL)
+          printf ("rtems_bsd_initialize error: %s (%d)\n",
+                  rtems_status_text (sc), sc);
+   
+      sc = rtems_bsd_run_rc_conf_script("internal", rc_conf_text, 10, true);
+      if (sc != RTEMS_SUCCESSFUL)
+          printf ("rtems_bsd_run_rc_conf_script error: %s (%d)\n",
+                  rtems_status_text (sc), sc);
+      
+      sc = rtems_task_wake_after(100);
+      if (sc != RTEMS_SUCCESSFUL)
+          printf ("rtems_task_wake_after error: %s (%d)\n",
+                  rtems_status_text (sc), sc);
+   
+      sc = rtems_shell_init(
+          "net_shell", 60 * 1024, 150, "/dev/console", 0, 1, NULL);
+      if (sc != RTEMS_SUCCESSFUL)
+          printf ("rtems_shell_init error: %s (%d)\n",
+                  rtems_status_text (sc), sc);
+   
+      return NULL;
+  }
+   
+  #define RTEMS_BSD_CONFIG_BSP_CONFIG
+  #define RTEMS_BSD_CONFIG_INIT
+  #include <machine/rtems-bsd-config.h>
+   
+  #include <rtems/netcmds-config.h>
+  #define CONFIGURE_SHELL_USER_COMMANDS \
+    &rtems_shell_ARP_Command, \
+    &rtems_shell_HOSTNAME_Command, \
+    &rtems_shell_PING_Command, \
+    &rtems_shell_ROUTE_Command, \
+    &rtems_shell_NETSTAT_Command, \
+    &rtems_shell_IFCONFIG_Command
+  #define CONFIGURE_SHELL_COMMANDS_ALL
+  #define CONFIGURE_SHELL_COMMANDS_INIT
+  #include <rtems/shellconfig.h>
+   
+  #define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
+  #define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
+  #define CONFIGURE_POSIX_INIT_THREAD_TABLE
+  #define CONFIGURE_INIT
+  #define CONFIGURE_UNLIMITED_OBJECTS
+  #define CONFIGURE_UNIFIED_WORK_AREAS
+  #define CONFIGURE_MAXIMUM_FILE_DESCRIPTORS 80
+  #define CONFIGURE_APPLICATION_NEEDS_LIBBLOCK
+  #define CONFIGURE_MAXIMUM_USER_EXTENSIONS 1
+  #include <rtems/confdefs.h>
+
+And then compile it as before, but link in ``libbsd`` and ``libm``::
+
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/arm-rtems6-gcc -c -o netcon.o -I/opt/rsb-tools-rtems-6-f0e34ea/arm-rtems6/raspberrypi/lib/include -mcpu=arm1176jzf-s -ffunction-sections -fdata-sections netcon.c
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/arm-rtems6-gcc -o netcon.elf -mcpu=arm1176jzf-s -B/opt/rsb-tools-rtems-6-f0e34ea/arm-rtems6/raspberrypi/lib -qrtems -Wl,--gc-sections netcon.o -lbsd -lm
+
+Note that ethernet does not currently work for the Raspberry Pi, but does for
+the MicroZed and UltraZed.

@@ -121,6 +121,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#booting-a-microzed-boot-bin-image">Booting a MicroZed BOOT.BIN Image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#booting-an-ultrazed-boot-bin-image">Booting an UltraZed BOOT.BIN Image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build-libbsd-for-rtems-optional">Build libbsd for RTEMS (Optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#an-application-to-test-libbsd">An Application to Test libbsd</a></li>
 </ul>
 </li>
 </ul>
@@ -320,20 +321,21 @@ an “out-of-tree” build directory.  e.g.</p>
 <div class="section" id="compile-a-hello-world-application">
 <h3>Compile a Hello World Application<a class="headerlink" href="#compile-a-hello-world-application" title="Permalink to this heading">¶</a></h3>
 <p>Create a file called <code class="docutils literal notranslate"><span class="pre">hello.c</span></code> containing:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
-<span class="n">void</span> <span class="o">*</span><span class="n">POSIX_Init</span><span class="p">()</span>
+<span class="kt">void</span> <span class="o">*</span><span class="nf">POSIX_Init</span><span class="p">()</span>
 <span class="p">{</span>
-    <span class="n">puts</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">NULL</span><span class="p">;</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">#define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER</span>
-<span class="c1">#define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER</span>
-<span class="c1">#define CONFIGURE_MAXIMUM_POSIX_THREADS 1</span>
-<span class="c1">#define CONFIGURE_POSIX_INIT_THREAD_TABLE</span>
-<span class="c1">#define CONFIGURE_INIT</span>
-<span class="c1">#include &lt;rtems/confdefs.h&gt;</span>
+<span class="cp">#define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER</span>
+<span class="cp">#define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER</span>
+<span class="cp">#define CONFIGURE_POSIX_INIT_THREAD_TABLE</span>
+<span class="cp">#define CONFIGURE_INIT</span>
+<span class="cp">#define CONFIGURE_UNLIMITED_OBJECTS</span>
+<span class="cp">#define CONFIGURE_UNIFIED_WORK_AREAS</span>
+<span class="cp">#include</span> <span class="cpf">&lt;rtems/confdefs.h&gt;</span><span class="cp"></span>
 </pre></div>
 </div>
 <p>Then compile it, using any required flags found in the <code class="docutils literal notranslate"><span class="pre">.pc</span></code> file mentioned
@@ -443,8 +445,8 @@ SD card.</p>
 <p>The default configuration should have the serial boot console enabled.
 Connect up something like the <a class="reference external" href="https://www.ftdichip.com/Support/Documents/DataSheets/Cables/DS_TTL-232R_CABLES.pdf">FTDI TTL-232R-3V3 cable</a>
 to your PC.  With this cable, the yellow PC-RXD pin connects to the PI-TXD
-(P1-PIN8) pin and the black PC-GND pin connects to the PI-GND (P1-PIN6) as
-shown <a class="reference external" href="https://www.raspberrypi.com/documentation/computers/raspberry-pi.html">here</a>.</p>
+(P1-PIN8), the black PC-GND pin connects to the PI-GND (P1-PIN6), and the
+orange PC-TXD pin connects to the PI-RXD (P1-PIN10) as shown <a class="reference external" href="https://www.raspberrypi.com/documentation/computers/raspberry-pi.html">here</a>.</p>
 <p>Now run the following command in a terminal window and power up the Pi with
 the SD card inserted:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">picocom</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB0</span> <span class="o">--</span><span class="n">b</span> <span class="mi">115200</span> <span class="o">--</span><span class="n">d</span> <span class="mi">8</span> <span class="o">--</span><span class="n">p</span> <span class="n">n</span> <span class="o">--</span><span class="n">f</span>
@@ -554,6 +556,86 @@ from an “out-of-tree” build directory:</p>
 because the waf configuration is loaded from the lock files during the
 “build” phase.</p>
 </div>
+</div>
+<div class="section" id="an-application-to-test-libbsd">
+<h3>An Application to Test libbsd<a class="headerlink" href="#an-application-to-test-libbsd" title="Permalink to this heading">¶</a></h3>
+<p>In order to test <code class="docutils literal notranslate"><span class="pre">libbsd</span></code>, you can create a file called <code class="docutils literal notranslate"><span class="pre">netcon.c</span></code>
+containing:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;rtems/shell.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;rtems/bsd/bsd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;machine/rtems-bsd-rc-conf.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define BOARD_ETH_IFC &quot;cgem0&quot; </span><span class="c1">// microzed and ultrazed</span>
+
+<span class="k">static</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rc_conf_text</span> <span class="o">=</span> \
+  <span class="s">&quot;hostname=</span><span class="se">\&quot;</span><span class="s">rtems</span><span class="se">\&quot;\n</span><span class="s">&quot;</span> \
+  <span class="s">&quot;ifconfig_&quot;</span> <span class="n">BOARD_ETH_IFC</span> <span class="s">&quot;=</span><span class="se">\&quot;</span><span class="s">inet 172.18.14.227 netmask 255.255.0.0</span><span class="se">\&quot;\n</span><span class="s">&quot;</span> \
+  <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">POSIX_Init</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">rtems_status_code</span> <span class="n">sc</span><span class="p">;</span>
+
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">rtems_bsd_initialize</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sc</span> <span class="o">!=</span> <span class="n">RTEMS_SUCCESSFUL</span><span class="p">)</span>
+        <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;rtems_bsd_initialize error: %s (%d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+                <span class="n">rtems_status_text</span> <span class="p">(</span><span class="n">sc</span><span class="p">),</span> <span class="n">sc</span><span class="p">);</span>
+
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">rtems_bsd_run_rc_conf_script</span><span class="p">(</span><span class="s">&quot;internal&quot;</span><span class="p">,</span> <span class="n">rc_conf_text</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sc</span> <span class="o">!=</span> <span class="n">RTEMS_SUCCESSFUL</span><span class="p">)</span>
+        <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;rtems_bsd_run_rc_conf_script error: %s (%d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+                <span class="n">rtems_status_text</span> <span class="p">(</span><span class="n">sc</span><span class="p">),</span> <span class="n">sc</span><span class="p">);</span>
+
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">rtems_task_wake_after</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sc</span> <span class="o">!=</span> <span class="n">RTEMS_SUCCESSFUL</span><span class="p">)</span>
+        <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;rtems_task_wake_after error: %s (%d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+                <span class="n">rtems_status_text</span> <span class="p">(</span><span class="n">sc</span><span class="p">),</span> <span class="n">sc</span><span class="p">);</span>
+
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">rtems_shell_init</span><span class="p">(</span>
+        <span class="s">&quot;net_shell&quot;</span><span class="p">,</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="s">&quot;/dev/console&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sc</span> <span class="o">!=</span> <span class="n">RTEMS_SUCCESSFUL</span><span class="p">)</span>
+        <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;rtems_shell_init error: %s (%d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+                <span class="n">rtems_status_text</span> <span class="p">(</span><span class="n">sc</span><span class="p">),</span> <span class="n">sc</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#define RTEMS_BSD_CONFIG_BSP_CONFIG</span>
+<span class="cp">#define RTEMS_BSD_CONFIG_INIT</span>
+<span class="cp">#include</span> <span class="cpf">&lt;machine/rtems-bsd-config.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;rtems/netcmds-config.h&gt;</span><span class="cp"></span>
+<span class="cp">#define CONFIGURE_SHELL_USER_COMMANDS \</span>
+<span class="cp">  &amp;rtems_shell_ARP_Command, \</span>
+<span class="cp">  &amp;rtems_shell_HOSTNAME_Command, \</span>
+<span class="cp">  &amp;rtems_shell_PING_Command, \</span>
+<span class="cp">  &amp;rtems_shell_ROUTE_Command, \</span>
+<span class="cp">  &amp;rtems_shell_NETSTAT_Command, \</span>
+<span class="cp">  &amp;rtems_shell_IFCONFIG_Command</span>
+<span class="cp">#define CONFIGURE_SHELL_COMMANDS_ALL</span>
+<span class="cp">#define CONFIGURE_SHELL_COMMANDS_INIT</span>
+<span class="cp">#include</span> <span class="cpf">&lt;rtems/shellconfig.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER</span>
+<span class="cp">#define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER</span>
+<span class="cp">#define CONFIGURE_POSIX_INIT_THREAD_TABLE</span>
+<span class="cp">#define CONFIGURE_INIT</span>
+<span class="cp">#define CONFIGURE_UNLIMITED_OBJECTS</span>
+<span class="cp">#define CONFIGURE_UNIFIED_WORK_AREAS</span>
+<span class="cp">#define CONFIGURE_MAXIMUM_FILE_DESCRIPTORS 80</span>
+<span class="cp">#define CONFIGURE_APPLICATION_NEEDS_LIBBLOCK</span>
+<span class="cp">#define CONFIGURE_MAXIMUM_USER_EXTENSIONS 1</span>
+<span class="cp">#include</span> <span class="cpf">&lt;rtems/confdefs.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>And then compile it as before, but link in <code class="docutils literal notranslate"><span class="pre">libbsd</span></code> and <code class="docutils literal notranslate"><span class="pre">libm</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span><span class="n">gcc</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">netcon</span><span class="o">.</span><span class="n">o</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">rtems6</span><span class="o">/</span><span class="n">raspberrypi</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">include</span> <span class="o">-</span><span class="n">mcpu</span><span class="o">=</span><span class="n">arm1176jzf</span><span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">ffunction</span><span class="o">-</span><span class="n">sections</span> <span class="o">-</span><span class="n">fdata</span><span class="o">-</span><span class="n">sections</span> <span class="n">netcon</span><span class="o">.</span><span class="n">c</span>
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span><span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">netcon</span><span class="o">.</span><span class="n">elf</span> <span class="o">-</span><span class="n">mcpu</span><span class="o">=</span><span class="n">arm1176jzf</span><span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">B</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">rtems6</span><span class="o">/</span><span class="n">raspberrypi</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">qrtems</span> <span class="o">-</span><span class="n">Wl</span><span class="p">,</span><span class="o">--</span><span class="n">gc</span><span class="o">-</span><span class="n">sections</span> <span class="n">netcon</span><span class="o">.</span><span class="n">o</span> <span class="o">-</span><span class="n">lbsd</span> <span class="o">-</span><span class="n">lm</span>
+</pre></div>
+</div>
+<p>Note that ethernet does not currently work for the Raspberry Pi, but does for
+the MicroZed and UltraZed.</p>
 </div>
 </div>
 </div>
