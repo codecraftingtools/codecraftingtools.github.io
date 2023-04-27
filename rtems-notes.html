@@ -128,6 +128,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#basic-u-boot-configuration-for-the-ultrazed-optional">Basic U-Boot Configuration for the UltraZed (Optional)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tftp-boot-on-the-microzed-optional">TFTP Boot on the MicroZed (Optional)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tftp-boot-on-the-ultrazed-optional">TFTP Boot on the UltraZed (Optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alternative-u-boot-boot-commands">Alternative U-Boot Boot Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-a-remote-debugger-with-the-microzed-ultrazed">Using a Remote Debugger with the MicroZed/UltraZed</a></li>
 </ul>
 </li>
 </ul>
@@ -211,6 +213,8 @@
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.rtems.org">RTEMS Web Site</a></p></li>
 <li><p><a class="reference external" href="https://docs.rtems.org/branches/master/user/bsps/arm/raspberrypi.html">RTEMS Raspberry Pi Info</a></p></li>
+<li><p><a class="reference external" href="https://docs.adacore.com/gnat_ugx-docs/html/gnat_ugx/gnat_ugx/rtems_topics.html">RTEMS Debugging Example</a></p></li>
+<li><p><a class="reference external" href="https://lists.rtems.org/pipermail/users/2020-April/067600.html">More RTEMS Debugging Info</a></p></li>
 </ul>
 </div>
 <div class="section" id="installation-notes-ubuntu-18-04">
@@ -837,6 +841,74 @@ development host machine from the directory containing <code class="docutils lit
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">rtems</span><span class="o">-</span><span class="n">tftp</span><span class="o">-</span><span class="n">server</span> <span class="o">-</span><span class="n">P</span> <span class="mi">54321</span> <span class="o">-</span><span class="n">F</span> <span class="n">net_shell</span><span class="o">.</span><span class="n">img</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="alternative-u-boot-boot-commands">
+<h3>Alternative U-Boot Boot Commands<a class="headerlink" href="#alternative-u-boot-boot-commands" title="Permalink to this heading">¶</a></h3>
+<p>If you want to boot a “binary” file (like <code class="docutils literal notranslate"><span class="pre">hello.binary</span></code> mentioned
+previously) without having to convert it to a <code class="docutils literal notranslate"><span class="pre">u-boot</span></code> image file
+(i.e. <code class="docutils literal notranslate"><span class="pre">hello.img</span></code>), you can do this by using <code class="docutils literal notranslate"><span class="pre">go</span></code> to execute the program
+instead of <code class="docutils literal notranslate"><span class="pre">bootm</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tftpboot</span> <span class="mh">0x10000000</span> <span class="n">hello</span><span class="o">.</span><span class="n">binary</span>
+<span class="n">go</span> <span class="mh">0x10000000</span>
+</pre></div>
+</div>
+<p>You can also go a step further and directly boot the <code class="docutils literal notranslate"><span class="pre">.elf</span></code> file.  The
+caveat here is that you must load the <code class="docutils literal notranslate"><span class="pre">.elf</span></code> file into a different,
+non-overlapping memory area rather than the program start address that we
+have been using up until now:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tftpboot</span> <span class="mh">0x20000000</span> <span class="n">hello</span><span class="o">.</span><span class="n">elf</span>
+<span class="n">bootelf</span> <span class="mh">0x20000000</span>
+</pre></div>
+</div>
+<p>This approach applies to both the SD card and TFTP boot methods.</p>
+</div>
+<div class="section" id="using-a-remote-debugger-with-the-microzed-ultrazed">
+<h3>Using a Remote Debugger with the MicroZed/UltraZed<a class="headerlink" href="#using-a-remote-debugger-with-the-microzed-ultrazed" title="Permalink to this heading">¶</a></h3>
+<p>If you want to do remote debugging over ethernet, you need to set up
+<code class="docutils literal notranslate"><span class="pre">libdebugger</span></code> in your application.  Start with the <code class="docutils literal notranslate"><span class="pre">libbsd</span></code> test
+application shown previously and add the following <code class="docutils literal notranslate"><span class="pre">#include</span></code> directives:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;rtems/rtems-debugger.h&gt;</span>
+<span class="c1">#include &lt;rtems/rtems-debugger-remote-tcp.h&gt;</span>
+</pre></div>
+</div>
+<p>then add the following static declaration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">rtems_printer</span> <span class="n">printer</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now add the following lines before you initialize the shell in
+<code class="docutils literal notranslate"><span class="pre">POSIX_Init()</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span> <span class="p">(</span><span class="s2">&quot;registering rtems debugger tcp remote...</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">rtems_debugger_register_tcp_remote</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">sc</span> <span class="o">!=</span> <span class="n">RTEMS_SUCCESSFUL</span><span class="p">)</span>
+    <span class="n">printf</span> <span class="p">(</span><span class="s2">&quot;error in  rtems_debugger_register_tcp_remote()</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="n">printf</span> <span class="p">(</span><span class="s2">&quot;starting rtems debugger...</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">rtems_debugger_start</span><span class="p">(</span><span class="s2">&quot;tcp&quot;</span><span class="p">,</span> <span class="s2">&quot;1222&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">printer</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">sc</span> <span class="o">!=</span> <span class="n">RTEMS_SUCCESSFUL</span><span class="p">)</span>
+    <span class="n">printf</span> <span class="p">(</span><span class="s2">&quot;error in  rtems_debugger_start()</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="n">rtems_debugger_break</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="o">//</span> <span class="n">Wait</span> <span class="n">here</span> <span class="n">until</span> <span class="n">debugger</span> <span class="n">connects</span>
+</pre></div>
+</div>
+<p>You will also need to link the application with <code class="docutils literal notranslate"><span class="pre">-ldebugger</span></code>.</p>
+<p>Now when you boot up the target system with this application, it should wait
+for a remote debugger connection before starting the shell.  You should be
+able to connect to the target system by executing these commands on your host
+development system:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span><span class="n">gdb</span> <span class="n">dbg_test</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">target</span> <span class="n">remote</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.111</span><span class="p">:</span><span class="mi">1222</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">up</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">up</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">up</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">up</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">up</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">up</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">list</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">quit</span>
+</pre></div>
+</div>
+<p>After quitting the remote debugger, execution should continue on the target
+system.</p>
 </div>
 </div>
 </div>

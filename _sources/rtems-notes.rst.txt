@@ -9,10 +9,16 @@ External Documentation
 
 - `RTEMS Web Site <rtems-site_>`_
 - `RTEMS Raspberry Pi Info <rtems-rpi_>`_
+- `RTEMS Debugging Example <rtems-dbg_>`_
+- `More RTEMS Debugging Info <rtems-dbg2_>`_
 
 .. _rtems-site: https://www.rtems.org
 .. _rtems-rpi:
    https://docs.rtems.org/branches/master/user/bsps/arm/raspberrypi.html
+.. _rtems-dbg:
+   https://docs.adacore.com/gnat_ugx-docs/html/gnat_ugx/gnat_ugx/rtems_topics.html
+.. _rtems-dbg2:
+   https://lists.rtems.org/pipermail/users/2020-April/067600.html
 
 Installation Notes (Ubuntu 18.04)
 =================================
@@ -677,3 +683,74 @@ If you want to change the name of the image being loaded without updating
 ``boot.scr`` on the target system, you can do something like this::
 
   /opt/rsb-tools-rtems-6-f0e34ea/bin/rtems-tftp-server -P 54321 -F net_shell.img
+
+Alternative U-Boot Boot Commands
+--------------------------------
+
+If you want to boot a "binary" file (like ``hello.binary`` mentioned
+previously) without having to convert it to a ``u-boot`` image file
+(i.e. ``hello.img``), you can do this by using ``go`` to execute the program
+instead of ``bootm``::
+
+  tftpboot 0x10000000 hello.binary
+  go 0x10000000
+
+You can also go a step further and directly boot the ``.elf`` file.  The
+caveat here is that you must load the ``.elf`` file into a different,
+non-overlapping memory area rather than the program start address that we
+have been using up until now::
+
+  tftpboot 0x20000000 hello.elf
+  bootelf 0x20000000
+
+This approach applies to both the SD card and TFTP boot methods.
+
+Using a Remote Debugger with the MicroZed/UltraZed
+--------------------------------------------------
+
+If you want to do remote debugging over ethernet, you need to set up
+``libdebugger`` in your application.  Start with the ``libbsd`` test
+application shown previously and add the following ``#include`` directives::
+
+  #include <rtems/rtems-debugger.h>
+  #include <rtems/rtems-debugger-remote-tcp.h>
+
+then add the following static declaration::
+
+  static rtems_printer printer;
+
+Now add the following lines before you initialize the shell in
+``POSIX_Init()``::
+
+    printf ("registering rtems debugger tcp remote...\n\n");
+    sc = rtems_debugger_register_tcp_remote();
+    if (sc != RTEMS_SUCCESSFUL)
+        printf ("error in  rtems_debugger_register_tcp_remote()\n");
+    
+    printf ("starting rtems debugger...\n\n");
+    sc = rtems_debugger_start("tcp", "1222", 3, 1, &printer);
+    if (sc != RTEMS_SUCCESSFUL)
+        printf ("error in  rtems_debugger_start()\n");
+
+    rtems_debugger_break(1); // Wait here until debugger connects
+
+You will also need to link the application with ``-ldebugger``.
+
+Now when you boot up the target system with this application, it should wait
+for a remote debugger connection before starting the shell.  You should be
+able to connect to the target system by executing these commands on your host
+development system::
+
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/aarch64-rtems6-gdb dbg_test.elf
+  (gdb) target remote 192.168.1.111:1222
+  (gdb) up
+  (gdb) up
+  (gdb) up
+  (gdb) up
+  (gdb) up
+  (gdb) up
+  (gdb) list
+  (gdb) quit
+
+After quitting the remote debugger, execution should continue on the target
+system.
