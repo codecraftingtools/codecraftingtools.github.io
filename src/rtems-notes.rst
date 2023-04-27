@@ -103,6 +103,13 @@ The following is suitable for use with a Zynq7000 QEMU setup::
   echo -e "RTEMS_POSIX_API = True" >> config.ini
   echo -e "BSP_RESET_BOARD_AT_EXIT = 0" >> config.ini
 
+The following is suitable for use with a ZynqMP QEMU setup::
+
+  echo -e "[aarch64/xilinx_zynqmp_lp64_qemu]" > config.ini
+  echo -e "BUILD_SAMPLES = False" >> config.ini
+  echo -e "RTEMS_POSIX_API = True" >> config.ini
+  echo -e "BSP_RESET_BOARD_AT_EXIT = 0" >> config.ini
+
 The following is suitable for use with a Raspberry Pi::
 
   echo -e "[arm/raspberrypi]" > config.ini
@@ -255,6 +262,15 @@ Now generate a bootable image for the "Hello World" application::
 
   /path/to/bootgen -arch zynqmp -image hello.bif -o hello.bin
 
+----------
+QEMU Setup
+----------
+
+If you want to emulate any of the ARM or AARCH64 targets, you will need to
+install the QEMU emulator::
+
+  sudo apt install qemu-system-arm
+
 Raspberry Pi Setup
 ------------------
 
@@ -329,6 +345,33 @@ power up the board::
 
 You should text see output appear in the ``picocom`` terminal window that you
 set up previously.
+
+Booting a QEMU Image
+--------------------
+
+For the Zynq 7000 QEMU target, run::
+
+  qemu-system-arm -serial null -serial mon:stdio -net none -nographic -M xilinx-zynq-a9 -m 256M -kernel hello.elf
+
+Note that stdin does not appear to work for the Zynq 7000 QEMU target, but
+stdout does.
+
+For the Zynq 7000 QEMU target with ethernet emulation, run::
+  
+  qemu-system-arm -serial null -serial mon:stdio -net nic,model=cadence_gem,macaddr=0e:b0:ba:5e:ba:11 -net user,hostfwd=tcp:127.0.0.1:2000-:23 -nographic -M xilinx-zynq-a9 -m 256M -kernel hello.elf
+
+For the ZynqMP QEMU target, run::
+  
+  qemu-system-aarch64 -serial mon:stdio -net none -nographic -machine xlnx-zcu102 -m 4096 -kernel hello.elf
+
+For the ZynqMP QEMU target with ethernet emulation, run::
+  
+  qemu-system-aarch64 -serial mon:stdio -net nic,model=cadence_gem,macaddr=0e:b0:ba:5e:ba:11 -net user,hostfwd=tcp:127.0.0.1:2000-:23 -nographic -machine xlnx-zcu102 -m 4096 -kernel hello.elf
+
+To exit or issue QEMU commands, use these key sequences::
+
+  Ctrl-a h -> Help
+  Ctrl-a x -> Exit QEMU
 
 Booting a MicroZed BOOT.BIN Image
 ---------------------------------
@@ -486,11 +529,11 @@ Tools for Examining Executables
 
 Print the size of an executable::
 
-  /opt/rsb-tools-rtems-6-f0e34ea/bin/aarch64-rtems6-size bin/hello.elf
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/aarch64-rtems6-size hello.elf
 
 To see the memory layout of an executable::
   
-  /opt/rsb-tools-rtems-6-f0e34ea/bin/aarch64-rtems6-readelf -S bin/hello.elf
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/aarch64-rtems6-readelf -S hello.elf
 
 Building U-Boot (Optional)
 --------------------------
@@ -754,3 +797,21 @@ development system::
 
 After quitting the remote debugger, execution should continue on the target
 system.
+
+Debugging a QEMU Image
+----------------------
+
+For the Zynq 7000 QEMU target, run::
+
+  qemu-system-arm -serial null -serial mon:stdio -net none -nographic -M xilinx-zynq-a9 -m 256M -kernel hello.elf -S -s
+
+This will freeze the CPU on application startup and wait for a debugger to
+connect on TCP port ``1234``.
+
+Then you can run the following commands on your host development system to
+connect to the target system::
+
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/arm-rtems6-gdb hello.elf
+  (gdb) target remote localhost:1234
+
+The process is similar for the ZynqMP QEMU target.
