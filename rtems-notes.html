@@ -122,6 +122,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#booting-an-ultrazed-boot-bin-image">Booting an UltraZed BOOT.BIN Image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build-libbsd-for-rtems-optional">Build libbsd for RTEMS (Optional)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#an-application-to-test-libbsd">An Application to Test libbsd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tools-for-examining-executables">Tools for Examining Executables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-u-boot-optional">Building U-Boot (Optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-u-boot-configuration-for-the-microzed-optional">Basic U-Boot Configuration for the MicroZed (Optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-u-boot-configuration-for-the-ultrazed-optional">Basic U-Boot Configuration for the UltraZed (Optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tftp-boot-on-the-microzed-optional">TFTP Boot on the MicroZed (Optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tftp-boot-on-the-ultrazed-optional">TFTP Boot on the UltraZed (Optional)</a></li>
 </ul>
 </li>
 </ul>
@@ -363,6 +369,9 @@ the specific revision that was used when writing these notes:</p>
 <div><p>make</p>
 </div></blockquote>
 <p>This should generate the <code class="docutils literal notranslate"><span class="pre">bootgen</span></code> executable.</p>
+<p>Note that later releases of this tool seem to generate warning messages for
+the Zynq 7000 target when both an FSBL and bitstream are specified in a
+<code class="docutils literal notranslate"><span class="pre">.bif</span></code> file.</p>
 </div>
 <div class="section" id="building-the-arm-trusted-firmware-for-zynqmp-targets">
 <h3>Building the ARM Trusted Firmware for ZynqMP Targets<a class="headerlink" href="#building-the-arm-trusted-firmware-for-zynqmp-targets" title="Permalink to this heading">¶</a></h3>
@@ -636,6 +645,198 @@ containing:</p>
 </div>
 <p>Note that ethernet does not currently work for the Raspberry Pi, but does for
 the MicroZed and UltraZed.</p>
+</div>
+<div class="section" id="tools-for-examining-executables">
+<h3>Tools for Examining Executables<a class="headerlink" href="#tools-for-examining-executables" title="Permalink to this heading">¶</a></h3>
+<p>Print the size of an executable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span><span class="n">size</span> <span class="nb">bin</span><span class="o">/</span><span class="n">hello</span><span class="o">.</span><span class="n">elf</span>
+</pre></div>
+</div>
+<p>To see the memory layout of an executable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span><span class="n">readelf</span> <span class="o">-</span><span class="n">S</span> <span class="nb">bin</span><span class="o">/</span><span class="n">hello</span><span class="o">.</span><span class="n">elf</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="building-u-boot-optional">
+<h3>Building U-Boot (Optional)<a class="headerlink" href="#building-u-boot-optional" title="Permalink to this heading">¶</a></h3>
+<p>If you have a need for a more sophisticated bootloader, you can set up
+U-Boot.</p>
+<p>In order to do this, first pull down the <code class="docutils literal notranslate"><span class="pre">u-boot</span></code> source repository and
+(optionally) check out the commit that was used when writing these notes):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Xilinx</span><span class="o">/</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">xlnx</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">xlnx</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">xilinx</span><span class="o">-</span><span class="n">v2022</span><span class="o">.</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>The (forked) URL/commit above is applicable to the Xilinx Zynq and ZynqMP
+boards.  For other targets (like the Raspberry Pi), the master repository
+should be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">/</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">u</span><span class="o">-</span><span class="n">boot</span>
+</pre></div>
+</div>
+<p>You can see the available boards and device trees in places like these:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">configs</span><span class="o">/</span><span class="n">xilinx_zynq_virt_defconfig</span>
+<span class="n">ls</span> <span class="n">arch</span><span class="o">/</span><span class="n">arm</span><span class="o">/</span><span class="n">dts</span><span class="o">/</span><span class="n">zynq</span><span class="o">-</span><span class="n">microzed</span><span class="o">.</span><span class="n">dts</span>
+
+<span class="n">ls</span> <span class="n">configs</span><span class="o">/</span><span class="n">rpi_defconfig</span>
+<span class="n">ls</span> <span class="n">arch</span><span class="o">/</span><span class="n">arm</span><span class="o">/</span><span class="n">dts</span><span class="o">/</span><span class="n">bcm2835</span><span class="o">-</span><span class="n">rpi</span><span class="o">-</span><span class="n">b</span><span class="o">.</span><span class="n">dts</span>
+</pre></div>
+</div>
+<p>To configure for the MicroZed board, issue these commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CROSS_COMPILE</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span>
+<span class="n">export</span> <span class="n">DEVICE_TREE</span><span class="o">=</span><span class="n">zynq</span><span class="o">-</span><span class="n">microzed</span>
+<span class="n">make</span> <span class="n">xilinx_zynq_virt_defconfig</span>
+</pre></div>
+</div>
+<p>For the UltraZed, issue these commands instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CROSS_COMPILE</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span>
+<span class="n">export</span> <span class="n">DEVICE_TREE</span><span class="o">=</span><span class="n">avnet</span><span class="o">-</span><span class="n">ultrazedev</span><span class="o">-</span><span class="n">cc</span><span class="o">-</span><span class="n">v1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">ultrazedev</span><span class="o">-</span><span class="n">som</span><span class="o">-</span><span class="n">v1</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">make</span> <span class="n">avnet_ultrazedev_cc_v1_0_ultrazedev_som_v1_0_defconfig</span>
+</pre></div>
+</div>
+<p>You will also need to follow these steps for the UltraZed:</p>
+<ul class="simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">menuconfig</span></code></p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Drivers</span></code></p></li>
+<li><p>Then select <code class="docutils literal notranslate"><span class="pre">SOC</span> <span class="pre">specific</span> <span class="pre">Drivers</span></code></p></li>
+<li><p>Then select <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">SOC</span> <span class="pre">Device</span> <span class="pre">ID</span> <span class="pre">driver</span> <span class="pre">for</span> <span class="pre">Xilinx</span> <span class="pre">ZynqMP</span></code></p></li>
+<li><p>Save and exit</p></li>
+</ul>
+<p>For the UltraZed ethernet to work, you must also change <code class="docutils literal notranslate"><span class="pre">reg</span> <span class="pre">=</span> <span class="pre">&lt;0&gt;</span></code> to
+<code class="docutils literal notranslate"><span class="pre">reg</span> <span class="pre">=</span> <span class="pre">&lt;9&gt;</span></code> in <code class="docutils literal notranslate"><span class="pre">arch/arm/dts/avnet-ultrazedev-som-v1.0.dtsi</span></code>.</p>
+<p>If you want to use TFTP boot with a non-privileged server port, you will need
+to remove this <code class="docutils literal notranslate"><span class="pre">#ifdef</span></code> line (and the corresponding <code class="docutils literal notranslate"><span class="pre">#endif</span></code> line) in
+<code class="docutils literal notranslate"><span class="pre">net/tftp.c</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ifdef CONFIG_TFTP_PORT</span>
+</pre></div>
+</div>
+<p>To kick off the build do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j</span>
+</pre></div>
+</div>
+<p>This build process should result in a <code class="docutils literal notranslate"><span class="pre">u-boot.elf</span></code> in the top-level
+directory.  For Zynq/ZynqMP targets a <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> file can be created using
+<code class="docutils literal notranslate"><span class="pre">bootgen</span></code> following the previous instructions and replacing <code class="docutils literal notranslate"><span class="pre">hello.elf</span></code>
+with <code class="docutils literal notranslate"><span class="pre">u-boot.elf</span></code>.  The resulting BOOT.BIN should be able to boot on the
+target board.  For the the Raspberry Pi, the <code class="docutils literal notranslate"><span class="pre">u-boot.elf</span></code> file can be used
+to create a <code class="docutils literal notranslate"><span class="pre">kernel.img</span></code> in the same way that was done for <code class="docutils literal notranslate"><span class="pre">hello.elf</span></code>.</p>
+<p>If you want to clean everything up to build for another board, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">distclean</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="basic-u-boot-configuration-for-the-microzed-optional">
+<h3>Basic U-Boot Configuration for the MicroZed (Optional)<a class="headerlink" href="#basic-u-boot-configuration-for-the-microzed-optional" title="Permalink to this heading">¶</a></h3>
+<p>You can add a <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> file to the root SD card partition to customize
+what u-boot does when it boots up.  As an example, create a text file named
+<code class="docutils literal notranslate"><span class="pre">boot.txt</span></code> containing the following text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fatload</span> <span class="n">mmc</span> <span class="mi">0</span> <span class="mh">0x104000</span> <span class="n">hello</span><span class="o">.</span><span class="n">img</span>
+<span class="n">echo</span> <span class="s2">&quot;Booting hello.img from SD card...&quot;</span>
+<span class="n">bootm</span> <span class="mh">0x104000</span>
+</pre></div>
+</div>
+<p>These commands instruct u-boot to look for a file named <code class="docutils literal notranslate"><span class="pre">hello.img</span></code> on the
+SD card, load it into memory at the specified address, and then run it.</p>
+<p>Now we need to convert this text file to an <code class="docutils literal notranslate"><span class="pre">.scr</span></code> script image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">xlnx</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">mkimage</span> <span class="o">-</span><span class="n">A</span> <span class="n">arm</span> <span class="o">-</span><span class="n">T</span> <span class="n">script</span> <span class="o">-</span><span class="n">C</span> <span class="n">none</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;Boot Script&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="n">boot</span><span class="o">.</span><span class="n">txt</span> <span class="n">boot</span><span class="o">.</span><span class="n">scr</span>
+</pre></div>
+</div>
+<p>The resulting <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> file can then be copied into the root directory of
+the SD card.</p>
+<p>Now we need to convert our <code class="docutils literal notranslate"><span class="pre">hello.elf</span></code> file into a binary image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">arm</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span><span class="n">objcopy</span> <span class="o">-</span><span class="n">R</span> <span class="o">-</span><span class="n">S</span> <span class="o">-</span><span class="n">Obinary</span> <span class="n">hello</span><span class="o">.</span><span class="n">elf</span> <span class="n">hello</span><span class="o">.</span><span class="n">binary</span>
+</pre></div>
+</div>
+<p>Now we need to make a <code class="docutils literal notranslate"><span class="pre">u-boot</span></code> image from the binary image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">xlnx</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">mkimage</span> <span class="o">-</span><span class="n">A</span> <span class="n">arm</span> <span class="o">-</span><span class="n">O</span> <span class="n">rtems</span> <span class="o">-</span><span class="n">T</span> <span class="n">kernel</span> <span class="o">-</span><span class="n">C</span> <span class="n">none</span> <span class="o">-</span><span class="n">a</span> <span class="mh">0x104000</span> <span class="o">-</span><span class="n">e</span> <span class="mh">0x104000</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;Hello World&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="n">hello</span><span class="o">.</span><span class="n">binary</span> <span class="n">hello</span><span class="o">.</span><span class="n">img</span>
+</pre></div>
+</div>
+<p>Now copy the resulting <code class="docutils literal notranslate"><span class="pre">hello.img</span></code> output file onto the root partition of
+the SD card and boot up the board.</p>
+</div>
+<div class="section" id="basic-u-boot-configuration-for-the-ultrazed-optional">
+<h3>Basic U-Boot Configuration for the UltraZed (Optional)<a class="headerlink" href="#basic-u-boot-configuration-for-the-ultrazed-optional" title="Permalink to this heading">¶</a></h3>
+<p>You can add a <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> file to the root SD card partition to customize
+what u-boot does when it boots up.  As an example, create a text file named
+<code class="docutils literal notranslate"><span class="pre">boot.txt</span></code> containing the following text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fatload</span> <span class="n">mmc</span> <span class="mi">1</span> <span class="mh">0x10000000</span> <span class="n">hello</span><span class="o">.</span><span class="n">img</span>
+<span class="n">echo</span> <span class="s2">&quot;Booting hello.img from SD card...&quot;</span>
+<span class="n">bootm</span> <span class="mh">0x10000000</span>
+</pre></div>
+</div>
+<p>These commands instruct u-boot to look for a file named <code class="docutils literal notranslate"><span class="pre">hello.img</span></code> on the
+SD card, load it into memory at the specified address, and then run it.</p>
+<p>Now we need to convert this text file to an <code class="docutils literal notranslate"><span class="pre">.scr</span></code> script image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">xlnx</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">mkimage</span> <span class="o">-</span><span class="n">A</span> <span class="n">arm64</span> <span class="o">-</span><span class="n">T</span> <span class="n">script</span> <span class="o">-</span><span class="n">C</span> <span class="n">none</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;Boot Script&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="n">boot</span><span class="o">.</span><span class="n">txt</span> <span class="n">boot</span><span class="o">.</span><span class="n">scr</span>
+</pre></div>
+</div>
+<p>The resulting <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> file can then be copied into the root directory of
+the SD card.</p>
+<p>Now we need to convert our <code class="docutils literal notranslate"><span class="pre">hello.elf</span></code> file into a binary image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">rtems6</span><span class="o">-</span><span class="n">objcopy</span> <span class="o">-</span><span class="n">R</span> <span class="o">-</span><span class="n">S</span> <span class="o">-</span><span class="n">Obinary</span> <span class="n">hello</span><span class="o">.</span><span class="n">elf</span> <span class="n">hello</span><span class="o">.</span><span class="n">binary</span>
+</pre></div>
+</div>
+<p>Now we need to make a <code class="docutils literal notranslate"><span class="pre">u-boot</span></code> image from the binary image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">xlnx</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">mkimage</span> <span class="o">-</span><span class="n">A</span> <span class="n">arm64</span> <span class="o">-</span><span class="n">O</span> <span class="n">rtems</span> <span class="o">-</span><span class="n">T</span> <span class="n">kernel</span> <span class="o">-</span><span class="n">C</span> <span class="n">none</span> <span class="o">-</span><span class="n">a</span> <span class="mh">0x10000000</span> <span class="o">-</span><span class="n">e</span> <span class="mh">0x10000000</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;Hello World&quot;</span> <span class="o">-</span><span class="n">d</span> <span class="n">hello</span><span class="o">.</span><span class="n">binary</span> <span class="n">hello</span><span class="o">.</span><span class="n">img</span>
+</pre></div>
+</div>
+<p>Now copy the resulting <code class="docutils literal notranslate"><span class="pre">hello.img</span></code> output file onto the root partition of
+the SD card and boot up the board.</p>
+</div>
+<div class="section" id="tftp-boot-on-the-microzed-optional">
+<h3>TFTP Boot on the MicroZed (Optional)<a class="headerlink" href="#tftp-boot-on-the-microzed-optional" title="Permalink to this heading">¶</a></h3>
+<p>If we want to boot the MicroZed via TFTP, we can update the <code class="docutils literal notranslate"><span class="pre">boot.txt</span></code> as
+follows, re-generate <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> and copy that to the SD card as before:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="nb">set</span> <span class="n">tftpdstp</span> <span class="mi">54321</span>
+<span class="n">env</span> <span class="nb">set</span> <span class="n">serverip</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.222</span>
+<span class="n">env</span> <span class="nb">set</span> <span class="n">ipaddr</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.111</span>
+<span class="n">env</span> <span class="nb">set</span> <span class="n">netmask</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">0.0</span>
+<span class="n">echo</span> <span class="s2">&quot;Starting application from tftp...&quot;</span>
+<span class="n">ping</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.222</span>
+<span class="n">tftpboot</span> <span class="mh">0x104000</span> <span class="n">hello</span><span class="o">.</span><span class="n">img</span>
+<span class="n">bootm</span> <span class="mh">0x104000</span>
+</pre></div>
+</div>
+<p>Just replace the network addresses/netmask with something applicable to your
+setup.</p>
+<p>Before powering up the target board, run the following command on your
+development host machine from the directory containing <code class="docutils literal notranslate"><span class="pre">hello.img</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">rtems</span><span class="o">-</span><span class="n">tftp</span><span class="o">-</span><span class="n">server</span> <span class="o">-</span><span class="n">P</span> <span class="mi">54321</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">trace</span><span class="o">-</span><span class="n">packets</span>
+</pre></div>
+</div>
+<p>If you want to change the name of the image being loaded without updating
+<code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> on the target system, you can do something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">rtems</span><span class="o">-</span><span class="n">tftp</span><span class="o">-</span><span class="n">server</span> <span class="o">-</span><span class="n">P</span> <span class="mi">54321</span> <span class="o">-</span><span class="n">F</span> <span class="n">net_shell</span><span class="o">.</span><span class="n">img</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tftp-boot-on-the-ultrazed-optional">
+<h3>TFTP Boot on the UltraZed (Optional)<a class="headerlink" href="#tftp-boot-on-the-ultrazed-optional" title="Permalink to this heading">¶</a></h3>
+<p>If we want to boot the UltraZed via TFTP, we can update the <code class="docutils literal notranslate"><span class="pre">boot.txt</span></code> as
+follows, re-generate <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> and copy that to the SD card as before:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="nb">set</span> <span class="n">tftpdstp</span> <span class="mi">54321</span>
+<span class="n">env</span> <span class="nb">set</span> <span class="n">serverip</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.222</span>
+<span class="n">env</span> <span class="nb">set</span> <span class="n">ipaddr</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.111</span>
+<span class="n">env</span> <span class="nb">set</span> <span class="n">netmask</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">0.0</span>
+<span class="n">echo</span> <span class="s2">&quot;Starting application from tftp...&quot;</span>
+<span class="n">ping</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.222</span>
+<span class="n">tftpboot</span> <span class="mh">0x10000000</span> <span class="n">hello</span><span class="o">.</span><span class="n">img</span>
+<span class="n">bootm</span> <span class="mh">0x10000000</span>
+</pre></div>
+</div>
+<p>Just replace the network addresses/netmask with something applicable to your
+setup.</p>
+<p>Before powering up the target board, run the following command on your
+development host machine from the directory containing <code class="docutils literal notranslate"><span class="pre">hello.img</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">rtems</span><span class="o">-</span><span class="n">tftp</span><span class="o">-</span><span class="n">server</span> <span class="o">-</span><span class="n">P</span> <span class="mi">54321</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">trace</span><span class="o">-</span><span class="n">packets</span>
+</pre></div>
+</div>
+<p>If you want to change the name of the image being loaded without updating
+<code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> on the target system, you can do something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rsb</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">rtems</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">f0e34ea</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">rtems</span><span class="o">-</span><span class="n">tftp</span><span class="o">-</span><span class="n">server</span> <span class="o">-</span><span class="n">P</span> <span class="mi">54321</span> <span class="o">-</span><span class="n">F</span> <span class="n">net_shell</span><span class="o">.</span><span class="n">img</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

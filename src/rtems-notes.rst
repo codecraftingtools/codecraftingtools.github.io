@@ -176,6 +176,10 @@ Now you can build ``bootgen``:
 
 This should generate the ``bootgen`` executable.
 
+Note that later releases of this tool seem to generate warning messages for
+the Zynq 7000 target when both an FSBL and bitstream are specified in a
+``.bif`` file.
+
 Building the ARM Trusted Firmware for ZynqMP Targets
 ----------------------------------------------------
 
@@ -470,3 +474,206 @@ And then compile it as before, but link in ``libbsd`` and ``libm``::
 
 Note that ethernet does not currently work for the Raspberry Pi, but does for
 the MicroZed and UltraZed.
+
+Tools for Examining Executables
+-------------------------------
+
+Print the size of an executable::
+
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/aarch64-rtems6-size bin/hello.elf
+
+To see the memory layout of an executable::
+  
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/aarch64-rtems6-readelf -S bin/hello.elf
+
+Building U-Boot (Optional)
+--------------------------
+
+If you have a need for a more sophisticated bootloader, you can set up
+U-Boot.
+
+In order to do this, first pull down the ``u-boot`` source repository and
+(optionally) check out the commit that was used when writing these notes)::
+  
+  git clone https://github.com/Xilinx/u-boot-xlnx.git
+  cd u-boot-xlnx
+  git checkout xilinx-v2022.2
+
+The (forked) URL/commit above is applicable to the Xilinx Zynq and ZynqMP
+boards.  For other targets (like the Raspberry Pi), the master repository
+should be used::
+
+  git clone https://github.com/u-boot/u-boot.git
+  cd u-boot
+
+You can see the available boards and device trees in places like these::
+
+  ls configs/xilinx_zynq_virt_defconfig
+  ls arch/arm/dts/zynq-microzed.dts
+  
+  ls configs/rpi_defconfig
+  ls arch/arm/dts/bcm2835-rpi-b.dts
+
+To configure for the MicroZed board, issue these commands::
+
+  export CROSS_COMPILE=/opt/rsb-tools-rtems-6-f0e34ea/bin/arm-rtems6- 
+  export DEVICE_TREE=zynq-microzed
+  make xilinx_zynq_virt_defconfig
+
+For the UltraZed, issue these commands instead::
+
+  export CROSS_COMPILE=/opt/rsb-tools-rtems-6-f0e34ea/bin/aarch64-rtems6-
+  export DEVICE_TREE=avnet-ultrazedev-cc-v1.0-ultrazedev-som-v1.0
+  make avnet_ultrazedev_cc_v1_0_ultrazedev_som_v1_0_defconfig
+
+You will also need to follow these steps for the UltraZed:
+
+* Run ``make menuconfig``
+* Select ``Device Drivers``
+* Then select ``SOC specific Drivers``
+* Then select ``Enable SOC Device ID driver for Xilinx ZynqMP``
+* Save and exit
+
+For the UltraZed ethernet to work, you must also change ``reg = <0>`` to
+``reg = <9>`` in ``arch/arm/dts/avnet-ultrazedev-som-v1.0.dtsi``.
+
+If you want to use TFTP boot with a non-privileged server port, you will need
+to remove this ``#ifdef`` line (and the corresponding ``#endif`` line) in
+``net/tftp.c``::
+
+  #ifdef CONFIG_TFTP_PORT
+
+To kick off the build do::
+  
+  make -j
+
+This build process should result in a ``u-boot.elf`` in the top-level
+directory.  For Zynq/ZynqMP targets a ``BOOT.BIN`` file can be created using
+``bootgen`` following the previous instructions and replacing ``hello.elf``
+with ``u-boot.elf``.  The resulting BOOT.BIN should be able to boot on the
+target board.  For the the Raspberry Pi, the ``u-boot.elf`` file can be used
+to create a ``kernel.img`` in the same way that was done for ``hello.elf``.
+
+If you want to clean everything up to build for another board, run::
+
+  make distclean
+
+Basic U-Boot Configuration for the MicroZed (Optional)
+------------------------------------------------------
+
+You can add a ``boot.scr`` file to the root SD card partition to customize
+what u-boot does when it boots up.  As an example, create a text file named
+``boot.txt`` containing the following text::
+
+  fatload mmc 0 0x104000 hello.img
+  echo "Booting hello.img from SD card..."
+  bootm 0x104000
+  
+These commands instruct u-boot to look for a file named ``hello.img`` on the
+SD card, load it into memory at the specified address, and then run it.
+
+Now we need to convert this text file to an ``.scr`` script image::
+
+  u-boot-xlnx/tools/mkimage -A arm -T script -C none -n "Boot Script" -d boot.txt boot.scr
+
+The resulting ``boot.scr`` file can then be copied into the root directory of
+the SD card.
+
+Now we need to convert our ``hello.elf`` file into a binary image::
+
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/arm-rtems6-objcopy -R -S -Obinary hello.elf hello.binary
+
+Now we need to make a ``u-boot`` image from the binary image::
+  
+  u-boot-xlnx/tools/mkimage -A arm -O rtems -T kernel -C none -a 0x104000 -e 0x104000 -n "Hello World" -d hello.binary hello.img
+
+Now copy the resulting ``hello.img`` output file onto the root partition of
+the SD card and boot up the board.
+
+Basic U-Boot Configuration for the UltraZed (Optional)
+------------------------------------------------------
+
+You can add a ``boot.scr`` file to the root SD card partition to customize
+what u-boot does when it boots up.  As an example, create a text file named
+``boot.txt`` containing the following text::
+
+  fatload mmc 1 0x10000000 hello.img
+  echo "Booting hello.img from SD card..."
+  bootm 0x10000000
+  
+These commands instruct u-boot to look for a file named ``hello.img`` on the
+SD card, load it into memory at the specified address, and then run it.
+
+Now we need to convert this text file to an ``.scr`` script image::
+
+  u-boot-xlnx/tools/mkimage -A arm64 -T script -C none -n "Boot Script" -d boot.txt boot.scr
+
+The resulting ``boot.scr`` file can then be copied into the root directory of
+the SD card.
+
+Now we need to convert our ``hello.elf`` file into a binary image::
+
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/aarch64-rtems6-objcopy -R -S -Obinary hello.elf hello.binary
+
+Now we need to make a ``u-boot`` image from the binary image::
+  
+  u-boot-xlnx/tools/mkimage -A arm64 -O rtems -T kernel -C none -a 0x10000000 -e 0x10000000 -n "Hello World" -d hello.binary hello.img
+
+Now copy the resulting ``hello.img`` output file onto the root partition of
+the SD card and boot up the board.
+
+TFTP Boot on the MicroZed (Optional)
+------------------------------------
+
+If we want to boot the MicroZed via TFTP, we can update the ``boot.txt`` as
+follows, re-generate ``boot.scr`` and copy that to the SD card as before::
+
+  env set tftpdstp 54321
+  env set serverip 192.168.1.222
+  env set ipaddr 192.168.1.111
+  env set netmask 255.255.0.0
+  echo "Starting application from tftp..."
+  ping 192.168.1.222
+  tftpboot 0x104000 hello.img
+  bootm 0x104000
+
+Just replace the network addresses/netmask with something applicable to your
+setup.
+
+Before powering up the target board, run the following command on your
+development host machine from the directory containing ``hello.img``::
+
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/rtems-tftp-server -P 54321 -v --trace-packets
+
+If you want to change the name of the image being loaded without updating
+``boot.scr`` on the target system, you can do something like this::
+
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/rtems-tftp-server -P 54321 -F net_shell.img
+
+TFTP Boot on the UltraZed (Optional)
+------------------------------------
+
+If we want to boot the UltraZed via TFTP, we can update the ``boot.txt`` as
+follows, re-generate ``boot.scr`` and copy that to the SD card as before::
+
+  env set tftpdstp 54321
+  env set serverip 192.168.1.222
+  env set ipaddr 192.168.1.111
+  env set netmask 255.255.0.0
+  echo "Starting application from tftp..."
+  ping 192.168.1.222
+  tftpboot 0x10000000 hello.img
+  bootm 0x10000000
+
+Just replace the network addresses/netmask with something applicable to your
+setup.
+
+Before powering up the target board, run the following command on your
+development host machine from the directory containing ``hello.img``::
+
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/rtems-tftp-server -P 54321 -v --trace-packets
+
+If you want to change the name of the image being loaded without updating
+``boot.scr`` on the target system, you can do something like this::
+
+  /opt/rsb-tools-rtems-6-f0e34ea/bin/rtems-tftp-server -P 54321 -F net_shell.img
