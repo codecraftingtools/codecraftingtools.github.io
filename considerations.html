@@ -1,90 +1,47 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Considerations &mdash; Code Craftsmen  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Software" href="software.html" />
     <link rel="prev" title="Guidelines" href="guidelines.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Code Craftsmen
           
-
-          
+          <a href="index.html" class="icon icon-home">
+            Code Craftsmen
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="vision.html">Vision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow/workflow.html">Workflow</a></li>
@@ -122,76 +79,37 @@
 <li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Code Craftsmen</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Considerations</li>
-    
-    
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Considerations</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/considerations.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="considerations">
-<h1>Considerations<a class="headerlink" href="#considerations" title="Permalink to this heading">¶</a></h1>
+             
+  <section id="considerations">
+<h1>Considerations<a class="headerlink" href="#considerations" title="Permalink to this heading"></a></h1>
 <p>In this section, we will walk through a number of design
 considerations that influence the development of our code crafting
 tools.</p>
-<div class="section" id="application-domains">
-<h2>Application Domains<a class="headerlink" href="#application-domains" title="Permalink to this heading">¶</a></h2>
+<section id="application-domains">
+<h2>Application Domains<a class="headerlink" href="#application-domains" title="Permalink to this heading"></a></h2>
 <p>Our tools support the development of software for a wide variety of
 application domains, including, but not limited to:</p>
 <ul class="simple">
@@ -211,9 +129,9 @@ cumbersome than for others (e.g. non-real-time simulation).  Because
 of this, it is advantageous to develop and <strong>test as much code as
 possible in the simplified domains</strong> before moving into the more
 complex ones.</p>
-</div>
-<div class="section" id="application-structure">
-<span id="id1"></span><h2>Application Structure<a class="headerlink" href="#application-structure" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="application-structure">
+<span id="id1"></span><h2>Application Structure<a class="headerlink" href="#application-structure" title="Permalink to this heading"></a></h2>
 <p>In order to maximize both our productivity and the quality of our
 software, our tools facilitate the development of code that can be
 used (and reused) in a wide variety of application domains without
@@ -254,9 +172,9 @@ into the interface between these code segments.</p>
 </dd>
 </dl>
 <a class="reference internal image-reference" href="_images/conceptual_run_time_sw_stack.svg"><img alt="_images/conceptual_run_time_sw_stack.svg" class="align-center" src="_images/conceptual_run_time_sw_stack.svg" width="75%" /></a>
-</div>
-<div class="section" id="hardware-architectures">
-<h2>Hardware Architectures<a class="headerlink" href="#hardware-architectures" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="hardware-architectures">
+<h2>Hardware Architectures<a class="headerlink" href="#hardware-architectures" title="Permalink to this heading"></a></h2>
 <p>Although there are significant differences between some of the
 relevant hardware platfoms, our tools enable developers to design
 software components that can be deployed on any supported hardware
@@ -268,9 +186,9 @@ strategically isolated in a few components with abstracted interfaces.
 Although we desire to support a broad range of hardware architectures,
 the current priority is support for <strong>64-bit x86</strong> and <strong>32-bit ARM</strong>
 systems.</p>
-</div>
-<div class="section" id="operating-systems">
-<h2>Operating Systems<a class="headerlink" href="#operating-systems" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="operating-systems">
+<h2>Operating Systems<a class="headerlink" href="#operating-systems" title="Permalink to this heading"></a></h2>
 <p>The write-once, run-anywhere philosophy of our tool set also extends
 to operating systems, providing a way to develop software components
 that are not tied to a particular host OS, but are instead portable to
@@ -285,9 +203,9 @@ current focus is on providing support for:</p>
 <li><p>Real-time Linux (Xenomai/cobalt)</p></li>
 <li><p>RTEMS</p></li>
 </ul>
-</div>
-<div class="section" id="concurrent-and-parallel-processing">
-<h2>Concurrent and Parallel Processing<a class="headerlink" href="#concurrent-and-parallel-processing" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="concurrent-and-parallel-processing">
+<h2>Concurrent and Parallel Processing<a class="headerlink" href="#concurrent-and-parallel-processing" title="Permalink to this heading"></a></h2>
 <p>Many of our application domains require support for independent
 software components executing concurrently, or even simultaneously (in
 parallel).  There are several categories of concurrency that we must
@@ -325,9 +243,9 @@ about threads, processes, scheduling policies, or priorities.  Our
 tools allow these details to be easily specified when low-level
 components are instantiated and combined together into a higher-level
 component or application in the context of a run-time environment.</p>
-</div>
-<div class="section" id="programming-language-support">
-<h2>Programming Language Support<a class="headerlink" href="#programming-language-support" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="programming-language-support">
+<h2>Programming Language Support<a class="headerlink" href="#programming-language-support" title="Permalink to this heading"></a></h2>
 <p>At a fundamental level, we require all software components to interact
 with their run-time environment via a standardized programming
 interface based on C function calls.  Our tools provide a set of
@@ -339,9 +257,9 @@ interoperate with one another in the same run-time environment.  Our
 current priority is the development of bindings for <strong>C++</strong> and
 <strong>Python</strong>, but we hope to eventually support a host of other
 programming languages.</p>
-</div>
-<div class="section" id="inter-component-communication-methodology">
-<h2>Inter-Component Communication Methodology<a class="headerlink" href="#inter-component-communication-methodology" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="inter-component-communication-methodology">
+<h2>Inter-Component Communication Methodology<a class="headerlink" href="#inter-component-communication-methodology" title="Permalink to this heading"></a></h2>
 <p>For the many reasons described elsewhere in this documentation, our
 design approach requires components to communicate with one another in
 a standardized way.  There are many mechanisms that could be used to
@@ -447,9 +365,9 @@ they are communicating</strong>.  The connection of message senders and
 receivers occurs outside of the component, when the component is
 instantiated and integrated into a higher-level component or
 application in the context of a run-time environment.</p>
-</div>
-<div class="section" id="standardized-component-interfaces">
-<h2>Standardized Component Interfaces<a class="headerlink" href="#standardized-component-interfaces" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="standardized-component-interfaces">
+<h2>Standardized Component Interfaces<a class="headerlink" href="#standardized-component-interfaces" title="Permalink to this heading"></a></h2>
 <p>In order for two components to communicate via message passing, the
 message sender and receiver must agree on the content and structure of
 the messages passed between them.  When designing sofware components,
@@ -469,9 +387,9 @@ structure.  Although interface compatibility is highly desirable, it
 is not absolutely critical.  Unlike many object-oriented schemes,
 interfaces are not required to match in order for components to be
 used together, but it does make things easier.</p>
-</div>
-<div class="section" id="initialization-and-reset">
-<h2>Initialization and Reset<a class="headerlink" href="#initialization-and-reset" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="initialization-and-reset">
+<h2>Initialization and Reset<a class="headerlink" href="#initialization-and-reset" title="Permalink to this heading"></a></h2>
 <p>Although a few software components may be truly stateless (e.g. data
 converters), most components need to store some information
 internally.  The way in which this internal state gets initialized (or
@@ -504,9 +422,9 @@ to provide this functionality, our tools require that <strong>components
 initialize their internal state in a reset message handler</strong> instead
 of a constructor.  This allows application executives to reset the
 component’s state as required.</p>
-</div>
-<div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h2>
 <p>Since all but the simplest of software components require some type of
 configuration, our tools provide built-in support for this operation.
 In our system, software components are merely responsible for
@@ -546,9 +464,9 @@ used to check that the user has supplied values with the proper units,
 or even perform automatic conversions.  Statistical constraints, like
 random distribution parameters, could be used by a simulation engine
 to make Monte Carlo draws.  The possibilities are endless.</p>
-</div>
-<div class="section" id="logging-and-screen-output">
-<h2>Logging and Screen Output<a class="headerlink" href="#logging-and-screen-output" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="logging-and-screen-output">
+<h2>Logging and Screen Output<a class="headerlink" href="#logging-and-screen-output" title="Permalink to this heading"></a></h2>
 <p>Most software components require some mechanism for conveying run-time
 status information to the user.  This includes things like
 informational and debug messages as well as the logging of events,
@@ -572,9 +490,9 @@ and warnings in a log file.  To provide the most flexibility,
 enables debug output to be enabled for one component without enabling
 debug output for all components, which would be overwhelming and
 counter-productive.</p>
-</div>
-<div class="section" id="timekeeping">
-<h2>Timekeeping<a class="headerlink" href="#timekeeping" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="timekeeping">
+<h2>Timekeeping<a class="headerlink" href="#timekeeping" title="Permalink to this heading"></a></h2>
 <p>Many components require some information about the passage of time in
 order to operate.  This might be determining the absolute time that an
 event occurred, measuring the elapsed time between events, or
@@ -603,9 +521,9 @@ external timing source.  To support these use cases, the timekeeping
 API also provides support for the measurement of time according to
 <strong>multiple time references</strong> that may drift relative to one another,
 and for converting time values from one time base to another.</p>
-</div>
-<div class="section" id="scheduling">
-<h2>Scheduling<a class="headerlink" href="#scheduling" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="scheduling">
+<h2>Scheduling<a class="headerlink" href="#scheduling" title="Permalink to this heading"></a></h2>
 <p>In general terms, scheduling is a mechanism for software components to
 request that a particular section of code be executed by a processor
 on the host system.  From a software component’s point of view,
@@ -642,9 +560,9 @@ multiple components, this aspect of scheduling must be specified when
 components are instantiated and combined into a higher-level component
 or application in the context of a run-time environment, and not
 within individual low-level components.</p>
-</div>
-<div class="section" id="blocking-vs-non-blocking-operations">
-<h2>Blocking vs. Non-Blocking Operations<a class="headerlink" href="#blocking-vs-non-blocking-operations" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="blocking-vs-non-blocking-operations">
+<h2>Blocking vs. Non-Blocking Operations<a class="headerlink" href="#blocking-vs-non-blocking-operations" title="Permalink to this heading"></a></h2>
 <p>In computer programming, a task is considered to be <em>blocked</em> if it is
 waiting for some condition to occur before continuing execution.  The
 condition may be a resource becoming available, or the completion of a
@@ -670,9 +588,9 @@ real-time systems), the <strong>use of blocking operations inside components
 is highly discouraged</strong>.  In order to make up for this limitation, the
 run-time environment provides a mechanism that allows components to
 <strong>schedule code to be executed when a resource becomes available</strong>.</p>
-</div>
-<div class="section" id="file-i-o">
-<h2>File I/O<a class="headerlink" href="#file-i-o" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="file-i-o">
+<h2>File I/O<a class="headerlink" href="#file-i-o" title="Permalink to this heading"></a></h2>
 <p>Many software components need to perform file input or output
 operations.  In the vast majority of cases, file I/O is performed
 using system calls that may potentially block the calling task.  For
@@ -692,9 +610,9 @@ manner (e.g. pass output data to a separate non-real-time thread that
 accesses the file system) or call the standard operating system file
 I/O functions if this is not a problem in the specific application
 domain.</p>
-</div>
-<div class="section" id="data-recording-and-playback">
-<span id="data-recording-and-playback-considerations"></span><h2>Data Recording and Playback<a class="headerlink" href="#data-recording-and-playback" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="data-recording-and-playback">
+<span id="data-recording-and-playback-considerations"></span><h2>Data Recording and Playback<a class="headerlink" href="#data-recording-and-playback" title="Permalink to this heading"></a></h2>
 <p>In many applications, there is a need to record output data from
 software components to a file for later analysis or debugging
 purposes.  It is also helpful to be able to “play back” previously
@@ -702,9 +620,9 @@ recorded (or “canned”) data into components for further processing.
 In order to provide these generally-useful capabilities, our tool set
 delivers a standard set of components for message stream recording and
 playback in raw and structured data file formats.</p>
-</div>
-<div class="section" id="top-level-application-code">
-<h2>Top-Level Application Code<a class="headerlink" href="#top-level-application-code" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="top-level-application-code">
+<h2>Top-Level Application Code<a class="headerlink" href="#top-level-application-code" title="Permalink to this heading"></a></h2>
 <p>There is typically quite a bit of “top-level” code in an application
 that is not reusable (except, perhaps, in a copy-and-paste fashion).
 In our view, this is a shame because we would rather see developers
@@ -754,9 +672,9 @@ from a high-level <strong>scripting environment</strong>, so our tool set provid
 this functionality as well.  This capability has many uses, including
 procedural scripting, incorporating graphical user interfaces, and
 dynamically defining an application structure at run-time.</p>
-</div>
-<div class="section" id="automatic-code-generation">
-<span id="id2"></span><h2>Automatic Code Generation<a class="headerlink" href="#automatic-code-generation" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="automatic-code-generation">
+<span id="id2"></span><h2>Automatic Code Generation<a class="headerlink" href="#automatic-code-generation" title="Permalink to this heading"></a></h2>
 <p>Many developers have strong views on automatic code generation, either
 positive or negative.  Our position on this subject is practical.
 Although automatic code generation has been abused in many instances,
@@ -802,9 +720,9 @@ are better suited to our needs, not to take control away from the
 programmer.  We strive to provide ways to allow the programmer to
 customize generated code and do things manually when it is beneficial
 to do so.</p>
-</div>
-<div class="section" id="file-formats">
-<span id="file-format-considerations"></span><h2>File Formats<a class="headerlink" href="#file-formats" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="file-formats">
+<span id="file-format-considerations"></span><h2>File Formats<a class="headerlink" href="#file-formats" title="Permalink to this heading"></a></h2>
 <p>The format of data files is another topic that deserves thoughtful
 consideration.  In order to consolidate information and avoid
 <a class="reference internal" href="guidelines.html#principles"><span class="std std-ref">repeating ourselves</span></a>, the file formats used by our tools
@@ -833,9 +751,9 @@ formats used to store things like component descriptions, message
 definitions, and configuration data.  The storage and formatting of
 high-volume run-time input/output data is another matter entirely, and
 many other factors apply.</p>
-</div>
-<div class="section" id="graphical-design-tools">
-<h2>Graphical Design Tools<a class="headerlink" href="#graphical-design-tools" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="graphical-design-tools">
+<h2>Graphical Design Tools<a class="headerlink" href="#graphical-design-tools" title="Permalink to this heading"></a></h2>
 <p>The Code Craftsmen believe that some aspects of a program are best
 described graphically and some aspects are more naturally expressed in
 textual form.  In light of this, we desire to <strong>support both visual
@@ -858,9 +776,9 @@ text-based file formats</strong> that can be hand-coded, manipulated by
 3rd-party tools, or manually inspected, if necessary.  The graphical
 tools simply provide an alternative means of constructing or
 manipulating the underlying text files.</p>
-</div>
-<div class="section" id="software-stack-for-application-development">
-<h2>Software Stack for Application Development<a class="headerlink" href="#software-stack-for-application-development" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="software-stack-for-application-development">
+<h2>Software Stack for Application Development<a class="headerlink" href="#software-stack-for-application-development" title="Permalink to this heading"></a></h2>
 <p>In order to make our code crafting tools as useful as possible, they
 have been designed to work in conjunction with other open-source
 software to form a software stack.  Each layer of software builds on
@@ -868,63 +786,38 @@ lower-level resources to provide additional functionality.  The
 following diagram offers a bird’s-eye view of our software stack for
 application development.</p>
 <a class="reference internal image-reference" href="_images/conceptual_devel_sw_stack.svg"><img alt="_images/conceptual_devel_sw_stack.svg" class="align-center" src="_images/conceptual_devel_sw_stack.svg" width="50%" /></a>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="software.html" class="btn btn-neutral float-right" title="Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="guidelines.html" class="btn btn-neutral float-left" title="Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="guidelines.html" class="btn btn-neutral float-left" title="Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="software.html" class="btn btn-neutral float-right" title="Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2018, 2019, 2020, 2021, 2022, 2023 Jeffrey A. Webb
-
-    </p>
+    <p>&#169; Copyright 2018, 2019, 2020, 2021, 2022, 2023 Jeffrey A. Webb.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-    
+  </script>  
 
   <style>
     /* Sidebar */
