@@ -3,9 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-==============
-Code Craftsmen
-==============
+===================
+Code Crafting Tools
+===================
 
 .. only:: html
 	  
@@ -34,6 +34,11 @@ Code Craftsmen
   or in an object-oriented manner
 - Generate developer and user documentation directly from component
   interface definitions
+
+.. only:: html
+	  
+  If you are looking for information on our Code Crafting Academy,
+  please visit our `main site <https://www.codecraftsmen.org>`_.
 
 .. toctree::
    :hidden:

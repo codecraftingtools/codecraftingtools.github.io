@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'Code Craftsmen'
+project = u'Code Crafting Tools'
 copyright = u'2018, 2019, 2020, 2021, 2022, 2023 Jeffrey A. Webb'
 author = u'Jeff Webb'
 
